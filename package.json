@@ -1,0 +1,44 @@
+{
+  "name": "mantravi-website",
+  "version": "1.0.0",
+  "description": "Mantravi - Engineering Global Disruption with AI-Native Excellence",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "dev": "python -m http.server 8000",
+    "build": "echo 'No build process needed for static site'",
+    "deploy": "echo 'Deploy to your preferred hosting platform'",
+    "lint": "echo 'Add linting tools as needed'",
+    "test": "echo 'Add testing framework as needed'"
+  },
+  "keywords": [
+    "website",
+    "mantravi",
+    "ai",
+    "digital-transformation",
+    "web-development",
+    "technology"
+  ],
+  "author": "Mantravi Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mantravi/website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mantravi/website/issues"
+  },
+  "homepage": "https://mantravi.com",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "dependencies": {},
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

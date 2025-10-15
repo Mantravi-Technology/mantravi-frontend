@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mantravi - Engineering Global Disruption with AI-Native Excellence</title>
+    <meta name="description" content="Your partner in harnessing the power of next-gen Prompt Engineering, Digital Transformation, and Intelligent Cloud Solutions.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .parallax-bg {
+            transform: translateY(0);
+            will-change: transform;
+        }
+        
+        .parallax-services {
+            transform: translateY(0);
+            will-change: transform;
+        }
+        
+        .glow-effect {
+            box-shadow: 0 0 20px rgba(78, 228, 255, 0.3);
+        }
+        
+        .text-glow {
+            text-shadow: 0 0 10px rgba(78, 228, 255, 0.5);
+        }
+        
+        .hero-pattern {
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(78, 228, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(78, 228, 255, 0.05) 0%, transparent 50%);
+        }
+        
+        .services-pattern {
+            background-image: 
+                linear-gradient(45deg, rgba(78, 228, 255, 0.03) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(78, 228, 255, 0.03) 25%, transparent 25%);
+            background-size: 60px 60px;
+        }
+        
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(78, 228, 255, 0.2);
+        }
+        
+        /* Custom logo styling to match the actual Mantravi logo */
+        .mantravi-logo {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 1.5rem;
+            color: white;
+            letter-spacing: -0.02em;
+            text-decoration: none;
+        }
+        
+        .mandala-icon {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(45deg, #8B5CF6, #EC4899, #3B82F6, #10B981);
+            border-radius: 50%;
+            position: relative;
+            margin-left: 2px;
+        }
+        
+        .mandala-icon::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(45deg, #A855F7, #F472B6, #60A5FA, #34D399);
+            border-radius: 50%;
+            border: 1px solid #D97706;
+        }
+        
+        .mandala-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 4px;
+            height: 4px;
+            background: #D97706;
+            border-radius: 50%;
+        }
+        
+        /* Video Background Styles */
+        .video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(5, 10, 48, 0.7) 0%, rgba(5, 10, 48, 0.4) 50%, rgba(78, 228, 255, 0.1) 100%);
+            z-index: 1;
+        }
+        
+        /* Enhanced hero content styling */
+        .hero-content {
+            position: relative;
+            z-index: 20;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Enhanced text visibility */
+        .hero-title {
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.7), 0 2px 4px rgba(0, 0, 0, 0.5);
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+        
+        .hero-subtitle {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+        }
+        
+        /* Enhanced button visibility */
+        .hero-button {
+            backdrop-filter: blur(10px);
+            background: rgba(78, 228, 255, 0.1);
+            border: 2px solid rgba(78, 228, 255, 0.8);
+            box-shadow: 0 8px 32px rgba(78, 228, 255, 0.3), 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-button:hover {
+            background: rgba(78, 228, 255, 0.2);
+            box-shadow: 0 12px 40px rgba(78, 228, 255, 0.4), 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* Ensure video is visible */
+        video {
+            opacity: 1 !important;
+            display: block !important;
+            z-index: 1;
+        }
+        
+        /* Fallback background when video doesn't work */
+        .hero-fallback {
+            background: linear-gradient(135deg, #050a30 0%, #1a1a2e 50%, #0f1419 100%);
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(78, 228, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(78, 228, 255, 0.05) 0%, transparent 50%);
+        }
+    </style>
+</head>
+<body class="bg-[#050a30] text-white smooth-scroll">
+    <!-- Header Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#050a30]/95 backdrop-blur-md border-b border-white/10">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="/" class="mantravi-logo">
+                    mantravi<span class="mandala-icon"></span>
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/pages/home/" class="hover:text-[#4EE4FF] transition-colors">Home</a>
+                    <a href="/pages/services/" class="hover:text-[#4EE4FF] transition-colors">Services</a>
+                    <a href="/pages/blog/" class="hover:text-[#4EE4FF] transition-colors">Blog</a>
+                    <a href="/pages/about/" class="hover:text-[#4EE4FF] transition-colors">About</a>
+                    <a href="/pages/contact/" class="hover:text-[#4EE4FF] transition-colors">Contact</a>
+                    <a href="/pages/work-with-us/" class="hover:text-[#4EE4FF] transition-colors">Work With Us</a>
+                </div>
+                
+                <!-- Primary CTA -->
+                <div class="hidden md:block">
+                    <button class="bg-[#4EE4FF] text-[#050a30] px-6 py-2 rounded-lg font-semibold hover:bg-[#4EE4FF]/90 transition-colors glow-effect">
+                        Start Your Digital Journey
+                    </button>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden" id="mobile-menu-btn" aria-label="Toggle mobile menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="md:hidden hidden" id="mobile-menu">
+                <div class="flex flex-col space-y-4 py-4">
+                    <a href="/pages/home/" class="hover:text-[#4EE4FF] transition-colors">Home</a>
+                    <a href="/pages/services/" class="hover:text-[#4EE4FF] transition-colors">Services</a>
+                    <a href="/pages/blog/" class="hover:text-[#4EE4FF] transition-colors">Blog</a>
+                    <a href="/pages/about/" class="hover:text-[#4EE4FF] transition-colors">About</a>
+                    <a href="/pages/contact/" class="hover:text-[#4EE4FF] transition-colors">Contact</a>
+                    <a href="/pages/work-with-us/" class="hover:text-[#4EE4FF] transition-colors">Work With Us</a>
+                    <button class="bg-[#4EE4FF] text-[#050a30] px-6 py-2 rounded-lg font-semibold hover:bg-[#4EE4FF]/90 transition-colors glow-effect w-full mt-4">
+                        Start Your Digital Journey
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden hero-pattern hero-fallback">
+        <!-- Video Background -->
+        <div class="absolute inset-0 w-full h-full">
+            <video 
+                class="w-full h-full object-cover" 
+                autoplay 
+                muted 
+                loop 
+                playsinline
+                poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'%3E%3Crect width='1920' height='1080' fill='%23050a30'/%3E%3C/svg%3E"
+            >
+                <source src="../../assets/videos/hero.mp4" type="video/mp4">
+                <!-- Fallback for browsers that don't support video -->
+                Your browser does not support the video tag.
+            </video>
+            
+            <!-- Blurred overlay for text readability -->
+            <div class="absolute inset-0 bg-[#050a30]/70 backdrop-blur-sm"></div>
+            
+            <!-- Gradient overlay for better contrast -->
+            <div class="absolute inset-0 bg-gradient-to-br from-[#050a30]/80 via-[#050a30]/60 to-[#050a30]/40"></div>
+            
+            <!-- Accent gradient overlay -->
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[#4EE4FF]/5 to-[#4EE4FF]/10"></div>
+        </div>
+        
+        <!-- Hero Content -->
+        <div class="hero-content container mx-auto px-6 text-center">
+            <h1 class="hero-title text-4xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight">
+                Engineering Global <span class="text-[#4EE4FF] text-glow">Disruption</span> with AI-Native Excellence
+            </h1>
+            <p class="hero-subtitle text-xl md:text-2xl text-gray-200 mb-8 max-w-4xl mx-auto leading-relaxed">
+                Your partner in harnessing the power of next-gen Prompt Engineering, Digital Transformation, and Intelligent Cloud Solutions.
+            </p>
+            <button class="hero-button text-[#4EE4FF] px-8 py-4 rounded-lg text-lg font-semibold hover:text-white transition-all duration-300">
+                Consult Our Experts
+            </button>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i data-lucide="chevron-down" class="w-6 h-6 text-[#4EE4FF]"></i>
+        </div>
+    </section>
+
+    <!-- Value & Metrics Section -->
+    <section class="py-20 bg-black/30">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="space-y-2">
+                    <div class="text-4xl md:text-5xl font-black text-[#4EE4FF]">50+</div>
+                    <div class="text-sm md:text-base text-gray-300">AI/LLM Projects</div>
+                </div>
+                <div class="space-y-2">
+                    <div class="text-4xl md:text-5xl font-black text-[#4EE4FF]">100+</div>
+                    <div class="text-sm md:text-base text-gray-300">Certified Tech Evangelists</div>
+                </div>
+                <div class="space-y-2">
+                    <div class="text-4xl md:text-5xl font-black text-[#4EE4FF]">99%</div>
+                    <div class="text-sm md:text-base text-gray-300">Client Retention Rate</div>
+                </div>
+                <div class="space-y-2">
+                    <div class="text-4xl md:text-5xl font-black text-[#4EE4FF]">4X</div>
+                    <div class="text-sm md:text-base text-gray-300">Average ROI Delivered</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Services Section -->
+    <section id="services" class="py-20 relative overflow-hidden">
+        <!-- Parallax Background for Services -->
+        <div class="parallax-services absolute inset-0 services-pattern opacity-30"></div>
+        
+        <div class="relative z-10 container mx-auto px-6">
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-16">
+                Navigate the Digital Frontier with <span class="text-[#4EE4FF]">Mantravi's</span> Engineering Excellence
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1: Digital Products & Development -->
+                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 card-hover border border-white/10">
+                    <div class="text-[#4EE4FF] mb-6">
+                        <i data-lucide="smartphone" class="w-12 h-12"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Web & App Development</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Build modern, scalable websites and applications tailored to your needs.
+                    </p>
+                </div>
+                
+                <!-- Card 2: Brand, SEO & Marketing -->
+                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 card-hover border border-white/10">
+                    <div class="text-[#4EE4FF] mb-6">
+                        <i data-lucide="trending-up" class="w-12 h-12"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Digital Marketing & Branding</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Grow your reach with targeted marketing, SEO, and compelling brand identity creation.
+                    </p>
+                </div>
+                
+                <!-- Card 3: QA & IT Solutions -->
+                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 card-hover border border-white/10">
+                    <div class="text-[#4EE4FF] mb-6">
+                        <i data-lucide="settings" class="w-12 h-12"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">QA & Maintenance Services</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Ensure flawless performance with test automation, performance QA, and expert IT consulting.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-[#4EE4FF]/10 to-transparent">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-8">
+                Ready to Innovate and Drive Impact? <span class="text-[#4EE4FF]">Let's talk strategy.</span>
+            </h2>
+            <button class="bg-[#4EE4FF] text-[#050a30] px-12 py-6 rounded-lg text-xl font-bold hover:bg-[#4EE4FF]/90 transition-all duration-300 glow-effect transform hover:scale-105">
+                Schedule a Discovery Call
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black/50 py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mantravi-logo mb-4 md:mb-0">
+                    mantravi<span class="mandala-icon"></span>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-[#4EE4FF] transition-colors">Privacy Policy</a>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-[#4EE4FF] transition-colors">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-[#4EE4FF] transition-colors">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-[#4EE4FF] transition-colors">
+                            <i data-lucide="github" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/10 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Mantravi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+        
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+        
+        // Parallax Scrolling Effect
+        function updateParallax() {
+            const scrolled = window.pageYOffset;
+            const parallaxBg = document.querySelector('.parallax-bg');
+            const parallaxServices = document.querySelector('.parallax-services');
+            
+            if (parallaxBg) {
+                const speed = 0.5;
+                parallaxBg.style.transform = `translateY(${scrolled * speed}px)`;
+            }
+            
+            if (parallaxServices) {
+                const speed = 0.75;
+                parallaxServices.style.transform = `translateY(${scrolled * speed}px)`;
+            }
+        }
+        
+        // Throttled scroll event for better performance
+        let ticking = false;
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        }
+        
+        function handleScroll() {
+            requestTick();
+            ticking = false;
+        }
+        
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('load', updateParallax);
+        
+        // Video Background Handling
+        const video = document.querySelector('video');
+        if (video) {
+            console.log('Video element found:', video);
+            console.log('Video source:', video.querySelector('source')?.src);
+            
+            // Force video to be visible
+            video.style.opacity = '1';
+            video.style.display = 'block';
+            
+            // Ensure video plays on mobile devices
+            video.addEventListener('loadeddata', function() {
+                console.log('Video data loaded, attempting to play');
+                video.play().catch(e => {
+                    console.log('Video autoplay prevented:', e);
+                    // Don't hide video, just show it
+                    video.style.opacity = '1';
+                });
+            });
+            
+            // Handle video loading errors
+            video.addEventListener('error', function(e) {
+                console.log('Video failed to load:', e);
+                video.style.display = 'none';
+                // Add fallback background
+                const heroSection = document.querySelector('section');
+                if (heroSection) {
+                    heroSection.style.background = 'linear-gradient(135deg, #050a30 0%, #1a1a2e 100%)';
+                }
+            });
+            
+            // Optimize video performance
+            video.addEventListener('canplay', function() {
+                console.log('Video can play');
+                video.style.opacity = '1';
+                video.play().catch(e => console.log('Play failed:', e));
+            });
+            
+            // Force play after a short delay
+            setTimeout(() => {
+                video.play().catch(e => console.log('Delayed play failed:', e));
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
