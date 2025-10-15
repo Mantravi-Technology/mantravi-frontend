@@ -178,6 +178,63 @@
             color: #050a30;
             transform: translateY(-2px);
         }
+
+        .services-bar {
+            position: sticky;
+            top: 70px;
+            z-index: 40;
+            background: linear-gradient(180deg, #0a0f3a, #141b5a);
+            padding: 15px 20px;
+            border-radius: 16px;
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+            width: 100%; 
+            max-width: 1500px;
+            margin: -70px auto 10px auto; /* Updated */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        }
+
+
+        .services-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 35px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .services-list li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .services-list li a:hover {
+            color: #1e90ff;
+        }
+
+        .services-list li a::after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: #1e90ff;
+            transition: width 0.3s ease;
+        }
+
+        .services-list li a:hover::after {
+            width: 100%;
+        }
+
         
         @media (max-width: 768px) {
             .grid-2, .grid-3, .grid-4 {
@@ -254,69 +311,152 @@
         </div>
     </section>
 
-    <!-- Services Grid -->
-    <section class="section-padding">
-        <div class="container mx-auto px-6">
-            <div class="grid-3">
-                <!-- Web & App Development -->
-                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 card-hover border border-white/10">
-                    <div class="text-[#4EE4FF] mb-6">
-                        <i data-lucide="smartphone" class="w-16 h-16"></i>
-                    </div>
-                    <h2 class="heading-3 mb-4">Web & App Development</h2>
-                    <p class="text-gray-300 mb-6">
-                        Build modern, scalable websites and applications tailored to your specific business needs and user requirements.
-                    </p>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li>• Custom Web Applications</li>
-                        <li>• Mobile App Development</li>
-                        <li>• E-commerce Solutions</li>
-                        <li>• Progressive Web Apps</li>
-                        <li>• API Development & Integration</li>
-                    </ul>
-                    <button class="btn-secondary mt-6 w-full">Learn More</button>
-                </div>
-                
-                <!-- Digital Marketing & Branding -->
-                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 card-hover border border-white/10">
-                    <div class="text-[#4EE4FF] mb-6">
-                        <i data-lucide="trending-up" class="w-16 h-16"></i>
-                    </div>
-                    <h2 class="heading-3 mb-4">Digital Marketing & Branding</h2>
-                    <p class="text-gray-300 mb-6">
-                        Grow your reach with targeted marketing strategies, SEO optimization, and compelling brand identity creation.
-                    </p>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li>• SEO Optimization</li>
-                        <li>• Social Media Marketing</li>
-                        <li>• Brand Identity Design</li>
-                        <li>• Content Strategy</li>
-                        <li>• Performance Analytics</li>
-                    </ul>
-                    <button class="btn-secondary mt-6 w-full">Learn More</button>
-                </div>
-                
-                <!-- QA & Maintenance Services -->
-                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 card-hover border border-white/10">
-                    <div class="text-[#4EE4FF] mb-6">
-                        <i data-lucide="settings" class="w-16 h-16"></i>
-                    </div>
-                    <h2 class="heading-3 mb-4">QA & Maintenance Services</h2>
-                    <p class="text-gray-300 mb-6">
-                        Ensure flawless performance with comprehensive testing, automation, and ongoing maintenance support.
-                    </p>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li>• Test Automation</li>
-                        <li>• Performance Testing</li>
-                        <li>• IT Consulting</li>
-                        <li>• Maintenance & Support</li>
-                        <li>• Security Audits</li>
-                    </ul>
-                    <button class="btn-secondary mt-6 w-full">Learn More</button>
-                </div>
-            </div>
+    <!-- ========== SERVICES BAR ========== -->
+    <div class="services-bar">
+    <ul class="services-list">
+        <li><a href="#webapp" class="hover:text-cyan-400 transition">Web App Dev</a></li>
+        <li><a href="#mobileapp" class="hover:text-cyan-400 transition">Mobile App Dev</a></li>
+        <li><a href="#maintenance" class="hover:text-cyan-400 transition">Maintenance & Support</a></li>
+        <li><a href="#uiux" class="hover:text-cyan-400 transition">UI & UX Design</a></li>
+        <li><a href="#consulting" class="hover:text-cyan-400 transition">IT Consulting</a></li>
+        <li><a href="#productdev" class="hover:text-cyan-400 transition">Product Development</a></li>
+        <li><a href="#digitalmarketing" class="hover:text-cyan-400 transition">Digital Marketing</a></li>
+        <li><a href="#socialmedia" class="hover:text-cyan-400 transition">Social Media Handling</a></li>
+        <li><a href="#seo" class="hover:text-cyan-400 transition">SEO</a></li>
+    </ul>
+    </div>
+
+    <!-- Enable smooth scrolling -->
+    <style>
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 180px; /* adjust to header + services bar height */
+    }
+    </style>
+
+    <!-- ========== SERVICES SECTIONS ========== -->
+    <!-- Update the services section opening tag: -->
+    <section id="services-sections" class="section-padding bg-[#030818] py-24 space-y-28 text-white">
+
+    <!-- 1. Web App Development -->
+    <div id="webapp" class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+        <div>
+        <h2 class="text-3xl font-semibold mb-4 text-cyan-400">Web App Development</h2>
+        <p class="text-gray-300 mb-6 text-lg leading-relaxed">
+            Build robust, scalable, and secure web applications using the latest frameworks like React, Next.js, and Node.js. We ensure high performance and fluid user experiences.
+        </p>
         </div>
+        <div class="bg-[#0a0f3a]/60 rounded-2xl overflow-hidden shadow-lg border border-cyan-500/10">
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80" alt="Web App" class="w-full h-72 object-cover">
+        </div>
+    </div>
+
+    <!-- 2. Mobile App Development -->
+    <div id="mobileapp" class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+        <div class="order-2 md:order-1 bg-[#0a0f3a]/60 rounded-2xl overflow-hidden shadow-lg border border-cyan-500/10">
+        <img src="https://images.unsplash.com/photo-1556741533-f6acd647a6c9?auto=format&fit=crop&w=900&q=80" alt="Mobile App" class="w-full h-72 object-cover">
+        </div>
+        <div class="order-1 md:order-2">
+        <h2 class="text-3xl font-semibold mb-4 text-cyan-400">Mobile App Development</h2>
+        <p class="text-gray-300 mb-6 text-lg leading-relaxed">
+            From iOS to Android, we design apps that are fast, intuitive, and highly scalable using React Native and Flutter.
+        </p>
+        </div>
+    </div>
+
+    <!-- 3. Maintenance & Support -->
+    <div id="maintenance" class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+        <div>
+        <h2 class="text-3xl font-semibold mb-4 text-cyan-400">Maintenance & Support Services</h2>
+        <p class="text-gray-300 mb-6 text-lg leading-relaxed">
+            Keep your software running smoothly with our proactive maintenance and 24/7 support to minimize downtime and security risks.
+        </p>
+        </div>
+        <div class="bg-[#0a0f3a]/60 rounded-2xl overflow-hidden shadow-lg border border-cyan-500/10">
+        <img src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?auto=format&fit=crop&w=900&q=80" alt="Maintenance" class="w-full h-72 object-cover">
+        </div>
+    </div>
+
+    <!-- 4. UI & UX Design -->
+    <div id="uiux" class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+        <div class="order-2 md:order-1 bg-[#0a0f3a]/60 rounded-2xl overflow-hidden shadow-lg border border-cyan-500/10">
+        <img src="https://images.unsplash.com/photo-1603969072880-33c3e9b35c9f?auto=format&fit=crop&w=900&q=80" alt="UI UX" class="w-full h-72 object-cover">
+        </div>
+        <div class="order-1 md:order-2">
+        <h2 class="text-3xl font-semibold mb-4 text-cyan-400">UI & UX Design</h2>
+        <p class="text-gray-300 mb-6 text-lg leading-relaxed">
+            Stunning visuals meet intuitive navigation. We blend art and logic to create experiences that users love.
+        </p>
+        </div>
+    </div>
+
+    <!-- 5. IT Consulting & Outsourcing -->
+    <div id="consulting" class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+        <div>
+        <h2 class="text-3xl font-semibold mb-4 text-cyan-400">IT Consulting & Outsourcing</h2>
+        <p class="text-gray-300 mb-6 text-lg leading-relaxed">
+            Get expert guidance to scale your IT infrastructure and optimize your digital strategy. We offer skilled teams ready to accelerate your roadmap.
+        </p>
+        </div>
+        <div class="bg-[#0a0f3a]/60 rounded-2xl overflow-hidden shadow-lg border border-cyan-500/10">
+        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=80" alt="Consulting" class="w-full h-72 object-cover">
+        </div>
+    </div>
+
+    <!-- 6. Product Development -->
+    <div id="productdev" class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+        <div class="order-2 md:order-1 bg-[#0a0f3a]/60 rounded-2xl overflow-hidden shadow-lg border border-cyan-500/10">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="Product Development" class="w-full h-72 object-cover">
+        </div>
+        <div class="order-1 md:order-2">
+        <h2 class="text-3xl font-semibold mb-4 text-cyan-400">Product Development</h2>
+        <p class="text-gray-300 mb-6 text-lg leading-relaxed">
+            From concept to launch, we manage the full product lifecycle — ideation, design, development, and scaling.
+        </p>
+        </div>
+    </div>
+
+    <!-- 7. Digital Marketing -->
+    <div id="digitalmarketing" class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+        <div>
+        <h2 class="text-3xl font-semibold mb-4 text-cyan-400">Digital Marketing</h2>
+        <p class="text-gray-300 mb-6 text-lg leading-relaxed">
+            Drive brand awareness, conversions, and growth through SEO, paid ads, and social campaigns crafted by our experts.
+        </p>
+        </div>
+        <div class="bg-[#0a0f3a]/60 rounded-2xl overflow-hidden shadow-lg border border-cyan-500/10">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80" alt="Digital Marketing" class="w-full h-72 object-cover">
+        </div>
+    </div>
+
+    <!-- 8. Social Media Handling -->
+    <div id="socialmedia" class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+        <div class="order-2 md:order-1 bg-[#0a0f3a]/60 rounded-2xl overflow-hidden shadow-lg border border-cyan-500/10">
+        <img src="https://images.unsplash.com/photo-1494173853739-c21f58b16055?auto=format&fit=crop&w=900&q=80" alt="Social Media" class="w-full h-72 object-cover">
+        </div>
+        <div class="order-1 md:order-2">
+        <h2 class="text-3xl font-semibold mb-4 text-cyan-400">Social Media Handling</h2>
+        <p class="text-gray-300 mb-6 text-lg leading-relaxed">
+            Create meaningful online connections through content strategies that engage your target audience across platforms.
+        </p>
+        </div>
+    </div>
+
+    <!-- 9. Search Engine Optimisation -->
+    <div id="seo" class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+        <div>
+        <h2 class="text-3xl font-semibold mb-4 text-cyan-400">Search Engine Optimisation (SEO)</h2>
+        <p class="text-gray-300 mb-6 text-lg leading-relaxed">
+            Rank higher and grow organic traffic with our data-driven SEO strategies and technical optimization expertise.
+        </p>
+        </div>
+        <div class="bg-[#0a0f3a]/60 rounded-2xl overflow-hidden shadow-lg border border-cyan-500/10">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" alt="SEO" class="w-full h-72 object-cover">
+        </div>
+    </div>
+
     </section>
+
 
     <!-- Process Section -->
     <section class="section-padding bg-black/30">
