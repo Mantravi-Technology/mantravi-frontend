@@ -5,7 +5,7 @@ A premium, high-performance website for Mantravi - Engineering Global Disruption
 ## 🏗️ Project Structure
 
 ```
-mantravii-website/
+mantravi-website/
 ├── assets/                 # Static assets
 │   ├── css/              # Stylesheets
 │   │   ├── components/   # Component-specific styles
