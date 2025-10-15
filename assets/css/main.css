@@ -6,6 +6,124 @@
 /* Import Inter Font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
+/* Home Page Specific Styles */
+
+/* Parallax Effects */
+.parallax-bg {
+    transform: translateY(0);
+    will-change: transform;
+}
+
+.parallax-services {
+    transform: translateY(0);
+    will-change: transform;
+}
+
+/* Glow Effects */
+.glow-effect {
+    box-shadow: 0 0 20px rgba(78, 228, 255, 0.3);
+}
+
+.text-glow {
+    text-shadow: 0 0 10px rgba(78, 228, 255, 0.5);
+}
+
+/* Background Patterns */
+.hero-pattern {
+    background-image: 
+        radial-gradient(circle at 25% 25%, rgba(78, 228, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(78, 228, 255, 0.05) 0%, transparent 50%);
+}
+
+.services-pattern {
+    background-image: 
+        linear-gradient(45deg, rgba(78, 228, 255, 0.03) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(78, 228, 255, 0.03) 25%, transparent 25%);
+    background-size: 60px 60px;
+}
+
+/* Smooth Scrolling */
+.smooth-scroll {
+    scroll-behavior: smooth;
+}
+
+/* Card Hover Effects */
+.card-hover {
+    transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(78, 228, 255, 0.2);
+}
+
+/* Video Background Styles */
+.video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(5, 10, 48, 0.7) 0%, rgba(5, 10, 48, 0.4) 50%, rgba(78, 228, 255, 0.1) 100%);
+    z-index: 1;
+}
+
+/* Enhanced hero content styling */
+.hero-content {
+    position: relative;
+    z-index: 20;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Enhanced text visibility */
+.hero-title {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.7), 0 2px 4px rgba(0, 0, 0, 0.5);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.hero-subtitle {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+}
+
+/* Enhanced button visibility */
+.hero-button {
+    backdrop-filter: blur(10px);
+    background: rgba(78, 228, 255, 0.1);
+    border: 2px solid rgba(78, 228, 255, 0.8);
+    box-shadow: 0 8px 32px rgba(78, 228, 255, 0.3), 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.hero-button:hover {
+    background: rgba(78, 228, 255, 0.2);
+    box-shadow: 0 12px 40px rgba(78, 228, 255, 0.4), 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Ensure video is visible */
+video {
+    opacity: 1 !important;
+    display: block !important;
+    z-index: 1;
+}
+
+/* Fallback background when video doesn't work */
+.hero-fallback {
+    background: linear-gradient(135deg, #050a30 0%, #1a1a2e 50%, #0f1419 100%);
+    background-image: 
+        radial-gradient(circle at 20% 20%, rgba(78, 228, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(78, 228, 255, 0.05) 0%, transparent 50%);
+}
+
 /* Base Styles */
 * {
     font-family: 'Inter', sans-serif;
