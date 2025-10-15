@@ -15,6 +15,9 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="../../assets/css/main.css">
     
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     
@@ -184,6 +187,71 @@
             transform: translateY(-2px);
         }
         
+        /* Footer Styles */
+        .footer-bg {
+            background-color: #0a1128;
+        }
+        
+        .footer-widget-items {
+            margin-bottom: 1.5rem;
+        }
+        
+        .widget-title {
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-content p {
+            color: #9ca3af;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .footer-social-text {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .social-icon a {
+            display: inline-block;
+            margin-right: 1rem;
+            color: #9ca3af;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icon a:hover {
+            color: #4EE4FF;
+        }
+        
+        .user-links li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .user-links a {
+            color: #9ca3af;
+            transition: color 0.3s ease;
+        }
+        
+        .user-links a:hover {
+            color: #4EE4FF;
+        }
+        
+        .office-info p {
+            color: #9ca3af;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-bottom p {
+            color: #9ca3af;
+            text-align: center;
+        }
+        
         @media (max-width: 768px) {
             .grid-2, .grid-3, .grid-4 {
                 grid-template-columns: 1fr;
@@ -196,8 +264,18 @@
             .heading-2 {
                 font-size: 2rem;
             }
+            
+            .footer-social-text {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .social-icon {
+                margin-bottom: 1rem;
+            }
         }
-    </style></head>
+    </style>
+</head>
 <body class="bg-[#050a30] text-white smooth-scroll">
     <!-- Header Navigation -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-[#050a30]/95 backdrop-blur-md border-b border-white/10">
@@ -305,27 +383,27 @@
                 <!-- Contact Information -->
                 <div class="space-y-8">
                     <div>
-                        <h2 class="heading-2 mb-6">Get In Touch</h2>
+                        <h2 class="heading-2 mb-6">Still Have you Any Question?</h2>
                         <div class="space-y-6">
                             <div class="flex items-start">
                                 <i data-lucide="mail" class="w-6 h-6 text-[#4EE4FF] mr-4 mt-1"></i>
                                 <div>
-                                    <h3 class="font-semibold mb-1">Email</h3>
-                                    <p class="text-gray-400">hello@mantravi.com</p>
+                                    <h3 class="font-semibold mb-1">Email Us</h3>
+                                    <p class="text-gray-400">info@mantravi.com</p>
                                 </div>
                             </div>
                             <div class="flex items-start">
                                 <i data-lucide="phone" class="w-6 h-6 text-[#4EE4FF] mr-4 mt-1"></i>
                                 <div>
-                                    <h3 class="font-semibold mb-1">Phone</h3>
-                                    <p class="text-gray-400">+1 (555) 123-4567</p>
+                                    <h3 class="font-semibold mb-1">Call Us</h3>
+                                    <p class="text-gray-400">+91 8766664567</p>
                                 </div>
                             </div>
                             <div class="flex items-start">
                                 <i data-lucide="map-pin" class="w-6 h-6 text-[#4EE4FF] mr-4 mt-1"></i>
                                 <div>
-                                    <h3 class="font-semibold mb-1">Address</h3>
-                                    <p class="text-gray-400">123 Innovation Drive<br>San Francisco, CA 94105</p>
+                                    <h3 class="font-semibold mb-1">Locate Us</h3>
+                                    <p class="text-gray-400">Crossing Republik<br>UTTAR PRADESH  201016</p>
                                 </div>
                             </div>
                         </div>
@@ -364,30 +442,70 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-black/50 py-12">
+    <!-- Footer Section -->
+    <footer class="footer-bg py-12">
         <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mantravi-logo mb-4 md:mb-0">
-                    mantravi<span class="mandala-icon"></span>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="footer-widget-items lg:col-span-2">
+                    <div class="widget-title">
+                        <a href="/pages/home/" class="mantravi-logo text-2xl">
+                            mantravi<span class="mandala-icon"></span>
+                        </a>
+                    </div>
+                    <div class="footer-content">
+                        <p>
+                            Together, we'll turn your ambitions into reality. Trust us to guide you, and let's achieve Remarkable Success In India and Southeast Asia!
+                        </p>
+                        <div class="footer-social-text">
+                            <div class="social-icon">
+                                <a href="https://www.facebook.com/capstoneconsultancysingapore/"><i class="fa-brands fa-facebook-f"></i></a>
+                                <a href="http://linkedin.com/company/104409718/admin/dashboard/"><i class="fa-brands fa-linkedin"></i></a>
+                            </div>
+                            <!-- <div>
+                                <a href="privacy-policy.html" id="url-privacy">Privacy Policy</a>
+                            </div> -->
+                        </div>
+                    </div>
                 </div>
-                <div class="flex items-center space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-[#4EE4FF] transition-colors">Privacy Policy</a>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-[#4EE4FF] transition-colors">
-                            <i data-lucide="linkedin" class="w-5 h-5"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-[#4EE4FF] transition-colors">
-                            <i data-lucide="twitter" class="w-5 h-5"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-[#4EE4FF] transition-colors">
-                            <i data-lucide="github" class="w-5 h-5"></i>
-                        </a>
+                
+                <!-- Services Links -->
+                <div class="footer-widget-items">
+                    <div class="widget-title">
+                        <h3 class="text-xl text-white font-medium">
+                            Services
+                        </h3>
+                    </div>
+                    <ul class="user-links">
+                        <li><a href="/pages/services/#web-development">Web Development</a></li>
+                        <li><a href="/pages/services/#mobile-apps">Mobile Apps</a></li>
+                        <li><a href="/pages/services/#ai-solutions">AI Solutions</a></li>
+                        <li><a href="/pages/services/#cloud-services">Cloud Services</a></li>
+                        <li><a href="/pages/services/#consulting">Consulting</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Office Information -->
+                <div class="footer-widget-items">
+                    <div class="widget-title">
+                        <h3 class="text-xl text-white font-medium">
+                            Office
+                        </h3>
+                    </div>
+                    <div class="office-info">
+                        <p class="text-gray-300 mb-1">Noida</p>
+                        <p class="text-gray-300 mb-1">Crossing Republik</p>
+                        <p class="text-gray-300">
+                            <a href="mailto:info@mantravi.com" class="hover:text-[#4EE4FF] transition-colors">info@mantravi.com</a>
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-white/10 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 Mantravi. All rights reserved.</p>
+            
+            <div class="footer-bottom">
+                <p class="text-center">
+                    Copyright © 2025 Mantravi. All Rights Reserved
+                </p>
             </div>
         </div>
     </footer>

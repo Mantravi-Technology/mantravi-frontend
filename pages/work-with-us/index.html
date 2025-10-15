@@ -18,6 +18,9 @@
     <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <!-- Inter Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -184,6 +187,100 @@
             transform: translateY(-2px);
         }
         
+        .form-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            color: white;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #4EE4FF;
+            box-shadow: 0 0 0 3px rgba(78, 228, 255, 0.1);
+        }
+        
+        /* Footer Styles */
+        .footer-bg {
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .footer-widget-items {
+            margin-bottom: 2rem;
+        }
+        
+        .widget-title {
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-content p {
+            color: #e5e7eb;
+            margin-bottom: 1.5rem;
+            max-width: 400px;
+        }
+        
+        .footer-social-text {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .social-icon {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-icon a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: #e5e7eb;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon a:hover {
+            background: #4EE4FF;
+            color: #050a30;
+            transform: translateY(-2px);
+        }
+        
+        .user-links {
+            list-style: none;
+        }
+        
+        .user-links li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .user-links a {
+            color: #e5e7eb;
+            transition: color 0.3s ease;
+        }
+        
+        .user-links a:hover {
+            color: #4EE4FF;
+        }
+        
+        .office-info p {
+            color: #e5e7eb;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #9ca3af;
+        }
+        
         @media (max-width: 768px) {
             .grid-2, .grid-3, .grid-4 {
                 grid-template-columns: 1fr;
@@ -196,8 +293,15 @@
             .heading-2 {
                 font-size: 2rem;
             }
+            
+            .footer-social-text {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
         }
-    </style></head>
+    </style>
+</head>
 <body class="bg-[#050a30] text-white smooth-scroll">
     <!-- Header Navigation -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-[#050a30]/95 backdrop-blur-md border-b border-white/10">
@@ -288,8 +392,67 @@
         </div>
     </section>
 
-    <!-- Open Positions -->
+    <!-- Our Team Culture -->
     <section class="section-padding bg-black/30">
+        <div class="container mx-auto px-6">
+            <h2 class="heading-2 text-center mb-16">Our Team Culture</h2>
+            <div class="grid-2">
+                <div>
+                    <h3 class="heading-3 mb-4">Innovation & Collaboration</h3>
+                    <p class="text-gray-400 mb-6">
+                        At Mantravi, we foster a culture where innovation thrives through collaboration. Our teams work together to solve complex challenges and create cutting-edge solutions that make a real impact.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i data-lucide="check-circle" class="w-6 h-6 text-[#4EE4FF] mr-4 mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold mb-1">Weekly Innovation Sessions</h4>
+                                <p class="text-gray-400 text-sm">Brainstorm and explore new technologies together</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="check-circle" class="w-6 h-6 text-[#4EE4FF] mr-4 mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold mb-1">Cross-Functional Teams</h4>
+                                <p class="text-gray-400 text-sm">Work with diverse experts across different domains</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="check-circle" class="w-6 h-6 text-[#4EE4FF] mr-4 mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold mb-1">Open Communication</h4>
+                                <p class="text-gray-400 text-sm">Share ideas freely in our transparent environment</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-[#4EE4FF]/10 to-transparent rounded-xl p-8 border border-[#4EE4FF]/20">
+                    <h3 class="heading-3 mb-4 text-center">Our Values</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-black/50 rounded-lg p-4 text-center">
+                            <i data-lucide="target" class="w-8 h-8 text-[#4EE4FF] mx-auto mb-2"></i>
+                            <h4 class="font-semibold">Excellence</h4>
+                        </div>
+                        <div class="bg-black/50 rounded-lg p-4 text-center">
+                            <i data-lucide="users" class="w-8 h-8 text-[#4EE4FF] mx-auto mb-2"></i>
+                            <h4 class="font-semibold">Collaboration</h4>
+                        </div>
+                        <div class="bg-black/50 rounded-lg p-4 text-center">
+                            <i data-lucide="lightbulb" class="w-8 h-8 text-[#4EE4FF] mx-auto mb-2"></i>
+                            <h4 class="font-semibold">Innovation</h4>
+                        </div>
+                        <div class="bg-black/50 rounded-lg p-4 text-center">
+                            <i data-lucide="heart" class="w-8 h-8 text-[#4EE4FF] mx-auto mb-2"></i>
+                            <h4 class="font-semibold">Integrity</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Open Positions -->
+    <section class="section-padding">
         <div class="container mx-auto px-6">
             <h2 class="heading-2 text-center mb-16">Open Positions</h2>
             <div class="space-y-6">
@@ -327,6 +490,57 @@
                         </div>
                         <button class="btn-secondary mt-4 md:mt-0">Apply Now</button>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Employee Testimonials -->
+    <section class="section-padding bg-black/30">
+        <div class="container mx-auto px-6">
+            <h2 class="heading-2 text-center mb-16">Hear From Our Team</h2>
+            <div class="grid-3">
+                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-6 border border-white/10 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-[#4EE4FF] to-[#00D4FF] rounded-full flex items-center justify-center text-[#050a30] font-bold mr-4">
+                            AS
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Anjali Sharma</h4>
+                            <p class="text-sm text-gray-400">Senior Developer</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic">
+                        "Working at Mantravi has been transformative. The trust they place in their employees and the opportunities for growth are unparalleled."
+                    </p>
+                </div>
+                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-6 border border-white/10 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-[#4EE4FF] to-[#00D4FF] rounded-full flex items-center justify-center text-[#050a30] font-bold mr-4">
+                            RK
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Rahul Kumar</h4>
+                            <p class="text-sm text-gray-400">AI Engineer</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic">
+                        "The collaborative environment and cutting-edge projects make every day exciting. I've grown more here in a year than in my previous roles combined."
+                    </p>
+                </div>
+                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-6 border border-white/10 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-[#4EE4FF] to-[#00D4FF] rounded-full flex items-center justify-center text-[#050a30] font-bold mr-4">
+                            PS
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Priya Singh</h4>
+                            <p class="text-sm text-gray-400">UX Designer</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic">
+                        "Mantravi truly values work-life balance. The flexible schedule and supportive management make it possible to excel both professionally and personally."
+                    </p>
                 </div>
             </div>
         </div>
@@ -422,29 +636,69 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black/50 py-12">
+    <footer class="footer-bg py-12">
         <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mantravi-logo mb-4 md:mb-0">
-                    mantravi<span class="mandala-icon"></span>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="footer-widget-items lg:col-span-2">
+                    <div class="widget-title">
+                        <a href="/pages/home/" class="mantravi-logo text-2xl">
+                            mantravi<span class="mandala-icon"></span>
+                        </a>
+                    </div>
+                    <div class="footer-content">
+                        <p>
+                            Together, we'll turn your ambitions into reality. Trust us to guide you, and let's achieve Remarkable Success In India and Southeast Asia!
+                        </p>
+                        <div class="footer-social-text">
+                            <div class="social-icon">
+                                <a href="https://www.facebook.com/capstoneconsultancysingapore/"><i class="fa-brands fa-facebook-f"></i></a>
+                                <a href="http://linkedin.com/company/104409718/admin/dashboard/"><i class="fa-brands fa-linkedin"></i></a>
+                            </div>
+                            <!-- <div>
+                                <a href="privacy-policy.html" id="url-privacy">Privacy Policy</a>
+                            </div> -->
+                        </div>
+                    </div>
                 </div>
-                <div class="flex items-center space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-[#4EE4FF] transition-colors">Privacy Policy</a>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-[#4EE4FF] transition-colors">
-                            <i data-lucide="linkedin" class="w-5 h-5"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-[#4EE4FF] transition-colors">
-                            <i data-lucide="twitter" class="w-5 h-5"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-[#4EE4FF] transition-colors">
-                            <i data-lucide="github" class="w-5 h-5"></i>
-                        </a>
+                
+                <!-- Services Links -->
+                <div class="footer-widget-items">
+                    <div class="widget-title">
+                        <h3 class="text-xl text-white font-medium">
+                            Services
+                        </h3>
+                    </div>
+                    <ul class="user-links">
+                        <li><a href="/pages/services/#web-development">Web Development</a></li>
+                        <li><a href="/pages/services/#mobile-apps">Mobile Apps</a></li>
+                        <li><a href="/pages/services/#ai-solutions">AI Solutions</a></li>
+                        <li><a href="/pages/services/#cloud-services">Cloud Services</a></li>
+                        <li><a href="/pages/services/#consulting">Consulting</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Office Information -->
+                <div class="footer-widget-items">
+                    <div class="widget-title">
+                        <h3 class="text-xl text-white font-medium">
+                            Office
+                        </h3>
+                    </div>
+                    <div class="office-info">
+                        <p class="text-gray-300 mb-1">Noida</p>
+                        <p class="text-gray-300 mb-1">Crossing Republik</p>
+                        <p class="text-gray-300">
+                            <a href="mailto:info@mantravi.com" class="hover:text-[#4EE4FF] transition-colors">info@mantravi.com</a>
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-white/10 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 Mantravi. All rights reserved.</p>
+            
+            <div class="footer-bottom">
+                <p class="text-center">
+                    Copyright © 2025 Mantravi. All Rights Reserved
+                </p>
             </div>
         </div>
     </footer>

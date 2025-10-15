@@ -9,6 +9,9 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../../assets/icons/favicon.ico">
     
@@ -181,6 +184,162 @@
             transform: translateY(-2px);
         }
         
+        /* Footer Styles */
+        .footer-bg {
+            background: linear-gradient(135deg, #0a1a3a 0%, #050a30 100%);
+        }
+        
+        .footer-widget-items {
+            margin-top: 30px;
+        }
+        
+        .widget-title {
+            margin-bottom: 25px;
+        }
+        
+        .footer-content p {
+            color: #a0aec0;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .footer-social-text {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .social-icon a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: rgba(78, 228, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon a:hover {
+            background: rgba(78, 228, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .social-icon i {
+            color: #4EE4FF;
+        }
+        
+        #url-privacy {
+            color: #4EE4FF;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        #url-privacy:hover {
+            text-decoration: underline;
+        }
+        
+        .user-links li {
+            margin-bottom: 10px;
+        }
+        
+        .user-links a {
+            color: #a0aec0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .user-links a:hover {
+            color: #4EE4FF;
+        }
+        
+        .contact-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            color: #a0aec0;
+        }
+        
+        .contact-list i {
+            color: #4EE4FF;
+            margin-right: 10px;
+            margin-top: 3px;
+        }
+        
+        .contact-list a {
+            color: #a0aec0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-list a:hover {
+            color: #4EE4FF;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        .footer-bottom p {
+            color: #a0aec0;
+            text-align: center;
+        }
+        
+        /* New sections styling */
+        .process-step {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .process-step::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: #4EE4FF;
+            border-radius: 50%;
+        }
+        
+        .tech-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .tech-card:hover {
+            background: rgba(78, 228, 255, 0.1);
+            border-color: rgba(78, 228, 255, 0.3);
+            transform: translateY(-5px);
+        }
+        
+        .tech-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(78, 228, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        
+        /* Office info in footer */
+        .office-info {
+            background: rgba(10, 26, 58, 0.8);
+            padding: 15px 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(78, 228, 255, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
         @media (max-width: 768px) {
             .grid-2, .grid-3, .grid-4 {
                 grid-template-columns: 1fr;
@@ -192,6 +351,15 @@
             
             .heading-2 {
                 font-size: 2rem;
+            }
+            
+            .footer-social-text {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .footer-social-text .social-icon {
+                margin-bottom: 15px;
             }
         }
     </style>
@@ -295,35 +463,104 @@
         </div>
     </section>
 
-    <!-- Team Section -->
-    <section id="team" class="section-padding bg-black/30">
+    <!--Our Approach -->
+    <section class="section-padding bg-black/30">
         <div class="container mx-auto px-6">
-            <h2 class="heading-2 text-center mb-16">Meet Our Team</h2>
+            <h2 class="heading-2 text-center mb-16">Our Approach & Methodology</h2>
             <div class="grid-3">
                 <div class="text-center">
-                    <div class="w-32 h-32 bg-[#4EE4FF]/20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                        <i data-lucide="user" class="w-16 h-16 text-[#4EE4FF]"></i>
+                    <div class="w-20 h-20 bg-[#4EE4FF]/20 rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <i data-lucide="search" class="w-10 h-10 text-[#4EE4FF]"></i>
                     </div>
-                    <h3 class="heading-3">Alex Chen</h3>
-                    <p class="text-[#4EE4FF] mb-2">CEO & Founder</p>
-                    <p class="text-gray-400 text-sm">15+ years in AI and digital transformation</p>
+                    <h3 class="heading-3 mb-4">Discovery & Analysis</h3>
+                    <p class="text-gray-400">
+                        We begin by deeply understanding your business challenges, goals, and technical requirements to craft the perfect solution strategy.
+                    </p>
                 </div>
                 <div class="text-center">
-                    <div class="w-32 h-32 bg-[#4EE4FF]/20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                        <i data-lucide="user" class="w-16 h-16 text-[#4EE4FF]"></i>
+                    <div class="w-20 h-20 bg-[#4EE4FF]/20 rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <i data-lucide="layout" class="w-10 h-10 text-[#4EE4FF]"></i>
                     </div>
-                    <h3 class="heading-3">Sarah Johnson</h3>
-                    <p class="text-[#4EE4FF] mb-2">CTO</p>
-                    <p class="text-gray-400 text-sm">Expert in cloud architecture and AI systems</p>
+                    <h3 class="heading-3 mb-4">Design & Development</h3>
+                    <p class="text-gray-400">
+                        Our agile development process ensures iterative progress with regular feedback loops, keeping you involved at every stage.
+                    </p>
                 </div>
                 <div class="text-center">
-                    <div class="w-32 h-32 bg-[#4EE4FF]/20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                        <i data-lucide="user" class="w-16 h-16 text-[#4EE4FF]"></i>
+                    <div class="w-20 h-20 bg-[#4EE4FF]/20 rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <i data-lucide="rocket" class="w-10 h-10 text-[#4EE4FF]"></i>
                     </div>
-                    <h3 class="heading-3">Michael Rodriguez</h3>
-                    <p class="text-[#4EE4FF] mb-2">Lead Developer</p>
-                    <p class="text-gray-400 text-sm">Full-stack development and mobile solutions</p>
+                    <h3 class="heading-3 mb-4">Deployment & Support</h3>
+                    <p class="text-gray-400">
+                        We ensure smooth deployment and provide ongoing support to guarantee optimal performance and continuous improvement.
+                    </p>
                 </div>
+            </div>
+            
+            <div class="mt-16 bg-black/50 backdrop-blur-sm rounded-xl p-8 border border-white/10">
+                <h3 class="heading-3 mb-6 text-center">Our Development Process</h3>
+                <div class="grid-4">
+                    <div class="process-step">
+                        <h4 class="text-lg font-semibold mb-2">Requirement Analysis</h4>
+                        <p class="text-gray-400 text-sm">Deep dive into business needs and technical specifications</p>
+                    </div>
+                    <div class="process-step">
+                        <h4 class="text-lg font-semibold mb-2">Solution Design</h4>
+                        <p class="text-gray-400 text-sm">Architecting scalable and efficient technical solutions</p>
+                    </div>
+                    <div class="process-step">
+                        <h4 class="text-lg font-semibold mb-2">Agile Development</h4>
+                        <p class="text-gray-400 text-sm">Iterative development with regular client feedback</p>
+                    </div>
+                    <div class="process-step">
+                        <h4 class="text-lg font-semibold mb-2">Quality Assurance</h4>
+                        <p class="text-gray-400 text-sm">Rigorous testing to ensure flawless performance</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Expertise -->
+    <section class="section-padding bg-black/30">
+        <div class="container mx-auto px-6">
+            <h2 class="heading-2 text-center mb-16">Our Technology Expertise</h2>
+            <div class="grid-4">
+                <div class="tech-card text-center">
+                    <div class="tech-icon mx-auto">
+                        <i data-lucide="cloud" class="w-8 h-8 text-[#4EE4FF]"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Cloud & DevOps</h3>
+                    <p class="text-gray-400 text-sm">AWS, Azure, GCP, Docker, Kubernetes, CI/CD pipelines</p>
+                </div>
+                <div class="tech-card text-center">
+                    <div class="tech-icon mx-auto">
+                        <i data-lucide="brain" class="w-8 h-8 text-[#4EE4FF]"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">AI & Machine Learning</h3>
+                    <p class="text-gray-400 text-sm">TensorFlow, PyTorch, NLP, Computer Vision, Predictive Analytics</p>
+                </div>
+                <div class="tech-card text-center">
+                    <div class="tech-icon mx-auto">
+                        <i data-lucide="smartphone" class="w-8 h-8 text-[#4EE4FF]"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Mobile Development</h3>
+                    <p class="text-gray-400 text-sm">iOS, Android, React Native, Flutter, Progressive Web Apps</p>
+                </div>
+                <div class="tech-card text-center">
+                    <div class="tech-icon mx-auto">
+                        <i data-lucide="database" class="w-8 h-8 text-[#4EE4FF]"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Data Engineering</h3>
+                    <p class="text-gray-400 text-sm">Big Data, Data Warehousing, ETL, Business Intelligence</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <p class="text-large mb-8 max-w-3xl mx-auto">
+                    We stay at the forefront of technology trends, continuously expanding our expertise to deliver cutting-edge solutions that drive business growth and innovation.
+                </p>
+                <button class="btn-secondary">View Our Full Technology Stack</button>
             </div>
         </div>
     </section>
@@ -363,30 +600,70 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-black/50 py-12">
+    <!-- Footer Section -->
+    <footer class="footer-bg py-12">
         <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mantravi-logo mb-4 md:mb-0">
-                    mantravi<span class="mandala-icon"></span>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="footer-widget-items lg:col-span-2">
+                    <div class="widget-title">
+                        <a href="/pages/home/" class="mantravi-logo text-2xl">
+                            mantravi<span class="mandala-icon"></span>
+                        </a>
+                    </div>
+                    <div class="footer-content">
+                        <p>
+                            Together, we'll turn your ambitions into reality. Trust us to guide you, and let's achieve Remarkable Success In India and Southeast Asia!
+                        </p>
+                        <div class="footer-social-text">
+                            <div class="social-icon">
+                                <a href="https://www.facebook.com/capstoneconsultancysingapore/"><i class="fa-brands fa-facebook-f"></i></a>
+                                <a href="http://linkedin.com/company/104409718/admin/dashboard/"><i class="fa-brands fa-linkedin"></i></a>
+                            </div>
+                            <!-- <div>
+                                <a href="privacy-policy.html" id="url-privacy">Privacy Policy</a>
+                            </div> -->
+                        </div>
+                    </div>
                 </div>
-                <div class="flex items-center space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-[#4EE4FF] transition-colors">Privacy Policy</a>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-[#4EE4FF] transition-colors">
-                            <i data-lucide="linkedin" class="w-5 h-5"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-[#4EE4FF] transition-colors">
-                            <i data-lucide="twitter" class="w-5 h-5"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-[#4EE4FF] transition-colors">
-                            <i data-lucide="github" class="w-5 h-5"></i>
-                        </a>
+                
+                <!-- Services Links -->
+                <div class="footer-widget-items">
+                    <div class="widget-title">
+                        <h3 class="text-xl text-white font-medium">
+                            Services
+                        </h3>
+                    </div>
+                    <ul class="user-links">
+                        <li><a href="/pages/services/#web-development">Web Development</a></li>
+                        <li><a href="/pages/services/#mobile-apps">Mobile Apps</a></li>
+                        <li><a href="/pages/services/#ai-solutions">AI Solutions</a></li>
+                        <li><a href="/pages/services/#cloud-services">Cloud Services</a></li>
+                        <li><a href="/pages/services/#consulting">Consulting</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Office Information -->
+                <div class="footer-widget-items">
+                    <div class="widget-title">
+                        <h3 class="text-xl text-white font-medium">
+                            Office
+                        </h3>
+                    </div>
+                    <div class="office-info">
+                        <p class="text-gray-300 mb-1">Noida</p>
+                        <p class="text-gray-300 mb-1">Crossing Republik</p>
+                        <p class="text-gray-300">
+                            <a href="mailto:info@mantravi.com" class="hover:text-[#4EE4FF] transition-colors">info@mantravi.com</a>
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-white/10 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 Mantravi. All rights reserved.</p>
+            
+            <div class="footer-bottom">
+                <p class="text-center">
+                    Copyright © 2025 Mantravi. All Rights Reserved
+                </p>
             </div>
         </div>
     </footer>
