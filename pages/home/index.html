@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mantravi - Engineering Global Disruption with AI-Native Excellence</title>
-    <meta name="description" content="Your trusted partner for IT services, AI-driven digital transformation, and reliable support and maintenance. We help businesses innovate, streamline operations, and stay agile in a fast-changing digital world.">
-    
+    <title>Innovating Trust, Connecting Possibilities</title>
+    <meta name="description" content="Your trusted partner for IT services, AI-driven digital transformation, and reliable support and maintenance.">
+    s
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -20,15 +20,18 @@
     <!-- Main CSS -->
     <link rel="stylesheet" href="../../assets/css/main.css">
     
+    <!-- Contact Form JavaScript -->
+    <script src="../../assets/js/contact-form.js"></script>
+    
 </head>
 <body class="bg-[#050a30] text-white smooth-scroll">
     <!-- Header Navigation -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-[#050a30]/95 backdrop-blur-md border-b border-white/10">
-        <nav class="container mx-auto px-6 py-4">
+        <nav class="w-full px-6 py-2">
             <div class="flex items-center justify-between">
                 <!-- Logo -->
-                <a href="/" class="mantravi-logo">
-                    mantravi<span class="mandala-icon"></span>
+                <a href="/" class="flex items-center">
+                    <img src="../../assets/icons/ui/mantravilogo.png" alt="Mantravi Logo" class="h-20 w-auto">
                 </a>
                 
                 <!-- Desktop Navigation -->
@@ -101,12 +104,12 @@
         <!-- Hero Content -->
         <div class="hero-content container mx-auto px-6 text-center">
             <h1 class="hero-title text-4xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight">
-                Engineering Global <span class="text-[#4EE4FF] text-glow">Disruption</span> with AI-Native Excellence
+                Innovating Trust <span class="text-[#4EE4FF] text-glow">Connecting</span> Possibilities
             </h1>
             <p class="hero-subtitle text-xl md:text-2xl text-gray-200 mb-8 max-w-4xl mx-auto leading-relaxed">
-                Your partner in harnessing the power of next-gen Prompt Engineering, Digital Transformation, and Intelligent Cloud Solutions.
+                Your trusted partner for IT services, AI-driven digital transformation, and reliable support and maintenance.
             </p>
-            <button class="hero-button text-[#4EE4FF] px-8 py-4 rounded-lg text-lg font-semibold hover:text-white transition-all duration-300">
+            <button class="hero-button text-[#4EE4FF] px-8 py-4 rounded-lg text-lg font-semibold hover:text-white transition-all duration-300" onclick="openConsultModal()">
                 Consult Our Experts
             </button>
         </div>
@@ -188,15 +191,22 @@
         </div>
     </section>
 
-    <!-- Final CTA Section -->
-    <section class="py-20 bg-gradient-to-r from-[#4EE4FF]/10 to-transparent">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-5xl font-bold mb-8">
-                Ready to Innovate and Drive Impact? <span class="text-[#4EE4FF]">Let's talk strategy.</span>
-            </h2>
-            <button class="bg-[#4EE4FF] text-[#050a30] px-12 py-6 rounded-lg text-xl font-bold hover:bg-[#4EE4FF]/90 transition-all duration-300 glow-effect transform hover:scale-105">
-                Schedule a Discovery Call
-            </button>
+    <!-- Call to Action Card Section -->
+    <section class="py-20 bg-[#050a30]">
+        <div class="container mx-auto px-6">
+            <div class="bg-gradient-to-r from-slate-800 to-slate-700 rounded-2xl p-8 shadow-2xl border border-slate-600/30 hover:shadow-[#4EE4FF]/20 hover:shadow-2xl transition-all duration-500 transform hover:scale-[1.02] animate-fade-in-up">
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+                    <div class="flex items-center space-x-4">
+                        <div class="p-3 bg-white/10 rounded-lg animate-pulse hover:animate-none hover:bg-[#4EE4FF]/20 transition-all duration-300">
+                            <i data-lucide="trending-up" class="w-8 h-8 text-[#4EE4FF] animate-bounce"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold text-white animate-fade-in-left">Ready to innovate and drive an impact?</h2>
+                    </div>
+                    <button onclick="openConsultModal()" class="bg-[#4EE4FF] text-[#050a30] px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#4EE4FF]/90 transition-all duration-300 glow-effect transform hover:scale-105 hover:shadow-lg hover:shadow-[#4EE4FF]/30 animate-fade-in-right">
+                        Partner With Us
+                    </button>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -204,8 +214,8 @@
     <footer class="bg-black/50 py-12">
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mantravi-logo mb-4 md:mb-0">
-                    mantravi<span class="mandala-icon"></span>
+                <div class="mb-4 md:mb-0">
+                    <img src="../../assets/icons/ui/mantravilogo.png" alt="Mantravi Logo" class="h-24 w-auto">
                 </div>
                 <div class="flex items-center space-x-6">
                     <a href="#" class="text-gray-400 hover:text-[#4EE4FF] transition-colors">Privacy Policy</a>
@@ -228,10 +238,30 @@
         </div>
     </footer>
 
+    <!-- Include Reusable Contact Form -->
+    <div id="contact-form-container"></div>
+
     <!-- JavaScript -->
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
+        
+        // Load Contact Form Component
+        async function loadContactForm() {
+            try {
+                const response = await fetch('../../components/contact-form.html');
+                const html = await response.text();
+                document.getElementById('contact-form-container').innerHTML = html;
+                
+                // Re-initialize Lucide icons after loading the component
+                lucide.createIcons();
+            } catch (error) {
+                console.error('Error loading contact form:', error);
+            }
+        }
+        
+        // Load the contact form when page loads
+        loadContactForm();
         
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
