@@ -36,8 +36,34 @@ document.addEventListener('DOMContentLoaded', function() {
                    });
            }
 
-           // Contact form is now handled directly in main.js
-           console.log('✅ Contact form will be created dynamically when needed');
+           // Load contact form component
+           const contactFormContainer = document.getElementById('contact-form-container');
+           console.log('🔍 Contact form container:', contactFormContainer);
+           if (contactFormContainer) {
+               console.log('📥 Loading contact form component...');
+               fetch('../../components/contact-form.html')
+                   .then(response => response.text())
+                   .then(html => {
+                       console.log('✅ Contact form HTML loaded');
+                       contactFormContainer.innerHTML = html;
+                       // Initialize Lucide icons after loading
+                       if (typeof lucide !== 'undefined') {
+                           lucide.createIcons();
+                       }
+                       // Initialize consult form
+                       if (typeof initializeConsultForm === 'function') {
+                           initializeConsultForm();
+                           console.log('✅ Contact form initialized');
+                       } else {
+                           console.log('❌ initializeConsultForm function not found');
+                       }
+                   })
+                   .catch(error => {
+                       console.error('Error loading contact form component:', error);
+                   });
+           } else {
+               console.log('❌ Contact form container not found');
+           }
 });
 
 function initializeMobileMenu() {
