@@ -14,6 +14,7 @@ function initializeApp() {
     initializeAnimations();
     initializeForms();
     initializeNavigation();
+    initializeConsultForm(); // Initialize consult modal
 }
 
 // Initialize Lucide Icons
@@ -378,9 +379,177 @@ function testScrollSpeed() {
     }
 }
 
+// ========== CONSULT MODAL FUNCTIONS ==========
+
+// Create contact form modal if it doesn't exist
+function createContactFormModal() {
+    // Check if modal already exists
+    if (document.getElementById('consultModal')) {
+        return;
+    }
+    
+    console.log('🔧 Creating contact form modal...');
+    
+    const modalHTML = `
+    <!-- Reusable Contact Form Component -->
+    <div id="consultModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl shadow-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto">
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center p-4 border-b border-slate-600/30">
+                <div class="flex items-center space-x-3">
+                    <img src="../../assets/icons/ui/mantravilogo.png" alt="Mantravi Logo" class="h-6 w-auto">
+                    <div>
+                        <h3 class="text-lg font-bold text-white">Start Your Digital Journey</h3>
+                        <p class="text-xs text-gray-400">Consult Our Experts</p>
+                    </div>
+                </div>
+                <button onclick="closeConsultModal()" class="text-gray-400 hover:text-white transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="p-4">
+                <p class="text-gray-300 mb-4 text-sm">Ready to transform your business with cutting-edge technology? Share your vision with us and let's build something extraordinary together.</p>
+                
+                <form id="consultForm" class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-slate-200 mb-1">Full Name *</label>
+                        <input type="text" id="name" name="name" required 
+                               class="w-full px-3 py-2 bg-slate-700/50 border border-slate-500/50 rounded-lg text-white placeholder-slate-400 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400/20 transition-colors text-sm">
+                    </div>
+                    
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-slate-200 mb-1">Email Address *</label>
+                        <input type="email" id="email" name="email" required 
+                               class="w-full px-3 py-2 bg-slate-700/50 border border-slate-500/50 rounded-lg text-white placeholder-slate-400 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400/20 transition-colors text-sm">
+                    </div>
+                    
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-slate-200 mb-1">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" 
+                               class="w-full px-3 py-2 bg-slate-700/50 border border-slate-500/50 rounded-lg text-white placeholder-slate-400 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400/20 transition-colors text-sm">
+                    </div>
+                    
+                    <div>
+                        <label for="company" class="block text-sm font-medium text-slate-200 mb-1">Company Name</label>
+                        <input type="text" id="company" name="company" 
+                               class="w-full px-3 py-2 bg-slate-700/50 border border-slate-500/50 rounded-lg text-white placeholder-slate-400 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400/20 transition-colors text-sm">
+                    </div>
+                    
+                    <div>
+                        <label for="service" class="block text-sm font-medium text-slate-200 mb-1">Service Interested In *</label>
+                        <select id="service" name="service" required 
+                                class="w-full px-3 py-2 bg-slate-700/50 border border-slate-500/50 rounded-lg text-white focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400/20 transition-colors text-sm">
+                            <option value="">Select a service</option>
+                            <option value="web-development">Web & App Development</option>
+                            <option value="digital-marketing">Digital Marketing & Branding</option>
+                            <option value="qa-services">QA & Maintenance Services</option>
+                            <option value="ai-transformation">AI-Driven Digital Transformation</option>
+                            <option value="consulting">IT Consulting</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="lg:col-span-2">
+                        <label for="message" class="block text-sm font-medium text-slate-200 mb-1">Project Details *</label>
+                        <textarea id="message" name="message" rows="3" required 
+                                  class="w-full px-3 py-2 bg-slate-700/50 border border-slate-500/50 rounded-lg text-white placeholder-slate-400 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400/20 resize-none transition-colors text-sm"
+                                  placeholder="Describe your project requirements, timeline, and any specific needs..."></textarea>
+                    </div>
+                    
+                    <div class="lg:col-span-2 flex space-x-3 pt-2">
+                        <button type="button" onclick="closeConsultModal()" 
+                                class="flex-1 px-4 py-2 border border-slate-500/50 text-slate-200 rounded-lg hover:bg-slate-600/50 transition-colors text-sm">
+                            Cancel
+                        </button>
+                        <button type="submit" 
+                                class="flex-1 px-4 py-2 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition-colors text-sm">
+                            Send Request
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    `;
+    
+    // Add modal to body
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+    
+    // Initialize Lucide icons for the modal
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+    
+    // Initialize form handler
+    initializeConsultForm();
+    
+    console.log('✅ Contact form modal created');
+}
+
+// Open consult modal
+function openConsultModal() {
+    console.log('🔍 openConsultModal called');
+    
+    // Create modal if it doesn't exist
+    createContactFormModal();
+    
+    const modal = document.getElementById('consultModal');
+    console.log('🔍 Modal element:', modal);
+    if (modal) {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        console.log('✅ Modal opened successfully');
+    } else {
+        console.log('❌ Modal not found - contact form not loaded');
+    }
+}
+
+// Close consult modal
+function closeConsultModal() {
+    const modal = document.getElementById('consultModal');
+    if (modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto'; // Restore scrolling
+    }
+}
+
+// Handle form submission
+function handleConsultForm(event) {
+    event.preventDefault();
+    
+    // Get form data
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+    
+    // Basic validation
+    if (!data.name || !data.email || !data.service || !data.message) {
+        showNotification('Please fill in all required fields.', 'error');
+        return;
+    }
+    
+    // Simulate form submission (replace with actual API call)
+    showNotification('Thank you! We\'ll get back to you within 24 hours.', 'success');
+    closeConsultModal();
+    
+    // Reset form
+    event.target.reset();
+}
+
+// Initialize consult form
+function initializeConsultForm() {
+    const form = document.getElementById('consultForm');
+    if (form) {
+        form.addEventListener('submit', handleConsultForm);
+    }
+}
+
 // Make functions globally available
 window.testScrollSpeed = testScrollSpeed;
 window.smoothScrollToElement = smoothScrollToElement;
+window.openConsultModal = openConsultModal;
+window.closeConsultModal = closeConsultModal;
 
 // Export functions for use in other modules
 window.MantraviApp = {

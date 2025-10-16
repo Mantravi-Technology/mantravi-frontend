@@ -21,7 +21,6 @@
     <link rel="stylesheet" href="../../assets/css/main.css">
     
     <!-- Contact Form JavaScript -->
-    <script src="../../assets/js/contact-form.js"></script>
     
 </head>
 <body class="bg-[#050a30] text-white smooth-scroll premium-scroll">
@@ -187,29 +186,12 @@
     <script src="../../assets/js/component-loader.js"></script>
 
     <!-- Include Reusable Contact Form -->
-    <div id="contact-form-container"></div>
 
     <!-- JavaScript -->
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
         
-        // Load Contact Form Component
-        async function loadContactForm() {
-            try {
-                const response = await fetch('../../components/contact-form.html');
-                const html = await response.text();
-                document.getElementById('contact-form-container').innerHTML = html;
-                
-                // Re-initialize Lucide icons after loading the component
-                lucide.createIcons();
-            } catch (error) {
-                console.error('Error loading contact form:', error);
-            }
-        }
-        
-        // Load the contact form when page loads
-        loadContactForm();
         
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -300,6 +282,9 @@
         }
     </script>
 
+    <!-- Component Loader -->
+    <script src="../../assets/js/component-loader.js"></script>
+    
     <!-- Main JavaScript -->
     <script src="../../assets/js/main.js"></script>
 </body>

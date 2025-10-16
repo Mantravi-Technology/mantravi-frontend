@@ -35,6 +35,9 @@ document.addEventListener('DOMContentLoaded', function() {
                        console.error('Error loading footer component:', error);
                    });
            }
+
+           // Contact form is now handled directly in main.js
+           console.log('✅ Contact form will be created dynamically when needed');
 });
 
 function initializeMobileMenu() {
