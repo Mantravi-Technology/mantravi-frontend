@@ -42,9 +42,133 @@
     background-size: 60px 60px;
 }
 
-/* Smooth Scrolling */
+/* ========== PREMIUM SMOOTH SCROLLING ========== */
+
+/* Clean Smooth Scrolling - No Conflicts */
+html {
+    scroll-behavior: auto; /* Disable native smooth scroll to prevent conflicts */
+    scroll-padding-top: 80px; /* Account for fixed headers */
+}
+
+/* Disable native smooth scroll on all elements */
+* {
+    scroll-behavior: auto;
+}
+
+/* Disabled to prevent conflicts with clean smooth scrolling */
 .smooth-scroll {
+    scroll-behavior: auto;
+}
+
+/* Premium scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #4EE4FF, #00BFFF);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #00BFFF, #4EE4FF);
+}
+
+/* Scroll progress indicator */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, #4EE4FF, #00BFFF);
+    z-index: 9999;
+    transition: width 0.1s ease;
+}
+
+/* Scroll direction indicators */
+.scrolling-down .header {
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+}
+
+.scrolling-up .header {
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+/* Momentum scrolling for iOS */
+body {
+    -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
+}
+
+/* Section snap points */
+section, .section {
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+}
+
+/* Premium scroll animations */
+.animate-on-scroll {
+    opacity: 1; /* Start visible */
+    transform: translateY(0); /* Start in position */
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.animate-on-scroll.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animate-on-scroll.fully-visible {
+    transform: scale(1.02);
+}
+
+/* Staggered animations */
+.animate-stagger > * {
+    opacity: 1; /* Start visible */
+    transform: translateY(0); /* Start in position */
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.animate-stagger.in-view > * {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animate-stagger.in-view > *:nth-child(1) { transition-delay: 0.1s; }
+.animate-stagger.in-view > *:nth-child(2) { transition-delay: 0.2s; }
+.animate-stagger.in-view > *:nth-child(3) { transition-delay: 0.3s; }
+.animate-stagger.in-view > *:nth-child(4) { transition-delay: 0.4s; }
+.animate-stagger.in-view > *:nth-child(5) { transition-delay: 0.5s; }
+.animate-stagger.in-view > *:nth-child(6) { transition-delay: 0.6s; }
+
+/* Smooth scroll link styling */
+.smooth-scroll-link {
+    transition: all 0.3s ease;
+}
+
+.smooth-scroll-link:hover {
+    transform: translateY(-2px);
+}
+
+/* Ensure content is always visible */
+section, .section {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Fallback for any hidden content */
+* {
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 /* Card Hover Effects */

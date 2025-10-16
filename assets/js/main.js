@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeApp() {
     initializeLucideIcons();
     initializeMobileMenu();
-    initializeSmoothScrolling();
+    initializeCleanSmoothScrolling(); // Clean, single smooth scrolling system
     initializeParallaxEffects();
     initializeAnimations();
     initializeForms();
@@ -48,24 +48,10 @@ function initializeMobileMenu() {
     }
 }
 
-// Smooth Scrolling for Navigation Links
-function initializeSmoothScrolling() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                const headerHeight = document.querySelector('header')?.offsetHeight || 0;
-                const targetPosition = target.offsetTop - headerHeight - 20;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-}
+// Legacy smooth scrolling - DISABLED to prevent conflicts with unified system
+// function initializeSmoothScrolling() {
+//     // This function is disabled to prevent conflicts with unified smooth scrolling
+// }
 
 // Parallax Scrolling Effects
 function initializeParallaxEffects() {
@@ -255,10 +241,153 @@ if ('serviceWorker' in navigator) {
     });
 }
 
+// ========== CLEAN SMOOTH SCROLLING SYSTEM ==========
+
+// Simple, clean smooth scrolling - NO CONFLICTS
+function initializeCleanSmoothScrolling() {
+    console.log('🎯 Clean Smooth Scrolling Initialized');
+    
+    // Add scroll progress bar
+    addScrollProgressBar();
+    
+    // Handle all anchor links
+    handleAnchorLinks();
+    
+    // Add keyboard navigation
+    addKeyboardNavigation();
+    
+    console.log('✅ Clean smooth scrolling active - no conflicts');
+}
+
+// Add scroll progress bar
+function addScrollProgressBar() {
+    const progressBar = document.createElement('div');
+    progressBar.className = 'scroll-progress';
+    progressBar.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: linear-gradient(90deg, #4EE4FF, #00BFFF);
+        z-index: 9999;
+        transition: width 0.1s ease;
+    `;
+    document.body.appendChild(progressBar);
+
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        progressBar.style.width = scrollPercent + '%';
+    });
+}
+
+// Handle anchor links with consistent smooth scrolling
+function handleAnchorLinks() {
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                smoothScrollToElement(targetElement);
+            }
+        });
+    });
+}
+
+// Simple, consistent smooth scroll function
+function smoothScrollToElement(target) {
+    const headerHeight = 80; // Fixed header height
+    const targetPosition = target.offsetTop - headerHeight;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    const duration = 1500; // Consistent 1.5 second scroll
+    
+    let startTime = null;
+    
+    function animation(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const progress = Math.min(timeElapsed / duration, 1);
+        
+        // Smooth easing function
+        const easeProgress = easeInOutCubic(progress);
+        const currentPosition = startPosition + (distance * easeProgress);
+        
+        window.scrollTo(0, currentPosition);
+        
+        if (progress < 1) {
+            requestAnimationFrame(animation);
+        }
+    }
+    
+    requestAnimationFrame(animation);
+}
+
+// Smooth easing function
+function easeInOutCubic(t) {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+}
+
+// Add keyboard navigation
+function addKeyboardNavigation() {
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+            e.preventDefault();
+            scrollToNextSection();
+        } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+            e.preventDefault();
+            scrollToPreviousSection();
+        }
+    });
+}
+
+// Scroll to next section
+function scrollToNextSection() {
+    const currentScroll = window.pageYOffset;
+    const sections = Array.from(document.querySelectorAll('section, .section'));
+    const nextSection = sections.find(section => section.offsetTop > currentScroll + 100);
+    
+    if (nextSection) {
+        smoothScrollToElement(nextSection);
+    }
+}
+
+// Scroll to previous section
+function scrollToPreviousSection() {
+    const currentScroll = window.pageYOffset;
+    const sections = Array.from(document.querySelectorAll('section, .section'));
+    const previousSection = sections.reverse().find(section => section.offsetTop < currentScroll - 100);
+    
+    if (previousSection) {
+        smoothScrollToElement(previousSection);
+    }
+}
+
+// Test scroll speed function - Updated for clean system
+function testScrollSpeed() {
+    const servicesSection = document.querySelector('#services');
+    if (servicesSection) {
+        console.log('🐌 Testing clean smooth scroll...');
+        smoothScrollToElement(servicesSection);
+    } else {
+        console.log('❌ Services section not found');
+    }
+}
+
+// Make functions globally available
+window.testScrollSpeed = testScrollSpeed;
+window.smoothScrollToElement = smoothScrollToElement;
+
 // Export functions for use in other modules
 window.MantraviApp = {
     showNotification,
     debounce,
     throttle,
-    optimizeImages
+    optimizeImages,
+    smoothScrollToElement, // Clean smooth scroll function
+    testScrollSpeed // Test function
 };

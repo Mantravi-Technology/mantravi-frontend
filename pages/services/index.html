@@ -24,7 +24,7 @@
         }
         
         .smooth-scroll {
-            scroll-behavior: smooth;
+            scroll-behavior: auto; /* Disabled to prevent conflicts with clean smooth scrolling */
         }
         
         .glow-effect {
@@ -403,7 +403,7 @@
         }
     </style>
 </head>
-<body class="bg-[#050a30] text-white smooth-scroll">
+<body class="bg-[#050a30] text-white smooth-scroll premium-scroll">
     <!-- Header -->
     <header id="header-container"></header>
     <script src="../../assets/js/component-loader.js"></script>
@@ -487,20 +487,46 @@
 
 
 
-    <!-- Enable smooth scrolling -->
+    <!-- Clean smooth scrolling - conflicts removed -->
     <style>
     html {
-        scroll-behavior: smooth;
-        scroll-padding-top: 180px; /* adjust to header + services bar height */
+        scroll-behavior: auto; /* Disabled to prevent conflicts with clean smooth scrolling */
+        scroll-padding-top: 260px; /* Increased padding for full image visibility */
     }
+    
+    /* Premium Services Page Enhancements */
+    .services-section {
+        scroll-margin-top: 260px; /* Increased margin for full image visibility */
+    }
+    
+    /* Enhanced service cards with premium feel */
+    .service-card {
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transform: translateY(0);
+        padding-top: 40px; /* Increased padding for better image visibility */
+        padding-bottom: 40px;
+    }
+    
+    .service-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px rgba(78, 228, 255, 0.15);
+    }
+    
+    /* Ensure images are fully visible with proper margins */
+    .service-card img {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    
     </style>
+
 
     <!-- ========== SERVICES SECTIONS ========== -->
     <!-- Update the services section opening tag: -->
     <section id="services-sections" class="section-padding bg-[#030818] py-24 space-y-28 text-white">
 
     <!-- 1. Web App Development -->
-    <div id="webapp" class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+    <div id="webapp" class="service-card services-section max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
         <div>
         <h2 class="text-3xl font-semibold mb-4 text-cyan-400">Web App Development</h2>
         <p class="text-gray-300 mb-6 text-lg leading-relaxed">
@@ -513,7 +539,7 @@
     </div>
 
     <!-- 2. Mobile App Development -->
-    <div id="mobileapp" class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+    <div id="mobileapp" class="service-card services-section max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
         <div class="order-2 md:order-1 bg-[#0a0f3a]/60 rounded-2xl overflow-hidden shadow-lg border border-cyan-500/10">
         <img src="https://images.unsplash.com/photo-1556741533-f6acd647a6c9?auto=format&fit=crop&w=900&q=80" alt="Mobile App" class="w-full h-72 object-cover">
         </div>
@@ -526,7 +552,7 @@
     </div>
 
     <!-- 3. Maintenance & Support -->
-    <div id="maintenance" class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+    <div id="maintenance" class="service-card services-section max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
         <div>
         <h2 class="text-3xl font-semibold mb-4 text-cyan-400">Maintenance & Support Services</h2>
         <p class="text-gray-300 mb-6 text-lg leading-relaxed">
@@ -539,7 +565,7 @@
     </div>
 
     <!-- 4. UI & UX Design -->
-    <div id="uiux" class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+    <div id="uiux" class="service-card services-section max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
         <div class="order-2 md:order-1 bg-[#0a0f3a]/60 rounded-2xl overflow-hidden shadow-lg border border-cyan-500/10">
         <img src="https://images.unsplash.com/photo-1603969072880-33c3e9b35c9f?auto=format&fit=crop&w=900&q=80" alt="UI UX" class="w-full h-72 object-cover">
         </div>
@@ -552,7 +578,7 @@
     </div>
 
     <!-- 5. IT Consulting & Outsourcing -->
-    <div id="consulting" class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+    <div id="consulting" class="service-card services-section max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
         <div>
         <h2 class="text-3xl font-semibold mb-4 text-cyan-400">IT Consulting & Outsourcing</h2>
         <p class="text-gray-300 mb-6 text-lg leading-relaxed">
@@ -565,7 +591,7 @@
     </div>
 
     <!-- 6. Product Development -->
-    <div id="productdev" class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+    <div id="productdev" class="service-card services-section max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
         <div class="order-2 md:order-1 bg-[#0a0f3a]/60 rounded-2xl overflow-hidden shadow-lg border border-cyan-500/10">
         <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="Product Development" class="w-full h-72 object-cover">
         </div>
@@ -578,7 +604,7 @@
     </div>
 
     <!-- 7. Digital Marketing -->
-    <div id="digitalmarketing" class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+    <div id="digitalmarketing" class="service-card services-section max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
         <div>
         <h2 class="text-3xl font-semibold mb-4 text-cyan-400">Digital Marketing</h2>
         <p class="text-gray-300 mb-6 text-lg leading-relaxed">
@@ -591,7 +617,7 @@
     </div>
 
     <!-- 8. Social Media Handling -->
-    <div id="socialmedia" class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+    <div id="socialmedia" class="service-card services-section max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
         <div class="order-2 md:order-1 bg-[#0a0f3a]/60 rounded-2xl overflow-hidden shadow-lg border border-cyan-500/10">
         <img src="https://images.unsplash.com/photo-1494173853739-c21f58b16055?auto=format&fit=crop&w=900&q=80" alt="Social Media" class="w-full h-72 object-cover">
         </div>
@@ -604,7 +630,7 @@
     </div>
 
     <!-- 9. Search Engine Optimisation -->
-    <div id="seo" class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+    <div id="seo" class="service-card services-section max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
         <div>
         <h2 class="text-3xl font-semibold mb-4 text-cyan-400">Search Engine Optimisation (SEO)</h2>
         <p class="text-gray-300 mb-6 text-lg leading-relaxed">
@@ -698,20 +724,40 @@
         const servicesLinks = document.querySelectorAll('.services-list li a');
         const serviceSections = document.querySelectorAll('[id^="webapp"], [id^="mobileapp"], [id^="maintenance"], [id^="uiux"], [id^="consulting"], [id^="productdev"], [id^="digitalmarketing"], [id^="socialmedia"], [id^="seo"]');
 
-        // Smooth scroll to sections with proper offset
+        // Clean smooth scroll to sections with proper offset for full image visibility
         function smoothScrollToSection(targetId) {
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 const headerHeight = document.querySelector('header').offsetHeight || 0;
                 const servicesBarHeight = servicesBar.offsetHeight || 0;
-                const offset = headerHeight + servicesBarHeight + 10; // Minimal spacing
                 
-                const targetPosition = targetElement.offsetTop - offset;
+                // Enhanced offset calculation for better image visibility
+                // Account for header, services bar, and extra margin for image display
+                const baseOffset = headerHeight + servicesBarHeight;
+                const extraMargin = 80; // Increased margin to ensure full image visibility
+                const offset = baseOffset + extraMargin;
                 
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+                // Use our clean smooth scroll system
+                if (window.smoothScrollToElement) {
+                    // Create a temporary element at the correct position
+                    const tempElement = document.createElement('div');
+                    tempElement.style.position = 'absolute';
+                    tempElement.style.top = (targetElement.offsetTop - offset) + 'px';
+                    tempElement.style.left = '0';
+                    tempElement.style.width = '1px';
+                    tempElement.style.height = '1px';
+                    document.body.appendChild(tempElement);
+                    
+                    window.smoothScrollToElement(tempElement);
+                    
+                    // Clean up temporary element
+                    setTimeout(() => {
+                        document.body.removeChild(tempElement);
+                    }, 1600);
+                } else {
+                    // Fallback to instant scroll if clean system not available
+                    window.scrollTo(0, targetElement.offsetTop - offset);
+                }
             }
         }
 
@@ -768,7 +814,7 @@
                 
                 servicesBar.scrollTo({
                     left: scrollLeft,
-                    behavior: 'smooth'
+                    behavior: 'auto' // Disabled smooth to prevent conflicts
                 });
             }
         }
@@ -818,10 +864,10 @@
             if (Math.abs(swipeDistance) > swipeThreshold) {
                 if (swipeDistance > 0) {
                     // Swipe left - scroll right
-                    servicesBar.scrollBy({ left: 200, behavior: 'smooth' });
+                    servicesBar.scrollBy({ left: 200, behavior: 'auto' }); // Disabled smooth to prevent conflicts
                 } else {
                     // Swipe right - scroll left
-                    servicesBar.scrollBy({ left: -200, behavior: 'smooth' });
+                    servicesBar.scrollBy({ left: -200, behavior: 'auto' }); // Disabled smooth to prevent conflicts
                 }
             }
         }
@@ -832,9 +878,9 @@
                 e.preventDefault();
                 const scrollAmount = 150;
                 if (e.key === 'ArrowLeft') {
-                    servicesBar.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                    servicesBar.scrollBy({ left: -scrollAmount, behavior: 'auto' }); // Disabled smooth to prevent conflicts
                 } else {
-                    servicesBar.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                    servicesBar.scrollBy({ left: scrollAmount, behavior: 'auto' }); // Disabled smooth to prevent conflicts
                 }
             }
         });
@@ -887,5 +933,8 @@
 
         window.addEventListener('scroll', updateOnScroll);
     </script>
+
+    <!-- Main JavaScript -->
+    <script src="../../assets/js/main.js"></script>
 </body>
 </html>
