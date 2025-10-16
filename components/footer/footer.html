@@ -1,78 +1,81 @@
-<!-- Footer Component -->
-<footer class="bg-black/50 py-12">
+<!-- Footer Component - Updated -->
+<footer class="bg-black py-12">
     <div class="container mx-auto px-6">
-        <!-- Main Footer Content -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div class="flex flex-col md:flex-row gap-6">
             <!-- Company Info -->
-            <div class="md:col-span-1">
-                <div class="mantravi-logo mb-4">
-                    mantravi<span class="mandala-icon"></span>
+            <div class="footer-widget-items flex-1">
+                <div class="widget-title mb-4">
+                    <a href="/pages/home/" class="mantravi-logo">
+                        <img src="../../assets/icons/ui/mantravilogo.png" alt="Mantravi Logo" class="h-6 w-auto">
+                    </a>
                 </div>
-                <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                    Engineering Global Disruption with AI-Native Excellence. Your partner in digital transformation.
-                </p>
-                <div class="flex space-x-4">
-                    <a href="https://linkedin.com/company/mantravi" class="text-gray-400 hover:text-[#4EE4FF] transition-colors" aria-label="LinkedIn">
-                        <i data-lucide="linkedin" class="w-5 h-5"></i>
-                    </a>
-                    <a href="https://twitter.com/mantravi" class="text-gray-400 hover:text-[#4EE4FF] transition-colors" aria-label="Twitter">
-                        <i data-lucide="twitter" class="w-5 h-5"></i>
-                    </a>
-                    <a href="https://github.com/mantravi" class="text-gray-400 hover:text-[#4EE4FF] transition-colors" aria-label="GitHub">
-                        <i data-lucide="github" class="w-5 h-5"></i>
-                    </a>
-                    <a href="https://instagram.com/mantravi" class="text-gray-400 hover:text-[#4EE4FF] transition-colors" aria-label="Instagram">
-                        <i data-lucide="instagram" class="w-5 h-5"></i>
-                    </a>
+                <div class="footer-content">
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Together, we'll turn your ambitions into reality.<br>
+                        Trust us to guide you, and let's achieve<br>
+                        Remarkable Success In India and Southeast Asia!
+                    </p>
+                    <div class="footer-social-text">
+                        <div class="social-icon">
+                            <a href="https://www.facebook.com/capstoneconsultancysingapore/"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="http://linkedin.com/company/104409718/admin/dashboard/"><i class="fa-brands fa-linkedin"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <!-- Company Links -->
-            <div>
-                <h3 class="text-white font-semibold mb-4">Company</h3>
-                <ul class="space-y-2">
-                    <li><a href="/about" class="text-gray-400 hover:text-[#4EE4FF] transition-colors text-sm">About Us</a></li>
-                    <li><a href="/about#team" class="text-gray-400 hover:text-[#4EE4FF] transition-colors text-sm">Our Team</a></li>
-                    <li><a href="/work-with-us" class="text-gray-400 hover:text-[#4EE4FF] transition-colors text-sm">Careers</a></li>
-                    <li><a href="/contact" class="text-gray-400 hover:text-[#4EE4FF] transition-colors text-sm">Contact</a></li>
+                <!-- Company Links -->
+                <div class="footer-widget-items flex-1">
+                    <div class="widget-title mb-4">
+                        <h3 class="text-xl text-white font-medium">
+                            Company
+                        </h3>
+                    </div>
+                <ul class="user-links">
+                    <li><a href="/pages/about/" class="text-gray-400 hover:text-[#4EE4FF] transition-colors text-sm">About Us</a></li>
+                    <li><a href="/pages/about/#team" class="text-gray-400 hover:text-[#4EE4FF] transition-colors text-sm">Our Team</a></li>
+                    <li><a href="/pages/work-with-us/" class="text-gray-400 hover:text-[#4EE4FF] transition-colors text-sm">Careers</a></li>
+                    <li><a href="/pages/contact/" class="text-gray-400 hover:text-[#4EE4FF] transition-colors text-sm">Contact</a></li>
                 </ul>
             </div>
             
-            <!-- Services Links -->
-            <div>
-                <h3 class="text-white font-semibold mb-4">Services</h3>
-                <ul class="space-y-2">
-                    <li><a href="/services#web-development" class="text-gray-400 hover:text-[#4EE4FF] transition-colors text-sm">Web Development</a></li>
-                    <li><a href="/services#digital-marketing" class="text-gray-400 hover:text-[#4EE4FF] transition-colors text-sm">Digital Marketing</a></li>
-                    <li><a href="/services#qa-services" class="text-gray-400 hover:text-[#4EE4FF] transition-colors text-sm">QA Services</a></li>
-                    <li><a href="/services#consulting" class="text-gray-400 hover:text-[#4EE4FF] transition-colors text-sm">Consulting</a></li>
+                <!-- Services Links -->
+                <div class="footer-widget-items flex-1">
+                    <div class="widget-title mb-4">
+                        <h3 class="text-xl text-white font-medium">
+                            Services
+                        </h3>
+                    </div>
+                <ul class="user-links">
+                    <li><a href="/pages/services/#web-development" class="text-gray-400 hover:text-[#4EE4FF] transition-colors text-sm">Web Development</a></li>
+                    <li><a href="/pages/services/#mobile-apps" class="text-gray-400 hover:text-[#4EE4FF] transition-colors text-sm">Mobile Apps</a></li>
+                    <li><a href="/pages/services/#ai-solutions" class="text-gray-400 hover:text-[#4EE4FF] transition-colors text-sm">AI Solutions</a></li>
+                    <li><a href="/pages/services/#cloud-services" class="text-gray-400 hover:text-[#4EE4FF] transition-colors text-sm">Cloud Services</a></li>
+                    <li><a href="/pages/services/#consulting" class="text-gray-400 hover:text-[#4EE4FF] transition-colors text-sm">Consulting</a></li>
                 </ul>
             </div>
             
-            <!-- Resources Links -->
-            <div>
-                <h3 class="text-white font-semibold mb-4">Resources</h3>
-                <ul class="space-y-2">
-                    <li><a href="/blog" class="text-gray-400 hover:text-[#4EE4FF] transition-colors text-sm">Blog</a></li>
-                    <li><a href="/case-studies" class="text-gray-400 hover:text-[#4EE4FF] transition-colors text-sm">Case Studies</a></li>
-                    <li><a href="/resources" class="text-gray-400 hover:text-[#4EE4FF] transition-colors text-sm">White Papers</a></li>
-                    <li><a href="/support" class="text-gray-400 hover:text-[#4EE4FF] transition-colors text-sm">Support</a></li>
-                </ul>
+                <!-- Office Information -->
+                <div class="footer-widget-items flex-1">
+                    <div class="widget-title mb-4">
+                        <h3 class="text-xl text-white font-medium">
+                            Office
+                        </h3>
+                    </div>
+                <div class="office-info">
+                    <p class="text-gray-400 text-sm">Noida</p>
+                    <p class="text-gray-400 text-sm">Crossing Republik</p>
+                    <p class="text-gray-400 text-sm">
+                        <a href="mailto:info@mantravi.com" class="hover:text-[#4EE4FF] transition-colors">info@mantravi.com</a>
+                    </p>
+                </div>
             </div>
         </div>
         
-        <!-- Bottom Footer -->
-        <div class="border-t border-white/10 pt-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="text-gray-400 text-sm mb-4 md:mb-0">
-                    <p>&copy; 2024 Mantravi. All rights reserved.</p>
-                </div>
-                <div class="flex space-x-6">
-                    <a href="/privacy" class="text-gray-400 hover:text-[#4EE4FF] transition-colors text-sm">Privacy Policy</a>
-                    <a href="/terms" class="text-gray-400 hover:text-[#4EE4FF] transition-colors text-sm">Terms of Service</a>
-                    <a href="/cookies" class="text-gray-400 hover:text-[#4EE4FF] transition-colors text-sm">Cookie Policy</a>
-                </div>
-            </div>
+        <div class="footer-bottom mt-8 pt-8 border-t border-white/10">
+            <p class="text-center text-gray-400 text-sm">
+                Copyright © 2025 Mantravi. All Rights Reserved
+            </p>
         </div>
     </div>
 </footer>
