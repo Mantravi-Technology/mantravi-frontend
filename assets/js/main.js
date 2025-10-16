@@ -12,7 +12,6 @@ function initializeApp() {
     initializeCleanSmoothScrolling(); // Clean, single smooth scrolling system
     initializeParallaxEffects();
     initializeAnimations();
-    initializeForms();
     initializeNavigation();
     initializeConsultForm(); // Initialize consult modal
 }
@@ -111,38 +110,6 @@ function initializeAnimations() {
     });
 }
 
-// Form Handling
-function initializeForms() {
-    const forms = document.querySelectorAll('form');
-    
-    forms.forEach(form => {
-        form.addEventListener('submit', handleFormSubmit);
-    });
-}
-
-function handleFormSubmit(e) {
-    e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
-    
-    // Add loading state
-    const submitBtn = form.querySelector('button[type="submit"]');
-    if (submitBtn) {
-        submitBtn.classList.add('loading');
-        submitBtn.disabled = true;
-    }
-    
-    // Simulate form submission (replace with actual API call)
-    setTimeout(() => {
-        showNotification('Thank you for your message! We\'ll get back to you soon.', 'success');
-        form.reset();
-        
-        if (submitBtn) {
-            submitBtn.classList.remove('loading');
-            submitBtn.disabled = false;
-        }
-    }, 2000);
-}
 
 // Navigation Active State
 function initializeNavigation() {
@@ -245,23 +212,6 @@ function throttle(func, limit) {
     };
 }
 
-// Performance Optimization
-function optimizeImages() {
-    const images = document.querySelectorAll('img[data-src]');
-    
-    const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-                imageObserver.unobserve(img);
-            }
-        });
-    });
-    
-    images.forEach(img => imageObserver.observe(img));
-}
 
 // Error Handling
 window.addEventListener('error', function(e) {
@@ -269,18 +219,6 @@ window.addEventListener('error', function(e) {
     // You can add error reporting here
 });
 
-// Service Worker Registration (for PWA features)
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .then(registration => {
-                console.log('SW registered: ', registration);
-            })
-            .catch(registrationError => {
-                console.log('SW registration failed: ', registrationError);
-            });
-    });
-}
 
 // ========== CLEAN SMOOTH SCROLLING SYSTEM ==========
 
@@ -408,16 +346,6 @@ function scrollToPreviousSection() {
     }
 }
 
-// Test scroll speed function - Updated for clean system
-function testScrollSpeed() {
-    const servicesSection = document.querySelector('#services');
-    if (servicesSection) {
-        console.log('🐌 Testing clean smooth scroll...');
-        smoothScrollToElement(servicesSection);
-    } else {
-        console.log('❌ Services section not found');
-    }
-}
 
 // ========== CONSULT MODAL FUNCTIONS ==========
 
@@ -513,7 +441,6 @@ function initializeConsultForm() {
 }
 
 // Make functions globally available
-window.testScrollSpeed = testScrollSpeed;
 window.smoothScrollToElement = smoothScrollToElement;
 window.openConsultModal = openConsultModal;
 window.closeConsultModal = closeConsultModal;
@@ -523,7 +450,5 @@ window.MantraviApp = {
     showNotification,
     debounce,
     throttle,
-    optimizeImages,
-    smoothScrollToElement, // Clean smooth scroll function
-    testScrollSpeed // Test function
+    smoothScrollToElement // Clean smooth scroll function
 };
