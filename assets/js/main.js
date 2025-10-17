@@ -48,10 +48,6 @@ function initializeMobileMenu() {
     }
 }
 
-// Legacy smooth scrolling - DISABLED to prevent conflicts with unified system
-// function initializeSmoothScrolling() {
-//     // This function is disabled to prevent conflicts with unified smooth scrolling
-// }
 
 // Parallax Scrolling Effects
 function initializeParallaxEffects() {
