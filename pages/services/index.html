@@ -24,7 +24,7 @@
         }
         
         .smooth-scroll {
-            scroll-behavior: smooth;
+            scroll-behavior: auto; /* Disabled to prevent conflicts with clean smooth scrolling */
         }
         
         .glow-effect {
@@ -179,61 +179,213 @@
             transform: translateY(-2px);
         }
 
+        /* ========== FLOWING SERVICES NAVIGATION ========== */
+        
+        /* Reset body padding */
+        body {
+            padding-top: 0;
+        }
+
+        /* Flowing Services Navigation Bar */
         .services-bar {
             position: sticky;
-            top: 70px;
-            z-index: 40;
-            background: linear-gradient(180deg, #0a0f3a, #141b5a);
-            padding: 15px 20px;
-            border-radius: 16px;
-            display: flex; 
-            justify-content: center;
-            align-items: center;
-            width: 100%; 
-            max-width: 1500px;
-            margin: -70px auto 10px auto; /* Updated */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
-        }
-
-
-        .services-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 35px;
-            list-style: none;
+            top: 0; /* Stick to main header */
+            z-index: 50;
+            width: 100%;
+            background: linear-gradient(135deg, 
+                rgba(0, 0, 0, 0.95) 0%, 
+                rgba(5, 10, 30, 0.95) 50%, 
+                rgba(0, 0, 0, 0.95) 100%);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(78, 228, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             margin: 0;
-            padding: 0;
+            overflow: hidden; /* No scrolling */
         }
 
-        .services-list li a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
+        /* Services List Container - Responsive Grid */
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 0.5rem;
+            list-style: none;
+            padding: 1rem 1rem;
+            margin: 0;
+            max-width: 100%;
+        }
+
+        /* Individual Service Items - Flowing Style */
+        .services-list li {
             position: relative;
         }
 
-        .services-list li a:hover {
-            color: #1e90ff;
+        .services-list li a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.75rem 0.5rem;
+            background: linear-gradient(135deg, 
+                rgba(78, 228, 255, 0.08) 0%, 
+                rgba(78, 228, 255, 0.03) 100%);
+            border: none;
+            border-radius: 15px;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.7rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            min-height: 60px;
+            justify-content: center;
         }
 
-        .services-list li a::after {
-            content: "";
+        /* Flowing wave effect */
+        .services-list li a::before {
+            content: '';
             position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0%;
-            height: 2px;
-            background: #1e90ff;
-            transition: width 0.3s ease;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(78, 228, 255, 0.3), 
+                transparent);
+            transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .services-list li a:hover::after {
-            width: 100%;
+        .services-list li a:hover::before {
+            left: 100%;
         }
+
+        /* Flowing hover effects */
+        .services-list li a:hover {
+            background: linear-gradient(135deg, 
+                rgba(78, 228, 255, 0.15) 0%, 
+                rgba(78, 228, 255, 0.1) 100%);
+            color: #4EE4FF;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(78, 228, 255, 0.3);
+        }
+
+        /* Active state - Flowing glow */
+        .services-list li a.active {
+            background: linear-gradient(135deg, 
+                rgba(78, 228, 255, 0.2) 0%, 
+                rgba(78, 228, 255, 0.15) 100%);
+            color: #4EE4FF;
+            box-shadow: 0 6px 20px rgba(78, 228, 255, 0.4);
+            transform: scale(1.01);
+        }
+
+        /* Icons styling - Compact */
+        .services-list li i {
+            font-size: 1rem;
+            color: #4EE4FF;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 0.25rem;
+        }
+
+        .services-list li a:hover i {
+            transform: scale(1.1) rotate(5deg);
+            color: #4EE4FF;
+        }
+
+        /* Flowing pulse effect for active items */
+        .services-list li a.active i {
+            animation: flowingPulse 2s infinite;
+        }
+
+        @keyframes flowingPulse {
+            0%, 100% { 
+                transform: scale(1);
+                opacity: 1;
+                filter: drop-shadow(0 0 3px rgba(78, 228, 255, 0.4));
+            }
+            50% { 
+                transform: scale(1.1);
+                opacity: 0.9;
+                filter: drop-shadow(0 0 8px rgba(78, 228, 255, 0.6));
+            }
+        }
+
+        /* Text styling */
+        .services-list li a span {
+            font-size: 0.65rem;
+            line-height: 1.2;
+            text-align: center;
+            word-break: break-word;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 1200px) {
+            .services-list {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: 0.4rem;
+                padding: 0.875rem 0.75rem;
+            }
+            
+            .services-list li a {
+                padding: 0.625rem 0.375rem;
+                font-size: 0.65rem;
+                min-height: 55px;
+            }
+            
+            .services-list li a span {
+                font-size: 0.6rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .services-list {
+                grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+                gap: 0.3rem;
+                padding: 0.75rem 0.5rem;
+            }
+            
+            .services-list li a {
+                padding: 0.5rem 0.25rem;
+                font-size: 0.6rem;
+                min-height: 50px;
+            }
+            
+            .services-list li a span {
+                font-size: 0.55rem;
+            }
+            
+            .services-list li i {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services-list {
+                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+                gap: 0.25rem;
+                padding: 0.625rem 0.375rem;
+            }
+            
+            .services-list li a {
+                padding: 0.375rem 0.125rem;
+                font-size: 0.55rem;
+                min-height: 45px;
+            }
+            
+            .services-list li a span {
+                font-size: 0.5rem;
+            }
+            
+            .services-list li i {
+                font-size: 0.8rem;
+            }
+        }
+
+
+
 
         
         @media (max-width: 768px) {
@@ -251,55 +403,10 @@
         }
     </style>
 </head>
-<body class="bg-[#050a30] text-white smooth-scroll">
-    <!-- Header Navigation -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-[#050a30]/95 backdrop-blur-md border-b border-white/10">
-        <nav class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <!-- Logo -->
-                <a href="/pages/home/" class="mantravi-logo">
-                    mantravi<span class="mandala-icon"></span>
-                </a>
-                
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="/pages/home/" class="hover:text-[#4EE4FF] transition-colors">Home</a>
-                    <a href="/pages/services/" class="text-[#4EE4FF] transition-colors">Services</a>
-                    <a href="/pages/blog/" class="hover:text-[#4EE4FF] transition-colors">Blog</a>
-                    <a href="/pages/about/" class="hover:text-[#4EE4FF] transition-colors">About</a>
-                    <a href="/pages/contact/" class="hover:text-[#4EE4FF] transition-colors">Contact</a>
-                    <a href="/pages/work-with-us/" class="hover:text-[#4EE4FF] transition-colors">Work With Us</a>
-                </div>
-                
-                <!-- Primary CTA -->
-                <div class="hidden md:block">
-                    <button class="bg-[#4EE4FF] text-[#050a30] px-6 py-2 rounded-lg font-semibold hover:bg-[#4EE4FF]/90 transition-colors glow-effect">
-                        Start Your Digital Journey
-                    </button>
-                </div>
-                
-                <!-- Mobile Menu Button -->
-                <button class="md:hidden" id="mobile-menu-btn" aria-label="Toggle mobile menu">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
-                </button>
-            </div>
-            
-            <!-- Mobile Menu -->
-            <div class="md:hidden hidden" id="mobile-menu">
-                <div class="flex flex-col space-y-4 py-4">
-                    <a href="/pages/home/" class="hover:text-[#4EE4FF] transition-colors">Home</a>
-                    <a href="/pages/services/" class="text-[#4EE4FF] transition-colors">Services</a>
-                    <a href="/pages/blog/" class="hover:text-[#4EE4FF] transition-colors">Blog</a>
-                    <a href="/pages/about/" class="hover:text-[#4EE4FF] transition-colors">About</a>
-                    <a href="/pages/contact/" class="hover:text-[#4EE4FF] transition-colors">Contact</a>
-                    <a href="/pages/work-with-us/" class="hover:text-[#4EE4FF] transition-colors">Work With Us</a>
-                    <button class="bg-[#4EE4FF] text-[#050a30] px-6 py-2 rounded-lg font-semibold hover:bg-[#4EE4FF]/90 transition-colors glow-effect w-full mt-4">
-                        Start Your Digital Journey
-                    </button>
-                </div>
-            </div>
-        </nav>
-    </header>
+<body class="bg-[#050a30] text-white smooth-scroll premium-scroll">
+    <!-- Header -->
+    <header id="header-container"></header>
+    <script src="../../assets/js/component-loader.js"></script>
     
     <!-- Page Header -->
     <section class="section-padding-lg bg-gradient-to-br from-[#4EE4FF]/10 to-transparent">
@@ -311,35 +418,115 @@
         </div>
     </section>
 
-    <!-- ========== SERVICES BAR ========== -->
-    <div class="services-bar">
-    <ul class="services-list">
-        <li><a href="#webapp" class="hover:text-cyan-400 transition">Web App Dev</a></li>
-        <li><a href="#mobileapp" class="hover:text-cyan-400 transition">Mobile App Dev</a></li>
-        <li><a href="#maintenance" class="hover:text-cyan-400 transition">Maintenance & Support</a></li>
-        <li><a href="#uiux" class="hover:text-cyan-400 transition">UI & UX Design</a></li>
-        <li><a href="#consulting" class="hover:text-cyan-400 transition">IT Consulting</a></li>
-        <li><a href="#productdev" class="hover:text-cyan-400 transition">Product Development</a></li>
-        <li><a href="#digitalmarketing" class="hover:text-cyan-400 transition">Digital Marketing</a></li>
-        <li><a href="#socialmedia" class="hover:text-cyan-400 transition">Social Media Handling</a></li>
-        <li><a href="#seo" class="hover:text-cyan-400 transition">SEO</a></li>
-    </ul>
-    </div>
+    <!-- ========== FLOWING SERVICES NAVIGATION BAR ========== -->
+    <nav class="services-bar" id="services-bar">
+        <ul class="services-list">
+            <li class="services-item">
+                <a href="#webapp" class="services-link" data-service="webapp">
+                    <i data-lucide="monitor" class="icon"></i>
+                    <span class="services-text">Web App</span>
+                </a>
+            </li>
+            <li class="services-item">
+                <a href="#mobileapp" class="services-link" data-service="mobileapp">
+                    <i data-lucide="smartphone" class="icon"></i>
+                    <span class="services-text">Mobile App</span>
+                </a>
+            </li>
+            <li class="services-item">
+                <a href="#maintenance" class="services-link" data-service="maintenance">
+                    <i data-lucide="settings" class="icon"></i>
+                    <span class="services-text">Support</span>
+                </a>
+            </li>
+            <li class="services-item">
+                <a href="#uiux" class="services-link" data-service="uiux">
+                    <i data-lucide="palette" class="icon"></i>
+                    <span class="services-text">UI/UX</span>
+                </a>
+            </li>
+            <li class="services-item">
+                <a href="#consulting" class="services-link" data-service="consulting">
+                    <i data-lucide="users" class="icon"></i>
+                    <span class="services-text">Consulting</span>
+                </a>
+            </li>
+            <li class="services-item">
+                <a href="#productdev" class="services-link" data-service="productdev">
+                    <i data-lucide="package" class="icon"></i>
+                    <span class="services-text">Product Dev</span>
+                </a>
+            </li>
+            <li class="services-item">
+                <a href="#digitalmarketing" class="services-link" data-service="digitalmarketing">
+                    <i data-lucide="trending-up" class="icon"></i>
+                    <span class="services-text">Marketing</span>
+                </a>
+            </li>
+            <li class="services-item">
+                <a href="#socialmedia" class="services-link" data-service="socialmedia">
+                    <i data-lucide="share-2" class="icon"></i>
+                    <span class="services-text">Social Media</span>
+                </a>
+            </li>
+            <li class="services-item">
+                <a href="#seo" class="services-link" data-service="seo">
+                    <i data-lucide="search" class="icon"></i>
+                    <span class="services-text">SEO</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 
-    <!-- Enable smooth scrolling -->
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+
+
+
+    <!-- Clean smooth scrolling - conflicts removed -->
     <style>
     html {
-        scroll-behavior: smooth;
-        scroll-padding-top: 180px; /* adjust to header + services bar height */
+        scroll-behavior: auto; /* Disabled to prevent conflicts with clean smooth scrolling */
+        scroll-padding-top: 260px; /* Increased padding for full image visibility */
     }
+    
+    /* Premium Services Page Enhancements */
+    .services-section {
+        scroll-margin-top: 260px; /* Increased margin for full image visibility */
+    }
+    
+    /* Enhanced service cards with premium feel */
+    .service-card {
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transform: translateY(0);
+        padding-top: 40px; /* Increased padding for better image visibility */
+        padding-bottom: 40px;
+    }
+    
+    .service-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px rgba(78, 228, 255, 0.15);
+    }
+    
+    /* Ensure images are fully visible with proper margins */
+    .service-card img {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    
     </style>
+
 
     <!-- ========== SERVICES SECTIONS ========== -->
     <!-- Update the services section opening tag: -->
     <section id="services-sections" class="section-padding bg-[#030818] py-24 space-y-28 text-white">
 
     <!-- 1. Web App Development -->
-    <div id="webapp" class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+    <div id="webapp" class="service-card services-section max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
         <div>
         <h2 class="text-3xl font-semibold mb-4 text-cyan-400">Web App Development</h2>
         <p class="text-gray-300 mb-6 text-lg leading-relaxed">
@@ -352,7 +539,7 @@
     </div>
 
     <!-- 2. Mobile App Development -->
-    <div id="mobileapp" class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+    <div id="mobileapp" class="service-card services-section max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
         <div class="order-2 md:order-1 bg-[#0a0f3a]/60 rounded-2xl overflow-hidden shadow-lg border border-cyan-500/10">
         <img src="https://images.unsplash.com/photo-1556741533-f6acd647a6c9?auto=format&fit=crop&w=900&q=80" alt="Mobile App" class="w-full h-72 object-cover">
         </div>
@@ -365,7 +552,7 @@
     </div>
 
     <!-- 3. Maintenance & Support -->
-    <div id="maintenance" class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+    <div id="maintenance" class="service-card services-section max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
         <div>
         <h2 class="text-3xl font-semibold mb-4 text-cyan-400">Maintenance & Support Services</h2>
         <p class="text-gray-300 mb-6 text-lg leading-relaxed">
@@ -378,7 +565,7 @@
     </div>
 
     <!-- 4. UI & UX Design -->
-    <div id="uiux" class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+    <div id="uiux" class="service-card services-section max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
         <div class="order-2 md:order-1 bg-[#0a0f3a]/60 rounded-2xl overflow-hidden shadow-lg border border-cyan-500/10">
         <img src="https://images.unsplash.com/photo-1603969072880-33c3e9b35c9f?auto=format&fit=crop&w=900&q=80" alt="UI UX" class="w-full h-72 object-cover">
         </div>
@@ -391,7 +578,7 @@
     </div>
 
     <!-- 5. IT Consulting & Outsourcing -->
-    <div id="consulting" class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+    <div id="consulting" class="service-card services-section max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
         <div>
         <h2 class="text-3xl font-semibold mb-4 text-cyan-400">IT Consulting & Outsourcing</h2>
         <p class="text-gray-300 mb-6 text-lg leading-relaxed">
@@ -404,7 +591,7 @@
     </div>
 
     <!-- 6. Product Development -->
-    <div id="productdev" class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+    <div id="productdev" class="service-card services-section max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
         <div class="order-2 md:order-1 bg-[#0a0f3a]/60 rounded-2xl overflow-hidden shadow-lg border border-cyan-500/10">
         <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="Product Development" class="w-full h-72 object-cover">
         </div>
@@ -417,7 +604,7 @@
     </div>
 
     <!-- 7. Digital Marketing -->
-    <div id="digitalmarketing" class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+    <div id="digitalmarketing" class="service-card services-section max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
         <div>
         <h2 class="text-3xl font-semibold mb-4 text-cyan-400">Digital Marketing</h2>
         <p class="text-gray-300 mb-6 text-lg leading-relaxed">
@@ -430,7 +617,7 @@
     </div>
 
     <!-- 8. Social Media Handling -->
-    <div id="socialmedia" class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+    <div id="socialmedia" class="service-card services-section max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
         <div class="order-2 md:order-1 bg-[#0a0f3a]/60 rounded-2xl overflow-hidden shadow-lg border border-cyan-500/10">
         <img src="https://images.unsplash.com/photo-1494173853739-c21f58b16055?auto=format&fit=crop&w=900&q=80" alt="Social Media" class="w-full h-72 object-cover">
         </div>
@@ -443,7 +630,7 @@
     </div>
 
     <!-- 9. Search Engine Optimisation -->
-    <div id="seo" class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+    <div id="seo" class="service-card services-section max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
         <div>
         <h2 class="text-3xl font-semibold mb-4 text-cyan-400">Search Engine Optimisation (SEO)</h2>
         <p class="text-gray-300 mb-6 text-lg leading-relaxed">
@@ -511,33 +698,9 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-black/50 py-12">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mantravi-logo mb-4 md:mb-0">
-                    mantravi<span class="mandala-icon"></span>
-                </div>
-                <div class="flex items-center space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-[#4EE4FF] transition-colors">Privacy Policy</a>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-[#4EE4FF] transition-colors">
-                            <i data-lucide="linkedin" class="w-5 h-5"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-[#4EE4FF] transition-colors">
-                            <i data-lucide="twitter" class="w-5 h-5"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-[#4EE4FF] transition-colors">
-                            <i data-lucide="github" class="w-5 h-5"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-white/10 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 Mantravi. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+   <!-- Footer -->
+   <footer id="footer-container"></footer>
+   <script src="../../assets/js/component-loader.js"></script>
 
     <!-- Scripts -->
     <script>
@@ -553,6 +716,229 @@
                 mobileMenu.classList.toggle('hidden');
             });
         }
+
+        // ========== PREMIUM SERVICES NAVIGATION FUNCTIONALITY ==========
+        
+        // Services Navigation Elements
+        const servicesBar = document.querySelector('.services-bar');
+        const servicesLinks = document.querySelectorAll('.services-list li a');
+        const serviceSections = document.querySelectorAll('[id^="webapp"], [id^="mobileapp"], [id^="maintenance"], [id^="uiux"], [id^="consulting"], [id^="productdev"], [id^="digitalmarketing"], [id^="socialmedia"], [id^="seo"]');
+
+        // Clean smooth scroll to sections with proper offset for full image visibility
+        function smoothScrollToSection(targetId) {
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                const headerHeight = document.querySelector('header').offsetHeight || 0;
+                const servicesBarHeight = servicesBar.offsetHeight || 0;
+                
+                // Enhanced offset calculation for better image visibility
+                // Account for header, services bar, and extra margin for image display
+                const baseOffset = headerHeight + servicesBarHeight;
+                const extraMargin = 80; // Increased margin to ensure full image visibility
+                const offset = baseOffset + extraMargin;
+                
+                // Use our clean smooth scroll system
+                if (window.smoothScrollToElement) {
+                    // Create a temporary element at the correct position
+                    const tempElement = document.createElement('div');
+                    tempElement.style.position = 'absolute';
+                    tempElement.style.top = (targetElement.offsetTop - offset) + 'px';
+                    tempElement.style.left = '0';
+                    tempElement.style.width = '1px';
+                    tempElement.style.height = '1px';
+                    document.body.appendChild(tempElement);
+                    
+                    window.smoothScrollToElement(tempElement);
+                    
+                    // Clean up temporary element
+                    setTimeout(() => {
+                        document.body.removeChild(tempElement);
+                    }, 1600);
+                } else {
+                    // Fallback to instant scroll if clean system not available
+                    window.scrollTo(0, targetElement.offsetTop - offset);
+                }
+            }
+        }
+
+        // Active section detection with intersection observer
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -60% 0px',
+            threshold: 0.3
+        };
+
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const sectionId = entry.target.id;
+                    
+                    // Remove active class from all links
+                    servicesLinks.forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    
+                    // Add active class to corresponding link
+                    const activeLink = document.querySelector(`.services-list li a[href="#${sectionId}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                        
+                        // Auto-scroll the services bar to show active item
+                        scrollToActiveItem(activeLink);
+                    }
+                } else {
+                    // Remove active class when section is not in view
+                    const sectionId = entry.target.id;
+                    const link = document.querySelector(`.services-list li a[href="#${sectionId}"]`);
+                    if (link) {
+                        link.classList.remove('active');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all service sections
+        serviceSections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+
+        // Auto-scroll services bar to show active item
+        function scrollToActiveItem(activeLink) {
+            const servicesBar = document.querySelector('.services-bar');
+            const linkRect = activeLink.getBoundingClientRect();
+            const barRect = servicesBar.getBoundingClientRect();
+            
+            // Check if item is visible
+            if (linkRect.left < barRect.left || linkRect.right > barRect.right) {
+                const scrollLeft = activeLink.offsetLeft - (servicesBar.offsetWidth / 2) + (activeLink.offsetWidth / 2);
+                
+                servicesBar.scrollTo({
+                    left: scrollLeft,
+                    behavior: 'auto' // Disabled smooth to prevent conflicts
+                });
+            }
+        }
+
+        // Click handlers for service links
+        servicesLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                smoothScrollToSection(targetId);
+            });
+        });
+
+        // Enhanced scroll behavior for services bar
+        let isScrolling = false;
+        servicesBar.addEventListener('scroll', () => {
+            if (!isScrolling) {
+                requestAnimationFrame(() => {
+                    // Add visual feedback during scroll
+                    servicesBar.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.4)';
+                    setTimeout(() => {
+                        servicesBar.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.3)';
+                    }, 150);
+                    isScrolling = false;
+                });
+                isScrolling = true;
+            }
+        });
+
+        // Touch/swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        servicesBar.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        servicesBar.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const swipeDistance = touchStartX - touchEndX;
+            
+            if (Math.abs(swipeDistance) > swipeThreshold) {
+                if (swipeDistance > 0) {
+                    // Swipe left - scroll right
+                    servicesBar.scrollBy({ left: 200, behavior: 'auto' }); // Disabled smooth to prevent conflicts
+                } else {
+                    // Swipe right - scroll left
+                    servicesBar.scrollBy({ left: -200, behavior: 'auto' }); // Disabled smooth to prevent conflicts
+                }
+            }
+        }
+
+        // Keyboard navigation support
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                e.preventDefault();
+                const scrollAmount = 150;
+                if (e.key === 'ArrowLeft') {
+                    servicesBar.scrollBy({ left: -scrollAmount, behavior: 'auto' }); // Disabled smooth to prevent conflicts
+                } else {
+                    servicesBar.scrollBy({ left: scrollAmount, behavior: 'auto' }); // Disabled smooth to prevent conflicts
+                }
+            }
+        });
+
+        // Initialize active section on page load
+        function initializeActiveSection() {
+            const scrollY = window.scrollY;
+            const headerHeight = document.querySelector('header').offsetHeight || 0;
+            const servicesBarHeight = servicesBar.offsetHeight || 0;
+            const offset = headerHeight + servicesBarHeight + 100; // Increased offset
+
+            let activeSection = null;
+            const currentScrollY = scrollY + offset;
+
+            serviceSections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                
+                // Check if section is in view with better detection
+                if (currentScrollY >= sectionTop - 50 && currentScrollY < sectionTop + sectionHeight + 50) {
+                    activeSection = section.id;
+                }
+            });
+
+            // Only highlight if user is actually in a section
+            if (activeSection) {
+                const activeLink = document.querySelector(`.services-list li a[href="#${activeSection}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                    scrollToActiveItem(activeLink);
+                }
+            }
+            // No default highlighting when at top of page
+        }
+
+        // Initialize on page load
+        initializeActiveSection();
+
+        // Performance optimization: Throttled scroll listener
+        let scrollTicking = false;
+        function updateOnScroll() {
+            if (!scrollTicking) {
+                requestAnimationFrame(() => {
+                    // Add any scroll-based updates here
+                    scrollTicking = false;
+                });
+                scrollTicking = true;
+            }
+        }
+
+        window.addEventListener('scroll', updateOnScroll);
     </script>
+
+
+    <!-- Contact Form Container -->
+    <div id="contact-form-container"></div>
+
+    <!-- Main JavaScript -->
+    <script src="../../assets/js/main.js"></script>
 </body>
 </html>

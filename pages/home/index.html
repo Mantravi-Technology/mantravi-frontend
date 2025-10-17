@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Innovating Trust, Connecting Possibilities</title>
     <meta name="description" content="Your trusted partner for IT services, AI-driven digital transformation, and reliable support and maintenance.">
-    s
+    
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -20,59 +20,15 @@
     <!-- Main CSS -->
     <link rel="stylesheet" href="../../assets/css/main.css">
     
-    <!-- Contact Form JavaScript -->
-    <script src="../../assets/js/contact-form.js"></script>
     
 </head>
-<body class="bg-[#050a30] text-white smooth-scroll">
-    <!-- Header Navigation -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-[#050a30]/95 backdrop-blur-md border-b border-white/10">
-        <nav class="w-full px-6 py-2">
-            <div class="flex items-center justify-between">
-                <!-- Logo -->
-                <a href="/" class="flex items-center">
-                    <img src="../../assets/icons/ui/mantravilogo.png" alt="Mantravi Logo" class="h-20 w-auto">
-                </a>
-                
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="/pages/home/" class="hover:text-[#4EE4FF] transition-colors">Home</a>
-                    <a href="/pages/services/" class="hover:text-[#4EE4FF] transition-colors">Services</a>
-                    <a href="/pages/blog/" class="hover:text-[#4EE4FF] transition-colors">Blog</a>
-                    <a href="/pages/about/" class="hover:text-[#4EE4FF] transition-colors">About</a>
-                    <a href="/pages/contact/" class="hover:text-[#4EE4FF] transition-colors">Contact</a>
-                    <a href="/pages/work-with-us/" class="hover:text-[#4EE4FF] transition-colors">Work With Us</a>
-                </div>
-                
-                <!-- Primary CTA -->
-                <div class="hidden md:block">
-                    <button class="bg-[#4EE4FF] text-[#050a30] px-6 py-2 rounded-lg font-semibold hover:bg-[#4EE4FF]/90 transition-colors glow-effect">
-                        Start Your Digital Journey
-                    </button>
-                </div>
-                
-                <!-- Mobile Menu Button -->
-                <button class="md:hidden" id="mobile-menu-btn" aria-label="Toggle mobile menu">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
-                </button>
-            </div>
-            
-            <!-- Mobile Menu -->
-            <div class="md:hidden hidden" id="mobile-menu">
-                <div class="flex flex-col space-y-4 py-4">
-                    <a href="/pages/home/" class="hover:text-[#4EE4FF] transition-colors">Home</a>
-                    <a href="/pages/services/" class="hover:text-[#4EE4FF] transition-colors">Services</a>
-                    <a href="/pages/blog/" class="hover:text-[#4EE4FF] transition-colors">Blog</a>
-                    <a href="/pages/about/" class="hover:text-[#4EE4FF] transition-colors">About</a>
-                    <a href="/pages/contact/" class="hover:text-[#4EE4FF] transition-colors">Contact</a>
-                    <a href="/pages/work-with-us/" class="hover:text-[#4EE4FF] transition-colors">Work With Us</a>
-                    <button class="bg-[#4EE4FF] text-[#050a30] px-6 py-2 rounded-lg font-semibold hover:bg-[#4EE4FF]/90 transition-colors glow-effect w-full mt-4">
-                        Start Your Digital Journey
-                    </button>
-                </div>
-            </div>
-        </nav>
-    </header>
+<body class="bg-[#050a30] text-white smooth-scroll premium-scroll">
+
+
+    <!-- Header -->
+    <header id="header-container"></header>
+    <script src="../../assets/js/component-loader.js"></script>
+    
 
     <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center justify-center overflow-hidden hero-pattern hero-fallback">
@@ -123,7 +79,7 @@
     <!-- Value & Metrics Section -->
     <section class="py-20 bg-black/30">
         <div class="container mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center animate-stagger">
                 <div class="space-y-2">
                     <div class="text-4xl md:text-5xl font-black text-[#4EE4FF]">50+</div>
                     <div class="text-sm md:text-base text-gray-300">AI/LLM Projects</div>
@@ -154,7 +110,7 @@
                 Navigate the Digital Frontier with <span class="text-[#4EE4FF]">Mantravi's</span> Engineering Excellence
             </h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 animate-stagger">
                 <!-- Card 1: Digital Products & Development -->
                 <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 card-hover border border-white/10">
                     <div class="text-[#4EE4FF] mb-6">
@@ -201,7 +157,7 @@
         </div>
         
         <div class="container mx-auto px-6 relative z-10">
-            <div class="bg-gradient-to-r from-[#4EE4FF]/10 via-[#050a30] to-[#4EE4FF]/10 rounded-3xl p-12 shadow-2xl border-2 border-[#4EE4FF]/30 hover:border-[#4EE4FF]/50 hover:shadow-[#4EE4FF]/25 hover:shadow-2xl transition-all duration-700 transform hover:scale-[1.03] animate-fade-in-up relative overflow-hidden">
+            <div class="bg-gradient-to-r from-[#4EE4FF]/10 via-[#050a30] to-[#4EE4FF]/10 rounded-3xl p-12 shadow-2xl border-2 border-[#4EE4FF]/30 hover:border-[#4EE4FF]/50 hover:shadow-[#4EE4FF]/25 hover:shadow-2xl transition-all duration-700 transform hover:scale-[1.03] animate-on-scroll relative overflow-hidden">
                 <!-- Glowing background effect -->
                 <div class="absolute inset-0 bg-gradient-to-r from-[#4EE4FF]/5 to-transparent opacity-50"></div>
                 
@@ -225,34 +181,10 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black/50 py-12">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <img src="../../assets/icons/ui/mantravilogo.png" alt="Mantravi Logo" class="h-24 w-auto">
-                </div>
-                <div class="flex items-center space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-[#4EE4FF] transition-colors">Privacy Policy</a>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-[#4EE4FF] transition-colors">
-                            <i data-lucide="linkedin" class="w-5 h-5"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-[#4EE4FF] transition-colors">
-                            <i data-lucide="twitter" class="w-5 h-5"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-[#4EE4FF] transition-colors">
-                            <i data-lucide="github" class="w-5 h-5"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-white/10 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 Mantravi. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <footer id="footer-container"></footer>
+    <script src="../../assets/js/component-loader.js"></script>
 
-    <!-- Include Reusable Contact Form -->
+    <!-- Contact Form Container -->
     <div id="contact-form-container"></div>
 
     <!-- JavaScript -->
@@ -260,22 +192,6 @@
         // Initialize Lucide Icons
         lucide.createIcons();
         
-        // Load Contact Form Component
-        async function loadContactForm() {
-            try {
-                const response = await fetch('../../components/contact-form.html');
-                const html = await response.text();
-                document.getElementById('contact-form-container').innerHTML = html;
-                
-                // Re-initialize Lucide icons after loading the component
-                lucide.createIcons();
-            } catch (error) {
-                console.error('Error loading contact form:', error);
-            }
-        }
-        
-        // Load the contact form when page loads
-        loadContactForm();
         
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -365,5 +281,12 @@
             }, 1000);
         }
     </script>
+
+    <!-- Component Loader -->
+    <script src="../../assets/js/component-loader.js"></script>
+    
+    <!-- Main JavaScript -->
+    <script src="../../assets/js/main.js"></script>
 </body>
 </html>
+

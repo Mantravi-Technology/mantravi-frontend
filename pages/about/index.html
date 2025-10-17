@@ -364,56 +364,12 @@
         }
     </style>
 </head>
-<body class="bg-[#050a30] text-white smooth-scroll">
+<body class="bg-[#050a30] text-white smooth-scroll premium-scroll">
     <!-- Header Navigation -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-[#050a30]/95 backdrop-blur-md border-b border-white/10">
-        <nav class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <!-- Logo -->
-                <a href="/pages/home/" class="mantravi-logo">
-                    mantravi<span class="mandala-icon"></span>
-                </a>
-                
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="/pages/home/" class="hover:text-[#4EE4FF] transition-colors">Home</a>
-                    <a href="/pages/services/" class="hover:text-[#4EE4FF] transition-colors">Services</a>
-                    <a href="/pages/blog/" class="hover:text-[#4EE4FF] transition-colors">Blog</a>
-                    <a href="/pages/about/" class="text-[#4EE4FF] transition-colors">About</a>
-                    <a href="/pages/contact/" class="hover:text-[#4EE4FF] transition-colors">Contact</a>
-                    <a href="/pages/work-with-us/" class="hover:text-[#4EE4FF] transition-colors">Work With Us</a>
-                </div>
-                
-                <!-- Primary CTA -->
-                <div class="hidden md:block">
-                    <button class="bg-[#4EE4FF] text-[#050a30] px-6 py-2 rounded-lg font-semibold hover:bg-[#4EE4FF]/90 transition-colors glow-effect">
-                        Start Your Digital Journey
-                    </button>
-                </div>
-                
-                <!-- Mobile Menu Button -->
-                <button class="md:hidden" id="mobile-menu-btn" aria-label="Toggle mobile menu">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
-                </button>
-            </div>
-            
-            <!-- Mobile Menu -->
-            <div class="md:hidden hidden" id="mobile-menu">
-                <div class="flex flex-col space-y-4 py-4">
-                    <a href="/pages/home/" class="hover:text-[#4EE4FF] transition-colors">Home</a>
-                    <a href="/pages/services/" class="hover:text-[#4EE4FF] transition-colors">Services</a>
-                    <a href="/pages/blog/" class="hover:text-[#4EE4FF] transition-colors">Blog</a>
-                    <a href="/pages/about/" class="text-[#4EE4FF] transition-colors">About</a>
-                    <a href="/pages/contact/" class="hover:text-[#4EE4FF] transition-colors">Contact</a>
-                    <a href="/pages/work-with-us/" class="hover:text-[#4EE4FF] transition-colors">Work With Us</a>
-                    <button class="bg-[#4EE4FF] text-[#050a30] px-6 py-2 rounded-lg font-semibold hover:bg-[#4EE4FF]/90 transition-colors glow-effect w-full mt-4">
-                        Start Your Digital Journey
-                    </button>
-                </div>
-            </div>
-        </nav>
-    </header>
-    
+     <!-- Header -->
+     <header id="header-container"></header>
+     <script src="../../assets/js/component-loader.js"></script>
+
     <!-- Page Header -->
     <section class="section-padding-lg bg-gradient-to-br from-[#4EE4FF]/10 to-transparent">
         <div class="container mx-auto px-6 text-center">
@@ -600,73 +556,9 @@
         </div>
     </section>
 
-    <!-- Footer Section -->
-    <footer class="footer-bg py-12">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Company Info -->
-                <div class="footer-widget-items lg:col-span-2">
-                    <div class="widget-title">
-                        <a href="/pages/home/" class="mantravi-logo text-2xl">
-                            mantravi<span class="mandala-icon"></span>
-                        </a>
-                    </div>
-                    <div class="footer-content">
-                        <p>
-                            Together, we'll turn your ambitions into reality. Trust us to guide you, and let's achieve Remarkable Success In India and Southeast Asia!
-                        </p>
-                        <div class="footer-social-text">
-                            <div class="social-icon">
-                                <a href="https://www.facebook.com/capstoneconsultancysingapore/"><i class="fa-brands fa-facebook-f"></i></a>
-                                <a href="http://linkedin.com/company/104409718/admin/dashboard/"><i class="fa-brands fa-linkedin"></i></a>
-                            </div>
-                            <!-- <div>
-                                <a href="privacy-policy.html" id="url-privacy">Privacy Policy</a>
-                            </div> -->
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Services Links -->
-                <div class="footer-widget-items">
-                    <div class="widget-title">
-                        <h3 class="text-xl text-white font-medium">
-                            Services
-                        </h3>
-                    </div>
-                    <ul class="user-links">
-                        <li><a href="/pages/services/#web-development">Web Development</a></li>
-                        <li><a href="/pages/services/#mobile-apps">Mobile Apps</a></li>
-                        <li><a href="/pages/services/#ai-solutions">AI Solutions</a></li>
-                        <li><a href="/pages/services/#cloud-services">Cloud Services</a></li>
-                        <li><a href="/pages/services/#consulting">Consulting</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Office Information -->
-                <div class="footer-widget-items">
-                    <div class="widget-title">
-                        <h3 class="text-xl text-white font-medium">
-                            Office
-                        </h3>
-                    </div>
-                    <div class="office-info">
-                        <p class="text-gray-300 mb-1">Noida</p>
-                        <p class="text-gray-300 mb-1">Crossing Republik</p>
-                        <p class="text-gray-300">
-                            <a href="mailto:info@mantravi.com" class="hover:text-[#4EE4FF] transition-colors">info@mantravi.com</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p class="text-center">
-                    Copyright © 2025 Mantravi. All Rights Reserved
-                </p>
-            </div>
-        </div>
-    </footer>
+   <!-- Footer -->
+    <footer id="footer-container"></footer>
+    <script src="../../assets/js/component-loader.js"></script>
 
     <!-- Scripts -->
     <script>
@@ -683,5 +575,12 @@
             });
         }
     </script>
+
+
+    <!-- Contact Form Container -->
+    <div id="contact-form-container"></div>
+
+    <!-- Main JavaScript -->
+    <script src="../../assets/js/main.js"></script>
 </body>
 </html>
