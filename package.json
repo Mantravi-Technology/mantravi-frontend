@@ -6,8 +6,8 @@
   "scripts": {
     "start": "python -m http.server 8000",
     "dev": "python -m http.server 8000",
-    "build": "echo 'No build process needed for static site'",
-    "deploy": "echo 'Deploy to your preferred hosting platform'",
+    "build": "./build.sh",
+    "deploy": "npm run build",
     "lint": "echo 'Add linting tools as needed'",
     "test": "echo 'Add testing framework as needed'"
   },
