@@ -409,14 +409,7 @@
     <script src="../../assets/js/component-loader.js"></script>
     
     <!-- Page Header -->
-    <section class="section-padding-lg bg-gradient-to-br from-[#4EE4FF]/10 to-transparent">
-        <div class="container mx-auto px-6 text-center">
-            <h1 class="heading-1">Our Services</h1>
-            <p class="text-large max-w-3xl mx-auto">
-                Comprehensive digital solutions designed to accelerate your business growth and technological advancement.
-            </p>
-        </div>
-    </section>
+    <div id="page-header-container"></div>
 
     <!-- ========== FLOWING SERVICES NAVIGATION BAR ========== -->
     <nav class="services-bar" id="services-bar">
@@ -700,13 +693,9 @@
 
    <!-- Footer -->
    <footer id="footer-container"></footer>
-   <script src="../../assets/js/component-loader.js"></script>
 
     <!-- Scripts -->
     <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
-        
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -717,7 +706,7 @@
             });
         }
 
-        // ========== PREMIUM SERVICES NAVIGATION FUNCTIONALITY ==========
+        // ==========  SERVICES NAVIGATION FUNCTIONALITY ==========
         
         // Services Navigation Elements
         const servicesBar = document.querySelector('.services-bar');
@@ -935,8 +924,10 @@
     </script>
 
 
-    <!-- Contact Form Container -->
+
+    <!-- Component Containers -->
     <div id="contact-form-container"></div>
+    <div id="styles-container"></div>
 
     <!-- Main JavaScript -->
     <script src="../../assets/js/main.js"></script>

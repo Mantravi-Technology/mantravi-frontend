@@ -26,277 +26,29 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <style>
-        * {
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .smooth-scroll {
-            scroll-behavior: smooth;
-        }
-        
-        .glow-effect {
-            box-shadow: 0 0 20px rgba(78, 228, 255, 0.3);
-        }
-        
-        .text-glow {
-            text-shadow: 0 0 10px rgba(78, 228, 255, 0.5);
-        }
-        
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(78, 228, 255, 0.2);
-        }
-        
-        /* Custom logo styling to match the actual Mantravi logo */
-        .mantravi-logo {
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            font-size: 1.5rem;
-            color: white;
-            letter-spacing: -0.02em;
-            text-decoration: none;
-        }
-        
-        .mandala-icon {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            background: linear-gradient(45deg, #8B5CF6, #EC4899, #3B82F6, #10B981);
-            border-radius: 50%;
-            position: relative;
-            margin-left: 2px;
-        }
-        
-        .mandala-icon::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 8px;
-            height: 8px;
-            background: linear-gradient(45deg, #A855F7, #F472B6, #60A5FA, #34D399);
-            border-radius: 50%;
-            border: 1px solid #D97706;
-        }
-        
-        .mandala-icon::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 4px;
-            height: 4px;
-            background: #D97706;
-            border-radius: 50%;
-        }
-        
-        /* Custom utility classes */
-        .section-padding {
-            padding: 4rem 0;
-        }
-        
-        .section-padding-lg {
-            padding: 6rem 0;
-        }
-        
-        .heading-1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-        }
-        
-        .heading-2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-        
-        .heading-3 {
-            font-size: 1.875rem;
-            font-weight: 600;
-            line-height: 1.3;
-        }
-        
-        .text-large {
-            font-size: 1.25rem;
-            line-height: 1.6;
-            color: #e5e7eb;
-        }
-        
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-        
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-        
-        .grid-4 {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, #4EE4FF 0%, #00D4FF 100%);
-            color: #050a30;
-            padding: 0.75rem 2rem;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(78, 228, 255, 0.3);
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: #4EE4FF;
-            padding: 0.75rem 2rem;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-            border: 2px solid #4EE4FF;
-            cursor: pointer;
-        }
-        
-        .btn-secondary:hover {
-            background: #4EE4FF;
-            color: #050a30;
-            transform: translateY(-2px);
-        }
-        
-        /* Footer Styles */
-        .footer-bg {
-            background-color: #0a1128;
-        }
-        
-        .footer-widget-items {
-            margin-bottom: 1.5rem;
-        }
-        
-        .widget-title {
-            margin-bottom: 1.5rem;
-        }
-        
-        .footer-content p {
-            color: #9ca3af;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-        
-        .footer-social-text {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .social-icon a {
-            display: inline-block;
-            margin-right: 1rem;
-            color: #9ca3af;
-            transition: color 0.3s ease;
-        }
-        
-        .social-icon a:hover {
-            color: #4EE4FF;
-        }
-        
-        .user-links li {
-            margin-bottom: 0.75rem;
-        }
-        
-        .user-links a {
-            color: #9ca3af;
-            transition: color 0.3s ease;
-        }
-        
-        .user-links a:hover {
-            color: #4EE4FF;
-        }
-        
-        .office-info p {
-            color: #9ca3af;
-            margin-bottom: 0.5rem;
-        }
-        
-        .footer-bottom {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .footer-bottom p {
-            color: #9ca3af;
-            text-align: center;
-        }
-        
-        @media (max-width: 768px) {
-            .grid-2, .grid-3, .grid-4 {
-                grid-template-columns: 1fr;
-            }
-            
-            .heading-1 {
-                font-size: 2.5rem;
-            }
-            
-            .heading-2 {
-                font-size: 2rem;
-            }
-            
-            .footer-social-text {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .social-icon {
-                margin-bottom: 1rem;
-            }
-        }
-    </style>
+    <!-- Global Parallax Configuration - Load First -->
+    <script src="../../config/parallax-config.js"></script>
+    
+    <!-- Common Styles Component -->
+    <div id="styles-container"></div>
 </head>
 <body class="bg-[#050a30] text-white smooth-scroll premium-scroll">
-    <!-- Header Navigation -->
     <!-- Header -->
     <header id="header-container"></header>
     <script src="../../assets/js/component-loader.js"></script>
-    <!-- Page Header -->
-    <section class="section-padding-lg bg-gradient-to-br from-[#4EE4FF]/10 to-transparent">
-        <div class="container mx-auto px-6 text-center">
-            <h1 class="heading-1">Contact Us</h1>
-            <p class="text-large max-w-3xl mx-auto">
-                Ready to start your digital transformation journey? Get in touch with our expert team today.
-            </p>
-        </div>
-    </section>
+    
+    <!-- Page Header Component -->
+    <div id="page-header-container"></div>
 
     <!-- Contact Form & Info -->
-    <section class="section-padding">
-        <div class="container mx-auto px-6">
+    <section class="section-padding relative overflow-hidden">
+        <!-- Parallax background -->
+        <div class="absolute inset-0 bg-gradient-to-br from-[#4EE4FF]/5 to-transparent parallax-bg"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
             <div class="grid-2">
                 <!-- Contact Form -->
-                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 border border-white/10">
+                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 border border-white/10 parallax-cards">
                     <h2 class="heading-2 mb-6">Send Us a Message</h2>
                     <form id="contact-form" class="space-y-6">
                         <div class="grid-2">
@@ -386,20 +138,11 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="section-padding bg-gradient-to-r from-[#4EE4FF]/10 to-transparent">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="heading-2 mb-8">Ready to Start Your Project?</h2>
-            <p class="text-large mb-8 max-w-2xl mx-auto">
-                Schedule a free consultation to discuss your needs and discover how we can help you achieve your goals.
-            </p>
-            <button onclick="openConsultModal()" class="btn-primary">Schedule Consultation</button>
-        </div>
-    </section>
+    <!-- CTA Section Component -->
+    <div id="cta-container"></div>
 
     <!-- Footer -->
     <footer id="footer-container"></footer>
-    <script src="../../assets/js/component-loader.js"></script>
     
     <!-- Scripts -->
     <script>
@@ -416,7 +159,6 @@
             });
         }
     </script>
-
 
     <!-- Contact Form Container -->
     <div id="contact-form-container"></div>

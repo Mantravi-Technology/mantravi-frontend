@@ -636,3 +636,64 @@ body {
         color: black;
     }
 }
+
+/* ========== GLOBAL PARALLAX STYLES ========== */
+
+/* Base parallax element styles */
+[class*="parallax-"] {
+    will-change: transform;
+    transform: translateZ(0); /* Hardware acceleration */
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Specific parallax element classes */
+.parallax-bg {
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+}
+
+.parallax-services {
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+}
+
+.parallax-hero {
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+}
+
+.parallax-cards {
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+}
+
+.parallax-text {
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+}
+
+.parallax-images {
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+}
+
+/* Performance optimizations */
+.parallax-container {
+    contain: layout style paint;
+    isolation: isolate;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    [class*="parallax-"] {
+        transform: none !important; /* Disable parallax on mobile */
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    [class*="parallax-"] {
+        transform: none !important;
+    }
+}

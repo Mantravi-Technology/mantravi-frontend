@@ -1,0 +1,41 @@
+<!-- Body Component -->
+<body class="bg-[#050a30] text-white smooth-scroll premium-scroll">
+
+    <!-- Header -->
+    <header id="header-container"></header>
+    <script src="../../assets/js/component-loader.js"></script>
+
+    <!-- Page Content Placeholder -->
+    <div id="page-content">
+        {{PAGE_CONTENT}}
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer-container"></footer>
+    <script src="../../assets/js/component-loader.js"></script>
+
+    <!-- Contact Form Container -->
+    <div id="contact-form-container"></div>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+        
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+    </script>
+
+    <!-- Component Loader -->
+    <script src="../../assets/js/component-loader.js"></script>
+    
+    <!-- Main JavaScript -->
+    <script src="../../assets/js/main.js"></script>
+</body>

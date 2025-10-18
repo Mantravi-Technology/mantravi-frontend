@@ -20,15 +20,18 @@
     <!-- Main CSS -->
     <link rel="stylesheet" href="../../assets/css/main.css">
     
+    <!-- Global Parallax Configuration - Load First -->
+    <script src="../../config/parallax-config.js"></script>
     
+    <!-- Common Styles Component -->
+    <div id="styles-container"></div>
 </head>
 <body class="bg-[#050a30] text-white smooth-scroll premium-scroll">
-
 
     <!-- Header -->
     <header id="header-container"></header>
     <script src="../../assets/js/component-loader.js"></script>
-    
+
 
     <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center justify-center overflow-hidden hero-pattern hero-fallback">
@@ -48,13 +51,13 @@
             </video>
             
             <!-- Blurred overlay for text readability -->
-            <div class="absolute inset-0 bg-[#050a30]/70 backdrop-blur-sm"></div>
+            <div class="absolute inset-0 bg-[#050a30]/70 backdrop-blur-sm parallax-bg"></div>
             
             <!-- Gradient overlay for better contrast -->
-            <div class="absolute inset-0 bg-gradient-to-br from-[#050a30]/80 via-[#050a30]/60 to-[#050a30]/40"></div>
+            <div class="absolute inset-0 bg-gradient-to-br from-[#050a30]/80 via-[#050a30]/60 to-[#050a30]/40 parallax-bg"></div>
             
             <!-- Accent gradient overlay -->
-            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[#4EE4FF]/5 to-[#4EE4FF]/10"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[#4EE4FF]/5 to-[#4EE4FF]/10 parallax-hero"></div>
         </div>
         
         <!-- Hero Content -->
@@ -76,34 +79,13 @@
         </div>
     </section>
 
-    <!-- Value & Metrics Section -->
-    <section class="py-20 bg-black/30">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center animate-stagger">
-                <div class="space-y-2">
-                    <div class="text-4xl md:text-5xl font-black text-[#4EE4FF]">50+</div>
-                    <div class="text-sm md:text-base text-gray-300">AI/LLM Projects</div>
-                </div>
-                <div class="space-y-2">
-                    <div class="text-4xl md:text-5xl font-black text-[#4EE4FF]">100+</div>
-                    <div class="text-sm md:text-base text-gray-300">Certified Tech Evangelists</div>
-                </div>
-                <div class="space-y-2">
-                    <div class="text-4xl md:text-5xl font-black text-[#4EE4FF]">99%</div>
-                    <div class="text-sm md:text-base text-gray-300">Client Retention Rate</div>
-                </div>
-                <div class="space-y-2">
-                    <div class="text-4xl md:text-5xl font-black text-[#4EE4FF]">4X</div>
-                    <div class="text-sm md:text-base text-gray-300">Average ROI Delivered</div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Stats Section Component -->
+    <div id="stats-container"></div>
 
     <!-- Core Services Section -->
-    <section id="services" class="py-20 relative overflow-hidden">
-        <!-- Parallax Background for Services -->
-        <div class="parallax-services absolute inset-0 services-pattern opacity-30"></div>
+    <section id="services" class="py-20 relative overflow-hidden bg-[#050a30]">
+        <!-- Parallax background for services section -->
+        <div class="absolute inset-0 bg-gradient-to-br from-[#4EE4FF]/5 to-transparent parallax-services"></div>
         
         <div class="relative z-10 container mx-auto px-6">
             <h2 class="text-3xl md:text-5xl font-bold text-center mb-16">
@@ -112,7 +94,7 @@
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 animate-stagger">
                 <!-- Card 1: Digital Products & Development -->
-                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 card-hover border border-white/10">
+                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 card-hover border border-white/10 parallax-cards">
                     <div class="text-[#4EE4FF] mb-6">
                         <i data-lucide="smartphone" class="w-12 h-12"></i>
                     </div>
@@ -123,7 +105,7 @@
                 </div>
                 
                 <!-- Card 2: Brand, SEO & Marketing -->
-                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 card-hover border border-white/10">
+                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 card-hover border border-white/10 parallax-cards">
                     <div class="text-[#4EE4FF] mb-6">
                         <i data-lucide="trending-up" class="w-12 h-12"></i>
                     </div>
@@ -134,7 +116,7 @@
                 </div>
                 
                 <!-- Card 3: QA & IT Solutions -->
-                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 card-hover border border-white/10">
+                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 card-hover border border-white/10 parallax-cards">
                     <div class="text-[#4EE4FF] mb-6">
                         <i data-lucide="settings" class="w-12 h-12"></i>
                     </div>
@@ -192,7 +174,6 @@
         // Initialize Lucide Icons
         lucide.createIcons();
         
-        
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -203,39 +184,7 @@
             });
         }
         
-        // Parallax Scrolling Effect
-        function updateParallax() {
-            const scrolled = window.pageYOffset;
-            const parallaxBg = document.querySelector('.parallax-bg');
-            const parallaxServices = document.querySelector('.parallax-services');
-            
-            if (parallaxBg) {
-                const speed = 0.5;
-                parallaxBg.style.transform = `translateY(${scrolled * speed}px)`;
-            }
-            
-            if (parallaxServices) {
-                const speed = 0.75;
-                parallaxServices.style.transform = `translateY(${scrolled * speed}px)`;
-            }
-        }
-        
-        // Throttled scroll event for better performance
-        let ticking = false;
-        function requestTick() {
-            if (!ticking) {
-                requestAnimationFrame(updateParallax);
-                ticking = true;
-            }
-        }
-        
-        function handleScroll() {
-            requestTick();
-            ticking = false;
-        }
-        
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        window.addEventListener('load', updateParallax);
+    
         
         // Video Background Handling
         const video = document.querySelector('video');
@@ -282,11 +231,7 @@
         }
     </script>
 
-    <!-- Component Loader -->
-    <script src="../../assets/js/component-loader.js"></script>
-    
     <!-- Main JavaScript -->
     <script src="../../assets/js/main.js"></script>
 </body>
 </html>
-
