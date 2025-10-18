@@ -1,0 +1,477 @@
+<!-- Common Styles Component -->
+<style>
+    * {
+        font-family: 'Inter', sans-serif;
+    }
+    
+    .smooth-scroll {
+        scroll-behavior: smooth;
+    }
+    
+    .glow-effect {
+        box-shadow: 0 0 20px rgba(78, 228, 255, 0.3);
+    }
+    
+    .text-glow {
+        text-shadow: 0 0 10px rgba(78, 228, 255, 0.5);
+    }
+    
+    .card-hover {
+        transition: all 0.3s ease;
+    }
+    
+    /* Footer Styles */
+    .footer-widget-items {
+        margin-bottom: 2rem;
+    }
+    
+    .widget-title h3 {
+        color: white;
+        font-size: 1.25rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+    }
+    
+    .user-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .user-links li {
+        margin-bottom: 0.5rem;
+    }
+    
+    .user-links a {
+        color: #9CA3AF;
+        text-decoration: none;
+        font-size: 0.875rem;
+        transition: color 0.3s ease;
+    }
+    
+    .user-links a:hover {
+        color: #4EE4FF;
+    }
+    
+    .office-info p {
+        color: #9CA3AF;
+        font-size: 0.875rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .office-info a {
+        color: #9CA3AF;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    
+    .office-info a:hover {
+        color: #4EE4FF;
+    }
+    
+    /* Social Media Icons Styling */
+    .social-icon {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+    
+    .social-icon a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
+        background-color: rgba(78, 228, 255, 0.2);
+        border-radius: 50%;
+        color: #4EE4FF;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    
+    .social-icon a:hover {
+        background-color: rgba(78, 228, 255, 0.3);
+        transform: translateY(-2px);
+    }
+    
+    .social-icon a {
+        font-weight: bold;
+        font-size: 0.875rem;
+        font-family: Arial, sans-serif;
+    }
+    
+    .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(78, 228, 255, 0.2);
+    }
+    
+    /* Custom logo styling to match the actual Mantravi logo */
+    .mantravi-logo {
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
+        font-size: 1.5rem;
+        color: white;
+        letter-spacing: -0.02em;
+        text-decoration: none;
+    }
+    
+    .mandala-icon {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        background: linear-gradient(45deg, #8B5CF6, #EC4899, #3B82F6, #10B981);
+        border-radius: 50%;
+        position: relative;
+        margin-left: 2px;
+    }
+    
+    .mandala-icon::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 8px;
+        height: 8px;
+        background: linear-gradient(45deg, #A855F7, #F472B6, #60A5FA, #34D399);
+        border-radius: 50%;
+        border: 1px solid #D97706;
+    }
+    
+    .mandala-icon::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 4px;
+        height: 4px;
+        background: #D97706;
+        border-radius: 50%;
+    }
+    
+    /* Custom utility classes */
+    .section-padding {
+        padding: 4rem 0;
+    }
+    
+    .section-padding-lg {
+        padding: 6rem 0;
+    }
+    
+    .heading-1 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+    }
+    
+    .heading-2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        line-height: 1.2;
+    }
+    
+    .heading-3 {
+        font-size: 1.875rem;
+        font-weight: 600;
+        line-height: 1.3;
+    }
+    
+    .text-large {
+        font-size: 1.25rem;
+        line-height: 1.6;
+        color: #e5e7eb;
+    }
+    
+    .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+    }
+    
+    .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+    
+    .grid-4 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+    }
+    
+    .btn-primary {
+        background: linear-gradient(135deg, #4EE4FF 0%, #00D4FF 100%);
+        color: #050a30;
+        padding: 0.75rem 2rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+    }
+    
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(78, 228, 255, 0.3);
+    }
+    
+    .btn-secondary {
+        background: transparent;
+        color: #4EE4FF;
+        padding: 0.75rem 2rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s ease;
+        border: 2px solid #4EE4FF;
+        cursor: pointer;
+    }
+    
+    .btn-secondary:hover {
+        background: #4EE4FF;
+        color: #050a30;
+        transform: translateY(-2px);
+    }
+    
+    .form-input {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 0.5rem;
+        padding: 0.75rem 1rem;
+        color: white;
+        width: 100%;
+        transition: all 0.3s ease;
+    }
+    
+    .form-input:focus {
+        outline: none;
+        border-color: #4EE4FF;
+        box-shadow: 0 0 0 3px rgba(78, 228, 255, 0.1);
+    }
+    
+    /* Footer Styles */
+    .footer-bg {
+        background: linear-gradient(135deg, #0a1a3a 0%, #050a30 100%);
+    }
+    
+    .footer-widget-items {
+        margin-top: 30px;
+    }
+    
+    .widget-title {
+        margin-bottom: 25px;
+    }
+    
+    .footer-content p {
+        color: #a0aec0;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+    
+    .footer-social-text {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+    }
+    
+    .social-icon a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        background: rgba(78, 228, 255, 0.1);
+        border-radius: 50%;
+        margin-right: 10px;
+        transition: all 0.3s ease;
+    }
+    
+    .social-icon a:hover {
+        background: rgba(78, 228, 255, 0.3);
+        transform: translateY(-2px);
+    }
+    
+    .social-icon i {
+        color: #4EE4FF;
+    }
+    
+    #url-privacy {
+        color: #4EE4FF;
+        text-decoration: none;
+        font-size: 14px;
+    }
+    
+    #url-privacy:hover {
+        text-decoration: underline;
+    }
+    
+    .user-links li {
+        margin-bottom: 10px;
+    }
+    
+    .user-links a {
+        color: #a0aec0;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    
+    .user-links a:hover {
+        color: #4EE4FF;
+    }
+    
+    .contact-list li {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 15px;
+        color: #a0aec0;
+    }
+    
+    .contact-list i {
+        color: #4EE4FF;
+        margin-right: 10px;
+        margin-top: 3px;
+    }
+    
+    .contact-list a {
+        color: #a0aec0;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    
+    .contact-list a:hover {
+        color: #4EE4FF;
+    }
+    
+    .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 20px 0;
+        margin-top: 40px;
+    }
+    
+    .footer-bottom p {
+        color: #a0aec0;
+        text-align: center;
+    }
+    
+    /* New sections styling */
+    .process-step {
+        position: relative;
+        padding-left: 2rem;
+    }
+    
+    .process-step::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.5rem;
+        width: 12px;
+        height: 12px;
+        background: #4EE4FF;
+        border-radius: 50%;
+    }
+    
+    .tech-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .tech-card:hover {
+        background: rgba(78, 228, 255, 0.1);
+        border-color: rgba(78, 228, 255, 0.3);
+        transform: translateY(-5px);
+    }
+    
+    .tech-icon {
+        width: 60px;
+        height: 60px;
+        background: rgba(78, 228, 255, 0.1);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+    
+    @media (max-width: 768px) {
+        .grid-2, .grid-3, .grid-4 {
+            grid-template-columns: 1fr;
+        }
+        
+        .heading-1 {
+            font-size: 2.5rem;
+        }
+        
+        .heading-2 {
+            font-size: 2rem;
+        }
+        
+        .footer-social-text {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .social-icon {
+            margin-bottom: 1rem;
+        }
+    }
+
+    /* Footer Styles */
+    .footer-widget-items {
+        margin-bottom: 2rem;
+    }
+    
+    .widget-title h3 {
+        color: white;
+        font-size: 1.25rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+    }
+    
+    .user-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .user-links li {
+        margin-bottom: 0.5rem;
+    }
+    
+    .user-links a {
+        color: #9CA3AF;
+        text-decoration: none;
+        font-size: 0.875rem;
+        transition: color 0.3s ease;
+    }
+    
+    .user-links a:hover {
+        color: #4EE4FF;
+    }
+    
+    .office-info p {
+        color: #9CA3AF;
+        font-size: 0.875rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .office-info a {
+        color: #9CA3AF;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    
+    .office-info a:hover {
+        color: #4EE4FF;
+    }
+</style>

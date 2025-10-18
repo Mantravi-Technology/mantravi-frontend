@@ -49,34 +49,214 @@ function initializeMobileMenu() {
 }
 
 
-// Parallax Scrolling Effects
-function initializeParallaxEffects() {
-    let ticking = false;
-    
-    function updateParallax() {
-        const scrolled = window.pageYOffset;
-        const parallaxElements = document.querySelectorAll('.parallax-bg, .parallax-services');
+// ========== GLOBAL PARALLAX CONFIGURATION SYSTEM ==========
+
+// Load global parallax configuration
+// Configuration is now externalized in config/parallax-config.js
+
+// Global Parallax Manager Class
+class GlobalParallaxManager {
+    constructor(config = PARALLAX_CONFIG) {
+        this.config = config;
+        this.elements = new Map();
+        this.isScrolling = false;
+        this.lastScrollY = 0;
+        this.scrollDirection = 'down';
+        this.animationId = null;
         
-        parallaxElements.forEach(element => {
-            const speed = element.classList.contains('parallax-bg') ? 0.5 : 0.75;
-            element.style.transform = `translateY(${scrolled * speed}px)`;
-        });
+        this.init();
     }
     
-    function requestTick() {
-        if (!ticking) {
-            requestAnimationFrame(updateParallax);
-            ticking = true;
+    init() {
+        this.detectElements();
+        this.setupEventListeners();
+        this.optimizeForMobile();
+        
+        if (this.config.debug) {
         }
     }
     
-    function handleScroll() {
-        requestTick();
-        ticking = false;
+    detectElements() {
+        // Auto-detect all parallax elements
+        const selectors = Object.keys(this.config.speeds);
+        selectors.forEach(selector => {
+            const elements = document.querySelectorAll(`.${selector}`);
+            elements.forEach((element, index) => {
+                this.elements.set(`${selector}-${index}`, {
+                    element,
+                    speed: this.config.speeds[selector],
+                    originalTransform: element.style.transform,
+                    isVisible: this.isElementVisible(element)
+                });
+            });
+        });
     }
     
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('load', updateParallax);
+    setupEventListeners() {
+        // Throttled scroll handler
+        let ticking = false;
+        
+        const handleScroll = () => {
+            if (!ticking) {
+                this.animationId = requestAnimationFrame(() => {
+                    this.updateParallax();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        };
+        
+        // Optimized scroll listener
+        window.addEventListener('scroll', handleScroll, { 
+            passive: true,
+            capture: false 
+        });
+        
+        // Resize handler for responsive updates
+        window.addEventListener('resize', this.debounce(() => {
+            this.detectElements();
+        }, 250));
+        
+        // Visibility change handler (performance optimization)
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                this.pause();
+            } else {
+                this.resume();
+            }
+        });
+    }
+    
+    updateParallax() {
+        const scrollY = window.pageYOffset;
+        const scrollDirection = scrollY > this.lastScrollY ? 'down' : 'up';
+        this.scrollDirection = scrollDirection;
+        this.lastScrollY = scrollY;
+        
+        this.elements.forEach((data, key) => {
+            if (!data.isVisible && !this.isElementVisible(data.element)) {
+                return; // Skip hidden elements for performance
+            }
+            
+            const speed = this.getAdjustedSpeed(data.speed);
+            const translateY = scrollY * speed;
+            
+            // Apply transform with hardware acceleration
+            data.element.style.transform = `translate3d(0, ${translateY}px, 0)`;
+            data.element.style.willChange = 'transform';
+            
+            // Update visibility status
+            data.isVisible = this.isElementVisible(data.element);
+        });
+    }
+    
+    getAdjustedSpeed(baseSpeed) {
+        let speed = baseSpeed;
+        
+        // Mobile optimization
+        if (this.config.mobile.enabled && window.innerWidth <= this.config.breakpoints.mobile) {
+            speed *= this.config.mobile.speedMultiplier;
+        }
+        
+        // Reduced motion preference
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            speed *= 0.1;
+        }
+        
+        return speed;
+    }
+    
+    isElementVisible(element) {
+        const rect = element.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        return (
+            rect.top < windowHeight &&
+            rect.bottom > 0
+        );
+    }
+    
+    optimizeForMobile() {
+        if (this.config.mobile.enabled && window.innerWidth <= this.config.breakpoints.mobile) {
+            // Reduce parallax intensity on mobile
+            this.elements.forEach(data => {
+                data.speed *= this.config.mobile.speedMultiplier;
+            });
+        }
+    }
+    
+    // Public API methods
+    addElement(selector, speed = 0.5) {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach((element, index) => {
+            this.elements.set(`${selector}-${index}`, {
+                element,
+                speed,
+                originalTransform: element.style.transform,
+                isVisible: this.isElementVisible(element)
+            });
+        });
+    }
+    
+    removeElement(selector) {
+        this.elements.forEach((data, key) => {
+            if (key.startsWith(selector)) {
+                data.element.style.transform = data.originalTransform;
+                this.elements.delete(key);
+            }
+        });
+    }
+    
+    updateSpeed(selector, newSpeed) {
+        this.elements.forEach((data, key) => {
+            if (key.startsWith(selector)) {
+                data.speed = newSpeed;
+            }
+        });
+    }
+    
+    pause() {
+        if (this.animationId) {
+            cancelAnimationFrame(this.animationId);
+        }
+    }
+    
+    resume() {
+        this.updateParallax();
+    }
+    
+    destroy() {
+        this.pause();
+        window.removeEventListener('scroll', this.handleScroll);
+        window.removeEventListener('resize', this.handleResize);
+        this.elements.clear();
+    }
+    
+    // Utility functions
+    debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+}
+
+// Initialize Global Parallax Manager
+let globalParallaxManager;
+
+// Parallax Scrolling Effects (Legacy function for backward compatibility)
+function initializeParallaxEffects() {
+    // Initialize the global parallax manager
+    globalParallaxManager = new GlobalParallaxManager();
+    
+    // Make it globally accessible
+    window.ParallaxManager = globalParallaxManager;
+    
 }
 
 // Intersection Observer for Animations
@@ -220,7 +400,6 @@ window.addEventListener('error', function(e) {
 
 // Simple, clean smooth scrolling - NO CONFLICTS
 function initializeCleanSmoothScrolling() {
-    console.log('🎯 Clean Smooth Scrolling Initialized');
     
     // Add scroll progress bar
     addScrollProgressBar();
@@ -231,7 +410,6 @@ function initializeCleanSmoothScrolling() {
     // Add keyboard navigation
     addKeyboardNavigation();
     
-    console.log('✅ Clean smooth scrolling active - no conflicts');
 }
 
 // Add scroll progress bar
@@ -347,15 +525,10 @@ function scrollToPreviousSection() {
 
 // Open consult modal
 function openConsultModal() {
-    console.log('🔍 openConsultModal called');
     const modal = document.getElementById('consultModal');
-    console.log('🔍 Modal element:', modal);
     if (modal) {
         modal.classList.remove('hidden');
         document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        console.log('✅ Modal opened successfully');
-    } else {
-        console.log('❌ Modal not found - contact form not loaded');
     }
 }
 
