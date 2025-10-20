@@ -105,5 +105,5 @@ mantravi-website/
 
 ## 📄 License
 
-© 2024 Mantravi. All rights reserved.
+© 2025 Mantravi. All rights reserved.
 # mantravi-frontend
