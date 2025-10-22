@@ -594,10 +594,14 @@ async function handleConsultForm(event) {
                 lucide.createIcons();
             }
             
-            // Auto-close after 4 seconds
-            setTimeout(() => {
-                closeConsultModal();
-            }, 4000);
+            // Check if we're in a modal (consultModal exists) or on contact page
+            const modal = document.getElementById('consultModal');
+            if (modal) {
+                // Auto-close modal after 4 seconds
+                setTimeout(() => {
+                    closeConsultModal();
+                }, 4000);
+            }
         }
         
     } catch (error) {
@@ -615,10 +619,14 @@ async function handleConsultForm(event) {
                 lucide.createIcons();
             }
             
-            // Auto-close after 4 seconds
-            setTimeout(() => {
-                closeConsultModal();
-            }, 4000);
+            // Check if we're in a modal (consultModal exists) or on contact page
+            const modal = document.getElementById('consultModal');
+            if (modal) {
+                // Auto-close modal after 4 seconds
+                setTimeout(() => {
+                    closeConsultModal();
+                }, 4000);
+            }
         }
     } finally {
         // Reset button
@@ -635,10 +643,23 @@ function initializeConsultForm() {
     }
 }
 
+// Reset consultation form function
+function resetConsultForm() {
+    const form = document.getElementById('consultForm');
+    const successMessage = document.getElementById('successMessage');
+    
+    if (form && successMessage) {
+        form.classList.remove('hidden');
+        successMessage.classList.add('hidden');
+        form.reset();
+    }
+}
+
 // Make functions globally available
 window.smoothScrollToElement = smoothScrollToElement;
 window.openConsultModal = openConsultModal;
 window.closeConsultModal = closeConsultModal;
+window.resetConsultForm = resetConsultForm;
 
 // Export functions for use in other modules
 window.MantraviApp = {
