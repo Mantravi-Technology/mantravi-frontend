@@ -1,7 +1,7 @@
 # Reusable API Service Guide
 
 ## 🎯 Overview
-The `ApiService` class provides a clean, reusable way to integrate with APIs across your website. It's designed to be easily extensible for new features without breaking existing functionality.
+The `ApiService` class provides a clean, reusable way to integrate with APIs across wesbite. It's designed to be easily extensible for new features without breaking existing functionality.
 
 ## 📁 File Location
 - **API Service**: `assets/js/api-service.js`
@@ -127,29 +127,4 @@ constructor() {
         'X-Custom-Header': 'value'
     };
 }
-```
 
-## ✅ Benefits
-
-1. **Reusable**: Same service for all API calls
-2. **Consistent**: Same error handling and response format
-3. **Extensible**: Easy to add new endpoints
-4. **Maintainable**: Centralized API logic
-5. **No Breaking Changes**: Existing functionality remains intact
-
-## 🧪 Testing
-
-The current consultation form is already working with this service. To test:
-
-1. Open any page with the consultation form
-2. Fill out the form
-3. Submit and check Network tab for API call to `http://localhost:8082/api/consultation`
-4. Check console for success/error logs
-
-## 📝 Notes
-
-- All existing functionality remains unchanged
-- The consultation form continues to work exactly as before
-- New API integrations can be added without touching existing code
-- Error handling is consistent across all API calls
-- The service is globally available as `window.ApiService`
