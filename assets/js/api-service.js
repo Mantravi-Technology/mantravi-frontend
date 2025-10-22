@@ -26,10 +26,18 @@ class ApiService {
             });
 
             if (!response.ok) {
+                const errorText = await response.text();
                 throw new Error(`HTTP ${response.status}: ${response.statusText}`);
             }
 
-            return await response.json();
+            // Try to parse as JSON, but if it fails, return raw text
+            const contentType = response.headers.get('content-type');
+            if (contentType && contentType.includes('application/json')) {
+                return await response.json();
+            } else {
+                const textResponse = await response.text();
+                return { success: true, message: textResponse };
+            }
         } catch (error) {
             console.error(`API POST ${endpoint} failed:`, error);
             throw error;
@@ -55,6 +63,39 @@ class ApiService {
             return await response.json();
         } catch (error) {
             console.error(`API GET ${endpoint} failed:`, error);
+            throw error;
+        }
+    }
+
+    /**
+     * POST request with FormData for file uploads
+     * @param {string} endpoint - API endpoint
+     * @param {FormData} formData - FormData object
+     * @returns {Promise<Object>} API response
+     */
+    async postFormData(endpoint, formData) {
+        try {
+            const response = await fetch(`${this.baseURL}${endpoint}`, {
+                method: 'POST',
+                body: formData
+                // Don't set Content-Type header - let browser set it with boundary
+            });
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
+
+            // Try to parse as JSON, but if it fails, return raw text
+            const contentType = response.headers.get('content-type');
+            if (contentType && contentType.includes('application/json')) {
+                return await response.json();
+            } else {
+                const textResponse = await response.text();
+                return { success: true, message: textResponse };
+            }
+        } catch (error) {
+            console.error(`API POST FormData ${endpoint} failed:`, error);
             throw error;
         }
     }
@@ -109,6 +150,29 @@ class ApiService {
      */
     async getUserData(userId) {
         return await this.get(`/api/users/${userId}`);
+    }
+
+    /**
+     * Submit job application form data
+     * @param {Object} formData - Application form data
+     * @returns {Promise<Object>} API response
+     */
+    async submitJobApplication(formData) {
+        // Create FormData for file upload
+        const formDataToSend = new FormData();
+        formDataToSend.append('name', formData.name || '');
+        formDataToSend.append('email', formData.email || '');
+        formDataToSend.append('phone', formData.phone || '');
+        formDataToSend.append('skills', formData.skills || '');
+        formDataToSend.append('description', formData.message || '');
+        
+        // Handle resume file if present
+        if (formData.resume && formData.resume instanceof File) {
+            formDataToSend.append('resume', formData.resume);
+        }
+        
+        // Use FormData instead of JSON for file upload
+        return await this.postFormData('/api/work-with-us', formDataToSend);
     }
 
     /**
