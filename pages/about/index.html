@@ -3,78 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Mantravi | Meet Our Expert Team</title>
+    <title>About Us - Mantravi | Drive Digital Transformation</title>
     <meta name="description" content="Learn about Mantravi's mission to drive digital transformation. Meet our expert team of developers, designers, and technology consultants.">
     
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Font Awesome for social icons -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mantra-blue': '#4EE4FF', 
+                        'dark-bg': '#050a30',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../../assets/icons/favicon.ico">
     
-    <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     
-    <!-- Inter Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Main CSS -->
     <link rel="stylesheet" href="../../assets/css/main.css">
     
-    <!-- Global Parallax Configuration - Load First -->
     <script src="../../config/parallax-config.js"></script>
     
-    <!-- Common Styles Component -->
     <div id="styles-container"></div>
 </head>
-<body class="bg-[#050a30] text-white smooth-scroll premium-scroll">
-    <!-- Header -->
+<body class="bg-dark-bg text-white smooth-scroll premium-scroll font-sans">
     <header id="header-container"></header>
     <script src="../../assets/js/component-loader.js"></script>
 
-    <!-- Page Header Component -->
     <div id="page-header-container"></div>
 
-    <!-- Mission & Vision -->
     <section class="section-padding relative overflow-hidden">
-        <!-- Parallax background -->
-        <div class="absolute inset-0 bg-gradient-to-br from-[#4EE4FF]/5 to-transparent parallax-bg"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-mantra-blue/10 to-transparent opacity-50 parallax-bg"></div>
         
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="grid-2">
-                <div>
-                    <h2 class="heading-2 mb-6">Our Mission</h2>
-                    <p class="text-large mb-6">
-                        To empower businesses with cutting-edge technology solutions that drive innovation and growth. We believe in the transformative power of AI and digital technologies to create meaningful impact.
-                    </p>
-                    <h2 class="heading-2 mb-6">Our Vision</h2>
-                    <p class="text-large">
-                        To be the leading partner in digital transformation, helping organizations thrive in the AI-driven future while maintaining the highest standards of excellence and innovation.
-                    </p>
+        <div class="container mx-auto px-4 sm:px-6 relative z-10">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="space-y-10">
+                    <div class="border-l-4 border-mantra-blue pl-6">
+                        <h2 class="heading-2 mb-4 text-3xl font-bold">Our Mission</h2>
+                        <p class="text-lg text-gray-200">
+                            To **empower businesses** with cutting-edge technology solutions that drive innovation and growth. We believe in the transformative power of AI and digital technologies to create a meaningful, future-proof impact.
+                        </p>
+                    </div>
+
+                    <div class="border-l-4 border-mantra-blue pl-6">
+                        <h2 class="heading-2 mb-4 text-3xl font-bold">Our Vision</h2>
+                        <p class="text-lg text-gray-200">
+                            To be the leading and most trusted partner in **digital transformation**, helping organizations thrive in the AI-driven future while maintaining the highest standards of excellence and sustainable innovation.
+                        </p>
+                    </div>
                 </div>
-                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 border border-white/10 parallax-cards">
-                    <h3 class="heading-3 mb-4">Our Values</h3>
+                
+                <div class="bg-black/60 backdrop-blur-md rounded-2xl p-8 border border-white/10 shadow-2xl transition duration-500 hover:border-mantra-blue/50 parallax-cards">
+                    <h3 class="heading-3 mb-6 text-2xl font-semibold text-mantra-blue">Core Values</h3>
                     <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <i data-lucide="check-circle" class="w-5 h-5 text-[#4EE4FF] mr-3 mt-1"></i>
-                            <span>Innovation-driven approach to problem solving</span>
+                        <li class="flex items-start p-2 rounded-lg transition duration-300 hover:bg-white/5">
+                            <i data-lucide="sparkles" class="w-5 h-5 text-mantra-blue mr-3 mt-1 flex-shrink-0"></i>
+                            <span class="text-base text-gray-100">**Innovation-Driven:** An approach to problem-solving that is constantly looking forward.</span>
                         </li>
-                        <li class="flex items-start">
-                            <i data-lucide="check-circle" class="w-5 h-5 text-[#4EE4FF] mr-3 mt-1"></i>
-                            <span>Client success is our primary focus</span>
+                        <li class="flex items-start p-2 rounded-lg transition duration-300 hover:bg-white/5">
+                            <i data-lucide="handshake" class="w-5 h-5 text-mantra-blue mr-3 mt-1 flex-shrink-0"></i>
+                            <span class="text-base text-gray-100">**Client Success First:** Your growth is the primary focus of all our strategies.</span>
                         </li>
-                        <li class="flex items-start">
-                            <i data-lucide="check-circle" class="w-5 h-5 text-[#4EE4FF] mr-3 mt-1"></i>
-                            <span>Continuous learning and adaptation</span>
+                        <li class="flex items-start p-2 rounded-lg transition duration-300 hover:bg-white/5">
+                            <i data-lucide="book-open" class="w-5 h-5 text-mantra-blue mr-3 mt-1 flex-shrink-0"></i>
+                            <span class="text-base text-gray-100">**Continuous Learning:** A culture of rapid adaptation to new technologies and methodologies.</span>
                         </li>
-                        <li class="flex items-start">
-                            <i data-lucide="check-circle" class="w-5 h-5 text-[#4EE4FF] mr-3 mt-1"></i>
-                            <span>Transparency in all our processes</span>
+                        <li class="flex items-start p-2 rounded-lg transition duration-300 hover:bg-white/5">
+                            <i data-lucide="eye" class="w-5 h-5 text-mantra-blue mr-3 mt-1 flex-shrink-0"></i>
+                            <span class="text-base text-gray-100">**Transparency:** Open communication and clear processes in every partnership.</span>
                         </li>
                     </ul>
                 </div>
@@ -82,123 +92,150 @@
         </div>
     </section>
 
-    <!--Our Approach -->
-    <section class="section-padding bg-black/30">
-        <div class="container mx-auto px-6">
-            <h2 class="heading-2 text-center mb-16">Our Approach & Methodology</h2>
-            <div class="grid-3">
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-[#4EE4FF]/20 rounded-full mx-auto mb-6 flex items-center justify-center">
-                        <i data-lucide="search" class="w-10 h-10 text-[#4EE4FF]"></i>
+    
+
+    <section class="section-padding bg-black/40">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="heading-2 text-center mb-16 text-4xl font-extrabold text-mantra-blue">Our Agile Methodology</h2>
+            
+            <div class="grid md:grid-cols-3 gap-10 relative">
+                <div class="text-center group p-6 rounded-xl border border-transparent hover:border-mantra-blue/30 transition duration-300">
+                    <div class="w-20 h-20 bg-mantra-blue/20 rounded-full mx-auto mb-6 flex items-center justify-center transition duration-300 group-hover:bg-mantra-blue/30">
+                        <i data-lucide="compass" class="w-10 h-10 text-mantra-blue"></i>
                     </div>
-                    <h3 class="heading-3 mb-4">Discovery & Analysis</h3>
+                    <h3 class="heading-3 mb-4 text-xl font-semibold">1. Discovery & Strategy</h3>
                     <p class="text-gray-400">
-                        We begin by deeply understanding your business challenges, goals, and technical requirements to craft the perfect solution strategy.
+                        We deeply understand your business challenges, goals, and technical landscape to craft the perfect, data-backed solution strategy.
                     </p>
                 </div>
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-[#4EE4FF]/20 rounded-full mx-auto mb-6 flex items-center justify-center">
-                        <i data-lucide="layout" class="w-10 h-10 text-[#4EE4FF]"></i>
+                
+                <div class="text-center group p-6 rounded-xl border border-transparent hover:border-mantra-blue/30 transition duration-300">
+                    <div class="w-20 h-20 bg-mantra-blue/20 rounded-full mx-auto mb-6 flex items-center justify-center transition duration-300 group-hover:bg-mantra-blue/30">
+                        <i data-lucide="zap" class="w-10 h-10 text-mantra-blue"></i>
                     </div>
-                    <h3 class="heading-3 mb-4">Design & Development</h3>
+                    <h3 class="heading-3 mb-4 text-xl font-semibold">2. Iterative Development</h3>
                     <p class="text-gray-400">
-                        Our agile development process ensures iterative progress with regular feedback loops, keeping you involved at every stage.
+                        Our agile development process ensures swift, iterative progress with regular feedback loops, keeping you fully involved at every stage.
                     </p>
                 </div>
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-[#4EE4FF]/20 rounded-full mx-auto mb-6 flex items-center justify-center">
-                        <i data-lucide="rocket" class="w-10 h-10 text-[#4EE4FF]"></i>
+                
+                <div class="text-center group p-6 rounded-xl border border-transparent hover:border-mantra-blue/30 transition duration-300">
+                    <div class="w-20 h-20 bg-mantra-blue/20 rounded-full mx-auto mb-6 flex items-center justify-center transition duration-300 group-hover:bg-mantra-blue/30">
+                        <i data-lucide="rocket" class="w-10 h-10 text-mantra-blue"></i>
                     </div>
-                    <h3 class="heading-3 mb-4">Deployment & Support</h3>
+                    <h3 class="heading-3 mb-4 text-xl font-semibold">3. Launch & Optimisation</h3>
                     <p class="text-gray-400">
-                        We ensure smooth deployment and provide ongoing support to guarantee optimal performance and continuous improvement.
+                        We ensure flawless deployment and provide robust, ongoing support to guarantee optimal performance and continuous improvement post-launch.
                     </p>
                 </div>
             </div>
             
-            <div class="mt-16 bg-black/50 backdrop-blur-sm rounded-xl p-8 border border-white/10">
-                <h3 class="heading-3 mb-6 text-center">Our Development Process</h3>
-                <div class="grid-4">
-                    <div class="process-step">
-                        <h4 class="text-lg font-semibold mb-2">Requirement Analysis</h4>
-                        <p class="text-gray-400 text-sm">Deep dive into business needs and technical specifications</p>
+            <div class="mt-20 bg-black/70 backdrop-blur-lg rounded-2xl p-8 lg:p-12 border border-white/10 shadow-2xl">
+                <h3 class="heading-3 mb-10 text-center text-2xl font-semibold text-mantra-blue">Our Project Lifecycle</h3>
+                <div class="grid md:grid-cols-4 gap-8">
+                    
+                    <div class="process-step text-center relative pt-8 md:pt-0 border-t-2 md:border-t-0 md:border-l-2 border-mantra-blue/20">
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 md:top-1/2 md:left-0 md:-translate-y-1/2 md:-translate-x-1/2 w-4 h-4 rounded-full bg-mantra-blue border-4 border-dark-bg"></div>
+                        <h4 class="text-lg font-bold mb-2 text-gray-50">1. Requirement Analysis</h4>
+                        <p class="text-gray-400 text-sm">Deep dive into business needs and precise technical specifications.</p>
                     </div>
-                    <div class="process-step">
-                        <h4 class="text-lg font-semibold mb-2">Solution Design</h4>
-                        <p class="text-gray-400 text-sm">Architecting scalable and efficient technical solutions</p>
+                    
+                    <div class="process-step text-center relative pt-8 md:pt-0 border-t-2 md:border-t-0 md:border-l-2 border-mantra-blue/20">
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 md:top-1/2 md:left-0 md:-translate-y-1/2 md:-translate-x-1/2 w-4 h-4 rounded-full bg-mantra-blue border-4 border-dark-bg"></div>
+                        <h4 class="text-lg font-bold mb-2 text-gray-50">2. Solution Architecture</h4>
+                        <p class="text-gray-400 text-sm">Architecting scalable, secure, and highly efficient technical solutions.</p>
                     </div>
-                    <div class="process-step">
-                        <h4 class="text-lg font-semibold mb-2">Agile Development</h4>
-                        <p class="text-gray-400 text-sm">Iterative development with regular client feedback</p>
+                    
+                    <div class="process-step text-center relative pt-8 md:pt-0 border-t-2 md:border-t-0 md:border-l-2 border-mantra-blue/20">
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 md:top-1/2 md:left-0 md:-translate-y-1/2 md:-translate-x-1/2 w-4 h-4 rounded-full bg-mantra-blue border-4 border-dark-bg"></div>
+                        <h4 class="text-lg font-bold mb-2 text-gray-50">3. Rapid Development</h4>
+                        <p class="text-gray-400 text-sm">Iterative sprints with testing integrated into the development cycle.</p>
                     </div>
-                    <div class="process-step">
-                        <h4 class="text-lg font-semibold mb-2">Quality Assurance</h4>
-                        <p class="text-gray-400 text-sm">Rigorous testing to ensure flawless performance</p>
+                    
+                    <div class="process-step text-center relative pt-8 md:pt-0 border-t-2 md:border-t-0 md:border-l-2 border-mantra-blue/20 md:border-l-transparent">
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 md:top-1/2 md:left-0 md:-translate-y-1/2 md:-translate-x-1/2 w-4 h-4 rounded-full bg-mantra-blue border-4 border-dark-bg"></div>
+                        <h4 class="text-lg font-bold mb-2 text-gray-50">4. QA & Go-Live</h4>
+                        <p class="text-gray-400 text-sm">Rigorous testing, deployment, and post-launch performance monitoring.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Technology Expertise -->
+    
+
     <section class="section-padding bg-black/30">
-        <div class="container mx-auto px-6">
-            <h2 class="heading-2 text-center mb-16">Our Technology Expertise</h2>
-            <div class="grid-4">
-                <div class="tech-card text-center">
-                    <div class="tech-icon mx-auto">
-                        <i data-lucide="cloud" class="w-8 h-8 text-[#4EE4FF]"></i>
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="heading-2 text-center mb-16 text-4xl font-extrabold text-mantra-blue">Our Strategic Pillars of Expertise</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <div class="tech-card text-center p-6 rounded-xl bg-black/50 border border-white/10 transition-all duration-300 shadow-lg hover:border-mantra-blue hover:shadow-mantra-blue/20">
+                    <div class="tech-icon w-14 h-14 bg-mantra-blue/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <i data-lucide="code-square" class="w-7 h-7 text-mantra-blue"></i>
                     </div>
-                    <h3 class="text-lg font-semibold mb-2">Cloud & DevOps</h3>
-                    <p class="text-gray-400 text-sm">AWS, Azure, GCP, Docker, Kubernetes, CI/CD pipelines</p>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-50">Digital Product Development</h3>
+                    <p class="text-gray-400 text-sm">
+                        **Web & App Development** (React, Next.js, Node.js, Flutter) to build modern, scalable digital products and bespoke platforms.
+                    </p>
                 </div>
-                <div class="tech-card text-center">
-                    <div class="tech-icon mx-auto">
-                        <i data-lucide="brain" class="w-8 h-8 text-[#4EE4FF]"></i>
+                
+                <div class="tech-card text-center p-6 rounded-xl bg-black/50 border border-white/10 transition-all duration-300 shadow-lg hover:border-mantra-blue hover:shadow-mantra-blue/20">
+                    <div class="tech-icon w-14 h-14 bg-mantra-blue/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <i data-lucide="cloud" class="w-7 h-7 text-mantra-blue"></i>
                     </div>
-                    <h3 class="text-lg font-semibold mb-2">AI & Machine Learning</h3>
-                    <p class="text-gray-400 text-sm">TensorFlow, PyTorch, NLP, Computer Vision, Predictive Analytics</p>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-50">Cloud & DevOps Automation</h3>
+                    <p class="text-gray-400 text-sm">
+                        **DevOps** (AWS, Kubernetes, CI/CD) for infrastructure automation, scalability, and 24/7 Application Support & Monitoring.
+                    </p>
                 </div>
-                <div class="tech-card text-center">
-                    <div class="tech-icon mx-auto">
-                        <i data-lucide="smartphone" class="w-8 h-8 text-[#4EE4FF]"></i>
+                
+                <div class="tech-card text-center p-6 rounded-xl bg-black/50 border border-white/10 transition-all duration-300 shadow-lg hover:border-mantra-blue hover:shadow-mantra-blue/20">
+                    <div class="tech-icon w-14 h-14 bg-mantra-blue/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <i data-lucide="database" class="w-7 h-7 text-mantra-blue"></i>
                     </div>
-                    <h3 class="text-lg font-semibold mb-2">Mobile Development</h3>
-                    <p class="text-gray-400 text-sm">iOS, Android, React Native, Flutter, Progressive Web Apps</p>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-50">Data & AI Intelligence</h3>
+                    <p class="text-gray-400 text-sm">
+                        **Data Engineering** for robust pipelines, ETL, Big Data architecture, Data Warehousing, and custom AI/ML model integration.
+                    </p>
                 </div>
-                <div class="tech-card text-center">
-                    <div class="tech-icon mx-auto">
-                        <i data-lucide="database" class="w-8 h-8 text-[#4EE4FF]"></i>
+                
+                <div class="tech-card text-center p-6 rounded-xl bg-black/50 border border-white/10 transition-all duration-300 shadow-lg hover:border-mantra-blue hover:shadow-mantra-blue/20">
+                    <div class="tech-icon w-14 h-14 bg-mantra-blue/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <i data-lucide="trending-up" class="w-7 h-7 text-mantra-blue"></i>
                     </div>
-                    <h3 class="text-lg font-semibold mb-2">Data Engineering</h3>
-                    <p class="text-gray-400 text-sm">Big Data, Data Warehousing, ETL, Business Intelligence</p>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-50">Digital Growth Strategy</h3>
+                    <p class="text-gray-400 text-sm">
+                        **Performance Marketing**, SEO, and data-driven content strategy to drive audience engagement and maximize digital reach.
+                    </p>
                 </div>
+                
             </div>
             
-            <div class="mt-12 text-center">
-                <p class="text-large mb-8 max-w-3xl mx-auto">
-                    We stay at the forefront of technology trends, continuously expanding our expertise to deliver cutting-edge solutions that drive business growth and innovation.
+            <div class="mt-16 text-center">
+                <p class="text-xl text-gray-200 mb-8 max-w-4xl mx-auto">
+                    We simplify complexity by grouping our expertise into these four strategic pillars, ensuring full coverage from product development and infrastructure to market growth and long-term support.
                 </p>
-                <button class="btn-secondary">View Our Full Technology Stack</button>
+                <button class="px-8 py-3 text-lg font-semibold bg-mantra-blue text-dark-bg rounded-full hover:bg-white/90 transition-colors duration-300 shadow-xl shadow-mantra-blue/40">
+                    Explore Our Capabilities
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- Stats Section Component -->
+    
+
     <div id="stats-container"></div>
 
-    <!-- CTA Section Component -->
     <div id="cta-container"></div>
 
-    <!-- Footer -->
     <footer id="footer-container"></footer>
 
-    <!-- Scripts -->
     <script>
-        // Initialize Lucide Icons
+      
         lucide.createIcons();
         
-        // Mobile Menu Toggle
+   
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         
@@ -209,13 +246,10 @@
         }
     </script>
 
-    <!-- Contact Form Container -->
     <div id="contact-form-container"></div>
 
-    <!-- API Service -->
     <script src="../../assets/js/api-service.js"></script>
     
-    <!-- Main JavaScript -->
     <script src="../../assets/js/main.js"></script>
 </body>
 </html>

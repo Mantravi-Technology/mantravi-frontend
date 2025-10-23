@@ -3,169 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Mantravi | Get In Touch</title>
+    <title>Contact Us - Mantravi | Get In Touch For Consultation</title>
     <meta name="description" content="Get in touch with Mantravi for your digital transformation needs. Contact our expert team for consultations and project inquiries.">
     
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Favicon -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mantra-blue': '#4EE4FF', 
+                        'dark-bg': '#050a30',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
     <link rel="icon" type="image/x-icon" href="../../assets/icons/favicon.ico">
     
-    <!-- Stylesheets -->
     <link rel="stylesheet" href="../../assets/css/main.css">
     
-    <!-- Font Awesome for social icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     
-    <!-- Inter Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Global Parallax Configuration - Load First -->
     <script src="../../config/parallax-config.js"></script>
     
-    <!-- Common Styles Component -->
     <div id="styles-container"></div>
+
+    <style>
+        .form-input {
+            @apply w-full p-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-500 transition-all duration-200 focus:border-mantra-blue focus:ring-1 focus:ring-mantra-blue;
+        }
+    </style>
+
 </head>
-<body class="bg-[#050a30] text-white smooth-scroll premium-scroll">
-    <!-- Header -->
+<body class="bg-dark-bg text-white smooth-scroll premium-scroll font-sans">
     <header id="header-container"></header>
     <script src="../../assets/js/component-loader.js"></script>
     
-    <!-- Page Header Component -->
     <div id="page-header-container"></div>
 
-    <!-- Contact Form & Info -->
     <section class="section-padding relative overflow-hidden">
-        <!-- Parallax background -->
-        <div class="absolute inset-0 bg-gradient-to-br from-[#4EE4FF]/5 to-transparent parallax-bg"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-mantra-blue/5 to-transparent parallax-bg"></div>
         
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="grid-2">
-                <!-- Consultation Form -->
-                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 border border-white/10 parallax-cards">
-                    <h2 class="heading-2 mb-6">Start Your Digital Journey</h2>
-                    <p class="text-gray-300 mb-6 text-sm">Ready to transform your business with cutting-edge technology? Share your vision with us and let's build something extraordinary together.</p>
+        <div class="container mx-auto px-4 sm:px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20">
+                
+                <div class="bg-black/60 backdrop-blur-lg rounded-2xl p-8 lg:p-10 border border-white/10 shadow-2xl parallax-cards">
+                    <h2 class="heading-2 mb-4 text-3xl font-bold text-mantra-blue">Start Your Digital Journey</h2>
+                    <p class="text-gray-300 mb-8 text-base">Ready to transform your business with cutting-edge technology? Share your vision with us and let's build something extraordinary together.</p>
                     
                     <form id="consultForm" class="space-y-6">
-                        <div class="grid-2">
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
                             <div>
-                                <label for="name" class="block text-sm font-medium mb-2">Full Name *</label>
-                                <input type="text" id="name" name="name" class="form-input" required>
+                                <label for="name" class="block text-sm font-medium mb-2">Full Name <span class="text-red-500">*</span></label>
+                                <input type="text" id="name" name="name" class="form-input" placeholder="Your Name" required>
                             </div>
                             <div>
-                                <label for="email" class="block text-sm font-medium mb-2">Email Address *</label>
-                                <input type="email" id="email" name="email" class="form-input" required>
+                                <label for="email" class="block text-sm font-medium mb-2">Email Address <span class="text-red-500">*</span></label>
+                                <input type="email" id="email" name="email" class="form-input" placeholder="you@company.com" required>
                             </div>
                         </div>
-                        <div>
-                            <label for="phone" class="block text-sm font-medium mb-2">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" class="form-input">
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="phone" class="block text-sm font-medium mb-2">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="form-input" placeholder="+91 98512-34567">
+                            </div>
+                            <div>
+                                <label for="company" class="block text-sm font-medium mb-2">Company Name</label>
+                                <input type="text" id="company" name="company" class="form-input" placeholder="Your Organization">
+                            </div>
                         </div>
+                        
                         <div>
-                            <label for="company" class="block text-sm font-medium mb-2">Company Name</label>
-                            <input type="text" id="company" name="company" class="form-input">
-                        </div>
-                        <div>
-                            <label for="service" class="block text-sm font-medium mb-2">Service Interested In *</label>
-                            <select id="service" name="service" class="form-input" required>
-                                <option value="">Select a service</option>
+                            <label for="service" class="block text-sm font-medium mb-2">Service Interested In <span class="text-red-500">*</span></label>
+                            <select id="service" name="service" class="form-input appearance-none" required>
+                                <option value="">Select a strategic service area</option>
                                 <option value="web-development">Web & App Development</option>
-                                <option value="digital-marketing">Digital Marketing & Branding</option>
-                                <option value="qa-services">QA & Maintenance Services</option>
-                                <option value="ai-transformation">AI-Driven Digital Transformation</option>
+                                <option value="digital-marketing">Digital Growth Strategy</option>
+                                <option value="qa-services">Cloud & DevOps Automation</option>
+                                <option value="ai-transformation">Data & AI Intelligence</option>
                                 <option value="consulting">IT Consulting</option>
-                                <option value="other">Other</option>
+                                <option value="other">Other Inquiry</option>
                             </select>
                         </div>
+                        
                         <div>
-                            <label for="message" class="block text-sm font-medium mb-2">Project Details *</label>
-                            <textarea id="message" name="message" rows="4" class="form-input" placeholder="Describe your project requirements, timeline, and any specific needs..." required></textarea>
+                            <label for="message" class="block text-sm font-medium mb-2">Project Details <span class="text-red-500">*</span></label>
+                            <textarea id="message" name="message" rows="4" class="form-input" placeholder="Describe your project requirements, budget range, and ideal timeline..." required></textarea>
                         </div>
-                        <button type="submit" class="btn-primary w-full">Send Request</button>
+                        
+                        <button type="submit" class="w-full px-8 py-3 text-lg font-semibold bg-mantra-blue text-dark-bg rounded-lg hover:bg-white/90 transition-colors duration-300 shadow-lg shadow-mantra-blue/40">
+                            Get a Free Consultation
+                        </button>
                     </form>
                     
-                    <!-- Success Message (hidden by default) -->
-                    <div id="successMessage" class="hidden mt-6 p-6 bg-green-500/10 border border-green-500/20 rounded-lg text-center">
+                    <div id="successMessage" class="hidden mt-6 p-8 bg-green-500/10 border border-green-500/30 rounded-lg text-center shadow-lg">
                         <div class="mb-4">
-                            <i data-lucide="check-circle" class="w-16 h-16 text-green-500 mx-auto"></i>
+                            <i data-lucide="check-circle" class="w-12 h-12 text-green-400 mx-auto"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Message Delivered!</h3>
-                        <p class="text-gray-300 mb-6">Thank you for reaching out to us. Our team of experts is eager to assist you and will respond within the next 24 hours.</p>
-                        <button onclick="resetConsultForm()" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                        <h3 class="text-2xl font-bold text-white mb-2">Message Delivered!</h3>
+                        <p class="text-gray-300 mb-6">Thank you for reaching out. Our expert team will review your requirements and respond within the next **24 business hours**.</p>
+                        <button onclick="resetConsultForm()" class="px-6 py-2 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-colors duration-300">
                             Send Another Message
                         </button>
                     </div>
                 </div>
                 
-                <!-- Contact Information -->
-                <div class="space-y-8">
+                <div class="space-y-12">
+                    
                     <div>
-                        <h2 class="heading-2 mb-6">Still Have you Any Question?</h2>
+                        <h2 class="heading-2 mb-6 text-2xl font-bold">Contact Our Experts Directly</h2>
                         <div class="space-y-6">
-                            <div class="flex items-start">
-                                <i data-lucide="mail" class="w-6 h-6 text-[#4EE4FF] mr-4 mt-1"></i>
+                            
+                            <a href="mailto:info@mantravi.com" class="flex items-start p-4 rounded-lg hover:bg-black/50 transition-colors duration-300 border border-transparent hover:border-mantra-blue/20 group">
+                                <i data-lucide="mail" class="w-6 h-6 text-mantra-blue mr-4 mt-1 flex-shrink-0 group-hover:animate-pulse"></i>
                                 <div>
-                                    <h3 class="font-semibold mb-1">Email Us</h3>
+                                    <h3 class="font-semibold mb-1 text-lg">Send an Email</h3>
                                     <p class="text-gray-400">info@mantravi.com</p>
                                 </div>
-                            </div>
-                            <div class="flex items-start">
-                                <i data-lucide="phone" class="w-6 h-6 text-[#4EE4FF] mr-4 mt-1"></i>
+                            </a>
+                            
+                            <a href="tel:+918766664567" class="flex items-start p-4 rounded-lg hover:bg-black/50 transition-colors duration-300 border border-transparent hover:border-mantra-blue/20 group">
+                                <i data-lucide="phone" class="w-6 h-6 text-mantra-blue mr-4 mt-1 flex-shrink-0 group-hover:animate-pulse"></i>
                                 <div>
-                                    <h3 class="font-semibold mb-1">Call Us</h3>
+                                    <h3 class="font-semibold mb-1 text-lg">Call Us</h3>
                                     <p class="text-gray-400">+91 8766664567</p>
                                 </div>
-                            </div>
-                            <div class="flex items-start">
-                                <i data-lucide="map-pin" class="w-6 h-6 text-[#4EE4FF] mr-4 mt-1"></i>
+                            </a>
+                            
+                            <div class="flex items-start p-4 rounded-lg border border-transparent">
+                                <i data-lucide="map-pin" class="w-6 h-6 text-mantra-blue mr-4 mt-1 flex-shrink-0"></i>
                                 <div>
-                                    <h3 class="font-semibold mb-1">Locate Us</h3>
-                                    <p class="text-gray-400">Crossing Republik<br>UTTAR PRADESH  201016</p>
+                                    <h3 class="font-semibold mb-1 text-lg">Headquarters</h3>
+                                    <p class="text-gray-400">
+                                        Noida, UTTAR PRADESH 201016, India
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="bg-black/50 backdrop-blur-sm rounded-xl p-6 border border-white/10">
-                        <h3 class="heading-3 mb-4">Business Hours</h3>
-                        <div class="space-y-2 text-sm">
-                            <div class="flex justify-between">
-                                <span>Monday - Friday</span>
-                                <span class="text-gray-400">9:00 AM - 6:00 PM</span>
+                    <div class="bg-black/50 backdrop-blur-lg rounded-2xl p-8 border border-white/10">
+                        <h3 class="heading-3 mb-6 text-xl font-bold text-mantra-blue">Business & Support Hours</h3>
+                        <div class="space-y-3 text-base">
+                            <div class="flex justify-between border-b border-white/10 pb-2">
+                                <span class="font-medium">Monday - Friday</span>
+                                <span class="text-gray-300">9:00 AM - 6:00 PM (IST)</span>
+                            </div>
+                            <div class="flex justify-between border-b border-white/10 pb-2">
+                                <span class="font-medium">Saturday</span>
+                                <span class="text-gray-300">10:00 AM - 4:00 PM (Remote Support)</span>
                             </div>
                             <div class="flex justify-between">
-                                <span>Saturday</span>
-                                <span class="text-gray-400">10:00 AM - 4:00 PM</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span>Sunday</span>
-                                <span class="text-gray-400">Closed</span>
+                                <span class="font-medium">Sunday</span>
+                                <span class="text-red-400">Closed</span>
                             </div>
                         </div>
                     </div>
+
+                    <div class="w-full h-80 rounded-2xl overflow-hidden border border-white/10 shadow-xl">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d112071.7944296763!2d77.3060599!3d28.6186082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5e024249a5%3A0x6a1651e7399580b!2sNoida%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1678229415894!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Mantravi Office Location on Map"
+                        ></iframe>
+                    </div>
+
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section Component -->
     <div id="cta-container"></div>
 
-    <!-- Footer -->
     <footer id="footer-container"></footer>
     
-    <!-- Scripts -->
     <script>
-        // Initialize Lucide Icons
+    
         lucide.createIcons();
         
-        // Mobile Menu Toggle
+      
+        const consultForm = document.getElementById('consultForm');
+        const successMessage = document.getElementById('successMessage');
+
+      
+        window.resetConsultForm = () => {
+            consultForm.reset();
+            consultForm.classList.remove('hidden');
+            successMessage.classList.add('hidden');
+        };
+
+        consultForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+          
+            consultForm.classList.add('hidden');
+            successMessage.classList.remove('hidden');
+
+          
+            console.log('Form Submitted!'); 
+        });
+
+      
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         
@@ -176,13 +232,10 @@
         }
     </script>
 
-    <!-- Contact Form Container -->
     <div id="contact-form-container"></div>
 
-    <!-- API Service -->
     <script src="../../assets/js/api-service.js"></script>
     
-    <!-- Main JavaScript -->
     <script src="../../assets/js/main.js"></script>
 </body>
 </html>
