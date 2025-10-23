@@ -1172,7 +1172,6 @@ body {
     contain: layout style paint;
 }
 
-
 .advantage-card * {
     backface-visibility: hidden;
     perspective: 1000px;
