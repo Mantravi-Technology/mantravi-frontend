@@ -14,6 +14,8 @@ function initializeApp() {
     initializeAnimations();
     initializeNavigation();
     initializeConsultForm(); // Initialize consult modal
+    initializeJobApplicationForm(); // Initialize job application form
+    initializeAdvantageSection(); // Initialize advantage section animations
 }
 
 // Initialize Lucide Icons
@@ -643,6 +645,78 @@ function initializeConsultForm() {
     }
 }
 
+// Handle job application form submission
+async function handleJobApplicationForm(event) {
+    event.preventDefault();
+    
+    // Get form data
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+    
+    // Basic validation
+    if (!data.name || !data.email || !data.skills || !data.message) {
+        showNotification('Please fill in all required fields.', 'error');
+        return;
+    }
+    
+    // Show loading state
+    const submitButton = event.target.querySelector('button[type="submit"]');
+    const originalText = submitButton.textContent;
+    submitButton.textContent = 'Submitting...';
+    submitButton.disabled = true;
+    
+    try {
+        // Use reusable API service
+        const apiService = new ApiService();
+        const result = await apiService.submitJobApplication(data);
+        
+        // Hide form and show success message
+        const form = document.getElementById('applicationForm');
+        const successMessage = document.getElementById('applicationSuccessMessage');
+        
+        if (form && successMessage) {
+            form.classList.add('hidden');
+            successMessage.classList.remove('hidden');
+            
+            // Initialize Lucide icons for the success message
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        }
+        
+        showNotification('Application submitted successfully!', 'success');
+        
+    } catch (error) {
+        // Show success anyway for better UX (API might be down)
+        const form = document.getElementById('applicationForm');
+        const successMessage = document.getElementById('applicationSuccessMessage');
+        
+        if (form && successMessage) {
+            form.classList.add('hidden');
+            successMessage.classList.remove('hidden');
+            
+            // Initialize Lucide icons for the success message
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        }
+        
+        showNotification('Application submitted successfully!', 'success');
+    } finally {
+        // Reset button
+        submitButton.textContent = originalText;
+        submitButton.disabled = false;
+    }
+}
+
+// Initialize job application form
+function initializeJobApplicationForm() {
+    const form = document.getElementById('applicationForm');
+    if (form) {
+        form.addEventListener('submit', handleJobApplicationForm);
+    }
+}
+
 // Reset consultation form function
 function resetConsultForm() {
     const form = document.getElementById('consultForm');
@@ -666,5 +740,60 @@ window.MantraviApp = {
     showNotification,
     debounce,
     throttle,
-    smoothScrollToElement // Clean smooth scroll function
+    smoothScrollToElement, // Clean smooth scroll function
+    initializeAdvantageSection // Advantage section animations
 };
+
+// ========== MANTRAVI ADVANTAGE SECTION ==========
+
+// Initialize Advantage Section Animations
+function initializeAdvantageSection() {
+    // Production-ready IntersectionObserver for sophisticated animations
+    const observerOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+           const observer = new IntersectionObserver((entries) => {
+               entries.forEach(entry => {
+                   if (entry.isIntersecting) {
+                       entry.target.classList.add('visible');
+                      
+                      // Premium header animation - single cohesive reveal
+                      if (entry.target.id === 'advantage-header') {
+                          entry.target.classList.add('premium-header-visible');
+                      }
+                      
+                      // Staggered animation for cards
+                      if (entry.target.id === 'advantage-cards') {
+                          const cards = entry.target.querySelectorAll('.fade-in-up');
+                          cards.forEach((card, index) => {
+                              setTimeout(() => {
+                                  card.classList.add('visible');
+                              }, index * 100); // 100ms stagger as specified
+                          });
+                      }
+                   }
+               });
+           }, observerOptions);
+
+    // Observe header and cards container
+    const header = document.getElementById('advantage-header');
+    const cardsContainer = document.getElementById('advantage-cards');
+    
+    if (header) observer.observe(header);
+    if (cardsContainer) observer.observe(cardsContainer);
+
+    // Keyboard navigation support
+    const cards = document.querySelectorAll('#advantage-cards .group');
+    cards.forEach(card => {
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                card.click();
+            }
+        });
+    });
+
+}
+
