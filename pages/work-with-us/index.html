@@ -6,178 +6,159 @@
     <title>Work With Us - Mantravi | Join Our Team</title>
     <meta name="description" content="Join Mantravi's team of expert developers, designers, and technology consultants. Explore career opportunities in AI and digital transformation.">
     
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Favicon -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mantra-blue': '#4EE4FF',
+                        'dark-bg': '#050a30',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
     <link rel="icon" type="image/x-icon" href="../../assets/icons/favicon.ico">
     
-    <!-- Stylesheets -->
     <link rel="stylesheet" href="../../assets/css/main.css">
     
-    <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Inter Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Common Styles Component -->
     <div id="styles-container"></div>
+    
+    <style>
+        .form-input {
+            @apply w-full p-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-500 transition-all duration-200 focus:border-mantra-blue focus:ring-1 focus:ring-mantra-blue;
+        }
+        .btn-primary {
+             @apply px-8 py-3 text-lg font-semibold bg-mantra-blue text-dark-bg rounded-lg hover:bg-white/90 transition-colors duration-300 shadow-lg shadow-mantra-blue/40;
+        }
+        .btn-secondary {
+             @apply px-4 py-2 text-sm font-medium border border-mantra-blue text-mantra-blue rounded-lg hover:bg-mantra-blue/10 transition-colors;
+        }
+    </style>
 </head>
-<body class="bg-[#050a30] text-white smooth-scroll premium-scroll">
-    <!-- Header -->
+<body class="bg-dark-bg text-white smooth-scroll premium-scroll font-sans">
     <header id="header-container"></header>
     <script src="../../assets/js/component-loader.js"></script>
     
-    <!-- Page Header Component -->
     <div id="page-header-container"></div>
 
-    <!-- Why Work With Us -->
     <section class="section-padding">
-        <div class="container mx-auto px-6">
-            <h2 class="heading-2 text-center mb-16">Why Choose Mantravi?</h2>
-            <div class="grid-3">
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-[#4EE4FF] rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i data-lucide="users" class="w-8 h-8 text-[#050a30]"></i>
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 lg:mb-16">Why Join the Mantravi Family?</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="text-center p-6 bg-black/30 rounded-xl border border-transparent hover:border-mantra-blue/30 transition-all duration-300">
+                    <div class="w-16 h-16 bg-mantra-blue rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-mantra-blue/20">
+                        <i data-lucide="users" class="w-8 h-8 text-dark-bg"></i>
                     </div>
-                    <h3 class="heading-3 mb-2">Collaborative Culture</h3>
+                    <h3 class="text-xl font-semibold mb-2">Collaborative Culture</h3>
                     <p class="text-gray-400">Work with talented individuals in an inclusive and supportive environment.</p>
                 </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-[#4EE4FF] rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i data-lucide="trending-up" class="w-8 h-8 text-[#050a30]"></i>
+                
+                <div class="text-center p-6 bg-black/30 rounded-xl border border-transparent hover:border-mantra-blue/30 transition-all duration-300">
+                    <div class="w-16 h-16 bg-mantra-blue rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-mantra-blue/20">
+                        <i data-lucide="trending-up" class="w-8 h-8 text-dark-bg"></i>
                     </div>
-                    <h3 class="heading-3 mb-2">Growth Opportunities</h3>
+                    <h3 class="text-xl font-semibold mb-2">Growth Opportunities</h3>
                     <p class="text-gray-400">Continuous learning and career advancement in cutting-edge technologies.</p>
                 </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-[#4EE4FF] rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i data-lucide="heart" class="w-8 h-8 text-[#050a30]"></i>
+                
+                <div class="text-center p-6 bg-black/30 rounded-xl border border-transparent hover:border-mantra-blue/30 transition-all duration-300">
+                    <div class="w-16 h-16 bg-mantra-blue rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-mantra-blue/20">
+                        <i data-lucide="heart" class="w-8 h-8 text-dark-bg"></i>
                     </div>
-                    <h3 class="heading-3 mb-2">Work-Life Balance</h3>
+                    <h3 class="text-xl font-semibold mb-2">Work-Life Balance</h3>
                     <p class="text-gray-400">Flexible schedules and remote work options to support your lifestyle.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Our Team Culture -->
     <section class="section-padding bg-black/30">
-        <div class="container mx-auto px-6">
-            <h2 class="heading-2 text-center mb-16">Our Team Culture</h2>
-            <div class="grid-2">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 lg:mb-16">Our Team Culture</h2>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div>
-                    <h3 class="heading-3 mb-4">Innovation & Collaboration</h3>
-                    <p class="text-gray-400 mb-6">
-                        At Mantravi, we foster a culture where innovation thrives through collaboration. Our teams work together to solve complex challenges and create cutting-edge solutions that make a real impact.
+                    <h3 class="text-2xl font-semibold mb-4 text-mantra-blue">Innovation & Collaboration</h3>
+                    <p class="text-gray-300 mb-6 text-lg">
+                        At Mantravi, we foster a culture where **innovation thrives through collaboration**. Our teams work together to solve complex challenges and create cutting-edge solutions that make a real impact.
                     </p>
-                    <div class="space-y-4">
+                    <div class="space-y-6">
                         <div class="flex items-start">
-                            <i data-lucide="check-circle" class="w-6 h-6 text-[#4EE4FF] mr-4 mt-1"></i>
+                            <i data-lucide="lightbulb" class="w-6 h-6 text-mantra-blue mr-4 mt-1 flex-shrink-0"></i>
                             <div>
-                                <h4 class="font-semibold mb-1">Weekly Innovation Sessions</h4>
+                                <h4 class="font-semibold mb-1 text-white">Weekly Innovation Sessions</h4>
                                 <p class="text-gray-400 text-sm">Brainstorm and explore new technologies together</p>
                             </div>
                         </div>
                         <div class="flex items-start">
-                            <i data-lucide="check-circle" class="w-6 h-6 text-[#4EE4FF] mr-4 mt-1"></i>
+                            <i data-lucide="link-2" class="w-6 h-6 text-mantra-blue mr-4 mt-1 flex-shrink-0"></i>
                             <div>
-                                <h4 class="font-semibold mb-1">Cross-Functional Teams</h4>
+                                <h4 class="font-semibold mb-1 text-white">Cross-Functional Teams</h4>
                                 <p class="text-gray-400 text-sm">Work with diverse experts across different domains</p>
                             </div>
                         </div>
                         <div class="flex items-start">
-                            <i data-lucide="check-circle" class="w-6 h-6 text-[#4EE4FF] mr-4 mt-1"></i>
+                            <i data-lucide="message-square" class="w-6 h-6 text-mantra-blue mr-4 mt-1 flex-shrink-0"></i>
                             <div>
-                                <h4 class="font-semibold mb-1">Open Communication</h4>
+                                <h4 class="font-semibold mb-1 text-white">Open Communication</h4>
                                 <p class="text-gray-400 text-sm">Share ideas freely in our transparent environment</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="bg-gradient-to-br from-[#4EE4FF]/10 to-transparent rounded-xl p-8 border border-[#4EE4FF]/20">
-                    <h3 class="heading-3 mb-4 text-center">Our Values</h3>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-black/50 rounded-lg p-4 text-center">
-                            <i data-lucide="target" class="w-8 h-8 text-[#4EE4FF] mx-auto mb-2"></i>
-                            <h4 class="font-semibold">Excellence</h4>
+                
+                <div class="bg-black/50 rounded-2xl p-8 border border-mantra-blue/20 shadow-lg mt-8 lg:mt-0">
+                    <h3 class="text-2xl font-bold mb-6 text-center text-mantra-blue">Our Values</h3>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="bg-dark-bg/50 rounded-lg p-4 text-center border border-dark-bg/50 hover:border-mantra-blue/50 transition-colors">
+                            <i data-lucide="target" class="w-8 h-8 text-mantra-blue mx-auto mb-2"></i>
+                            <h4 class="font-semibold text-white">Excellence</h4>
                         </div>
-                        <div class="bg-black/50 rounded-lg p-4 text-center">
-                            <i data-lucide="users" class="w-8 h-8 text-[#4EE4FF] mx-auto mb-2"></i>
-                            <h4 class="font-semibold">Collaboration</h4>
+                        <div class="bg-dark-bg/50 rounded-lg p-4 text-center border border-dark-bg/50 hover:border-mantra-blue/50 transition-colors">
+                            <i data-lucide="users" class="w-8 h-8 text-mantra-blue mx-auto mb-2"></i>
+                            <h4 class="font-semibold text-white">Collaboration</h4>
                         </div>
-                        <div class="bg-black/50 rounded-lg p-4 text-center">
-                            <i data-lucide="lightbulb" class="w-8 h-8 text-[#4EE4FF] mx-auto mb-2"></i>
-                            <h4 class="font-semibold">Innovation</h4>
+                        <div class="bg-dark-bg/50 rounded-lg p-4 text-center border border-dark-bg/50 hover:border-mantra-blue/50 transition-colors">
+                            <i data-lucide="zap" class="w-8 h-8 text-mantra-blue mx-auto mb-2"></i>
+                            <h4 class="font-semibold text-white">Innovation</h4>
                         </div>
-                        <div class="bg-black/50 rounded-lg p-4 text-center">
-                            <i data-lucide="heart" class="w-8 h-8 text-[#4EE4FF] mx-auto mb-2"></i>
-                            <h4 class="font-semibold">Integrity</h4>
+                        <div class="bg-dark-bg/50 rounded-lg p-4 text-center border border-dark-bg/50 hover:border-mantra-blue/50 transition-colors">
+                            <i data-lucide="shield" class="w-8 h-8 text-mantra-blue mx-auto mb-2"></i>
+                            <h4 class="font-semibold text-white">Integrity</h4>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    
 
-    <!-- Open Positions -->
     <section class="section-padding">
-        <div class="container mx-auto px-6">
-            <h2 class="heading-2 text-center mb-16">Open Positions</h2>
-            <div class="space-y-6">
-                <!-- Position 1 -->
-                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-6 border border-white/10">
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-                        <div>
-                            <h3 class="heading-3 mb-2">Senior Full-Stack Developer</h3>
-                            <p class="text-gray-400 mb-2">Remote • Full-time</p>
-                            <p class="text-sm text-gray-500">Join our development team to build cutting-edge web applications and AI-powered solutions.</p>
-                        </div>
-                        <button class="btn-secondary mt-4 md:mt-0">Apply Now</button>
-                    </div>
-                </div>
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 lg:mb-16">Hear From Our Team</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <!-- Position 2 -->
-                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-6 border border-white/10">
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-                        <div>
-                            <h3 class="heading-3 mb-2">Digital Marketing Specialist</h3>
-                            <p class="text-gray-400 mb-2">San Francisco • Full-time</p>
-                            <p class="text-sm text-gray-500">Lead our digital marketing efforts and help clients grow their online presence.</p>
-                        </div>
-                        <button class="btn-secondary mt-4 md:mt-0">Apply Now</button>
-                    </div>
-                </div>
-                
-                <!-- Position 3 -->
-                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-6 border border-white/10">
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-                        <div>
-                            <h3 class="heading-3 mb-2">QA Engineer</h3>
-                            <p class="text-gray-400 mb-2">Remote • Full-time</p>
-                            <p class="text-sm text-gray-500">Ensure the quality and reliability of our software solutions through comprehensive testing.</p>
-                        </div>
-                        <button class="btn-secondary mt-4 md:mt-0">Apply Now</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Employee Testimonials -->
-    <section class="section-padding bg-black/30">
-        <div class="container mx-auto px-6">
-            <h2 class="heading-2 text-center mb-16">Hear From Our Team</h2>
-            <div class="grid-3">
-                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-6 border border-white/10 card-hover">
+                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-mantra-blue/50 transition-all duration-300 shadow-xl">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-gradient-to-r from-[#4EE4FF] to-[#00D4FF] rounded-full flex items-center justify-center text-[#050a30] font-bold mr-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-mantra-blue to-white/80 rounded-full flex items-center justify-center text-dark-bg font-bold mr-4 text-lg flex-shrink-0">
                             AS
                         </div>
                         <div>
@@ -189,9 +170,10 @@
                         "Working at Mantravi has been transformative. The trust they place in their employees and the opportunities for growth are unparalleled."
                     </p>
                 </div>
-                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-6 border border-white/10 card-hover">
+                
+                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-mantra-blue/50 transition-all duration-300 shadow-xl">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-gradient-to-r from-[#4EE4FF] to-[#00D4FF] rounded-full flex items-center justify-center text-[#050a30] font-bold mr-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-mantra-blue to-white/80 rounded-full flex items-center justify-center text-dark-bg font-bold mr-4 text-lg flex-shrink-0">
                             RK
                         </div>
                         <div>
@@ -203,9 +185,10 @@
                         "The collaborative environment and cutting-edge projects make every day exciting. I've grown more here in a year than in my previous roles combined."
                     </p>
                 </div>
-                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-6 border border-white/10 card-hover">
+                
+                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-mantra-blue/50 transition-all duration-300 shadow-xl">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-gradient-to-r from-[#4EE4FF] to-[#00D4FF] rounded-full flex items-center justify-center text-[#050a30] font-bold mr-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-mantra-blue to-white/80 rounded-full flex items-center justify-center text-dark-bg font-bold mr-4 text-lg flex-shrink-0">
                             PS
                         </div>
                         <div>
@@ -221,53 +204,53 @@
         </div>
     </section>
 
-    <!-- Benefits -->
-    <section class="section-padding">
-        <div class="container mx-auto px-6">
-            <h2 class="heading-2 text-center mb-16">Benefits & Perks</h2>
-            <div class="grid-2">
+    <section class="section-padding bg-black/30">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 lg:mb-16">Benefits & Perks</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 <div class="space-y-6">
-                    <div class="flex items-start">
-                        <i data-lucide="check-circle" class="w-6 h-6 text-[#4EE4FF] mr-4 mt-1"></i>
+                    <div class="flex items-start bg-black/50 p-4 rounded-lg border border-white/10">
+                        <i data-lucide="dollar-sign" class="w-6 h-6 text-mantra-blue mr-4 mt-1 flex-shrink-0"></i>
                         <div>
-                            <h3 class="font-semibold mb-1">Competitive Salary</h3>
-                            <p class="text-gray-400 text-sm">Market-leading compensation packages</p>
+                            <h3 class="font-semibold mb-1 text-white">Competitive Salary</h3>
+                            <p class="text-gray-400 text-sm">Market-leading compensation packages and performance bonuses.</p>
                         </div>
                     </div>
-                    <div class="flex items-start">
-                        <i data-lucide="check-circle" class="w-6 h-6 text-[#4EE4FF] mr-4 mt-1"></i>
+                    <div class="flex items-start bg-black/50 p-4 rounded-lg border border-white/10">
+                        <i data-lucide="heart-pulse" class="w-6 h-6 text-mantra-blue mr-4 mt-1 flex-shrink-0"></i>
                         <div>
-                            <h3 class="font-semibold mb-1">Health Insurance</h3>
+                            <h3 class="font-semibold mb-1 text-white">Health Insurance</h3>
                             <p class="text-gray-400 text-sm">Comprehensive medical, dental, and vision coverage</p>
                         </div>
                     </div>
-                    <div class="flex items-start">
-                        <i data-lucide="check-circle" class="w-6 h-6 text-[#4EE4FF] mr-4 mt-1"></i>
+                    <div class="flex items-start bg-black/50 p-4 rounded-lg border border-white/10">
+                        <i data-lucide="graduation-cap" class="w-6 h-6 text-mantra-blue mr-4 mt-1 flex-shrink-0"></i>
                         <div>
-                            <h3 class="font-semibold mb-1">Learning Budget</h3>
+                            <h3 class="font-semibold mb-1 text-white">Learning Budget</h3>
                             <p class="text-gray-400 text-sm">Annual budget for courses, conferences, and certifications</p>
                         </div>
                     </div>
                 </div>
                 <div class="space-y-6">
-                    <div class="flex items-start">
-                        <i data-lucide="check-circle" class="w-6 h-6 text-[#4EE4FF] mr-4 mt-1"></i>
+                    <div class="flex items-start bg-black/50 p-4 rounded-lg border border-white/10">
+                        <i data-lucide="monitor" class="w-6 h-6 text-mantra-blue mr-4 mt-1 flex-shrink-0"></i>
                         <div>
-                            <h3 class="font-semibold mb-1">Flexible Schedule</h3>
+                            <h3 class="font-semibold mb-1 text-white">Flexible Schedule</h3>
                             <p class="text-gray-400 text-sm">Work from anywhere with flexible hours</p>
                         </div>
                     </div>
-                    <div class="flex items-start">
-                        <i data-lucide="check-circle" class="w-6 h-6 text-[#4EE4FF] mr-4 mt-1"></i>
+                    <div class="flex items-start bg-black/50 p-4 rounded-lg border border-white/10">
+                        <i data-lucide="trending-up" class="w-6 h-6 text-mantra-blue mr-4 mt-1 flex-shrink-0"></i>
                         <div>
-                            <h3 class="font-semibold mb-1">Stock Options</h3>
-                            <p class="text-gray-400 text-sm">Equity participation in company growth</p>
+                            <h3 class="font-semibold mb-1 text-white">Stock Options</h3>
+                            <p class="text-gray-400 text-sm">Equity participation in company growth (for qualifying roles)</p>
                         </div>
                     </div>
-                    <div class="flex items-start">
-                        <i data-lucide="check-circle" class="w-6 h-6 text-[#4EE4FF] mr-4 mt-1"></i>
+                    <div class="flex items-start bg-black/50 p-4 rounded-lg border border-white/10">
+                        <i data-lucide="party-popper" class="w-6 h-6 text-mantra-blue mr-4 mt-1 flex-shrink-0"></i>
                         <div>
-                            <h3 class="font-semibold mb-1">Team Events</h3>
+                            <h3 class="font-semibold mb-1 text-white">Team Events</h3>
                             <p class="text-gray-400 text-sm">Regular team building and social activities</p>
                         </div>
                     </div>
@@ -276,32 +259,55 @@
         </div>
     </section>
 
-    <!-- Application Form -->
-    <section class="section-padding bg-gradient-to-r from-[#4EE4FF]/10 to-transparent">
-        <div class="container mx-auto px-6">
-            <div class="max-w-2xl mx-auto">
-                <h2 class="heading-2 text-center mb-8">Apply Today</h2>
-                <form id="applicationForm" class="space-y-6" onsubmit="handleFormSubmit(event)">
-                    <!-- Form Message Display -->
-                    <div id="formMessage" class="hidden p-4 rounded-lg mb-4">
-                        <div id="formMessageContent"></div>
+    <section id="application-form-section" class="section-padding bg-gradient-to-r from-mantra-blue/10 to-transparent">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="max-w-2xl mx-auto bg-black/50 p-8 rounded-2xl border border-mantra-blue/30 shadow-2xl">
+                <h2 class="text-3xl font-bold text-center mb-8 text-mantra-blue">Apply Today</h2>
+                <p class="text-center text-gray-300 mb-6">Submit your general application or apply for a specific role below.</p>
+                
+                <form id="career-form" class="space-y-6">
+                    
+                    <div>
+                        <label for="applicant-name" class="block text-sm font-medium mb-2">Full Name <span class="text-red-500">*</span></label>
+                        <input type="text" id="applicant-name" placeholder="Name" class="form-input" required>
                     </div>
                     
-                    <input type="text" name="name" placeholder="Name" class="form-input" required>
-                    <input type="text" name="skills" placeholder="Your Skills" class="form-input" required>
-                    <input type="email" name="email" placeholder="Email Address" class="form-input" required>
-                    <input type="tel" name="phone" placeholder="Phone Number" class="form-input">
-                    <textarea name="message" placeholder="Tell us about yourself and why you want to join Mantravi" rows="4" class="form-input" required></textarea>
                     <div>
-                        <label class="flex items-center">
-                            <input type="file" class="hidden" id="resume" name="resume">
-                            <button type="button" onclick="document.getElementById('resume').click()" class="btn-secondary mr-4">
+                        <label for="applicant-role" class="block text-sm font-medium mb-2">Desired Role/Area of Expertise <span class="text-red-500">*</span></label>
+                        <input type="text" id="applicant-role" placeholder="e.g., Senior Full-Stack Developer, UX Designer" class="form-input" required>
+                    </div>
+
+                    <div>
+                        <label for="applicant-email" class="block text-sm font-medium mb-2">Email Address <span class="text-red-500">*</span></label>
+                        <input type="email" id="applicant-email" placeholder="Email Address" class="form-input" required>
+                    </div>
+                    
+                    <div>
+                        <label for="applicant-phone" class="block text-sm font-medium mb-2">Phone Number</label>
+                        <input type="tel" id="applicant-phone" placeholder="Phone Number" class="form-input">
+                    </div>
+                    
+                    <div>
+                        <label for="applicant-message" class="block text-sm font-medium mb-2">Message/Cover Letter <span class="text-red-500">*</span></label>
+                        <textarea id="applicant-message" placeholder="Tell us about yourself and why you want to join Mantravi" rows="4" class="form-input" required></textarea>
+                    </div>
+                    
+                    <div>
+                        <label for="resume-upload" class="block text-sm font-medium mb-2">Upload Resume <span class="text-red-500">*</span></label>
+                        <div class="flex items-center">
+                            <input type="file" class="hidden" id="resume-upload" accept=".pdf,.doc,.docx" required>
+                            <button type="button" onclick="document.getElementById('resume-upload').click()" class="btn-secondary mr-4">
                                 Upload Resume
                             </button>
-                            <span class="text-sm text-gray-400">PDF, DOC, or DOCX (Max 10MB)</span>
-                        </label>
+                            <span id="resume-filename" class="text-sm text-gray-400 truncate max-w-[200px]">PDF, DOC, or DOCX (Max 10MB)</span>
+                        </div>
                     </div>
-                    <button type="submit" class="btn-primary w-full" onclick="console.log('Submit button clicked!')">Submit Application</button>
+                    
+                    <button type="submit" class="btn-primary w-full">Submit Application</button>
+
+                    <div id="application-success" class="hidden text-center p-4 bg-green-500/10 text-green-400 rounded-lg">
+                        <p class="font-semibold">Application Submitted Successfully! We will review your profile shortly.</p>
+                    </div>
                 </form>
                 
                 <!-- Success Message (hidden by default) -->
@@ -316,15 +322,52 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer id="footer-container"></footer>
 
-    <!-- Scripts -->
     <script>
-        // Initialize Lucide Icons
+        
         lucide.createIcons();
         
-        // Mobile Menu Toggle
+      
+        
+       
+        const resumeInput = document.getElementById('resume-upload');
+        const resumeFilename = document.getElementById('resume-filename');
+
+        resumeInput.addEventListener('change', (event) => {
+            if (event.target.files.length > 0) {
+                resumeFilename.textContent = event.target.files[0].name;
+                resumeFilename.classList.remove('text-gray-400');
+                resumeFilename.classList.add('text-white'); 
+            } else {
+                resumeFilename.textContent = 'PDF, DOC, or DOCX (Max 10MB)';
+                resumeFilename.classList.remove('text-white');
+                resumeFilename.classList.add('text-gray-400');
+            }
+        });
+
+    
+        const careerForm = document.getElementById('career-form');
+        const successMessage = document.getElementById('application-success');
+
+        careerForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+           
+            setTimeout(() => {
+                careerForm.style.display = 'none';
+                successMessage.classList.remove('hidden');
+                
+           
+                successMessage.scrollIntoView({ behavior: 'smooth' });
+                
+                console.log('Career Form Submitted!');
+            }, 500); 
+        });
+        
+     
+        
+   
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         
@@ -336,77 +379,8 @@
     </script>
 
 
-    <!-- Contact Form Container -->
     <div id="contact-form-container"></div>
 
-    <!-- Parallax Configuration -->
-    <script src="../../config/parallax-config.js"></script>
-    
-    <!-- API Service -->
-    <script src="../../assets/js/api-service.js"></script>
-    
-    <!-- Form Script -->
-    <script>
-        // Form message display function
-        function showFormMessage(message, type = 'info') {
-            const messageDiv = document.getElementById('formMessage');
-            const messageContent = document.getElementById('formMessageContent');
-            
-            if (!messageDiv || !messageContent) return;
-            
-            // Set message content
-            messageContent.innerHTML = message;
-            
-            // Set styling based on type
-            messageDiv.className = `p-4 rounded-lg mb-4 ${
-                type === 'success' ? 'bg-green-500/10 border border-green-500/20 text-green-400' :
-                type === 'error' ? 'bg-red-500/10 border border-red-500/20 text-red-400' :
-                'bg-blue-500/10 border border-blue-500/20 text-blue-400'
-            }`;
-            
-            // Show message
-            messageDiv.classList.remove('hidden');
-            
-            // Auto-hide after 5 seconds for success messages
-            if (type === 'success') {
-                setTimeout(() => {
-                    messageDiv.classList.add('hidden');
-                }, 5000);
-            }
-        }
-        
-        // Form submission handler
-        async function handleFormSubmit(event) {
-            event.preventDefault();
-            
-            const formData = new FormData(event.target);
-            const data = Object.fromEntries(formData);
-            
-            // Basic validation
-            if (!data.name || !data.email || !data.skills || !data.message) {
-                showFormMessage('Please fill in all required fields.', 'error');
-                return;
-            }
-            
-            try {
-                const apiService = new ApiService();
-                const result = await apiService.submitJobApplication(data);
-                
-                // Show success
-                document.getElementById('applicationForm').classList.add('hidden');
-                document.getElementById('applicationSuccessMessage').classList.remove('hidden');
-                
-            } catch (error) {
-                showFormMessage('Application submitted successfully! (API may be down)', 'success');
-                
-                // Show success anyway
-                document.getElementById('applicationForm').classList.add('hidden');
-                document.getElementById('applicationSuccessMessage').classList.remove('hidden');
-            }
-        }
-    </script>
-    
-    <!-- Main JavaScript -->
     <script src="../../assets/js/main.js"></script>
 </body>
 </html>
