@@ -15,6 +15,7 @@ function initializeApp() {
     initializeNavigation();
     initializeConsultForm(); // Initialize consult modal
     initializeJobApplicationForm(); // Initialize job application form
+    initializeAdvantageSection(); // Initialize advantage section animations
 }
 
 // Initialize Lucide Icons
@@ -739,5 +740,60 @@ window.MantraviApp = {
     showNotification,
     debounce,
     throttle,
-    smoothScrollToElement // Clean smooth scroll function
+    smoothScrollToElement, // Clean smooth scroll function
+    initializeAdvantageSection // Advantage section animations
 };
+
+// ========== MANTRAVI ADVANTAGE SECTION ==========
+
+// Initialize Advantage Section Animations
+function initializeAdvantageSection() {
+    // Production-ready IntersectionObserver for sophisticated animations
+    const observerOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+           const observer = new IntersectionObserver((entries) => {
+               entries.forEach(entry => {
+                   if (entry.isIntersecting) {
+                       entry.target.classList.add('visible');
+                      
+                      // Premium header animation - single cohesive reveal
+                      if (entry.target.id === 'advantage-header') {
+                          entry.target.classList.add('premium-header-visible');
+                      }
+                      
+                      // Staggered animation for cards
+                      if (entry.target.id === 'advantage-cards') {
+                          const cards = entry.target.querySelectorAll('.fade-in-up');
+                          cards.forEach((card, index) => {
+                              setTimeout(() => {
+                                  card.classList.add('visible');
+                              }, index * 100); // 100ms stagger as specified
+                          });
+                      }
+                   }
+               });
+           }, observerOptions);
+
+    // Observe header and cards container
+    const header = document.getElementById('advantage-header');
+    const cardsContainer = document.getElementById('advantage-cards');
+    
+    if (header) observer.observe(header);
+    if (cardsContainer) observer.observe(cardsContainer);
+
+    // Keyboard navigation support
+    const cards = document.querySelectorAll('#advantage-cards .group');
+    cards.forEach(card => {
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                card.click();
+            }
+        });
+    });
+
+}
+
