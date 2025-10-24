@@ -100,48 +100,6 @@ document.addEventListener('DOMContentLoaded', function() {
                console.log('Stats container not found');
            }
 
-           // Load page header component
-           const pageHeaderContainer = document.getElementById('page-header-container');
-           if (pageHeaderContainer) {
-               // Use custom page headers for specific pages
-               let headerPath = '../../components/page-header/page-header.html';
-               if (window.location.pathname.includes('/services/')) {
-                   headerPath = '../../components/page-header/services-page-header.html';
-               } else if (window.location.pathname.includes('/home/') || window.location.pathname === '/' || window.location.pathname.endsWith('/index.html')) {
-                   headerPath = '../../components/page-header/home-page-header.html';
-               }
-               
-               fetch(headerPath)
-                   .then(response => response.text())
-                   .then(html => {
-                       // Only process placeholders for non-services pages
-                       if (!window.location.pathname.includes('/services/')) {
-                           // Determine page title and description based on current page
-                           let pageTitle = 'About Mantravi';
-                           let pageDescription = 'We\'re a team of passionate technologists dedicated to engineering global disruption through AI-native excellence.';
-                           
-                           if (window.location.pathname.includes('/contact/')) {
-                               pageTitle = 'Contact Us';
-                               pageDescription = 'Ready to start your digital transformation journey? Get in touch with our expert team today.';
-                           } else if (window.location.pathname.includes('/blog/')) {
-                               pageTitle = 'Blog & Insights';
-                               pageDescription = 'Stay ahead with the latest insights on AI, digital transformation, and emerging technologies.';
-                           } else if (window.location.pathname.includes('/work-with-us/')) {
-                               pageTitle = 'Work With Us';
-                               pageDescription = 'Join our team of passionate technologists and help shape the future of digital transformation.';
-                           }
-
-                           // Replace placeholders with actual content
-                           html = html.replace('{{PAGE_TITLE}}', pageTitle);
-                           html = html.replace('{{PAGE_DESCRIPTION}}', pageDescription);
-                       }
-                       
-                       pageHeaderContainer.innerHTML = html;
-                   })
-                   .catch(error => {
-                       console.error('Error loading page header component:', error);
-                   });
-           }
 
            // Load CTA section component
            const ctaContainer = document.getElementById('cta-container');

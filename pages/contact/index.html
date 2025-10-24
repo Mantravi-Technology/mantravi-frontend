@@ -51,7 +51,39 @@
     <header id="header-container"></header>
     <script src="../../assets/js/component-loader.js"></script>
     
-    <div id="page-header-container"></div>
+
+    <!-- Contact Page Header -->
+    <section class="bg-gradient-to-br from-[#0a0f1c] via-[#050a30] to-[#0a0f1c] py-16 lg:py-24">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/10 border border-purple-500/20 rounded-full text-purple-400 text-sm font-medium mb-6">
+                <i data-lucide="mail" class="w-4 h-4"></i>
+                Get In Touch
+            </div>
+            <h1 class="text-4xl lg:text-6xl font-bold mb-6">
+                <span class="gradient-text">Let's Connect</span> & Create Together
+            </h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                Ready to start your next project? We'd love to hear from you. Get in touch with our team and let's discuss how we can help bring your vision to life.
+            </p>
+        </div>
+    </section>
+
+    <style>
+        /* Gradient Text Animation */
+        .gradient-text {
+            background: linear-gradient(135deg, #4EE4FF 0%, #00D4FF 50%, #4EE4FF 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+    </style>
 
     <section class="section-padding relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-br from-mantra-blue/5 to-transparent parallax-bg"></div>
@@ -59,36 +91,36 @@
         <div class="container mx-auto px-4 sm:px-6 relative z-10">
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-20">
                 
-                <div class="contact-form bg-black/60 backdrop-blur-lg rounded-2xl p-8 lg:p-10 border border-white/10 shadow-2xl parallax-cards">
-                    <h2 class="heading-2 mb-4 text-3xl font-bold text-mantra-blue advanced-text">Start Your Digital Journey</h2>
-                    <p class="text-gray-300 mb-8 text-base">Ready to transform your business with cutting-edge technology? Share your vision with us and let's build something extraordinary together.</p>
+                <div class="contact-form bg-black/60 backdrop-blur-lg rounded-2xl p-6 lg:p-8 border border-white/10 shadow-2xl parallax-cards">
+                    <h2 class="heading-2 mb-3 text-2xl font-bold text-mantra-blue advanced-text">Start Your Digital Journey</h2>
+                    <p class="text-gray-300 mb-6 text-sm">Ready to transform your business with cutting-edge technology? Share your vision with us.</p>
                     
-                    <form id="consultForm" class="space-y-6">
+                    <form id="consultForm" class="space-y-4">
                         
-                        <div class="grid md:grid-cols-2 gap-6">
+                        <div class="grid md:grid-cols-2 gap-4">
                             <div>
-                                <label for="name" class="block text-sm font-medium mb-2">Full Name <span class="text-red-500">*</span></label>
+                                <label for="name" class="block text-sm font-medium mb-1">Full Name <span class="text-red-500">*</span></label>
                                 <input type="text" id="name" name="name" class="advanced-input" placeholder="Your Name" required>
                             </div>
                             <div>
-                                <label for="email" class="block text-sm font-medium mb-2">Email Address <span class="text-red-500">*</span></label>
+                                <label for="email" class="block text-sm font-medium mb-1">Email Address <span class="text-red-500">*</span></label>
                                 <input type="email" id="email" name="email" class="advanced-input" placeholder="you@company.com" required>
                             </div>
                         </div>
                         
-                        <div class="grid md:grid-cols-2 gap-6">
+                        <div class="grid md:grid-cols-2 gap-4">
                             <div>
-                                <label for="phone" class="block text-sm font-medium mb-2">Phone Number</label>
+                                <label for="phone" class="block text-sm font-medium mb-1">Phone Number</label>
                                 <input type="tel" id="phone" name="phone" class="advanced-input" placeholder="+91 98512-34567">
                             </div>
                             <div>
-                                <label for="company" class="block text-sm font-medium mb-2">Company Name</label>
+                                <label for="company" class="block text-sm font-medium mb-1">Company Name</label>
                                 <input type="text" id="company" name="company" class="advanced-input" placeholder="Your Organization">
                             </div>
                         </div>
                         
                         <div>
-                            <label for="service" class="block text-sm font-medium mb-2">Service Interested In <span class="text-red-500">*</span></label>
+                            <label for="service" class="block text-sm font-medium mb-1">Service Interested In <span class="text-red-500">*</span></label>
                             <select id="service" name="service" class="form-input appearance-none" required>
                                 <option value="">Select a strategic service area</option>
                                 <option value="web-development">Web & App Development</option>
@@ -101,8 +133,8 @@
                         </div>
                         
                         <div>
-                            <label for="message" class="block text-sm font-medium mb-2">Project Details <span class="text-red-500">*</span></label>
-                            <textarea id="message" name="message" rows="4" class="advanced-input" placeholder="Describe your project requirements, budget range, and ideal timeline..." required></textarea>
+                            <label for="message" class="block text-sm font-medium mb-1">Project Details <span class="text-red-500">*</span></label>
+                            <textarea id="message" name="message" rows="3" class="advanced-input" placeholder="Describe your project requirements..." required></textarea>
                         </div>
                         
                         <button type="submit" class="advanced-btn w-full px-8 py-3 text-lg font-semibold bg-mantra-blue text-dark-bg rounded-lg hover:bg-white/90 transition-colors duration-300 shadow-lg shadow-mantra-blue/40">
