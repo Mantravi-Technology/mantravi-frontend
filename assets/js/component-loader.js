@@ -86,14 +86,18 @@ document.addEventListener('DOMContentLoaded', function() {
            // Load stats section component
            const statsContainer = document.getElementById('stats-container');
            if (statsContainer) {
-               fetch('../../components/stats-section/stats-section.html')
+               console.log('Loading stats component...');
+               fetch('../../components/stats-section/stats-section.html?v=' + Date.now())
                    .then(response => response.text())
                    .then(html => {
+                       console.log('Stats component loaded successfully');
                        statsContainer.innerHTML = html;
                    })
                    .catch(error => {
                        console.error('Error loading stats section component:', error);
                    });
+           } else {
+               console.log('Stats container not found');
            }
 
            // Load page header component
