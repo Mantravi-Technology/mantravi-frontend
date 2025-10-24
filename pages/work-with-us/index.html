@@ -26,11 +26,43 @@
     <header id="header-container"></header>
     <script src="../../assets/js/component-loader.js"></script>
     
-    <div id="page-header-container"></div>
+
+
+    <!-- Work With Us Page Header -->
+    <section class="bg-gradient-to-br from-[#0a0f1c] via-[#050a30] to-[#0a0f1c] py-16 lg:py-24">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/20 rounded-full text-green-400 text-sm font-medium mb-6">
+                <i data-lucide="users" class="w-4 h-4"></i>
+                Join Our Team
+            </div>
+            <h1 class="text-4xl lg:text-6xl font-bold mb-6">
+                <span class="gradient-text">Collaborate</span> With Excellence
+            </h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                Join our curated network of tech experts and work on exciting projects while building meaningful relationships with industry professionals.
+            </p>
+        </div>
+    </section>
+
+    <style>
+        /* Gradient Text Animation */
+        .gradient-text {
+            background: linear-gradient(135deg, #4EE4FF 0%, #00D4FF 50%, #4EE4FF 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+    </style>
 
     <section class="section-padding">
         <div class="container mx-auto px-4 sm:px-6">
-            <h2 class="text-3xl font-bold text-center mb-12 lg:mb-16">Why Join the Mantravi Family?</h2>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 

@@ -428,7 +428,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+    </section>
 
         <section id="qa" class="service-section">
              <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-28">
@@ -500,6 +500,104 @@
             </div>
         </section>
     </main>
+
+    <!-- Consultation Form Modal -->
+    <div id="consultModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-1 sm:p-4">
+        <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-lg sm:rounded-xl shadow-2xl w-full max-w-xs sm:max-w-md md:max-w-2xl max-h-[85vh] sm:max-h-[90vh] overflow-y-auto">
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center p-2 sm:p-4 border-b border-slate-600/30">
+                <div class="flex items-center space-x-2 sm:space-x-3">
+                    <img src="../../assets/icons/ui/mantravilogo.png" alt="Mantravi Logo" class="h-4 sm:h-6 w-auto">
+                    <div>
+                        <h3 class="text-sm sm:text-lg font-bold text-white">Start Your Digital Journey</h3>
+                        <p class="text-xs text-gray-400">Consult Our Experts</p>
+                    </div>
+                </div>
+                <button onclick="closeConsultModal()" class="text-gray-400 hover:text-white transition-colors p-1">
+                    <i data-lucide="x" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+                </button>
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="p-2 sm:p-4">
+                <p class="text-gray-300 mb-3 text-xs sm:text-sm">Ready to transform your business? Share your vision with us.</p>
+                
+                <form id="consultForm" class="space-y-2 sm:space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4">
+                        <div>
+                            <label for="name" class="block text-xs font-medium text-slate-200 mb-1">Full Name *</label>
+                            <input type="text" id="name" name="name" required 
+                                   class="w-full px-2 py-1.5 bg-slate-700/50 border border-slate-500/50 rounded text-white placeholder-slate-400 focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400/20 transition-colors text-sm">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-xs font-medium text-slate-200 mb-1">Email *</label>
+                            <input type="email" id="email" name="email" required 
+                                   class="w-full px-2 py-1.5 bg-slate-700/50 border border-slate-500/50 rounded text-white placeholder-slate-400 focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400/20 transition-colors text-sm">
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4">
+                        <div>
+                            <label for="phone" class="block text-xs font-medium text-slate-200 mb-1">Phone</label>
+                            <input type="tel" id="phone" name="phone" 
+                                   class="w-full px-2 py-1.5 bg-slate-700/50 border border-slate-500/50 rounded text-white placeholder-slate-400 focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400/20 transition-colors text-sm">
+                        </div>
+                        
+                        <div>
+                            <label for="company" class="block text-xs font-medium text-slate-200 mb-1">Company</label>
+                            <input type="text" id="company" name="company" 
+                                   class="w-full px-2 py-1.5 bg-slate-700/50 border border-slate-500/50 rounded text-white placeholder-slate-400 focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400/20 transition-colors text-sm">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="service" class="block text-xs font-medium text-slate-200 mb-1">Service *</label>
+                        <select id="service" name="service" required 
+                                class="w-full px-2 py-1.5 bg-slate-700/50 border border-slate-500/50 rounded text-white focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400/20 transition-colors text-sm">
+                            <option value="">Select service</option>
+                            <option value="web-development">Web & App Development</option>
+                            <option value="digital-marketing">Digital Marketing</option>
+                            <option value="qa-services">QA & Maintenance</option>
+                            <option value="ai-transformation">AI Solutions</option>
+                            <option value="consulting">IT Consulting</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="message" class="block text-xs font-medium text-slate-200 mb-1">Project Details *</label>
+                        <textarea id="message" name="message" rows="2" required 
+                                  class="w-full px-2 py-1.5 bg-slate-700/50 border border-slate-500/50 rounded text-white placeholder-slate-400 focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400/20 resize-none transition-colors text-sm"
+                                  placeholder="Describe your project requirements..."></textarea>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row space-y-1 sm:space-y-0 sm:space-x-2 pt-1">
+                        <button type="button" onclick="closeConsultModal()" 
+                                class="w-full sm:flex-1 px-3 py-1.5 border border-slate-500/50 text-slate-200 rounded hover:bg-slate-600/50 transition-colors text-xs">
+                            Cancel
+                        </button>
+                        <button type="submit" 
+                                class="w-full sm:flex-1 px-3 py-1.5 bg-blue-500 text-white rounded font-semibold hover:bg-blue-600 transition-colors text-xs">
+                            Send Request
+                        </button>
+                    </div>
+                </form>
+                
+                <!-- Success Message (hidden by default) -->
+                <div id="successMessage" class="hidden p-3 sm:p-6 text-center">
+                    <div class="mb-3">
+                        <i data-lucide="check-circle" class="w-10 h-10 sm:w-16 sm:h-16 text-green-500 mx-auto"></i>
+                    </div>
+                    <h3 class="text-base sm:text-xl font-bold text-white mb-2">Message Delivered!</h3>
+                    <p class="text-gray-300 mb-3 sm:mb-6 text-xs sm:text-base">Thank you for reaching out. We'll respond within 24 hours.</p>
+                    <button onclick="closeConsultModal()" class="bg-blue-500 text-white px-4 py-1.5 rounded hover:bg-blue-600 transition-colors text-xs">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <section class="py-20 lg:py-28">
         <div class="container mx-auto px-6 text-center">
@@ -588,31 +686,6 @@
             document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
         }
 
-        // Lightweight parallax scrolling for background elements
-        function initParallaxScrolling() {
-            const parallaxElements = document.querySelectorAll('.floating-shapes .shape');
-            
-            if (parallaxElements.length === 0) return;
-            
-            // Simple parallax with reduced calculations
-            function updateParallax() {
-                const scrolled = window.pageYOffset * 0.1;
-                parallaxElements.forEach((element, index) => {
-                    element.style.transform = `translateY(${scrolled * (index + 1)}px)`;
-                });
-            }
-            
-            // Use passive scroll listener for better performance
-            let ticking = false;
-            function requestTick() {
-                if (!ticking) {
-                    requestAnimationFrame(updateParallax);
-                    ticking = true;
-                }
-            }
-            
-            window.addEventListener('scroll', requestTick, { passive: true });
-        }
 
         function initActiveNavObserver() {
             const sections = document.querySelectorAll('.service-section');
@@ -645,27 +718,14 @@
             });
         }
 
-        // Throttle function to prevent rapid clicks
-        function throttle(func, limit) {
-            let inThrottle;
-            return function() {
-                const args = arguments;
-                const context = this;
-                if (!inThrottle) {
-                    func.apply(context, args);
-                    inThrottle = true;
-                    setTimeout(() => inThrottle = false, limit);
-                }
-            }
-        }
 
         // Ultra-fast navigation
         function initServicesNavigation() {
             const servicesLinks = document.querySelectorAll('.services-list a');
             
-            servicesLinks.forEach(link => {
+        servicesLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
-                    e.preventDefault();
+                e.preventDefault();
                     const targetId = this.getAttribute('href');
                     
                     // Instant visual feedback
@@ -680,7 +740,15 @@
             });
         }
         
-        function openConsultModal() { alert('Consultation Modal would open here.'); }
+        function openConsultModal() { 
+            document.getElementById('consultModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeConsultModal() {
+            document.getElementById('consultModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
     </script>
 </body>
 </html>
