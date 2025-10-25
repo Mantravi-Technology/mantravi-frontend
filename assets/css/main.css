@@ -961,6 +961,18 @@ body {
     box-shadow: 0 25px 50px -12px rgba(78, 228, 255, 0.25);
 }
 
+/* Ensure cards reset properly when not hovered */
+.advantage-card:not(:hover) {
+    transform: translateY(0) scale(1);
+    box-shadow: none;
+}
+
+/* Simple fix for fourth card stuck hover state */
+.advantage-card:nth-child(4):not(:hover) {
+    transform: translateY(0) scale(1) !important;
+    box-shadow: none !important;
+}
+
 /* Sophisticated progress bar animation */
 .advantage-card .group-hover\:scale-x-100 {
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1088,21 +1100,58 @@ body {
         transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
     }
     
-    .advantage-card:active {
-        transform: translateY(-12px) scale(1.08) translateZ(30px) !important;
-        box-shadow: 0 25px 50px -8px rgba(78, 228, 255, 0.5),
-                    0 0 0 2px rgba(78, 228, 255, 0.3) !important;
-        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-    }
+    /* Removed :active styles to prevent curve line on mobile tap */
     
     .advantage-card:hover div[class*="group-hover"] {
         transform: rotate(8deg) scale(1.15) !important;
         transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
     }
     
-    .advantage-card:active div[class*="group-hover"] {
-        transform: rotate(8deg) scale(1.15) !important;
-        transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    /* Removed :active styles for group-hover elements to prevent curve line on mobile tap */
+    
+    /* Completely disable touch interactions to prevent curve lines */
+    .advantage-card {
+        -webkit-tap-highlight-color: transparent !important;
+        -webkit-touch-callout: none !important;
+        -webkit-user-select: none !important;
+        -moz-user-select: none !important;
+        -ms-user-select: none !important;
+        user-select: none !important;
+        pointer-events: none !important;
+        touch-action: none !important;
+        cursor: default !important;
+    }
+    
+    /* Remove any focus states that might cause curve lines */
+    .advantage-card:focus,
+    .advantage-card:focus-visible,
+    .advantage-card:active,
+    .advantage-card:focus-within {
+        outline: none !important;
+        box-shadow: none !important;
+        transform: none !important;
+        border: none !important;
+    }
+    
+    /* Disable all child element interactions */
+    .advantage-card * {
+        pointer-events: none !important;
+        -webkit-tap-highlight-color: transparent !important;
+        -webkit-touch-callout: none !important;
+        -webkit-user-select: none !important;
+        -moz-user-select: none !important;
+        -ms-user-select: none !important;
+        user-select: none !important;
+        touch-action: none !important;
+    }
+    
+    /* Remove any pseudo-elements that might create curves */
+    .advantage-card::before,
+    .advantage-card::after,
+    .advantage-card *::before,
+    .advantage-card *::after {
+        display: none !important;
+        content: none !important;
     }
     
     /* Mobile premium glow effect */
