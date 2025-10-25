@@ -45,11 +45,14 @@
     <div id="contact-form-container"></div>
     <div id="styles-container"></div>
 
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <script src="../../assets/js/component-loader.js"></script>
+    <!-- API Service -->
     <script src="../../assets/js/api-service.js"></script>
-    <script src="../../assets.js/js/main.js"></script>
-
+    
+    <!-- Main JavaScript -->
+    <script src="../../assets/js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
@@ -148,9 +151,18 @@
         
         // These functions may be duplicated in main.js but are safe to keep here
         function openConsultModal() { 
-            if (typeof window.openConsultModal === 'function') {
-                window.openConsultModal();
-            }
+            // Wait for the modal to be loaded before trying to open it
+            const checkModal = () => {
+                const modal = document.getElementById('consultModal');
+                if (modal) {
+                    modal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                } else {
+                    // If modal not found, wait a bit and try again
+                    setTimeout(checkModal, 100);
+                }
+            };
+            checkModal();
         }
     </script>
 </body>

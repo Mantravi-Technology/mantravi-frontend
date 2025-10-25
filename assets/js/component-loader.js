@@ -66,7 +66,12 @@ document.addEventListener('DOMContentLoaded', function() {
            const contactFormContainer = document.getElementById('contact-form-container');
            if (contactFormContainer) {
                fetch('../../components/contact-form.html')
-                   .then(response => response.text())
+                   .then(response => {
+                       if (!response.ok) {
+                           throw new Error(`HTTP error! status: ${response.status}`);
+                       }
+                       return response.text();
+                   })
                    .then(html => {
                        contactFormContainer.innerHTML = html;
                        // Initialize Lucide icons after loading
@@ -77,9 +82,15 @@ document.addEventListener('DOMContentLoaded', function() {
                        if (typeof initializeConsultForm === 'function') {
                            initializeConsultForm();
                        }
+                       console.log('Contact form loaded successfully');
+                       
+                       // Dispatch custom event to notify that contact form is loaded
+                       document.dispatchEvent(new CustomEvent('contactFormLoaded'));
                    })
                    .catch(error => {
                        console.error('Error loading contact form component:', error);
+                       // Show a fallback message or retry
+                       contactFormContainer.innerHTML = '<div class="text-red-500 text-center p-4">Failed to load contact form. Please refresh the page.</div>';
                    });
            }
 

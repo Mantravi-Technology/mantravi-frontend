@@ -583,11 +583,18 @@ function scrollToPreviousSection() {
 
 // Open consult modal
 function openConsultModal() {
-    const modal = document.getElementById('consultModal');
-    if (modal) {
-        modal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
-    }
+    // Wait for the modal to be loaded before trying to open it
+    const checkModal = () => {
+        const modal = document.getElementById('consultModal');
+        if (modal) {
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        } else {
+            // If modal not found, wait a bit and try again
+            setTimeout(checkModal, 100);
+        }
+    };
+    checkModal();
 }
 
 // Close consult modal
@@ -790,6 +797,15 @@ window.smoothScrollToElement = smoothScrollToElement;
 window.openConsultModal = openConsultModal;
 window.closeConsultModal = closeConsultModal;
 window.resetConsultForm = resetConsultForm;
+
+// Add event listener for when contact form is loaded
+document.addEventListener('contactFormLoaded', function() {
+    console.log('Contact form loaded event received');
+    // Re-initialize Lucide icons for the modal
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+});
 
 // Export functions for use in other modules
 window.MantraviApp = {
