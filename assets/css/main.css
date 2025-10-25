@@ -19,6 +19,47 @@
     will-change: transform;
 }
 
+/* =============================================== */
+/* ============== STRATEGIC UX PARALLAX ============== */
+/* =============================================== */
+
+/* Smooth scrolling for better navigation */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Hero section parallax - creates depth and draws attention */
+.hero-pattern {
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Background elements - subtle movement for visual interest */
+.parallax-bg {
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Service cards - only subtle hover for feedback */
+.card-hover:hover {
+    transform: translateY(-4px);
+    transition: transform 0.3s ease-out;
+}
+
+/* Section transitions - smooth but not distracting */
+section {
+    transition: opacity 0.3s ease-out;
+}
+
+/* =============================================== */
+/* ============== SIMPLE DARK NAVY THEME ============== */
+/* =============================================== */
+
+/* Consistent dark navy background for all sections */
+.section-dark-navy {
+    background-color: #050a30;
+}
+
 /* Glow Effects */
 .glow-effect {
     box-shadow: 0 0 20px rgba(78, 228, 255, 0.3);

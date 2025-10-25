@@ -259,6 +259,61 @@ function initializeParallaxEffects() {
     // Make it globally accessible
     window.ParallaxManager = globalParallaxManager;
     
+    // Add subtle scroll-based card animations
+    initializeSubtleCardAnimations();
+}
+
+// Strategic UX-focused animations
+function initializeSubtleCardAnimations() {
+    // Only animate elements that improve UX
+    const heroElements = document.querySelectorAll('.hero-pattern, .parallax-bg');
+    const serviceCards = document.querySelectorAll('.card-hover');
+    
+    // Hero section parallax - creates depth and draws attention
+    if (heroElements.length > 0) {
+        let ticking = false;
+        function updateHeroParallax() {
+            const scrolled = window.pageYOffset;
+            
+            heroElements.forEach((element, index) => {
+                const speed = 0.08 + (index * 0.02);
+                element.style.transform = `translateY(${scrolled * speed}px) translateZ(0)`;
+            });
+            
+            ticking = false;
+        }
+        
+        function requestHeroTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateHeroParallax);
+                ticking = true;
+            }
+        }
+        
+        window.addEventListener('scroll', requestHeroTick, { passive: true });
+    }
+    
+    // Service cards - only entrance animation for better UX
+    if (serviceCards.length > 0) {
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        });
+        
+        serviceCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            cardObserver.observe(card);
+        });
+    }
 }
 
 // Intersection Observer for Animations

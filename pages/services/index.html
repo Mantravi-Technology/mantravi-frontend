@@ -36,6 +36,11 @@
             color: #ffffff;
             overflow-x: hidden;
         }
+        
+        /* Simple dark navy theme for service sections */
+        .service-section {
+            background-color: #050a30;
+        }
 
         /* Gradient Text Animation */
         .gradient-text {
@@ -282,6 +287,54 @@
             box-shadow: none !important;
         }
 
+        /* Remove any card styling from animation containers */
+        div[class*="relative"][class*="w-full"] {
+            background: transparent !important;
+            border: none !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        /* Ensure animation divs are clean */
+        #web-animation,
+        #mobile-animation,
+        #marketing-animation,
+        #qa-animation,
+        #consulting-animation {
+            background: transparent !important;
+            border: none !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+        }
+
+        /* =============================================== */
+        /* ============== SUBTLE SCROLL EFFECTS ============== */
+        /* =============================================== */
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Subtle transitions for service sections */
+        .service-section {
+            transition: all 0.3s ease-out;
+        }
+        
+        /* Smooth scroll offset for sticky header */
+        .service-section {
+            scroll-margin-top: calc(var(--header-height) + var(--services-bar-height) + 20px);
+        }
+        
+        /* Keep original card hover effects */
+        .feature-item:hover {
+            transform: translateY(-8px);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+
     </style>
 </head>
 <body>
@@ -330,8 +383,8 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                     <div class="space-y-8">
                         <div class="space-y-4 fade-in-up">
-                            <div class="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full text-cyan-400 text-sm font-medium">
-                                <i data-lucide="code" class="w-4 h-4"></i>Web Development
+                            <div class="text-cyan-400 text-sm font-medium mb-2">
+                                <i data-lucide="code" class="w-4 h-4 inline mr-2"></i>Web Development
         </div>
                             <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white">
                                 <span class="gradient-text">Web Development</span> Solutions
@@ -374,7 +427,9 @@
         </div>
                     <div class="space-y-8">
                         <div class="space-y-4 fade-in-up">
-                            <div class="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/20 rounded-full text-green-400 text-sm font-medium"><i data-lucide="smartphone" class="w-4 h-4"></i>Mobile Development</div>
+                            <div class="text-green-400 text-sm font-medium mb-2">
+                                <i data-lucide="smartphone" class="w-4 h-4 inline mr-2"></i>Mobile Development
+                            </div>
                              <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white"><span class="gradient-text">Mobile App</span> Development</h2>
                             <p class="text-lg text-gray-300 max-w-2xl">Transform your business with custom mobile applications that engage users, drive conversions, and provide seamless experiences across all devices.</p>
         </div>
@@ -406,7 +461,9 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-20 items-center">
                     <div class="space-y-8">
                         <div class="space-y-4 fade-in-up">
-                             <div class="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/10 border border-purple-500/20 rounded-full text-purple-400 text-sm font-medium"><i data-lucide="trending-up" class="w-4 h-4"></i>Digital Marketing</div>
+                            <div class="text-purple-400 text-sm font-medium mb-2">
+                                <i data-lucide="trending-up" class="w-4 h-4 inline mr-2"></i>Digital Marketing
+                            </div>
                             <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white"><span class="gradient-text">Digital Marketing</span> & Political Branding</h2>
                             <p class="text-lg text-gray-300 max-w-2xl">Build your brand's digital presence and political influence through strategic marketing campaigns, social media management, and comprehensive digital outreach programs.</p>
         </div>
@@ -444,7 +501,9 @@
                     </div>
                     <div class="space-y-8">
                         <div class="space-y-4 fade-in-up">
-                            <div class="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/10 border border-orange-500/20 rounded-full text-orange-400 text-sm font-medium"><i data-lucide="shield-check" class="w-4 h-4"></i>QA & Support</div>
+                            <div class="text-orange-400 text-sm font-medium mb-2">
+                                <i data-lucide="shield-check" class="w-4 h-4 inline mr-2"></i>QA & Support
+                            </div>
                             <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white"><span class="gradient-text">QA & Support</span> Services</h2>
                             <p class="text-lg text-gray-300 max-w-2xl">Comprehensive quality assurance and ongoing support services that ensure your applications run flawlessly, securely, and efficiently with minimal downtime.</p>
                         </div>
@@ -476,7 +535,9 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-20 items-center">
                     <div class="space-y-8">
                         <div class="space-y-4 fade-in-up">
-                            <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 text-sm font-medium"><i data-lucide="users" class="w-4 h-4"></i>Technology Consulting</div>
+                            <div class="text-blue-400 text-sm font-medium mb-2">
+                                <i data-lucide="users" class="w-4 h-4 inline mr-2"></i>Technology Consulting
+                            </div>
                             <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white"><span class="gradient-text">Technology</span> Consulting</h2>
                             <p class="text-lg text-gray-300 max-w-2xl">Strategic technology guidance and digital transformation expertise to help your business navigate complex technical challenges and achieve sustainable growth.</p>
                     </div>
@@ -536,6 +597,7 @@
             lucide.createIcons();
             initLottieAnimations();
             initScrollAnimations();
+            initParallaxScrolling();
             initActiveNavObserver();
             initServicesNavigation();
             preventMobileCurveLines();
@@ -597,30 +659,56 @@
             document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
         }
 
-        // Lightweight parallax scrolling for background elements
+        // Strategic parallax - only where it improves UX
         function initParallaxScrolling() {
-            const parallaxElements = document.querySelectorAll('.floating-shapes .shape');
+            const backgroundShapes = document.querySelectorAll('.floating-shapes .shape');
+            const serviceSections = document.querySelectorAll('.service-section');
             
-            if (parallaxElements.length === 0) return;
+            // Background shapes - creates depth without distraction
+            if (backgroundShapes.length > 0) {
+                let ticking = false;
+                function updateBackgroundParallax() {
+                    const scrolled = window.pageYOffset;
+                    
+                    backgroundShapes.forEach((element, index) => {
+                        const speed = 0.05; // Subtle background movement
+                        element.style.transform = `translateY(${scrolled * speed}px)`;
+                    });
+                    
+                    ticking = false;
+                }
+                
+                function requestBackgroundTick() {
+                    if (!ticking) {
+                        requestAnimationFrame(updateBackgroundParallax);
+                        ticking = true;
+                    }
+                }
+                
+                window.addEventListener('scroll', requestBackgroundTick, { passive: true });
+            }
             
-            // Simple parallax with reduced calculations
-            function updateParallax() {
-                const scrolled = window.pageYOffset * 0.1;
-                parallaxElements.forEach((element, index) => {
-                    element.style.transform = `translateY(${scrolled * (index + 1)}px)`;
+            // Service sections - smooth transitions for better UX
+            if (serviceSections.length > 0) {
+                const sectionObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+                
+                serviceSections.forEach(section => {
+                    section.style.opacity = '0.8';
+                    section.style.transform = 'translateY(20px)';
+                    section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                    sectionObserver.observe(section);
                 });
             }
-            
-            // Use passive scroll listener for better performance
-            let ticking = false;
-            function requestTick() {
-                if (!ticking) {
-                    requestAnimationFrame(updateParallax);
-                    ticking = true;
-                }
-            }
-            
-            window.addEventListener('scroll', requestTick, { passive: true });
         }
 
         function initActiveNavObserver() {
