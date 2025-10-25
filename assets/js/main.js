@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeApp() {
     initializeLucideIcons();
     initializeMobileMenu();
-    initializeCleanSmoothScrolling(); // Clean, single smooth scrolling system
+    initializeCleanSmoothScrolling(); // This will now ignore links with .no-global-scroll
     initializeParallaxEffects();
     initializeAnimations();
     initializeNavigation();
@@ -495,7 +495,8 @@ function addScrollProgressBar() {
 
 // Handle anchor links with consistent smooth scrolling
 function handleAnchorLinks() {
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
+    // THIS IS THE UPDATED LINE: It now ignores any link with the .no-global-scroll class
+    document.querySelectorAll('a[href^="#"]:not(.no-global-scroll)').forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
@@ -851,4 +852,3 @@ function initializeAdvantageSection() {
     });
 
 }
-
