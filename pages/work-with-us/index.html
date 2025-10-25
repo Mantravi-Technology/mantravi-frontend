@@ -26,32 +26,68 @@
     <header id="header-container"></header>
     <script src="../../assets/js/component-loader.js"></script>
     
-    <div id="page-header-container"></div>
+
+
+    <!-- Work With Us Page Header -->
+    <section class="bg-gradient-to-br from-[#0a0f1c] via-[#050a30] to-[#0a0f1c] py-16 lg:py-24">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/20 rounded-full text-green-400 text-sm font-medium mb-6">
+                <i data-lucide="users" class="w-4 h-4"></i>
+                Join Our Team
+            </div>
+            <h1 class="text-4xl lg:text-6xl font-bold mb-6">
+                <span class="gradient-text">Collaborate</span> With Excellence
+            </h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                Join our curated network of tech experts and work on exciting projects while building meaningful relationships with industry professionals.
+            </p>
+        </div>
+    </section>
+
+    <style>
+        /* Gradient Text Animation */
+        .gradient-text {
+            background: linear-gradient(135deg, #4EE4FF 0%, #00D4FF 50%, #4EE4FF 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+    </style>
 
     <section class="section-padding">
-        <div class="container mx-auto px-6">
-            <h2 class="heading-2 text-center mb-16">The Mantravi Model</h2>
-            <div class="grid-3">
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-[#4EE4FF] rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i data-lucide="users" class="w-8 h-8 text-[#050a30]"></i>
+        <div class="container mx-auto px-4 sm:px-6">
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="team-member text-center p-6 bg-black/30 rounded-xl border border-transparent hover:border-mantra-blue/30 transition-all duration-300">
+                    <div class="w-16 h-16 bg-mantra-blue rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-mantra-blue/20 advanced-icon">
+                        <i data-lucide="users" class="w-8 h-8 text-dark-bg"></i>
                     </div>
-                    <h3 class="heading-3 mb-2">Beyond Traditional Employment</h3>
-                    <p class="text-gray-400">We operate on a principle of shared success, moving beyond the conventional employer-employee dynamic.</p>
+                    <h3 class="text-xl font-semibold mb-2 advanced-text">Collaborative Culture</h3>
+                    <p class="text-gray-400">Work with talented individuals in an inclusive and supportive environment.</p>
                 </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-[#4EE4FF] rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i data-lucide="pie-chart" class="w-8 h-8 text-[#050a30]"></i>
+                
+                <div class="team-member text-center p-6 bg-black/30 rounded-xl border border-transparent hover:border-mantra-blue/30 transition-all duration-300">
+                    <div class="w-16 h-16 bg-mantra-blue rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-mantra-blue/20 advanced-icon">
+                        <i data-lucide="trending-up" class="w-8 h-8 text-dark-bg"></i>
                     </div>
-                    <h3 class="heading-3 mb-2">Share in Project Success</h3>
-                    <p class="text-gray-400">Your compensation is tied directly to project outcomes. You get a share of the success you help create.</p>
+                    <h3 class="text-xl font-semibold mb-2 advanced-text">Growth Opportunities</h3>
+                    <p class="text-gray-400">Continuous learning and career advancement in cutting-edge technologies.</p>
                 </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-[#4EE4FF] rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i data-lucide="globe-2" class="w-8 h-8 text-[#050a30]"></i>
+                
+                <div class="team-member text-center p-6 bg-black/30 rounded-xl border border-transparent hover:border-mantra-blue/30 transition-all duration-300">
+                    <div class="w-16 h-16 bg-mantra-blue rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-mantra-blue/20 advanced-icon">
+                        <i data-lucide="heart" class="w-8 h-8 text-dark-bg"></i>
                     </div>
-                    <h3 class="heading-3 mb-2">Complete Autonomy</h3>
-                    <p class="text-gray-400">Enjoy the freedom to work on projects that inspire you, from anywhere in the world, on your schedule.</p>
+                    <h3 class="text-xl font-semibold mb-2 advanced-text">Work-Life Balance</h3>
+                    <p class="text-gray-400">Flexible schedules and remote work options to support your lifestyle.</p>
                 </div>
             </div>
         </div>

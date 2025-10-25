@@ -474,4 +474,603 @@
     .office-info a:hover {
         color: #4EE4FF;
     }
+    
+    /* ===== ADVANCED HOVER EFFECTS ===== */
+    
+    /* 1. Card Hover Effects */
+    .advanced-card {
+        position: relative;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1rem;
+        padding: 2rem;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        overflow: hidden;
+    }
+    
+    .advanced-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(78, 228, 255, 0.1), transparent);
+        transition: left 0.6s ease;
+    }
+    
+    .advanced-card:hover::before {
+        left: 100%;
+    }
+    
+    .advanced-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        border-color: rgba(78, 228, 255, 0.4);
+        box-shadow: 
+            0 20px 40px rgba(78, 228, 255, 0.15),
+            0 0 0 1px rgba(78, 228, 255, 0.2),
+            inset 0 0 20px rgba(78, 228, 255, 0.05);
+        background: rgba(78, 228, 255, 0.08);
+    }
+    
+    /* 2. Button Hover Effects */
+    .advanced-btn {
+        position: relative;
+        background: linear-gradient(135deg, #4EE4FF 0%, #00D4FF 100%);
+        color: #050a30;
+        padding: 0.875rem 2rem;
+        border-radius: 0.75rem;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        border: none;
+        cursor: pointer;
+        overflow: hidden;
+    }
+    
+    .advanced-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transition: left 0.6s ease;
+    }
+    
+    .advanced-btn:hover::before {
+        left: 100%;
+    }
+    
+    .advanced-btn:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 
+            0 15px 35px rgba(78, 228, 255, 0.4),
+            0 0 0 1px rgba(255, 255, 255, 0.2);
+        background: linear-gradient(135deg, #5EE5FF 0%, #10E4FF 100%);
+    }
+    
+    /* 3. Image Hover Effects */
+    .advanced-image {
+        position: relative;
+        overflow: hidden;
+        border-radius: 1rem;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .advanced-image::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(78, 228, 255, 0.1), rgba(78, 228, 255, 0.05));
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+    
+    .advanced-image:hover::after {
+        opacity: 1;
+    }
+    
+    .advanced-image:hover {
+        transform: scale(1.05);
+        box-shadow: 0 20px 40px rgba(78, 228, 255, 0.2);
+    }
+    
+    /* 4. Text Hover Effects */
+    .advanced-text {
+        position: relative;
+        transition: all 0.3s ease;
+    }
+    
+    .advanced-text::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #4EE4FF, #00D4FF);
+        transition: width 0.4s ease;
+    }
+    
+    .advanced-text:hover::after {
+        width: 100%;
+    }
+    
+    .advanced-text:hover {
+        color: #4EE4FF;
+        text-shadow: 0 0 10px rgba(78, 228, 255, 0.3);
+    }
+    
+    /* 5. Icon Hover Effects */
+    .advanced-icon {
+        position: relative;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .advanced-icon::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: radial-gradient(circle, rgba(78, 228, 255, 0.3), transparent);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 0.4s ease;
+    }
+    
+    .advanced-icon:hover::before {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .advanced-icon:hover {
+        transform: scale(1.2) rotate(5deg);
+        color: #4EE4FF;
+        filter: drop-shadow(0 0 10px rgba(78, 228, 255, 0.5));
+    }
+    
+    /* 6. Form Input Hover Effects */
+    .advanced-input {
+        position: relative;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 0.75rem;
+        padding: 1rem;
+        color: white;
+        width: 100%;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .advanced-input:focus {
+        outline: none;
+        border-color: #4EE4FF;
+        box-shadow: 
+            0 0 0 3px rgba(78, 228, 255, 0.1),
+            0 0 20px rgba(78, 228, 255, 0.2);
+        background: rgba(78, 228, 255, 0.05);
+        transform: translateY(-2px);
+    }
+    
+    .advanced-input:hover {
+        border-color: rgba(78, 228, 255, 0.3);
+        background: rgba(78, 228, 255, 0.02);
+    }
+    
+    /* 7. Navigation Hover Effects */
+    .advanced-nav-link {
+        position: relative;
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        transition: all 0.3s ease;
+    }
+    
+    .advanced-nav-link::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(78, 228, 255, 0.1), rgba(78, 228, 255, 0.05));
+        border-radius: 0.5rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .advanced-nav-link:hover::before {
+        opacity: 1;
+    }
+    
+    .advanced-nav-link:hover {
+        color: #4EE4FF;
+        transform: translateY(-2px);
+    }
+    
+    /* 8. Service Card Hover Effects */
+    .service-card {
+        position: relative;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1.5rem;
+        padding: 2.5rem;
+        transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        overflow: hidden;
+    }
+    
+    .service-card::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: conic-gradient(from 0deg, transparent, rgba(78, 228, 255, 0.1), transparent);
+        opacity: 0;
+        transition: opacity 0.6s ease;
+        animation: rotate 3s linear infinite;
+    }
+    
+    .service-card:hover::before {
+        opacity: 1;
+    }
+    
+    .service-card:hover {
+        transform: translateY(-10px) scale(1.03);
+        border-color: rgba(78, 228, 255, 0.4);
+        box-shadow: 
+            0 25px 50px rgba(78, 228, 255, 0.2),
+            0 0 0 1px rgba(78, 228, 255, 0.3),
+            inset 0 0 30px rgba(78, 228, 255, 0.1);
+        background: rgba(78, 228, 255, 0.08);
+    }
+    
+    @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    
+    /* 9. Team Member Hover Effects */
+    .team-member {
+        position: relative;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1rem;
+        padding: 2rem;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        overflow: hidden;
+    }
+    
+    .team-member::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(78, 228, 255, 0.1), rgba(78, 228, 255, 0.05));
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+    
+    .team-member:hover::after {
+        opacity: 1;
+    }
+    
+    .team-member:hover {
+        transform: translateY(-8px) scale(1.02);
+        border-color: rgba(78, 228, 255, 0.4);
+        box-shadow: 
+            0 20px 40px rgba(78, 228, 255, 0.15),
+            0 0 0 1px rgba(78, 228, 255, 0.2);
+    }
+    
+    /* 10. Contact Form Hover Effects */
+    .contact-form {
+        position: relative;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1.5rem;
+        padding: 3rem;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .contact-form:hover {
+        border-color: rgba(78, 228, 255, 0.3);
+        box-shadow: 
+            0 20px 40px rgba(78, 228, 255, 0.1),
+            0 0 0 1px rgba(78, 228, 255, 0.2);
+        background: rgba(78, 228, 255, 0.03);
+    }
+    
+    /* Mobile Touch Interactions */
+    @media (max-width: 768px) {
+        /* Touch-friendly hover effects for mobile */
+        .advanced-card:active,
+        .service-card:active,
+        .team-member:active {
+            transform: translateY(-4px) scale(1.01);
+            border-color: rgba(78, 228, 255, 0.4);
+            box-shadow: 0 10px 20px rgba(78, 228, 255, 0.15);
+        }
+        
+        .advanced-btn:active {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(78, 228, 255, 0.3);
+        }
+        
+        .advanced-image:active {
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(78, 228, 255, 0.2);
+        }
+        
+        /* Mobile-specific animations that work on touch */
+        .advanced-card,
+        .service-card,
+        .team-member {
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .advanced-card:active::before,
+        .service-card:active::before {
+            left: 100%;
+        }
+        
+        /* Mobile tap effects */
+        .advanced-icon:active {
+            transform: scale(1.1) rotate(3deg);
+            color: #4EE4FF;
+            filter: drop-shadow(0 0 8px rgba(78, 228, 255, 0.4));
+        }
+        
+        .advanced-text:active {
+            color: #4EE4FF;
+            text-shadow: 0 0 8px rgba(78, 228, 255, 0.3);
+        }
+        
+        .advanced-text:active::after {
+            width: 100%;
+        }
+        
+        /* Mobile form interactions */
+        .advanced-input:focus {
+            transform: translateY(-1px);
+            border-color: #4EE4FF;
+            box-shadow: 0 0 0 2px rgba(78, 228, 255, 0.1);
+        }
+        
+        /* Mobile button press effects */
+        .advanced-btn:active {
+            background: linear-gradient(135deg, #5EE5FF 0%, #10E4FF 100%);
+            box-shadow: 0 8px 20px rgba(78, 228, 255, 0.3);
+        }
+        
+        /* Mobile card press effects */
+        .service-card:active {
+            transform: translateY(-6px) scale(1.02);
+            border-color: rgba(78, 228, 255, 0.4);
+            box-shadow: 
+                0 15px 30px rgba(78, 228, 255, 0.15),
+                0 0 0 1px rgba(78, 228, 255, 0.2);
+        }
+        
+        .team-member:active {
+            transform: translateY(-4px) scale(1.01);
+            border-color: rgba(78, 228, 255, 0.4);
+            box-shadow: 0 10px 20px rgba(78, 228, 255, 0.15);
+        }
+        
+        /* Mobile contact form effects */
+        .contact-form:active {
+            border-color: rgba(78, 228, 255, 0.3);
+            box-shadow: 0 10px 20px rgba(78, 228, 255, 0.1);
+        }
+    }
+    
+    /* Enhanced mobile interactions with JavaScript */
+    @media (max-width: 768px) {
+        .mobile-touch-active {
+            transform: translateY(-4px) scale(1.02);
+            border-color: rgba(78, 228, 255, 0.4);
+            box-shadow: 0 10px 20px rgba(78, 228, 255, 0.15);
+        }
+        
+        .mobile-touch-active.advanced-card::before,
+        .mobile-touch-active.service-card::before {
+            left: 100%;
+        }
+        
+        .mobile-touch-active.advanced-icon {
+            transform: scale(1.1) rotate(3deg);
+            color: #4EE4FF;
+            filter: drop-shadow(0 0 8px rgba(78, 228, 255, 0.4));
+        }
+        
+        .mobile-touch-active.advanced-text {
+            color: #4EE4FF;
+            text-shadow: 0 0 8px rgba(78, 228, 255, 0.3);
+        }
+        
+        .mobile-touch-active.advanced-text::after {
+            width: 100%;
+        }
+        
+        /* Mobile-specific visual enhancements */
+        .advanced-card,
+        .service-card,
+        .team-member {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        /* Add a subtle mobile indicator */
+        .advanced-card::after,
+        .service-card::after,
+        .team-member::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 6px;
+            height: 6px;
+            background: rgba(78, 228, 255, 0.3);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .advanced-card:active::after,
+        .service-card:active::after,
+        .team-member:active::after {
+            opacity: 1;
+            background: rgba(78, 228, 255, 0.8);
+        }
+        
+        /* Mobile button press indicator */
+        .advanced-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s ease;
+        }
+        
+        .advanced-btn:active::after {
+            width: 100px;
+            height: 100px;
+        }
+        
+        /* Mobile form input focus indicator */
+        .advanced-input:focus {
+            position: relative;
+        }
+        
+        .advanced-input:focus::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, rgba(78, 228, 255, 0.3), rgba(78, 228, 255, 0.1));
+            border-radius: 0.75rem;
+            z-index: -1;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+    }
 </style>
+
+<!-- Mobile Touch Enhancement JavaScript -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Enhanced mobile touch interactions
+    function addMobileTouchEffects() {
+        // Get all interactive elements
+        const interactiveElements = document.querySelectorAll(
+            '.advanced-card, .service-card, .team-member, .advanced-btn, .advanced-image, .advanced-icon, .advanced-text, .contact-form'
+        );
+        
+        interactiveElements.forEach(element => {
+            // Add touch start effect
+            element.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                this.classList.add('mobile-touch-active');
+                
+                // Add haptic feedback if supported
+                if (navigator.vibrate) {
+                    navigator.vibrate(10);
+                }
+            }, { passive: false });
+            
+            // Add touch end effect
+            element.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                setTimeout(() => {
+                    this.classList.remove('mobile-touch-active');
+                }, 150);
+            }, { passive: false });
+            
+            // Add touch cancel effect
+            element.addEventListener('touchcancel', function(e) {
+                this.classList.remove('mobile-touch-active');
+            }, { passive: false });
+            
+            // Add touch move to prevent default scrolling on interactive elements
+            element.addEventListener('touchmove', function(e) {
+                if (this.classList.contains('mobile-touch-active')) {
+                    e.preventDefault();
+                }
+            }, { passive: false });
+        });
+        
+        // Special handling for form inputs
+        const formInputs = document.querySelectorAll('.advanced-input');
+        formInputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.classList.add('mobile-touch-active');
+            });
+            
+            input.addEventListener('blur', function() {
+                this.classList.remove('mobile-touch-active');
+            });
+        });
+        
+        // Special handling for buttons
+        const buttons = document.querySelectorAll('.advanced-btn');
+        buttons.forEach(button => {
+            button.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                this.classList.add('mobile-touch-active');
+                
+                // Add haptic feedback
+                if (navigator.vibrate) {
+                    navigator.vibrate(20);
+                }
+            }, { passive: false });
+            
+            button.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                setTimeout(() => {
+                    this.classList.remove('mobile-touch-active');
+                }, 200);
+            }, { passive: false });
+        });
+    }
+    
+    // Initialize mobile touch effects
+    addMobileTouchEffects();
+    
+    // Re-initialize when new content is loaded (for dynamic content)
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.addedNodes.length > 0) {
+                addMobileTouchEffects();
+            }
+        });
+    });
+    
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+});
+</script>

@@ -44,7 +44,39 @@
     <header id="header-container"></header>
     <script src="../../assets/js/component-loader.js"></script>
 
-    <div id="page-header-container"></div>
+
+    <!-- About Page Header -->
+    <section class="bg-gradient-to-br from-[#0a0f1c] via-[#050a30] to-[#0a0f1c] py-16 lg:py-24">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 text-sm font-medium mb-6">
+                <i data-lucide="users" class="w-4 h-4"></i>
+                About Us
+            </div>
+            <h1 class="text-4xl lg:text-6xl font-bold mb-6">
+                <span class="gradient-text">Innovative Team</span> Behind Success
+            </h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                Meet the passionate professionals who bring creativity, expertise, and dedication to every project, driving innovation and delivering exceptional results.
+            </p>
+        </div>
+    </section>
+
+    <style>
+        /* Gradient Text Animation */
+        .gradient-text {
+            background: linear-gradient(135deg, #4EE4FF 0%, #00D4FF 50%, #4EE4FF 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+    </style>
 
     <section class="section-padding relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-br from-mantra-blue/10 to-transparent opacity-50 parallax-bg"></div>
@@ -170,41 +202,41 @@
             
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 
-                <div class="tech-card text-center p-6 rounded-xl bg-black/50 border border-white/10 transition-all duration-300 shadow-lg hover:border-mantra-blue hover:shadow-mantra-blue/20">
-                    <div class="tech-icon w-14 h-14 bg-mantra-blue/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                <div class="service-card text-center p-6 rounded-xl bg-black/50 border border-white/10 transition-all duration-300 shadow-lg hover:border-mantra-blue hover:shadow-mantra-blue/20">
+                    <div class="tech-icon w-14 h-14 bg-mantra-blue/20 rounded-full mx-auto mb-4 flex items-center justify-center advanced-icon">
                         <i data-lucide="code-square" class="w-7 h-7 text-mantra-blue"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-50">Digital Product Development</h3>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-50 advanced-text">Digital Product Development</h3>
                     <p class="text-gray-400 text-sm">
                         **Web & App Development** (React, Next.js, Node.js, Flutter) to build modern, scalable digital products and bespoke platforms.
                     </p>
                 </div>
                 
-                <div class="tech-card text-center p-6 rounded-xl bg-black/50 border border-white/10 transition-all duration-300 shadow-lg hover:border-mantra-blue hover:shadow-mantra-blue/20">
-                    <div class="tech-icon w-14 h-14 bg-mantra-blue/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                <div class="service-card text-center p-6 rounded-xl bg-black/50 border border-white/10 transition-all duration-300 shadow-lg hover:border-mantra-blue hover:shadow-mantra-blue/20">
+                    <div class="tech-icon w-14 h-14 bg-mantra-blue/20 rounded-full mx-auto mb-4 flex items-center justify-center advanced-icon">
                         <i data-lucide="cloud" class="w-7 h-7 text-mantra-blue"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-50">Cloud & DevOps Automation</h3>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-50 advanced-text">Cloud & DevOps Automation</h3>
                     <p class="text-gray-400 text-sm">
                         **DevOps** (AWS, Kubernetes, CI/CD) for infrastructure automation, scalability, and 24/7 Application Support & Monitoring.
                     </p>
                 </div>
                 
-                <div class="tech-card text-center p-6 rounded-xl bg-black/50 border border-white/10 transition-all duration-300 shadow-lg hover:border-mantra-blue hover:shadow-mantra-blue/20">
-                    <div class="tech-icon w-14 h-14 bg-mantra-blue/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                <div class="service-card text-center p-6 rounded-xl bg-black/50 border border-white/10 transition-all duration-300 shadow-lg hover:border-mantra-blue hover:shadow-mantra-blue/20">
+                    <div class="tech-icon w-14 h-14 bg-mantra-blue/20 rounded-full mx-auto mb-4 flex items-center justify-center advanced-icon">
                         <i data-lucide="database" class="w-7 h-7 text-mantra-blue"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-50">Data & AI Intelligence</h3>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-50 advanced-text">Data & AI Intelligence</h3>
                     <p class="text-gray-400 text-sm">
                         **Data Engineering** for robust pipelines, ETL, Big Data architecture, Data Warehousing, and custom AI/ML model integration.
                     </p>
                 </div>
                 
-                <div class="tech-card text-center p-6 rounded-xl bg-black/50 border border-white/10 transition-all duration-300 shadow-lg hover:border-mantra-blue hover:shadow-mantra-blue/20">
-                    <div class="tech-icon w-14 h-14 bg-mantra-blue/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                <div class="service-card text-center p-6 rounded-xl bg-black/50 border border-white/10 transition-all duration-300 shadow-lg hover:border-mantra-blue hover:shadow-mantra-blue/20">
+                    <div class="tech-icon w-14 h-14 bg-mantra-blue/20 rounded-full mx-auto mb-4 flex items-center justify-center advanced-icon">
                         <i data-lucide="trending-up" class="w-7 h-7 text-mantra-blue"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-50">Digital Growth Strategy</h3>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-50 advanced-text">Digital Growth Strategy</h3>
                     <p class="text-gray-400 text-sm">
                         **Performance Marketing**, SEO, and data-driven content strategy to drive audience engagement and maximize digital reach.
                     </p>
@@ -216,7 +248,7 @@
                 <p class="text-xl text-gray-200 mb-8 max-w-4xl mx-auto">
                     We simplify complexity by grouping our expertise into these four strategic pillars, ensuring full coverage from product development and infrastructure to market growth and long-term support.
                 </p>
-                <button class="px-8 py-3 text-lg font-semibold bg-mantra-blue text-dark-bg rounded-full hover:bg-white/90 transition-colors duration-300 shadow-xl shadow-mantra-blue/40">
+                <button class="advanced-btn px-8 py-3 text-lg font-semibold bg-mantra-blue text-dark-bg rounded-full hover:bg-white/90 transition-colors duration-300 shadow-xl shadow-mantra-blue/40">
                     Explore Our Capabilities
                 </button>
             </div>

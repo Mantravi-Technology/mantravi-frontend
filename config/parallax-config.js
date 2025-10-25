@@ -9,14 +9,12 @@ const PARALLAX_CONFIG = {
     enableMobileOptimization: true,
     
     // Parallax speeds for different elements
-    // Lower values = slower parallax, Higher values = faster parallax
+    // Only where it improves UX - not just for effects
     speeds: {
-        'parallax-bg': 0.05,        // Background elements - very subtle
-        'parallax-services': 0.05, // Services section - subtle
-        'parallax-hero': 0.05,     // Hero section - minimal
-        'parallax-cards': 0.05,    // Card elements - very subtle
-        'parallax-text': 0.01,     // Text elements - barely noticeable
-        'parallax-images': 0.05    // Image elements - subtle
+        'parallax-bg': 0.1,         // Background elements - creates depth
+        'parallax-hero': 0.08,      // Hero section - draws attention
+        'parallax-services': 0.05,  // Services section - guides eye flow
+        'parallax-text': 0.02       // Text elements - very subtle
     },
     
     // Responsive breakpoints

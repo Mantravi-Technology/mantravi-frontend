@@ -66,7 +66,12 @@ document.addEventListener('DOMContentLoaded', function() {
            const contactFormContainer = document.getElementById('contact-form-container');
            if (contactFormContainer) {
                fetch('../../components/contact-form.html')
-                   .then(response => response.text())
+                   .then(response => {
+                       if (!response.ok) {
+                           throw new Error(`HTTP error! status: ${response.status}`);
+                       }
+                       return response.text();
+                   })
                    .then(html => {
                        contactFormContainer.innerHTML = html;
                        // Initialize Lucide icons after loading
@@ -77,67 +82,35 @@ document.addEventListener('DOMContentLoaded', function() {
                        if (typeof initializeConsultForm === 'function') {
                            initializeConsultForm();
                        }
+                       console.log('Contact form loaded successfully');
+                       
+                       // Dispatch custom event to notify that contact form is loaded
+                       document.dispatchEvent(new CustomEvent('contactFormLoaded'));
                    })
                    .catch(error => {
                        console.error('Error loading contact form component:', error);
+                       // Show a fallback message or retry
+                       contactFormContainer.innerHTML = '<div class="text-red-500 text-center p-4">Failed to load contact form. Please refresh the page.</div>';
                    });
            }
 
            // Load stats section component
            const statsContainer = document.getElementById('stats-container');
            if (statsContainer) {
-               fetch('../../components/stats-section/stats-section.html')
+               console.log('Loading stats component...');
+               fetch('../../components/stats-section/stats-section.html?v=' + Date.now())
                    .then(response => response.text())
                    .then(html => {
+                       console.log('Stats component loaded successfully');
                        statsContainer.innerHTML = html;
                    })
                    .catch(error => {
                        console.error('Error loading stats section component:', error);
                    });
+           } else {
+               console.log('Stats container not found');
            }
 
-           // Load page header component
-           const pageHeaderContainer = document.getElementById('page-header-container');
-           if (pageHeaderContainer) {
-               // Use custom page headers for specific pages
-               let headerPath = '../../components/page-header/page-header.html';
-               if (window.location.pathname.includes('/services/')) {
-                   headerPath = '../../components/page-header/services-page-header.html';
-               } else if (window.location.pathname.includes('/home/') || window.location.pathname === '/' || window.location.pathname.endsWith('/index.html')) {
-                   headerPath = '../../components/page-header/home-page-header.html';
-               }
-               
-               fetch(headerPath)
-                   .then(response => response.text())
-                   .then(html => {
-                       // Only process placeholders for non-services pages
-                       if (!window.location.pathname.includes('/services/')) {
-                           // Determine page title and description based on current page
-                           let pageTitle = 'About Mantravi';
-                           let pageDescription = 'We\'re a team of passionate technologists dedicated to engineering global disruption through AI-native excellence.';
-                           
-                           if (window.location.pathname.includes('/contact/')) {
-                               pageTitle = 'Contact Us';
-                               pageDescription = 'Ready to start your digital transformation journey? Get in touch with our expert team today.';
-                           } else if (window.location.pathname.includes('/blog/')) {
-                               pageTitle = 'Blog & Insights';
-                               pageDescription = 'Stay ahead with the latest insights on AI, digital transformation, and emerging technologies.';
-                           } else if (window.location.pathname.includes('/work-with-us/')) {
-                               pageTitle = 'Work With Us';
-                               pageDescription = 'Join our team of passionate technologists and help shape the future of digital transformation.';
-                           }
-
-                           // Replace placeholders with actual content
-                           html = html.replace('{{PAGE_TITLE}}', pageTitle);
-                           html = html.replace('{{PAGE_DESCRIPTION}}', pageDescription);
-                       }
-                       
-                       pageHeaderContainer.innerHTML = html;
-                   })
-                   .catch(error => {
-                       console.error('Error loading page header component:', error);
-                   });
-           }
 
            // Load CTA section component
            const ctaContainer = document.getElementById('cta-container');

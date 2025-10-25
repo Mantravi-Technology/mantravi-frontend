@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeApp() {
     initializeLucideIcons();
     initializeMobileMenu();
-    initializeCleanSmoothScrolling(); // Clean, single smooth scrolling system
+    initializeCleanSmoothScrolling(); // This will now ignore links with .no-global-scroll
     initializeParallaxEffects();
     initializeAnimations();
     initializeNavigation();
@@ -259,6 +259,61 @@ function initializeParallaxEffects() {
     // Make it globally accessible
     window.ParallaxManager = globalParallaxManager;
     
+    // Add subtle scroll-based card animations
+    initializeSubtleCardAnimations();
+}
+
+// Strategic UX-focused animations
+function initializeSubtleCardAnimations() {
+    // Only animate elements that improve UX
+    const heroElements = document.querySelectorAll('.hero-pattern, .parallax-bg');
+    const serviceCards = document.querySelectorAll('.card-hover');
+    
+    // Hero section parallax - creates depth and draws attention
+    if (heroElements.length > 0) {
+        let ticking = false;
+        function updateHeroParallax() {
+            const scrolled = window.pageYOffset;
+            
+            heroElements.forEach((element, index) => {
+                const speed = 0.08 + (index * 0.02);
+                element.style.transform = `translateY(${scrolled * speed}px) translateZ(0)`;
+            });
+            
+            ticking = false;
+        }
+        
+        function requestHeroTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateHeroParallax);
+                ticking = true;
+            }
+        }
+        
+        window.addEventListener('scroll', requestHeroTick, { passive: true });
+    }
+    
+    // Service cards - only entrance animation for better UX
+    if (serviceCards.length > 0) {
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        });
+        
+        serviceCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            cardObserver.observe(card);
+        });
+    }
 }
 
 // Intersection Observer for Animations
@@ -440,7 +495,8 @@ function addScrollProgressBar() {
 
 // Handle anchor links with consistent smooth scrolling
 function handleAnchorLinks() {
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
+    // THIS IS THE UPDATED LINE: It now ignores any link with the .no-global-scroll class
+    document.querySelectorAll('a[href^="#"]:not(.no-global-scroll)').forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
@@ -527,11 +583,18 @@ function scrollToPreviousSection() {
 
 // Open consult modal
 function openConsultModal() {
-    const modal = document.getElementById('consultModal');
-    if (modal) {
-        modal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
-    }
+    // Wait for the modal to be loaded before trying to open it
+    const checkModal = () => {
+        const modal = document.getElementById('consultModal');
+        if (modal) {
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        } else {
+            // If modal not found, wait a bit and try again
+            setTimeout(checkModal, 100);
+        }
+    };
+    checkModal();
 }
 
 // Close consult modal
@@ -735,6 +798,15 @@ window.openConsultModal = openConsultModal;
 window.closeConsultModal = closeConsultModal;
 window.resetConsultForm = resetConsultForm;
 
+// Add event listener for when contact form is loaded
+document.addEventListener('contactFormLoaded', function() {
+    console.log('Contact form loaded event received');
+    // Re-initialize Lucide icons for the modal
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+});
+
 // Export functions for use in other modules
 window.MantraviApp = {
     showNotification,
@@ -796,4 +868,3 @@ function initializeAdvantageSection() {
     });
 
 }
-
