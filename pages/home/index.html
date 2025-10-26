@@ -28,6 +28,7 @@
 </head>
 <body class="bg-[#050a30] text-white smooth-scroll premium-scroll">
 
+
     <!-- Header -->
     <header id="header-container"></header>
     <script src="../../assets/js/component-loader.js"></script>
@@ -194,7 +195,7 @@
             
             <!-- Mobile Services Carousel -->
             <div class="block lg:hidden services-carousel-container relative">
-                <div class="services-carousel overflow-x-auto scrollbar-hide" id="servicesCarousel">
+                <div class="services-carousel overflow-x-auto" id="servicesCarousel">
                     <div class="flex gap-4 sm:gap-6 md:gap-8 pb-4" style="width: max-content;">
                         <!-- Card 1: Digital Products & Development -->
                         <div class="bg-black/50 backdrop-blur-sm rounded-xl p-6 sm:p-8 card-hover border border-white/10 parallax-cards flex-shrink-0 w-80 sm:w-auto">
@@ -748,57 +749,223 @@
             }
         }
 
-        // Touch/Drag Support for Mobile
+        // Ultra-Smooth Touch/Drag Support for Mobile with Vertical Scroll Support
         if (carousel) {
-            // Touch events for mobile
+            let startX = 0;
+            let startY = 0;
+            let scrollLeft = 0;
+            let isDragging = false;
+            let isHorizontalDrag = false;
+            let velocity = 0;
+            let lastX = 0;
+            let lastY = 0;
+            let lastTime = 0;
+            let animationId = null;
+            let touchStartTime = 0;
+            let velocityHistory = [];
+            let isAnimating = false;
+
+            // Optimize carousel for smooth scrolling
+            carousel.style.willChange = 'scroll-position';
+            carousel.style.transform = 'translateZ(0)'; // Hardware acceleration
+
+            // Touch events for mobile - ultra-smooth with vertical scroll support
             carousel.addEventListener('touchstart', (e) => {
-                isDragging = true;
-                startX = e.touches[0].pageX - carousel.offsetLeft;
+                const touch = e.touches[0];
+                startX = touch.pageX - carousel.offsetLeft;
+                startY = touch.pageY;
                 scrollLeft = carousel.scrollLeft;
-                carousel.style.cursor = 'grabbing';
-            });
+                lastX = touch.pageX;
+                lastY = touch.pageY;
+                lastTime = performance.now(); // Use performance.now() for better precision
+                touchStartTime = performance.now();
+                velocity = 0;
+                velocityHistory = [];
+                isDragging = false;
+                isHorizontalDrag = false;
+                isAnimating = false;
+                
+                // Cancel any ongoing animation
+                if (animationId) {
+                    cancelAnimationFrame(animationId);
+                    animationId = null;
+                }
+                
+                carousel.style.scrollBehavior = 'auto';
+            }, { passive: true });
 
             carousel.addEventListener('touchmove', (e) => {
-                if (!isDragging) return;
-                e.preventDefault();
-                const x = e.touches[0].pageX - carousel.offsetLeft;
-                const walk = (x - startX) * 2;
-                carousel.scrollLeft = scrollLeft - walk;
-            });
+                const touch = e.touches[0];
+                const currentX = touch.pageX;
+                const currentY = touch.pageY;
+                const currentTime = performance.now();
+                
+                const deltaX = Math.abs(currentX - lastX);
+                const deltaY = Math.abs(currentY - lastY);
+                const deltaTime = currentTime - lastTime;
+                
+                // Determine if this is a horizontal or vertical gesture
+                if (!isDragging && deltaTime > 0) {
+                    const timeElapsed = currentTime - touchStartTime;
+                    
+                    // Faster gesture detection for responsiveness
+                    if (timeElapsed > 30) {
+                        if (deltaX > deltaY && deltaX > 8) {
+                            // Horizontal gesture - start carousel dragging
+                            isDragging = true;
+                            isHorizontalDrag = true;
+                            e.preventDefault();
+                        } else if (deltaY > deltaX && deltaY > 8) {
+                            // Vertical gesture - allow page scrolling
+                            isDragging = false;
+                            isHorizontalDrag = false;
+                            return; // Let the browser handle vertical scrolling
+                        }
+                    }
+                }
+                
+                if (isDragging && isHorizontalDrag) {
+                    // Only prevent default for horizontal dragging
+                    e.preventDefault();
+                    
+                    if (deltaTime > 0) {
+                        // Calculate velocity with smoothing
+                        const currentVelocity = (currentX - lastX) / deltaTime;
+                        velocityHistory.push(currentVelocity);
+                        
+                        // Keep only last 5 velocity readings for smoothing
+                        if (velocityHistory.length > 5) {
+                            velocityHistory.shift();
+                        }
+                        
+                        // Calculate smoothed velocity
+                        velocity = velocityHistory.reduce((a, b) => a + b, 0) / velocityHistory.length;
+                    }
+                    
+                    // Ultra-smooth scrolling with reduced sensitivity for better control
+                    const walk = (currentX - startX) * 1.2; // Reduced from 1.5 to 1.2
+                    const newScrollLeft = scrollLeft - walk;
+                    
+                    // Use requestAnimationFrame for smooth updates
+                    if (!isAnimating) {
+                        isAnimating = true;
+                        requestAnimationFrame(() => {
+                            carousel.scrollLeft = newScrollLeft;
+                            isAnimating = false;
+                        });
+                    } else {
+                        carousel.scrollLeft = newScrollLeft;
+                    }
+                }
+                
+                lastX = currentX;
+                lastY = currentY;
+                lastTime = currentTime;
+            }, { passive: false });
 
             carousel.addEventListener('touchend', () => {
+                if (isDragging && isHorizontalDrag) {
+                    carousel.style.scrollBehavior = 'smooth';
+                    
+                    // Enhanced momentum scrolling with better physics
+                    if (Math.abs(velocity) > 0.3) {
+                        const momentum = velocity * 300; // Increased momentum multiplier
+                        const targetScroll = carousel.scrollLeft - momentum;
+                        
+                        // Clamp target scroll to valid range
+                        const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+                        const clampedTarget = Math.max(0, Math.min(targetScroll, maxScroll));
+                        
+                        // Ultra-smooth momentum scroll
+                        const startScroll = carousel.scrollLeft;
+                        const distance = clampedTarget - startScroll;
+                        const duration = Math.min(Math.abs(distance) * 2, 600); // Dynamic duration
+                        let startTime = null;
+                        
+                        function momentumScroll(currentTime) {
+                            if (startTime === null) startTime = currentTime;
+                            const timeElapsed = currentTime - startTime;
+                            const progress = Math.min(timeElapsed / duration, 1);
+                            
+                            // Enhanced easing function for ultra-smooth momentum
+                            const easeProgress = 1 - Math.pow(1 - progress, 4);
+                            const currentScroll = startScroll + (distance * easeProgress);
+                            
+                            carousel.scrollLeft = currentScroll;
+                            
+                            if (progress < 1) {
+                                animationId = requestAnimationFrame(momentumScroll);
+                            } else {
+                                animationId = null;
+                            }
+                        }
+                        
+                        animationId = requestAnimationFrame(momentumScroll);
+                    }
+                }
+                
                 isDragging = false;
-                carousel.style.cursor = 'grab';
-            });
+                isHorizontalDrag = false;
+                isAnimating = false;
+            }, { passive: true });
 
-            // Mouse events for desktop
+            // Mouse events for desktop - also optimized
             carousel.addEventListener('mousedown', (e) => {
                 isDragging = true;
+                isHorizontalDrag = true;
                 startX = e.pageX - carousel.offsetLeft;
                 scrollLeft = carousel.scrollLeft;
                 carousel.style.cursor = 'grabbing';
+                carousel.style.scrollBehavior = 'auto';
+                carousel.style.overflowX = 'hidden';
             });
 
             carousel.addEventListener('mousemove', (e) => {
-                if (!isDragging) return;
+                if (!isDragging || !isHorizontalDrag) return;
                 e.preventDefault();
                 const x = e.pageX - carousel.offsetLeft;
-                const walk = (x - startX) * 2;
-                carousel.scrollLeft = scrollLeft - walk;
+                const walk = (x - startX) * 1.2; // Same sensitivity as touch
+                
+                // Use requestAnimationFrame for smooth mouse dragging too
+                if (!isAnimating) {
+                    isAnimating = true;
+                    requestAnimationFrame(() => {
+                        carousel.scrollLeft = scrollLeft - walk;
+                        isAnimating = false;
+                    });
+                } else {
+                    carousel.scrollLeft = scrollLeft - walk;
+                }
             });
 
             carousel.addEventListener('mouseup', () => {
                 isDragging = false;
+                isHorizontalDrag = false;
+                isAnimating = false;
                 carousel.style.cursor = 'grab';
+                carousel.style.scrollBehavior = 'smooth';
+                carousel.style.overflowX = 'auto';
             });
 
             carousel.addEventListener('mouseleave', () => {
                 isDragging = false;
+                isHorizontalDrag = false;
+                isAnimating = false;
                 carousel.style.cursor = 'grab';
+                carousel.style.scrollBehavior = 'smooth';
+                carousel.style.overflowX = 'auto';
             });
 
-            // Set initial cursor
+            // Set initial cursor and enable smooth scrolling
             carousel.style.cursor = 'grab';
+            carousel.style.scrollBehavior = 'smooth';
+            
+            // Prevent text selection during horizontal drag only
+            carousel.addEventListener('selectstart', (e) => {
+                if (isDragging && isHorizontalDrag) {
+                    e.preventDefault();
+                }
+            });
         }
 
         // Keyboard navigation

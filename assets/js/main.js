@@ -37,6 +37,9 @@ function initializeMobileMenu() {
             // Update aria-expanded attribute
             const isExpanded = !mobileMenu.classList.contains('hidden');
             mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
+            
+            // Remove focus from button after click to prevent focus border
+            mobileMenuBtn.blur();
         });
         
         // Close mobile menu when clicking on links
@@ -45,7 +48,18 @@ function initializeMobileMenu() {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
                 mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                // Remove focus from button when menu closes
+                mobileMenuBtn.blur();
             });
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                mobileMenuBtn.blur();
+            }
         });
     }
 }
@@ -588,7 +602,6 @@ function openConsultModal() {
         const modal = document.getElementById('consultModal');
         if (modal) {
             modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
         } else {
             // If modal not found, wait a bit and try again
             setTimeout(checkModal, 100);
@@ -602,7 +615,6 @@ function closeConsultModal() {
     const modal = document.getElementById('consultModal');
     if (modal) {
         modal.classList.add('hidden');
-        document.body.style.overflow = 'auto'; // Restore scrolling
         
         // Reset form state
         const form = document.getElementById('consultForm');
