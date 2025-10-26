@@ -11,12 +11,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display?swap" rel="stylesheet">
     <style>
         html { scroll-behavior: auto; }
-        body { font-family: 'Inter', sans-serif; background-color: #050a30; color: #ffffff; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background-color: #050a30; color: #ffffff; }
+        
+        /* Hide scrollbars and prevent horizontal scrolling */
+        ::-webkit-scrollbar { display: none; }
+        html, body { 
+            scrollbar-width: none; 
+            -ms-overflow-style: none; 
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+        * { max-width: 100%; box-sizing: border-box; }
+        
         /* ... (all styles are unchanged) ... */
         .gradient-text{background:linear-gradient(135deg,#4EE4FF 0%,#00D4FF 50%,#4EE4FF 100%);background-size:200% 200%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:gradientShift 4s ease-in-out infinite}@keyframes gradientShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}.fade-in-up{opacity:0;transform:translateY(30px);transition:opacity .6s cubic-bezier(.645,.045,.355,1),transform .6s cubic-bezier(.645,.045,.355,1);will-change:opacity,transform}.fade-in-up.is-visible{opacity:1;transform:translateY(0)}.delay-100{transition-delay:100ms}.delay-200{transition-delay:200ms}.delay-300{transition-delay:300ms}.delay-400{transition-delay:400ms}.delay-500{transition-delay:500ms}.services-bar{position:sticky;z-index:100;width:100%;background: linear-gradient(to bottom, #1c1c1c 0%, #000000 100%);;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(78,228,255,.2);transform:translateZ(0)}.services-list{display:flex;justify-content:space-around;align-items:stretch;list-style:none;padding:.5rem;margin:0 auto;max-width:1280px;gap:.5rem}.services-list li{flex:1;display:flex}.services-list li a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.25rem;padding:.75rem .5rem;border-radius:12px;color:#e5e7eb;text-decoration:none;font-weight:500;font-size:.8rem;transition:all .25s cubic-bezier(.4,0,.2,1);text-align:center;-webkit-tap-highlight-color:transparent}.services-list li a:hover{background:rgba(78,228,255,.1);color:#4EE4FF;transform:translateY(-3px)}.services-list li a.active{background:rgba(78,228,255,.15);color:#4EE4FF;font-weight:600;box-shadow:0 4px 20px rgba(78,228,255,.15);transform:translateY(-1px)}.services-list li a:active{transform:translateY(-1px) scale(.97);transition-duration:.1s}.services-list li i{font-size:1.25rem;color:#4EE4FF;transition:transform .25s cubic-bezier(.4,0,.2,1);margin-bottom:.2rem}@media (max-width:768px){.services-list li a{font-size:.65rem;padding:.6rem .25rem;gap:.15rem}.services-list li i{font-size:1.1rem}}@media (max-width:480px){.services-list{padding:.4rem;gap:.25rem}.services-list li a{font-size:.6rem;min-height:60px}.services-list li a span{line-height:1.2}.services-list li i{font-size:1rem;margin-bottom:.15rem}}.service-section{position:relative;overflow:hidden;border-bottom:1px solid rgba(78,228,255,.1)}.feature-item{position:relative;padding:1.5rem;background:rgba(14,23,69,.5);border:1px solid rgba(78,228,255,.15);border-radius:1rem;transition:all .4s cubic-bezier(.25,.46,.45,.94);overflow:hidden;will-change:transform,box-shadow,border-color}.feature-item:hover{transform:translateY(-8px);border-color:rgba(78,228,255,.4);box-shadow:0 20px 40px rgba(0,0,0,.3);background:rgba(78,228,255,.05)}.floating-shapes{position:absolute;inset:0;overflow:hidden;z-index:-1;pointer-events:none}.shape{position:absolute;border-radius:50%;background:linear-gradient(45deg,rgba(78,228,255,.05),rgba(78,228,255,.02));animation:float 20s infinite ease-in-out}.shape-1{width:250px;height:250px;top:10%;left:5%;animation-delay:0s}.shape-2{width:150px;height:150px;top:60%;right:10%;animation-delay:5s}@keyframes float{0%,100%{transform:translateY(0px) rotate(0deg)}50%{transform:translateY(-30px) rotate(180deg)}}
     </style>
 </head>
 <body class="bg-gray-900 text-white">
+
 
     <header id="header-container" class="sticky top-0 z-50"></header>
     
@@ -156,7 +168,6 @@
                 const modal = document.getElementById('consultModal');
                 if (modal) {
                     modal.classList.remove('hidden');
-                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
                 } else {
                     // If modal not found, wait a bit and try again
                     setTimeout(checkModal, 100);

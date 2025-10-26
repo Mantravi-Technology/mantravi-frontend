@@ -152,6 +152,33 @@ function initializeMobileMenu() {
     if (mobileMenuBtn && mobileMenu) {
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+            
+            // Update aria-expanded attribute
+            const isExpanded = !mobileMenu.classList.contains('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
+            
+            // Remove focus from button after click to prevent focus border
+            mobileMenuBtn.blur();
+        });
+        
+        // Close mobile menu when clicking on links
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                // Remove focus from button when menu closes
+                mobileMenuBtn.blur();
+            });
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                mobileMenuBtn.blur();
+            }
         });
     }
 }

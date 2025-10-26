@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Mantravi | Drive Digital Transformation</title>
-    <meta name="description" content="Learn about Mantravi's mission to drive digital transformation. Meet our expert team of developers, designers, and technology consultants.">
+    <title>About Us - Mantravi | Your Technology Partner for Digital Success</title>
+    <meta name="description" content="Learn about Mantravi's mission to drive digital transformation through web development, mobile apps, digital marketing, QA services, and technology consulting.">
     
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -24,8 +24,6 @@
         }
     </script>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <link rel="icon" type="image/x-icon" href="../../assets/icons/favicon.ico">
     
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
@@ -36,27 +34,39 @@
     
     <link rel="stylesheet" href="../../assets/css/main.css">
     
+    <style>
+        /* Hide scrollbars and prevent horizontal scrolling */
+        ::-webkit-scrollbar { display: none; }
+        html, body { 
+            scrollbar-width: none; 
+            -ms-overflow-style: none; 
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+        * { max-width: 100%; box-sizing: border-box; }
+    </style>
+    
     <script src="../../config/parallax-config.js"></script>
     
     <div id="styles-container"></div>
 </head>
 <body class="bg-dark-bg text-white smooth-scroll premium-scroll font-sans">
+
     <header id="header-container"></header>
     <script src="../../assets/js/component-loader.js"></script>
-
 
     <!-- About Page Header -->
     <section class="bg-gradient-to-br from-[#0a0f1c] via-[#050a30] to-[#0a0f1c] py-16 lg:py-24">
         <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-            <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 text-sm font-medium mb-6">
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full text-cyan-400 text-sm font-medium mb-6">
                 <i data-lucide="users" class="w-4 h-4"></i>
-                About Us
+                About Mantravi
             </div>
             <h1 class="text-4xl lg:text-6xl font-bold mb-6">
-                <span class="gradient-text">Innovative Team</span> Behind Success
+                <span class="gradient-text">Your Technology Partner</span> for Digital Success
             </h1>
             <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                Meet the passionate professionals who bring creativity, expertise, and dedication to every project, driving innovation and delivering exceptional results.
+                We're a team of passionate technologists, designers, and strategists dedicated to transforming businesses through innovative digital solutions that drive real results.
             </p>
         </div>
     </section>
@@ -76,212 +86,429 @@
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
         }
+
+        /* Fade in animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+            will-change: opacity, transform;
+        }
+
+        .fade-in-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-400 { transition-delay: 400ms; }
+        .delay-500 { transition-delay: 500ms; }
     </style>
 
-    <section class="section-padding relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-mantra-blue/10 to-transparent opacity-50 parallax-bg"></div>
+    <!-- Our Story Section -->
+    <section class="py-16 lg:py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent opacity-50"></div>
         
         <div class="container mx-auto px-4 sm:px-6 relative z-10">
-            <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
-                <div class="space-y-10">
-                    <div class="border-l-4 border-mantra-blue pl-6">
-                        <h2 class="heading-2 mb-4 text-3xl font-bold">Our Mission</h2>
-                        <p class="text-lg text-gray-200">
-                            To **empower businesses** with cutting-edge technology solutions that drive innovation and growth. We believe in the transformative power of AI and digital technologies to create a meaningful, future-proof impact.
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="space-y-8 fade-in-up">
+                    <div class="space-y-4">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-white">
+                            Our <span class="text-cyan-400">Story</span>
+                        </h2>
+                        <p class="text-lg text-gray-300 leading-relaxed">
+                            Founded with a vision to bridge the gap between technology and business success, Mantravi emerged from the belief that every business deserves access to world-class digital solutions.
+                        </p>
+                        <p class="text-lg text-gray-300 leading-relaxed">
+                            We operate on a unique partnership model, collaborating with expert professionals across various fields rather than maintaining a traditional employee structure. Each partner takes full ownership of their work and deliverables, bringing the commitment and dedication of a business owner rather than just an employee. This approach allows us to bring together the best talent for each specific project, ensuring you get specialized expertise tailored to your exact needs.
                         </p>
                     </div>
 
-                    <div class="border-l-4 border-mantra-blue pl-6">
-                        <h2 class="heading-2 mb-4 text-3xl font-bold">Our Vision</h2>
-                        <p class="text-lg text-gray-200">
-                            To be the leading and most trusted partner in **digital transformation**, helping organizations thrive in the AI-driven future while maintaining the highest standards of excellence and sustainable innovation.
-                        </p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="bg-black/40 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+                            <div class="text-3xl font-bold text-cyan-400 mb-2">50+</div>
+                            <div class="text-sm text-gray-400">Projects Delivered</div>
+                        </div>
+                        <div class="bg-black/40 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+                            <div class="text-3xl font-bold text-cyan-400 mb-2">25+</div>
+                            <div class="text-sm text-gray-400">Expert Partners</div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="bg-black/60 backdrop-blur-md rounded-2xl p-8 border border-white/10 shadow-2xl transition duration-500 hover:border-mantra-blue/50 parallax-cards">
-                    <h3 class="heading-3 mb-6 text-2xl font-semibold text-mantra-blue">Core Values</h3>
-                    <ul class="space-y-4">
-                        <li class="flex items-start p-2 rounded-lg transition duration-300 hover:bg-white/5">
-                            <i data-lucide="sparkles" class="w-5 h-5 text-mantra-blue mr-3 mt-1 flex-shrink-0"></i>
-                            <span class="text-base text-gray-100">**Innovation-Driven:** An approach to problem-solving that is constantly looking forward.</span>
-                        </li>
-                        <li class="flex items-start p-2 rounded-lg transition duration-300 hover:bg-white/5">
-                            <i data-lucide="handshake" class="w-5 h-5 text-mantra-blue mr-3 mt-1 flex-shrink-0"></i>
-                            <span class="text-base text-gray-100">**Client Success First:** Your growth is the primary focus of all our strategies.</span>
-                        </li>
-                        <li class="flex items-start p-2 rounded-lg transition duration-300 hover:bg-white/5">
-                            <i data-lucide="book-open" class="w-5 h-5 text-mantra-blue mr-3 mt-1 flex-shrink-0"></i>
-                            <span class="text-base text-gray-100">**Continuous Learning:** A culture of rapid adaptation to new technologies and methodologies.</span>
-                        </li>
-                        <li class="flex items-start p-2 rounded-lg transition duration-300 hover:bg-white/5">
-                            <i data-lucide="eye" class="w-5 h-5 text-mantra-blue mr-3 mt-1 flex-shrink-0"></i>
-                            <span class="text-base text-gray-100">**Transparency:** Open communication and clear processes in every partnership.</span>
-                        </li>
+                <div class="fade-in-up delay-200">
+                    <div class="bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-2xl p-8 border border-cyan-500/20">
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-cyan-500/20 rounded-full flex items-center justify-center">
+                                    <i data-lucide="network" class="w-6 h-6 text-cyan-400"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-white">Partnership Model</h3>
+                                    <p class="text-gray-400">Collaborating with experts across fields</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-cyan-500/20 rounded-full flex items-center justify-center">
+                                    <i data-lucide="star" class="w-6 h-6 text-cyan-400"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-white">Specialized Expertise</h3>
+                                    <p class="text-gray-400">Best-in-class talent for every project</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-cyan-500/20 rounded-full flex items-center justify-center">
+                                    <i data-lucide="zap" class="w-6 h-6 text-cyan-400"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-white">Flexible & Scalable</h3>
+                                    <p class="text-gray-400">Adapt to any project size or complexity</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership Model Benefits -->
+    <section class="py-16 lg:py-24 bg-black/30">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-6">
+                    Why Our <span class="text-cyan-400">Partnership Model</span> Works
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    By partnering with specialized experts across different fields, we deliver superior results while offering you unique advantages that traditional agencies can't match.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 border border-white/10 hover:border-cyan-500/30 transition-all duration-300 fade-in-up delay-100">
+                    <div class="w-14 h-14 bg-cyan-500/20 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="award" class="w-7 h-7 text-cyan-400"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Top-Tier Expertise</h3>
+                    <p class="text-gray-400">
+                        Access to industry-leading professionals who are specialists in their respective fields, not generalists trying to do everything.
+                    </p>
+                </div>
+
+                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 border border-white/10 hover:border-cyan-500/30 transition-all duration-300 fade-in-up delay-200">
+                    <div class="w-14 h-14 bg-cyan-500/20 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="dollar-sign" class="w-7 h-7 text-cyan-400"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Cost Efficiency</h3>
+                    <p class="text-gray-400">
+                        Pay only for the specific expertise you need, when you need it. No overhead costs of maintaining full-time employees for every skill set.
+                    </p>
+                </div>
+
+                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 border border-white/10 hover:border-cyan-500/30 transition-all duration-300 fade-in-up delay-300">
+                    <div class="w-14 h-14 bg-cyan-500/20 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="refresh-cw" class="w-7 h-7 text-cyan-400"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Fresh Perspectives</h3>
+                    <p class="text-gray-400">
+                        Each project brings together different experts with diverse backgrounds, ensuring innovative solutions and creative problem-solving approaches.
+                    </p>
+                </div>
+
+                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 border border-white/10 hover:border-cyan-500/30 transition-all duration-300 fade-in-up delay-400">
+                    <div class="w-14 h-14 bg-cyan-500/20 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="trending-up" class="w-7 h-7 text-cyan-400"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Scalable Resources</h3>
+                    <p class="text-gray-400">
+                        Scale up or down instantly based on project requirements. From small websites to enterprise applications, we have the right team size.
+                    </p>
+                </div>
+                
+                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 border border-white/10 hover:border-cyan-500/30 transition-all duration-300 fade-in-up delay-500">
+                    <div class="w-14 h-14 bg-cyan-500/20 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="clock" class="w-7 h-7 text-cyan-400"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Faster Delivery</h3>
+                    <p class="text-gray-400">
+                        Parallel work streams with multiple specialists working simultaneously, reducing project timelines without compromising quality.
+                    </p>
+                </div>
+                
+                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 border border-white/10 hover:border-cyan-500/30 transition-all duration-300 fade-in-up delay-600">
+                    <div class="w-14 h-14 bg-cyan-500/20 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="shield" class="w-7 h-7 text-cyan-400"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Quality Assurance</h3>
+                    <p class="text-gray-400">
+                        Each expert brings their own quality standards and best practices, resulting in higher overall project quality and fewer revisions.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Additional Row for Partner Ownership -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 border border-white/10 hover:border-cyan-500/30 transition-all duration-300 fade-in-up delay-700">
+                    <div class="w-14 h-14 bg-cyan-500/20 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="crown" class="w-7 h-7 text-cyan-400"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Partner Ownership</h3>
+                    <p class="text-gray-400">
+                        Each partner takes full ownership of their work and deliverables, bringing the commitment and dedication of a business owner rather than just an employee mindset.
+                    </p>
+                    </div>
+                    
+                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 border border-white/10 hover:border-cyan-500/30 transition-all duration-300 fade-in-up delay-800">
+                    <div class="w-14 h-14 bg-cyan-500/20 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="heart" class="w-7 h-7 text-cyan-400"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Personal Investment</h3>
+                    <p class="text-gray-400">
+                        Partners are personally invested in project success, treating each project as their own business venture with long-term commitment to results.
+                    </p>
+                    </div>
+                    
+                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 border border-white/10 hover:border-cyan-500/30 transition-all duration-300 fade-in-up delay-900">
+                    <div class="w-14 h-14 bg-cyan-500/20 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="trending-up" class="w-7 h-7 text-cyan-400"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Accountability</h3>
+                    <p class="text-gray-400">
+                        Direct accountability from partners who stake their reputation on project success, ensuring higher standards and better outcomes.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Services Overview -->
+    <section class="py-16 lg:py-24 bg-black/40">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-6">
+                    What We <span class="text-cyan-400">Do</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    We provide comprehensive digital solutions across five core areas, ensuring your business has everything it needs to thrive in the digital age.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Web Development -->
+                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 border border-white/10 hover:border-cyan-500/30 transition-all duration-300 fade-in-up delay-100">
+                    <div class="w-14 h-14 bg-cyan-500/20 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="monitor" class="w-7 h-7 text-cyan-400"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Web Development</h3>
+                    <p class="text-gray-400 mb-4">
+                        Custom websites, web applications, and e-commerce solutions built with modern technologies for optimal performance and user experience.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li>• React & Next.js Applications</li>
+                        <li>• E-commerce Platforms</li>
+                        <li>• WordPress Development</li>
+                    </ul>
+                </div>
+
+                <!-- Mobile App Development -->
+                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 border border-white/10 hover:border-cyan-500/30 transition-all duration-300 fade-in-up delay-200">
+                    <div class="w-14 h-14 bg-cyan-500/20 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="smartphone" class="w-7 h-7 text-cyan-400"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Mobile App Development</h3>
+                    <p class="text-gray-400 mb-4">
+                        Native and cross-platform mobile applications that engage users and drive business growth across iOS and Android platforms.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li>• Native iOS & Android Apps</li>
+                        <li>• Cross-Platform Solutions</li>
+                        <li>• App Store Optimization</li>
+                    </ul>
+                </div>
+
+                <!-- Digital Marketing -->
+                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 border border-white/10 hover:border-cyan-500/30 transition-all duration-300 fade-in-up delay-300">
+                    <div class="w-14 h-14 bg-cyan-500/20 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="trending-up" class="w-7 h-7 text-cyan-400"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Digital Marketing</h3>
+                    <p class="text-gray-400 mb-4">
+                        Strategic digital marketing campaigns, SEO optimization, and social media management to boost your online presence and drive growth.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li>• SEO & Content Strategy</li>
+                        <li>• Social Media Management</li>
+                        <li>• Paid Advertising Campaigns</li>
+                    </ul>
+                </div>
+                
+                <!-- QA & Support -->
+                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 border border-white/10 hover:border-cyan-500/30 transition-all duration-300 fade-in-up delay-400">
+                    <div class="w-14 h-14 bg-cyan-500/20 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="shield-check" class="w-7 h-7 text-cyan-400"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">QA & Support</h3>
+                    <p class="text-gray-400 mb-4">
+                        Comprehensive quality assurance, testing, and ongoing support services to ensure your applications run flawlessly and securely.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li>• Automated Testing</li>
+                        <li>• Performance Optimization</li>
+                        <li>• 24/7 Technical Support</li>
+                    </ul>
+                </div>
+                
+                <!-- Technology Consulting -->
+                <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 border border-white/10 hover:border-cyan-500/30 transition-all duration-300 fade-in-up delay-500">
+                    <div class="w-14 h-14 bg-cyan-500/20 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="users" class="w-7 h-7 text-cyan-400"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Technology Consulting</h3>
+                    <p class="text-gray-400 mb-4">
+                        Strategic technology guidance and digital transformation expertise to help your business navigate complex technical challenges.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li>• Technology Roadmaps</li>
+                        <li>• Digital Transformation</li>
+                        <li>• Team Training & Development</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    
-
-    <section class="section-padding bg-black/40">
+    <!-- Our Approach -->
+    <section class="py-16 lg:py-24">
         <div class="container mx-auto px-4 sm:px-6">
-            <h2 class="heading-2 text-center mb-16 text-4xl font-extrabold text-mantra-blue">Our Agile Methodology</h2>
-            
-            <div class="grid md:grid-cols-3 gap-10 relative">
-                <div class="text-center group p-6 rounded-xl border border-transparent hover:border-mantra-blue/30 transition duration-300">
-                    <div class="w-20 h-20 bg-mantra-blue/20 rounded-full mx-auto mb-6 flex items-center justify-center transition duration-300 group-hover:bg-mantra-blue/30">
-                        <i data-lucide="compass" class="w-10 h-10 text-mantra-blue"></i>
-                    </div>
-                    <h3 class="heading-3 mb-4 text-xl font-semibold">1. Discovery & Strategy</h3>
-                    <p class="text-gray-400">
-                        We deeply understand your business challenges, goals, and technical landscape to craft the perfect, data-backed solution strategy.
-                    </p>
-                </div>
-                
-                <div class="text-center group p-6 rounded-xl border border-transparent hover:border-mantra-blue/30 transition duration-300">
-                    <div class="w-20 h-20 bg-mantra-blue/20 rounded-full mx-auto mb-6 flex items-center justify-center transition duration-300 group-hover:bg-mantra-blue/30">
-                        <i data-lucide="zap" class="w-10 h-10 text-mantra-blue"></i>
-                    </div>
-                    <h3 class="heading-3 mb-4 text-xl font-semibold">2. Iterative Development</h3>
-                    <p class="text-gray-400">
-                        Our agile development process ensures swift, iterative progress with regular feedback loops, keeping you fully involved at every stage.
-                    </p>
-                </div>
-                
-                <div class="text-center group p-6 rounded-xl border border-transparent hover:border-mantra-blue/30 transition duration-300">
-                    <div class="w-20 h-20 bg-mantra-blue/20 rounded-full mx-auto mb-6 flex items-center justify-center transition duration-300 group-hover:bg-mantra-blue/30">
-                        <i data-lucide="rocket" class="w-10 h-10 text-mantra-blue"></i>
-                    </div>
-                    <h3 class="heading-3 mb-4 text-xl font-semibold">3. Launch & Optimisation</h3>
-                    <p class="text-gray-400">
-                        We ensure flawless deployment and provide robust, ongoing support to guarantee optimal performance and continuous improvement post-launch.
-                    </p>
-                </div>
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-6">
+                    Our <span class="text-cyan-400">Approach</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    We follow a proven methodology that ensures every project delivers exceptional results while maintaining clear communication and transparency.
+                </p>
             </div>
             
-            <div class="mt-20 bg-black/70 backdrop-blur-lg rounded-2xl p-8 lg:p-12 border border-white/10 shadow-2xl">
-                <h3 class="heading-3 mb-10 text-center text-2xl font-semibold text-mantra-blue">Our Project Lifecycle</h3>
-                <div class="grid md:grid-cols-4 gap-8">
-                    
-                    <div class="process-step text-center relative pt-8 md:pt-0 border-t-2 md:border-t-0 md:border-l-2 border-mantra-blue/20">
-                        <div class="absolute top-0 left-1/2 -translate-x-1/2 md:top-1/2 md:left-0 md:-translate-y-1/2 md:-translate-x-1/2 w-4 h-4 rounded-full bg-mantra-blue border-4 border-dark-bg"></div>
-                        <h4 class="text-lg font-bold mb-2 text-gray-50">1. Requirement Analysis</h4>
-                        <p class="text-gray-400 text-sm">Deep dive into business needs and precise technical specifications.</p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center group p-8 rounded-xl border border-transparent hover:border-cyan-500/30 transition duration-300 fade-in-up delay-100">
+                    <div class="w-20 h-20 bg-cyan-500/20 rounded-full mx-auto mb-6 flex items-center justify-center transition duration-300 group-hover:bg-cyan-500/30">
+                        <i data-lucide="search" class="w-10 h-10 text-cyan-400"></i>
                     </div>
-                    
-                    <div class="process-step text-center relative pt-8 md:pt-0 border-t-2 md:border-t-0 md:border-l-2 border-mantra-blue/20">
-                        <div class="absolute top-0 left-1/2 -translate-x-1/2 md:top-1/2 md:left-0 md:-translate-y-1/2 md:-translate-x-1/2 w-4 h-4 rounded-full bg-mantra-blue border-4 border-dark-bg"></div>
-                        <h4 class="text-lg font-bold mb-2 text-gray-50">2. Solution Architecture</h4>
-                        <p class="text-gray-400 text-sm">Architecting scalable, secure, and highly efficient technical solutions.</p>
+                    <h3 class="text-xl font-semibold mb-4 text-white">1. Discovery & Analysis</h3>
+                    <p class="text-gray-400">
+                        We start by understanding your business goals, target audience, and technical requirements to create a tailored solution strategy.
+                    </p>
+                </div>
+                
+                <div class="text-center group p-8 rounded-xl border border-transparent hover:border-cyan-500/30 transition duration-300 fade-in-up delay-200">
+                    <div class="w-20 h-20 bg-cyan-500/20 rounded-full mx-auto mb-6 flex items-center justify-center transition duration-300 group-hover:bg-cyan-500/30">
+                        <i data-lucide="code" class="w-10 h-10 text-cyan-400"></i>
                     </div>
-                    
-                    <div class="process-step text-center relative pt-8 md:pt-0 border-t-2 md:border-t-0 md:border-l-2 border-mantra-blue/20">
-                        <div class="absolute top-0 left-1/2 -translate-x-1/2 md:top-1/2 md:left-0 md:-translate-y-1/2 md:-translate-x-1/2 w-4 h-4 rounded-full bg-mantra-blue border-4 border-dark-bg"></div>
-                        <h4 class="text-lg font-bold mb-2 text-gray-50">3. Rapid Development</h4>
-                        <p class="text-gray-400 text-sm">Iterative sprints with testing integrated into the development cycle.</p>
+                    <h3 class="text-xl font-semibold mb-4 text-white">2. Development & Testing</h3>
+                    <p class="text-gray-400">
+                        Our agile development process ensures regular updates, continuous testing, and your involvement at every stage of the project.
+                    </p>
+                </div>
+                
+                <div class="text-center group p-8 rounded-xl border border-transparent hover:border-cyan-500/30 transition duration-300 fade-in-up delay-300">
+                    <div class="w-20 h-20 bg-cyan-500/20 rounded-full mx-auto mb-6 flex items-center justify-center transition duration-300 group-hover:bg-cyan-500/30">
+                        <i data-lucide="rocket" class="w-10 h-10 text-cyan-400"></i>
                     </div>
-                    
-                    <div class="process-step text-center relative pt-8 md:pt-0 border-t-2 md:border-t-0 md:border-l-2 border-mantra-blue/20 md:border-l-transparent">
-                        <div class="absolute top-0 left-1/2 -translate-x-1/2 md:top-1/2 md:left-0 md:-translate-y-1/2 md:-translate-x-1/2 w-4 h-4 rounded-full bg-mantra-blue border-4 border-dark-bg"></div>
-                        <h4 class="text-lg font-bold mb-2 text-gray-50">4. QA & Go-Live</h4>
-                        <p class="text-gray-400 text-sm">Rigorous testing, deployment, and post-launch performance monitoring.</p>
-                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-white">3. Launch & Support</h3>
+                    <p class="text-gray-400">
+                        We ensure smooth deployment and provide ongoing support to guarantee optimal performance and continuous improvement.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    
-
-    <section class="section-padding bg-black/30">
+    <!-- Why Choose Us -->
+    <section class="py-16 lg:py-24 bg-black/40">
         <div class="container mx-auto px-4 sm:px-6">
-            <h2 class="heading-2 text-center mb-16 text-4xl font-extrabold text-mantra-blue">Our Strategic Pillars of Expertise</h2>
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-6">
+                    Why Choose <span class="text-cyan-400">Mantravi</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Our partnership-based approach gives you access to the best talent in the industry while maintaining the personal touch and accountability of a dedicated team.
+                </p>
+            </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                
-                <div class="service-card text-center p-6 rounded-xl bg-black/50 border border-white/10 transition-all duration-300 shadow-lg hover:border-mantra-blue hover:shadow-mantra-blue/20">
-                    <div class="tech-icon w-14 h-14 bg-mantra-blue/20 rounded-full mx-auto mb-4 flex items-center justify-center advanced-icon">
-                        <i data-lucide="code-square" class="w-7 h-7 text-mantra-blue"></i>
+                <div class="text-center fade-in-up delay-100">
+                    <div class="w-16 h-16 bg-cyan-500/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <i data-lucide="users" class="w-8 h-8 text-cyan-400"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-50 advanced-text">Digital Product Development</h3>
-                    <p class="text-gray-400 text-sm">
-                        **Web & App Development** (React, Next.js, Node.js, Flutter) to build modern, scalable digital products and bespoke platforms.
-                    </p>
+                    <h3 class="text-lg font-semibold text-white mb-2">Expert Network</h3>
+                    <p class="text-gray-400 text-sm">Access to 25+ specialized professionals across different fields</p>
                 </div>
                 
-                <div class="service-card text-center p-6 rounded-xl bg-black/50 border border-white/10 transition-all duration-300 shadow-lg hover:border-mantra-blue hover:shadow-mantra-blue/20">
-                    <div class="tech-icon w-14 h-14 bg-mantra-blue/20 rounded-full mx-auto mb-4 flex items-center justify-center advanced-icon">
-                        <i data-lucide="cloud" class="w-7 h-7 text-mantra-blue"></i>
+                <div class="text-center fade-in-up delay-200">
+                    <div class="w-16 h-16 bg-cyan-500/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <i data-lucide="target" class="w-8 h-8 text-cyan-400"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-50 advanced-text">Cloud & DevOps Automation</h3>
-                    <p class="text-gray-400 text-sm">
-                        **DevOps** (AWS, Kubernetes, CI/CD) for infrastructure automation, scalability, and 24/7 Application Support & Monitoring.
-                    </p>
+                    <h3 class="text-lg font-semibold text-white mb-2">Specialized Focus</h3>
+                    <p class="text-gray-400 text-sm">Each expert brings deep knowledge in their specific domain</p>
                 </div>
                 
-                <div class="service-card text-center p-6 rounded-xl bg-black/50 border border-white/10 transition-all duration-300 shadow-lg hover:border-mantra-blue hover:shadow-mantra-blue/20">
-                    <div class="tech-icon w-14 h-14 bg-mantra-blue/20 rounded-full mx-auto mb-4 flex items-center justify-center advanced-icon">
-                        <i data-lucide="database" class="w-7 h-7 text-mantra-blue"></i>
+                <div class="text-center fade-in-up delay-300">
+                    <div class="w-16 h-16 bg-cyan-500/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <i data-lucide="refresh-cw" class="w-8 h-8 text-cyan-400"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-50 advanced-text">Data & AI Intelligence</h3>
-                    <p class="text-gray-400 text-sm">
-                        **Data Engineering** for robust pipelines, ETL, Big Data architecture, Data Warehousing, and custom AI/ML model integration.
-                    </p>
+                    <h3 class="text-lg font-semibold text-white mb-2">Flexible Scaling</h3>
+                    <p class="text-gray-400 text-sm">Scale your team up or down based on project needs</p>
                 </div>
                 
-                <div class="service-card text-center p-6 rounded-xl bg-black/50 border border-white/10 transition-all duration-300 shadow-lg hover:border-mantra-blue hover:shadow-mantra-blue/20">
-                    <div class="tech-icon w-14 h-14 bg-mantra-blue/20 rounded-full mx-auto mb-4 flex items-center justify-center advanced-icon">
-                        <i data-lucide="trending-up" class="w-7 h-7 text-mantra-blue"></i>
+                <div class="text-center fade-in-up delay-400">
+                    <div class="w-16 h-16 bg-cyan-500/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <i data-lucide="handshake" class="w-8 h-8 text-cyan-400"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-50 advanced-text">Digital Growth Strategy</h3>
-                    <p class="text-gray-400 text-sm">
-                        **Performance Marketing**, SEO, and data-driven content strategy to drive audience engagement and maximize digital reach.
-                    </p>
+                    <h3 class="text-lg font-semibold text-white mb-2">Personal Partnership</h3>
+                    <p class="text-gray-400 text-sm">Direct relationship with dedicated project managers</p>
                 </div>
-                
-            </div>
-            
-            <div class="mt-16 text-center">
-                <p class="text-xl text-gray-200 mb-8 max-w-4xl mx-auto">
-                    We simplify complexity by grouping our expertise into these four strategic pillars, ensuring full coverage from product development and infrastructure to market growth and long-term support.
-                </p>
-                <button class="advanced-btn px-8 py-3 text-lg font-semibold bg-mantra-blue text-dark-bg rounded-full hover:bg-white/90 transition-colors duration-300 shadow-xl shadow-mantra-blue/40">
-                    Explore Our Capabilities
-                </button>
             </div>
         </div>
     </section>
 
-    
-
-    <div id="stats-container"></div>
-
+    <!-- CTA Section -->
     <div id="cta-container"></div>
 
+    <!-- Footer -->
     <footer id="footer-container"></footer>
 
     <script>
-      
+        // Initialize Lucide Icons
         lucide.createIcons();
         
-   
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        if (mobileMenuBtn && mobileMenu) {
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
             });
-        }
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            observer.observe(el);
+        });
     </script>
 
     <div id="contact-form-container"></div>
 
     <script src="../../assets/js/api-service.js"></script>
-    
     <script src="../../assets/js/main.js"></script>
 </body>
 </html>

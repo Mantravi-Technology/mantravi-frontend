@@ -1,5 +1,22 @@
 /* Mantravi Website - Main Stylesheet */
 
+/* Hide scrollbars and prevent horizontal scrolling */
+::-webkit-scrollbar {
+    display: none;
+}
+html, body {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    max-width: 100vw; /* Ensure content doesn't exceed viewport width */
+}
+
+/* Prevent any element from causing horizontal overflow */
+* {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
 /* Import Tailwind CSS */
 @import url('https://cdn.tailwindcss.com');
 
@@ -101,25 +118,6 @@ html {
     scroll-behavior: auto;
 }
 
-/* Premium scrollbar styling */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #4EE4FF, #00BFFF);
-    border-radius: 4px;
-    transition: background 0.3s ease;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #00BFFF, #4EE4FF);
-}
 
 /* Scroll progress indicator */
 .scroll-progress {
@@ -146,7 +144,6 @@ html {
 
 /* Momentum scrolling for iOS */
 body {
-    -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
 }
 
@@ -1269,25 +1266,71 @@ body {
 
 /* ========== MOBILE RESPONSIVE IMPROVEMENTS ========== */
 
-/* Hide scrollbar for carousel */
-.scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
 
-.scrollbar-hide::-webkit-scrollbar {
-    display: none;
-}
-
-/* Services Carousel Mobile Styles */
+/* Services Carousel Mobile Styles - Ultra Smooth */
 .services-carousel {
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
+    touch-action: manipulation; /* Allow both horizontal and vertical scrolling */
+    overscroll-behavior-x: contain;
+    overscroll-behavior-y: auto; /* Allow vertical page scrolling */
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    
+    /* Performance optimizations for ultra-smooth scrolling */
+    will-change: scroll-position;
+    transform: translateZ(0); /* Hardware acceleration */
+    backface-visibility: hidden;
+    perspective: 1000px;
+    
+    /* Smooth scrolling optimizations */
+    scroll-padding: 0;
+    scroll-margin: 0;
 }
 
 .services-carousel > div > div {
     scroll-snap-align: start;
+    flex-shrink: 0;
+    
+    /* Optimize cards for smooth scrolling */
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    
+    /* Ensure consistent rendering */
+    contain: layout style paint;
+}
+
+/* Enhanced mobile carousel touch support */
+@media (max-width: 768px) {
+    .services-carousel {
+        cursor: grab;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        /* Allow vertical scrolling to pass through */
+        touch-action: manipulation;
+    }
+    
+    .services-carousel:active {
+        cursor: grabbing;
+    }
+    
+    /* Only disable pointer events on child elements during horizontal drag */
+    .services-carousel * {
+        pointer-events: auto; /* Allow normal interaction */
+    }
+    
+    .services-carousel {
+        pointer-events: auto;
+    }
+    
+    /* Ensure the carousel container doesn't interfere with vertical scrolling */
+    .services-carousel-container {
+        touch-action: manipulation;
+        overscroll-behavior-y: auto;
+    }
 }
 
 /* Mobile Typography Improvements */
