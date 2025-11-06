@@ -163,7 +163,7 @@ class ApiService {
         formDataToSend.append('name', formData.name || '');
         formDataToSend.append('email', formData.email || '');
         formDataToSend.append('phone', formData.phone || '');
-        formDataToSend.append('skills', formData.skills || '');
+        formDataToSend.append('role', formData.role || '');
         formDataToSend.append('description', formData.message || '');
         
         // Handle resume file if present
@@ -182,6 +182,52 @@ class ApiService {
      */
     async submitFeedback(feedbackData) {
         return await this.post('/api/feedback', feedbackData);
+    }
+
+    /**
+     * Get published blog posts with pagination and optional category filter
+     * @param {number} page - Page number (0-indexed)
+     * @param {number} limit - Number of items per page
+     * @param {string} category - Optional category filter (AI, Dev, Digital Marketing, Case Study)
+     * @param {string} sortBy - Sort field (default: publishedAt)
+     * @returns {Promise<Object>} API response with data, pagination info
+     */
+    async getPublishedBlogs(page = 0, limit = 6, category = null, sortBy = 'publishedAt') {
+        let endpoint = `/api/blog/published?pageNumber=${page}&pageSize=${limit}&sortBy=${sortBy}`;
+        if (category && category !== 'all') {
+            endpoint += `&category=${encodeURIComponent(category)}`;
+        }
+        return await this.get(endpoint);
+    }
+
+    /**
+     * Get a single blog post by ID
+     * @param {string} id - Blog post ID (UUID)
+     * @returns {Promise<Object>} Blog post data
+     */
+    async getBlogById(id) {
+        const endpoint = `/api/blog/${encodeURIComponent(id)}`;
+        return await this.get(endpoint);
+    }
+
+    /**
+     * Get a single blog post by slug
+     * @param {string} slug - Blog post slug
+     * @returns {Promise<Object>} Blog post data
+     */
+    async getBlogBySlug(slug) {
+        const endpoint = `/api/blog/slug/${encodeURIComponent(slug)}`;
+        return await this.get(endpoint);
+    }
+
+    /**
+     * Get related blog posts for a given slug
+     * @param {string} slug - Blog post slug
+     * @returns {Promise<Array>} Array of related blog posts
+     */
+    async getRelatedBlogs(slug) {
+        const endpoint = `/api/blog/${encodeURIComponent(slug)}/related`;
+        return await this.get(endpoint);
     }
 }
 
