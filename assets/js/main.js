@@ -53,6 +53,175 @@ function initializeMobileMenu() {
             });
         });
         
+        // Mobile Blog Dropdown Toggle
+        const mobileBlogToggle = document.getElementById('mobile-blog-toggle');
+        const mobileBlogMenu = document.getElementById('mobile-blog-menu');
+        const mobileBlogIcon = document.getElementById('mobile-blog-icon');
+        
+        if (mobileBlogToggle && mobileBlogMenu && mobileBlogIcon) {
+            mobileBlogToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const isHidden = mobileBlogMenu.classList.contains('hidden');
+                
+                if (isHidden) {
+                    mobileBlogMenu.classList.remove('hidden');
+                    mobileBlogIcon.style.transform = 'rotate(180deg)';
+                } else {
+                    mobileBlogMenu.classList.add('hidden');
+                    mobileBlogIcon.style.transform = 'rotate(0deg)';
+                }
+            });
+        }
+        
+        // Blog Dropdown - Premium World-Class Implementation
+        function initializeBlogDropdown() {
+            const blogDropdown = document.getElementById('blog-dropdown');
+            const blogDropdownBtn = document.getElementById('blog-dropdown-btn');
+            const blogDropdownMenu = document.getElementById('blog-dropdown-menu');
+            const blogChevron = document.getElementById('blog-chevron');
+            
+            if (!blogDropdown || !blogDropdownBtn || !blogDropdownMenu) return;
+            
+            let isOpen = false;
+            let hoverTimeout = null;
+            
+            // Initialize as hidden
+            blogDropdownMenu.classList.add('hidden');
+            
+            const showDropdown = () => {
+                if (hoverTimeout) clearTimeout(hoverTimeout);
+                if (isOpen) return;
+                
+                isOpen = true;
+                blogDropdown.classList.add('active');
+                blogDropdownMenu.classList.remove('hidden');
+                blogDropdownMenu.classList.add('visible');
+                
+                // Position dropdown correctly when using fixed positioning
+                if (window.innerWidth >= 768) {
+                    const rect = blogDropdownBtn.getBoundingClientRect();
+                    const menuWidth = 520; // min-width from CSS
+                    const leftPosition = rect.left + (rect.width / 2) - (menuWidth / 2);
+                    const topPosition = rect.bottom + 12; // mt-3 = 12px
+                    
+                    blogDropdownMenu.style.left = `${leftPosition}px`;
+                    blogDropdownMenu.style.top = `${topPosition}px`;
+                    blogDropdownMenu.style.transform = 'translate(0, 0) scale(1)';
+                }
+                
+                // Initialize icons
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                }
+            };
+            
+            const hideDropdown = () => {
+                hoverTimeout = setTimeout(() => {
+                    if (!isOpen) return;
+                    isOpen = false;
+                    blogDropdown.classList.remove('active');
+                    blogDropdownMenu.classList.remove('visible');
+                    blogDropdownMenu.classList.add('hidden');
+                }, 150);
+            };
+            
+            // Close dropdown when clicking on any category link
+            const categoryLinks = blogDropdownMenu.querySelectorAll('a');
+            categoryLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    // Close dropdown immediately when category is clicked
+                    if (hoverTimeout) clearTimeout(hoverTimeout);
+                    isOpen = false;
+                    blogDropdown.classList.remove('active');
+                    blogDropdownMenu.classList.remove('visible');
+                    blogDropdownMenu.classList.add('hidden');
+                    // Allow default navigation to proceed
+                });
+            });
+            
+            // Desktop: Hover behavior
+            if (window.innerWidth >= 768) {
+                blogDropdown.addEventListener('mouseenter', showDropdown);
+                blogDropdown.addEventListener('mouseleave', hideDropdown);
+                blogDropdownMenu.addEventListener('mouseenter', showDropdown);
+                blogDropdownMenu.addEventListener('mouseleave', hideDropdown);
+            } else {
+                // Mobile: Click toggle
+                blogDropdownBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    isOpen = !isOpen;
+                    
+                    if (isOpen) {
+                        blogDropdown.classList.add('active');
+                        blogDropdownMenu.classList.remove('hidden');
+                        blogDropdownMenu.classList.add('visible');
+                        
+                        // Position dropdown correctly on mobile
+                        const rect = blogDropdownBtn.getBoundingClientRect();
+                        blogDropdownMenu.style.left = '16px';
+                        blogDropdownMenu.style.right = '16px';
+                        blogDropdownMenu.style.top = `${rect.bottom + 12}px`;
+                        blogDropdownMenu.style.width = 'calc(100vw - 32px)';
+                        blogDropdownMenu.style.transform = 'translate(0, 0) scale(1)';
+                    } else {
+                        blogDropdown.classList.remove('active');
+                        blogDropdownMenu.classList.remove('visible');
+                        blogDropdownMenu.classList.add('hidden');
+                    }
+                    
+                    // Initialize icons
+                    if (typeof lucide !== 'undefined') {
+                        lucide.createIcons();
+                    }
+                });
+                
+                // Close on outside click
+                document.addEventListener('click', (e) => {
+                    if (isOpen && !blogDropdown.contains(e.target)) {
+                        isOpen = false;
+                        blogDropdown.classList.remove('active');
+                        blogDropdownMenu.classList.remove('visible');
+                        blogDropdownMenu.classList.add('hidden');
+                    }
+                });
+            }
+            
+            // Reposition dropdown on window resize
+            const repositionDropdown = () => {
+                if (isOpen && window.innerWidth >= 768) {
+                    const rect = blogDropdownBtn.getBoundingClientRect();
+                    const menuWidth = 520;
+                    const leftPosition = rect.left + (rect.width / 2) - (menuWidth / 2);
+                    const topPosition = rect.bottom + 12;
+                    
+                    blogDropdownMenu.style.left = `${leftPosition}px`;
+                    blogDropdownMenu.style.top = `${topPosition}px`;
+                }
+            };
+            
+            window.addEventListener('resize', repositionDropdown);
+            window.addEventListener('scroll', repositionDropdown);
+            
+            // Initialize Lucide icons
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        }
+        
+        // Make globally available
+        window.initializeBlogDropdown = initializeBlogDropdown;
+        
+        // Initialize on load
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeBlogDropdown);
+        } else {
+            initializeBlogDropdown();
+        }
+        
+        // Re-initialize after header loads
+        setTimeout(initializeBlogDropdown, 500);
+        
         // Close mobile menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
@@ -729,7 +898,7 @@ async function handleJobApplicationForm(event) {
     const data = Object.fromEntries(formData);
     
     // Basic validation
-    if (!data.name || !data.email || !data.skills || !data.message) {
+    if (!data.name || !data.email || !data.role || !data.message) {
         showNotification('Please fill in all required fields.', 'error');
         return;
     }
