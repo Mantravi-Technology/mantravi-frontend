@@ -25,24 +25,917 @@
     
     <!-- Common Styles Component -->
     <div id="styles-container"></div>
+    <script src="../../config/parallax-config.js"></script>
+    
+    <style>
+        /* Hide scrollbars and prevent horizontal scrolling */
+        ::-webkit-scrollbar { display: none; }
+        html, body { 
+            scrollbar-width: none; 
+            -ms-overflow-style: none; 
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+        * { max-width: 100%; box-sizing: border-box; }
+        
+        /* Premium Blog Design - Inspired by Top Platforms */
+        :root {
+            --blog-spacing-sm: 1rem;
+            --blog-spacing-md: 2rem;
+            --blog-spacing-lg: 3rem;
+            --blog-spacing-xl: 4rem;
+        }
+        
+        /* Featured Hero Card - Full Screen Style */
+        .blog-hero-featured {
+            position: relative;
+            min-height: 70vh;
+            border-radius: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+        
+        .blog-hero-featured::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(5, 10, 48, 0.85) 0%, rgba(5, 10, 48, 0.75) 50%, rgba(5, 10, 48, 0.9) 100%);
+            z-index: 1;
+        }
+        
+        .blog-hero-featured img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+        
+        .blog-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 4rem 2rem;
+        }
+        
+        .featured-badge-premium {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(78, 228, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(78, 228, 255, 0.4);
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #4EE4FF;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(78, 228, 255, 0.2);
+        }
+        
+        .blog-hero-title {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .blog-hero-summary {
+            font-size: clamp(1.125rem, 2vw, 1.375rem);
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+        }
+        
+        .blog-hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9375rem;
+        }
+        
+        .blog-hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 32px;
+            background: #4EE4FF;
+            color: #050a30;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 24px rgba(78, 228, 255, 0.3);
+        }
+        
+        .blog-hero-cta:hover {
+            background: #00D4FF;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(78, 228, 255, 0.4);
+        }
+        
+        /* Premium Blog Cards */
+        .blog-card-premium {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .blog-card-premium:hover {
+            transform: translateY(-8px);
+            border-color: rgba(78, 228, 255, 0.3);
+            box-shadow: 0 20px 60px rgba(78, 228, 255, 0.15);
+        }
+        
+        .blog-card-image-premium {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(78, 228, 255, 0.1) 0%, rgba(78, 228, 255, 0.05) 100%);
+        }
+        
+        .blog-card-image-premium img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .blog-card-premium:hover .blog-card-image-premium img {
+            transform: scale(1.15);
+        }
+        
+        .blog-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .blog-card-premium:hover .blog-card-overlay {
+            opacity: 1;
+        }
+        
+        .blog-card-badge {
+            position: absolute;
+            top: 1.25rem;
+            left: 1.25rem;
+            z-index: 10;
+        }
+        
+        .blog-card-content {
+            padding: 1.75rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .blog-card-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            line-height: 1.3;
+            color: #ffffff;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
+            transition: color 0.3s ease;
+            min-height: 3.9rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .blog-card-premium:hover .blog-card-title {
+            color: #4EE4FF;
+        }
+        
+        .blog-card-excerpt {
+            font-size: 0.9375rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+            flex: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .blog-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 0.8125rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .blog-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #4EE4FF;
+            font-weight: 600;
+            font-size: 0.9375rem;
+            transition: gap 0.3s ease;
+            margin-top: auto;
+            padding-top: 1rem;
+        }
+        
+        .blog-card-link:hover {
+            gap: 12px;
+        }
+        
+        /* Featured Article Cards - Distinct Premium Style */
+        .featured-card-premium {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(78, 228, 255, 0.08) 0%, rgba(0, 0, 0, 0.4) 100%);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(78, 228, 255, 0.2);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 8px 32px rgba(78, 228, 255, 0.1);
+        }
+        
+        .featured-card-premium:hover {
+            transform: translateY(-12px) scale(1.02);
+            border-color: rgba(78, 228, 255, 0.5);
+            box-shadow: 0 24px 80px rgba(78, 228, 255, 0.25);
+            background: linear-gradient(135deg, rgba(78, 228, 255, 0.12) 0%, rgba(0, 0, 0, 0.5) 100%);
+        }
+        
+        .featured-card-image {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(78, 228, 255, 0.15) 0%, rgba(78, 228, 255, 0.08) 100%);
+        }
+        
+        .featured-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .featured-card-premium:hover .featured-card-image img {
+            transform: scale(1.2);
+        }
+        
+        .featured-card-gradient-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
+            z-index: 1;
+        }
+        
+        .featured-card-badge-container {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            z-index: 10;
+        }
+        
+        .featured-card-content-wrapper {
+            padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(180deg, transparent 0%, rgba(5, 10, 48, 0.3) 100%);
+        }
+        
+        .featured-card-title {
+            font-size: 1.75rem;
+            font-weight: 900;
+            line-height: 1.2;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            letter-spacing: -0.03em;
+            transition: color 0.3s ease;
+            min-height: 4.2rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .featured-card-premium:hover .featured-card-title {
+            color: #4EE4FF;
+            text-shadow: 0 2px 20px rgba(78, 228, 255, 0.5);
+        }
+        
+        .featured-card-excerpt {
+            font-size: 1rem;
+            line-height: 1.75;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 1.75rem;
+            flex: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            font-weight: 400;
+        }
+        
+        .featured-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1.5rem;
+            border-top: 2px solid rgba(78, 228, 255, 0.2);
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 1.25rem;
+        }
+        
+        .featured-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #4EE4FF;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            padding: 12px 24px;
+            background: rgba(78, 228, 255, 0.1);
+            border: 1px solid rgba(78, 228, 255, 0.3);
+            border-radius: 12px;
+            width: fit-content;
+        }
+        
+        .featured-card-link:hover {
+            gap: 14px;
+            background: rgba(78, 228, 255, 0.2);
+            border-color: rgba(78, 228, 255, 0.5);
+            transform: translateX(4px);
+        }
+        
+        /* Section Titles */
+        .section-title-premium {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 3.5rem;
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+        
+        .section-title-premium::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #4EE4FF 0%, transparent 100%);
+            border-radius: 2px;
+        }
+        
+        /* Pagination Premium */
+        .pagination-premium {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 4rem;
+        }
+        
+        .pagination-btn-premium {
+            min-width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.9375rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .pagination-btn-premium:not(.active):not(:disabled):hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(78, 228, 255, 0.25);
+        }
+        
+        .pagination-btn-premium.active {
+            background: #4EE4FF;
+            color: #050a30;
+            box-shadow: 0 4px 16px rgba(78, 228, 255, 0.4);
+        }
+        
+        .pagination-btn-premium:not(.active) {
+            background: rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Newsletter Premium */
+        .newsletter-premium {
+            background: linear-gradient(135deg, rgba(78, 228, 255, 0.08) 0%, rgba(78, 228, 255, 0.03) 100%);
+            border-top: 1px solid rgba(78, 228, 255, 0.15);
+            border-bottom: 1px solid rgba(78, 228, 255, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .newsletter-premium::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(78, 228, 255, 0.1) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .blog-hero-featured {
+                min-height: 60vh;
+            }
+            
+            .blog-hero-content {
+                padding: 3rem 1.5rem;
+            }
+            
+            .blog-card-content {
+                padding: 1.5rem;
+            }
+            
+            .blog-card-title {
+                font-size: 1.25rem;
+            }
+        }
+        
+        /* Typography Refinements */
+        body {
+            font-feature-settings: "kern" 1, "liga" 1;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Elegant Corner Design Elements */
+        .corner-accent {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            pointer-events: none;
+        }
+        
+        .corner-accent-top-left {
+            top: 0;
+            left: 0;
+            background: linear-gradient(135deg, rgba(78, 228, 255, 0.15) 0%, transparent 70%);
+            border-radius: 0 0 100% 0;
+        }
+        
+        .corner-accent-top-right {
+            top: 0;
+            right: 0;
+            background: linear-gradient(225deg, rgba(78, 228, 255, 0.15) 0%, transparent 70%);
+            border-radius: 0 0 0 100%;
+        }
+        
+        .corner-accent-bottom-left {
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(45deg, rgba(78, 228, 255, 0.15) 0%, transparent 70%);
+            border-radius: 0 100% 0 0;
+        }
+        
+        .corner-accent-bottom-right {
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(315deg, rgba(78, 228, 255, 0.15) 0%, transparent 70%);
+            border-radius: 100% 0 0 0;
+        }
+        
+        /* Sticky Category Bar - World-Class Design - Force Horizontal */
+        .sticky-category-bar {
+            position: -webkit-sticky !important;
+            position: sticky !important;
+            top: 64px !important; /* Position below header */
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            margin-top: 0 !important;
+            z-index: 10 !important; /* Below header dropdowns but above content */
+            transition: all 0.3s ease !important;
+            will-change: transform !important;
+        }
+        
+        @media (max-width: 768px) {
+            .sticky-category-bar {
+                top: 56px !important; /* Position below mobile header */
+            }
+        }
+        
+        /* Ensure header is above sticky category bar */
+        header {
+            z-index: 9998 !important;
+        }
+        
+        /* Category Tabs Container - Force Horizontal Layout - STRONGEST */
+        .category-tabs-container {
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: wrap !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            position: relative !important;
+            z-index: 1;
+            gap: 12px !important;
+            /* Prevent vertical layout */
+            flex-flow: row wrap !important;
+            direction: ltr !important;
+        }
+        
+        /* Override any column layout */
+        .category-tabs-container[style*="column"],
+        .category-tabs-container[style*="flex-col"] {
+            flex-direction: row !important;
+        }
+        
+        .sticky-category-bar * {
+            box-sizing: border-box !important;
+        }
+        
+        /* Category Tabs - Premium Elegant Design - Force Horizontal */
+        .category-tab {
+            display: inline-flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            gap: 8px !important;
+            padding: 10px 20px !important;
+            background: rgba(255, 255, 255, 0.04) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            border-radius: 10px !important;
+            color: rgba(255, 255, 255, 0.75) !important;
+            font-weight: 600 !important;
+            font-size: 0.875rem !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            cursor: pointer !important;
+            position: relative !important;
+            overflow: hidden !important;
+            white-space: nowrap !important;
+            flex-shrink: 0 !important;
+            margin: 0 !important;
+            width: auto !important;
+            min-width: fit-content !important;
+            height: auto !important;
+            float: none !important;
+            clear: none !important;
+        }
+        
+        /* Prevent any vertical stacking - STRONGEST */
+        .category-tab {
+            display: inline-flex !important;
+            flex-direction: row !important;
+            flex-shrink: 0 !important;
+            flex-grow: 0 !important;
+            flex-basis: auto !important;
+        }
+        
+        .category-tab * {
+            display: inline-flex !important;
+            flex-direction: row !important;
+        }
+        
+        /* Prevent any column/vertical layout on tabs */
+        .category-tab[style*="column"],
+        .category-tab[style*="flex-col"],
+        .category-tab[style*="vertical"] {
+            flex-direction: row !important;
+        }
+        
+        /* Ensure tabs are in a horizontal row */
+        .category-tabs-container > .category-tab {
+            display: inline-flex !important;
+            flex-direction: row !important;
+            margin-right: 12px !important;
+            margin-bottom: 0 !important;
+        }
+        
+        .category-tab i {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+        
+        .category-tab::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(78, 228, 255, 0.12) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .category-tab:hover {
+            color: #ffffff;
+            border-color: rgba(78, 228, 255, 0.25);
+            background: rgba(78, 228, 255, 0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(78, 228, 255, 0.15);
+        }
+        
+        .category-tab:hover::before {
+            opacity: 1;
+        }
+        
+        .category-tab.active {
+            background: linear-gradient(135deg, rgba(78, 228, 255, 0.18) 0%, rgba(78, 228, 255, 0.08) 100%);
+            border-color: rgba(78, 228, 255, 0.4);
+            color: #4EE4FF;
+            box-shadow: 0 4px 20px rgba(78, 228, 255, 0.2);
+        }
+        
+        .category-tab.active::before {
+            opacity: 1;
+        }
+        
+        /* All Blogs Grid Container */
+        .all-blogs-grid-container {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* Ensure category tabs container doesn't overflow */
+        @media (max-width: 768px) {
+            .sticky-category-bar {
+                top: 56px; /* Adjust for mobile header height */
+            }
+            
+            .category-tabs-container {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 4px;
+                scrollbar-width: thin;
+                scrollbar-color: rgba(78, 228, 255, 0.3) transparent;
+            }
+            
+            .category-tabs-container::-webkit-scrollbar {
+                height: 4px;
+            }
+            
+            .category-tabs-container::-webkit-scrollbar-track {
+                background: transparent;
+            }
+            
+            .category-tabs-container::-webkit-scrollbar-thumb {
+                background: rgba(78, 228, 255, 0.3);
+                border-radius: 2px;
+            }
+        }
+        
+        /* Category Section Styling */
+        .category-section {
+            margin-bottom: 5rem;
+            position: relative;
+            padding: 3rem 0;
+        }
+        
+        .category-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -2rem;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #4EE4FF 0%, transparent 100%);
+            border-radius: 2px;
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .category-icon-wrapper {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(78, 228, 255, 0.2) 0%, rgba(78, 228, 255, 0.1) 100%);
+            border: 2px solid rgba(78, 228, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(78, 228, 255, 0.15);
+        }
+        
+        .category-icon-wrapper i {
+            width: 28px;
+            height: 28px;
+            color: #4EE4FF;
+        }
+        
+        .category-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            color: #ffffff;
+            line-height: 1.1;
+        }
+        
+        .category-subtitle {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 0.5rem;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .category-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        .category-empty {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1.125rem;
+        }
+        
+        /* Harmonious Background Gradient */
+        body {
+            background: linear-gradient(180deg, #050a30 0%, #0a0f1c 50%, #050a30 100%);
+            background-attachment: fixed;
+        }
+        
+        /* Section Spacing for Cohesion */
+        section {
+            position: relative;
+        }
+        
+        /* Elegant Section Dividers */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(78, 228, 255, 0.2) 50%, transparent 100%);
+            margin: 4rem 0;
+        }
+        
+        /* Fade-in animation for category sections */
+        .fade-in-section {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Loading state */
+        .loading-state {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        
+        /* Mobile Menu Z-Index Fix - Ensure it's above sticky category bar */
+        @media (max-width: 768px) {
+            /* Ensure header and mobile menu are above sticky category bar */
+            header {
+                z-index: 9998 !important;
+            }
+            
+            #mobile-menu {
+                position: relative !important;
+                z-index: 10001 !important;
+                background: rgba(5, 10, 48, 0.98) !important;
+                backdrop-filter: blur(20px) !important;
+                -webkit-backdrop-filter: blur(20px) !important;
+            }
+            
+            /* Ensure blog dropdown is above sticky category bar */
+            #blog-dropdown-menu {
+                z-index: 99999 !important;
+                position: absolute !important;
+            }
+            
+            #blog-dropdown {
+                z-index: 99999 !important;
+            }
+            
+            /* Ensure sticky category bar stays below mobile menu and dropdown */
+            .sticky-category-bar {
+                z-index: 10 !important;
+            }
+            
+            header {
+                z-index: 9998 !important;
+            }
+        }
+        
+        /* Desktop: Ensure blog dropdown is above sticky category bar */
+        @media (min-width: 769px) {
+            #blog-dropdown-menu {
+                z-index: 99999 !important;
+                position: absolute !important;
+            }
+            
+            .blog-dropdown-container {
+                z-index: 99999 !important;
+            }
+            
+            #blog-dropdown {
+                z-index: 99999 !important;
+            }
+            
+            /* Ensure sticky bar stays below header and dropdown */
+            .sticky-category-bar {
+                z-index: 10 !important;
+            }
+            
+            header {
+                z-index: 9998 !important;
+            }
+        }
+    </style>
 </head>
 <body class="bg-[#050a30] text-white smooth-scroll premium-scroll">
+
     <!-- Header -->
-    <header id="header-container"></header>
+    <header id="header-container" style="z-index: 9998 !important;"></header>
     <script src="../../assets/js/component-loader.js"></script>
     
     <!-- Blog Page Header -->
-    <section class="bg-gradient-to-br from-[#0a0f1c] via-[#050a30] to-[#0a0f1c] py-16 lg:py-24">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-            <div class="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/10 border border-orange-500/20 rounded-full text-orange-400 text-sm font-medium mb-6">
+    <section class="bg-gradient-to-br from-[#0a0f1c] via-[#050a30] to-[#0a0f1c] py-16 lg:py-24 relative" style="z-index: 1 !important;">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center relative" style="z-index: 2 !important;">
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full text-cyan-400 text-sm font-medium mb-6">
                 <i data-lucide="book-open" class="w-4 h-4"></i>
-                Blog & Insights
+                Technology Insights & Innovation
             </div>
             <h1 class="text-4xl lg:text-6xl font-bold mb-6">
-                <span class="gradient-text">Latest Insights</span> & Technology News
+                <span class="gradient-text">Engineering</span> The Future
             </h1>
             <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                Stay ahead with the latest insights on AI, digital transformation, and emerging technologies from our expert team.
+                Discover cutting-edge insights on AI, web development, digital transformation, and emerging technologies from industry-leading experts.
             </p>
         </div>
     </section>
@@ -62,100 +955,100 @@
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
         }
+        
     </style>
 
-    <!-- Featured Post -->
-    <section class="section-padding">
-        <div class="container mx-auto px-6">
-            <div class="bg-black/50 backdrop-blur-sm rounded-xl p-8 border border-white/10 mb-12">
-                <div class="grid-2">
-                    <div>
-                        <span class="text-[#4EE4FF] text-sm font-semibold">Featured Article</span>
-                        <h2 class="heading-2 mb-4">The Future of AI in Business Transformation</h2>
-                        <p class="text-gray-400 mb-6">
-                            Explore how artificial intelligence is revolutionizing business processes and creating new opportunities for growth and innovation.
-                        </p>
-                        <div class="flex items-center text-sm text-gray-400 mb-4">
-                            <i data-lucide="calendar" class="w-4 h-4 mr-2"></i>
-                            <span>December 15, 2024</span>
-                            <i data-lucide="clock" class="w-4 h-4 ml-4 mr-2"></i>
-                            <span>5 min read</span>
-                        </div>
-                        <button class="btn-primary">Read More</button>
-                    </div>
-                    <div class="bg-[#4EE4FF]/10 rounded-lg flex items-center justify-center">
-                        <i data-lucide="brain" class="w-24 h-24 text-[#4EE4FF]"></i>
-                    </div>
-                </div>
+    <!-- Featured Articles (Dynamic) -->
+    <section class="py-16 lg:py-20 relative" id="featured-section">
+        <div class="corner-accent corner-accent-top-left"></div>
+        <div class="corner-accent corner-accent-top-right"></div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div id="featured-blogs" class="min-h-[200px]">
+                <!-- Featured articles will be loaded here -->
             </div>
         </div>
     </section>
 
-    <!-- Blog Posts Grid -->
-    <section class="section-padding bg-black/30">
-        <div class="container mx-auto px-6">
-            <h2 class="heading-2 text-center mb-16">Latest Articles</h2>
-            <div class="grid-3">
-                <!-- Post 1 -->
-                <article class="bg-black/50 backdrop-blur-sm rounded-xl p-6 border border-white/10 card-hover">
-                    <div class="bg-[#4EE4FF]/10 rounded-lg p-4 mb-4 flex items-center justify-center">
-                        <i data-lucide="code" class="w-12 h-12 text-[#4EE4FF]"></i>
-                    </div>
-                    <h3 class="heading-3 mb-2">Web Development Best Practices 2024</h3>
-                    <p class="text-gray-400 text-sm mb-4">
-                        Discover the latest trends and best practices in modern web development.
-                    </p>
-                    <div class="flex items-center text-xs text-gray-500">
-                        <i data-lucide="calendar" class="w-3 h-3 mr-1"></i>
-                        <span>Dec 10, 2024</span>
-                    </div>
-                </article>
-                
-                <!-- Post 2 -->
-                <article class="bg-black/50 backdrop-blur-sm rounded-xl p-6 border border-white/10 card-hover">
-                    <div class="bg-[#4EE4FF]/10 rounded-lg p-4 mb-4 flex items-center justify-center">
-                        <i data-lucide="trending-up" class="w-12 h-12 text-[#4EE4FF]"></i>
-                    </div>
-                    <h3 class="heading-3 mb-2">Digital Marketing Strategies That Work</h3>
-                    <p class="text-gray-400 text-sm mb-4">
-                        Learn proven digital marketing strategies to boost your online presence.
-                    </p>
-                    <div class="flex items-center text-xs text-gray-500">
-                        <i data-lucide="calendar" class="w-3 h-3 mr-1"></i>
-                        <span>Dec 8, 2024</span>
-                    </div>
-                </article>
-                
-                <!-- Post 3 -->
-                <article class="bg-black/50 backdrop-blur-sm rounded-xl p-6 border border-white/10 card-hover">
-                    <div class="bg-[#4EE4FF]/10 rounded-lg p-4 mb-4 flex items-center justify-center">
-                        <i data-lucide="shield-check" class="w-12 h-12 text-[#4EE4FF]"></i>
-                    </div>
-                    <h3 class="heading-3 mb-2">QA Testing in the Modern Era</h3>
-                    <p class="text-gray-400 text-sm mb-4">
-                        Understanding the importance of quality assurance in today's fast-paced development cycles.
-                    </p>
-                    <div class="flex items-center text-xs text-gray-500">
-                        <i data-lucide="calendar" class="w-3 h-3 mr-1"></i>
-                        <span>Dec 5, 2024</span>
-                    </div>
-                </article>
+    <!-- Sticky Category Navigation Bar -->
+    <div class="sticky-category-bar sticky top-16 z-10 py-4 bg-[#050a30]/98 backdrop-blur-xl border-b border-white/5 shadow-lg" style="display: block !important; position: sticky !important; width: 100% !important; z-index: 10 !important;">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8" style="width: 100% !important; max-width: 100% !important;">
+            <div class="category-tabs-container flex flex-row flex-wrap gap-3 justify-center lg:justify-start w-full" style="display: flex !important; flex-direction: row !important; flex-wrap: wrap !important; align-items: center !important; justify-content: center !important; width: 100% !important;">
+                <button class="category-tab active" data-category="all">
+                    <i data-lucide="grid" class="w-4 h-4"></i>
+                    <span>All Articles</span>
+                </button>
+                <button class="category-tab" data-category="AI">
+                    <i data-lucide="brain" class="w-4 h-4"></i>
+                    <span>AI</span>
+                </button>
+                <button class="category-tab" data-category="Dev">
+                    <i data-lucide="code" class="w-4 h-4"></i>
+                    <span>Dev</span>
+                </button>
+                <button class="category-tab" data-category="Digital Marketing">
+                    <i data-lucide="trending-up" class="w-4 h-4"></i>
+                    <span>Digital Marketing</span>
+                </button>
+                <button class="category-tab" data-category="Case Study">
+                    <i data-lucide="file-text" class="w-4 h-4"></i>
+                    <span>Case Study</span>
+                </button>
             </div>
+        </div>
+    </div>
+
+    <!-- Category Content Sections -->
+    <section class="py-12 lg:py-16 relative z-10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <!-- Dynamic content will be inserted here -->
+            <div id="category-sections">
+                <!-- Blogs will be loaded here -->
+            </div>
+            
+            <!-- Pagination -->
+            <div id="pagination" class="mt-12"></div>
+        </div>
+    </section>
+
+    <!-- Latest Articles Grid (Dynamic) - Fallback -->
+    <section class="py-20 lg:py-24 bg-gradient-to-b from-transparent via-black/10 to-transparent hidden" id="latest-fallback">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <h2 class="section-title-premium">Latest Articles</h2>
+            <div id="all-blogs" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10"></div>
+            <div id="pagination" class="pagination-premium"></div>
         </div>
     </section>
 
     <!-- Newsletter Section -->
-    <section class="section-padding">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="heading-2 mb-8">Stay Updated</h2>
-            <p class="text-large mb-8 max-w-2xl mx-auto">
-                Subscribe to our newsletter for the latest insights on technology and digital transformation.
+    <section class="newsletter-premium py-24 lg:py-32 relative">
+        <div class="corner-accent corner-accent-top-left"></div>
+        <div class="corner-accent corner-accent-bottom-right"></div>
+        <div class="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center gap-2.5 px-6 py-3 bg-[#4EE4FF]/10 border border-[#4EE4FF]/30 rounded-full text-[#4EE4FF] text-sm font-bold mb-8 backdrop-blur-md">
+                <i data-lucide="mail" class="w-4 h-4"></i>
+                <span>Stay Connected</span>
+            </div>
+            <h2 class="text-5xl lg:text-6xl font-black mb-6 text-white leading-tight">
+                Never Miss an <span class="gradient-text">Update</span>
+            </h2>
+            <p class="text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
+                Get the latest insights on web development, AI innovation, and digital transformation delivered straight to your inbox.
             </p>
-            <div class="max-w-md mx-auto">
-                <form class="flex gap-4">
-                    <input type="email" placeholder="Enter your email" class="form-input flex-1">
-                    <button type="submit" class="btn-primary">Subscribe</button>
+            <div class="max-w-xl mx-auto">
+                <form class="flex flex-col sm:flex-row gap-4">
+                    <input 
+                        type="email" 
+                        placeholder="Enter your email address" 
+                        class="flex-1 px-6 py-4 bg-black/40 backdrop-blur-md border border-white/10 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-[#4EE4FF]/50 focus:ring-2 focus:ring-[#4EE4FF]/20 transition-all"
+                        required
+                    >
+                    <button type="submit" class="px-8 py-4 bg-[#4EE4FF] text-[#050a30] font-bold rounded-xl hover:bg-[#00D4FF] transition-all shadow-lg shadow-[#4EE4FF]/30 hover:shadow-xl hover:shadow-[#4EE4FF]/40 hover:-translate-y-1 whitespace-nowrap">
+                        Subscribe
+                    </button>
                 </form>
+                <p class="text-sm text-gray-500 mt-6">
+                    We respect your privacy. Unsubscribe at any time.
+                </p>
             </div>
         </div>
     </section>
@@ -163,27 +1056,78 @@
     <!-- Footer -->
     <footer id="footer-container"></footer>
 
-    <!-- Scripts -->
-    <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
-        
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        if (mobileMenuBtn && mobileMenu) {
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-        }
-    </script>
-
-   
     <!-- Contact Form Container -->
     <div id="contact-form-container"></div>
 
-    <!-- Main JavaScript -->
+    <!-- Main JavaScript - Load in correct order -->
+    <script src="../../assets/js/api-service.js"></script>
     <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/blog.js"></script>
+    
+    <script>
+        // Force category tabs to be horizontal
+        function forceHorizontalLayout() {
+            const container = document.querySelector('.category-tabs-container');
+            if (container) {
+                container.style.display = 'flex';
+                container.style.flexDirection = 'row';
+                container.style.flexWrap = 'wrap';
+                container.style.alignItems = 'center';
+                container.style.justifyContent = 'center';
+                container.style.width = '100%';
+                
+                // Force all tabs to be inline
+                const tabs = container.querySelectorAll('.category-tab');
+                tabs.forEach(tab => {
+                    tab.style.display = 'inline-flex';
+                    tab.style.flexDirection = 'row';
+                    tab.style.marginRight = '12px';
+                    tab.style.marginBottom = '0';
+                });
+                
+                console.log('Forced horizontal layout on category tabs');
+            }
+        }
+        
+        // Run immediately and on various events
+        forceHorizontalLayout();
+        document.addEventListener('DOMContentLoaded', forceHorizontalLayout);
+        setTimeout(forceHorizontalLayout, 100);
+        setTimeout(forceHorizontalLayout, 500);
+        setTimeout(forceHorizontalLayout, 1000);
+        
+        // Watch for changes
+        const observer = new MutationObserver(() => {
+            forceHorizontalLayout();
+        });
+        
+        const stickyBar = document.querySelector('.sticky-category-bar');
+        if (stickyBar) {
+            observer.observe(stickyBar, { childList: true, subtree: true, attributes: true });
+        }
+        
+        // Reinitialize Lucide Icons after all scripts load
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+                // Recreate icons periodically for dynamically loaded content
+                setInterval(() => {
+                    if (typeof lucide !== 'undefined') {
+                        lucide.createIcons();
+                    }
+                }, 1000);
+            }
+            
+            // Fix mobile menu z-index when opened
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const stickyCategoryBar = document.querySelector('.sticky-category-bar');
+            
+            if (mobileMenuBtn && mobileMenu && stickyCategoryBar) {
+                // Sticky bar should stay at z-index 10 (below header and dropdowns)
+                stickyCategoryBar.style.zIndex = '10';
+            }
+        });
+    </script>
 </body>
 </html>

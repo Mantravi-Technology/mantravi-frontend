@@ -21,8 +21,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <div id="styles-container"></div>
+    
+    <style>
+        /* Hide scrollbars and prevent horizontal scrolling */
+        ::-webkit-scrollbar { display: none; }
+        html, body { 
+            scrollbar-width: none; 
+            -ms-overflow-style: none; 
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+        * { max-width: 100%; box-sizing: border-box; }
+    </style>
 </head>
 <body class="bg-[#050a30] text-white smooth-scroll premium-scroll">
+
     <header id="header-container"></header>
     <script src="../../assets/js/component-loader.js"></script>
     
@@ -265,7 +278,7 @@
                     </div>
                     
                     <input type="text" name="name" placeholder="Name" class="form-input" required>
-                    <input type="text" name="skills" placeholder="Your Core Skills (e.g., Java, React, AI/ML)" class="form-input" required>
+                    <input type="text" name="role" placeholder="Desired Role (e.g., Full Stack Developer, QA Engineer, Digital Marketing Specialist)" class="form-input" required title="Examples: Full Stack Developer, Frontend Developer, Backend Developer, QA Engineer, Test Automation Engineer, Digital Marketing Specialist, SEO Expert, Content Strategist, AI/ML Engineer, Business Analyst, Solution Architect, UX Designer">
                     <input type="email" name="email" placeholder="Email Address" class="form-input" required>
                     <input type="tel" name="phone" placeholder="Phone Number" class="form-input">
                     <textarea name="message" placeholder="Tell us about yourself and why you're a fit for our collaborative model" rows="4" class="form-input" required></textarea>
@@ -353,7 +366,7 @@
             const data = Object.fromEntries(formData);
             
             // Basic validation
-            if (!data.name || !data.email || !data.skills || !data.message) {
+            if (!data.name || !data.email || !data.role || !data.message) {
                 showFormMessage('Please fill in all required fields.', 'error');
                 return;
             }

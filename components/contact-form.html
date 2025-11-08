@@ -1,6 +1,29 @@
 <!-- Reusable Contact Form Component - Mobile Optimized -->
-<div id="consultModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-1 sm:p-4">
-    <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-lg sm:rounded-xl shadow-2xl w-full max-w-xs sm:max-w-md md:max-w-2xl max-h-[85vh] sm:max-h-[90vh] overflow-y-auto">
+<style>
+    #consultModal {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        z-index: 9999 !important;
+    }
+    
+    @media (max-width: 768px) {
+        #consultModal {
+            padding: 0.5rem !important;
+            align-items: flex-start !important;
+            padding-top: 2rem !important;
+        }
+        
+        #consultModal .modal-content {
+            margin-top: 1rem !important;
+            max-height: calc(100vh - 2rem) !important;
+        }
+    }
+</style>
+<div id="consultModal" class="fixed inset-0 bg-black bg-opacity-50 z-[9999] hidden flex items-center justify-center p-1 sm:p-4">
+    <div class="modal-content bg-gradient-to-br from-slate-800 to-slate-900 rounded-lg sm:rounded-xl shadow-2xl w-full max-w-xs sm:max-w-md md:max-w-2xl max-h-[85vh] sm:max-h-[90vh] overflow-y-auto relative z-[10000]">
         <!-- Modal Header -->
         <div class="flex justify-between items-center p-2 sm:p-4 border-b border-slate-600/30">
             <div class="flex items-center space-x-2 sm:space-x-3">
