@@ -61,6 +61,81 @@
         body {
             padding-top: 0;
         }
+        
+        /* Ensure animation containers are visible and properly sized */
+        [id$="-animation"] {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            width: 100% !important;
+            height: 100% !important;
+            min-width: 200px;
+            min-height: 200px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Override fade-in-up opacity for animation containers */
+        .fade-in-up [id$="-animation"],
+        [id$="-animation"].fade-in-up {
+            opacity: 1 !important;
+        }
+        
+        /* Ensure SVG animations are visible */
+        [id$="-animation"] svg {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            width: 100% !important;
+            height: 100% !important;
+            max-width: 100% !important;
+            max-height: 100% !important;
+            position: relative;
+        }
+        
+        /* Animation container parent should also be visible */
+        .relative > [id$="-animation"],
+        div > [id$="-animation"] {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Ensure parent containers don't hide animations */
+        div[id$="-animation"] {
+            overflow: visible !important;
+        }
+        
+        /* QA Animation - Add color filters to stand out from dark background */
+        #qa-animation {
+            filter: brightness(1.5) contrast(1.4) saturate(1.6);
+            position: relative;
+        }
+        
+        /* Add a subtle background glow to make it pop */
+        #qa-animation::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            height: 90%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        #qa-animation svg {
+            filter: brightness(1.5) contrast(1.4) saturate(1.6);
+        }
+        
+        /* Make dark blue elements lighter/more visible */
+        #qa-animation svg path[fill*="#000"],
+        #qa-animation svg path[fill*="#001"],
+        #qa-animation svg path[fill*="#002"] {
+            filter: brightness(2) contrast(1.2);
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white">
@@ -85,7 +160,7 @@
     <section id="webapp" class="service-section"><div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-28"><div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"><div class="space-y-8"><div class="space-y-4 fade-in-up"><div class="text-cyan-400 text-sm font-medium mb-2"><i data-lucide="code" class="w-4 h-4 inline mr-2"></i>Web Development</div><h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white"><span class="gradient-text">Web Development</span> Solutions</h2><p class="text-lg text-gray-300 max-w-2xl">From dynamic web applications to enterprise platforms, we build intelligent solutions that leverage automation and advanced technology to deliver personalized user experiences and drive measurable business outcomes.</p></div><div class="grid md:grid-cols-2 gap-6"><div class="feature-item fade-in-up delay-200"><div class="flex items-center gap-3 mb-3"><div class="p-2 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg"><i data-lucide="zap" class="w-5 h-5 text-white"></i></div><h3 class="text-xl font-semibold text-white">Dynamic Websites</h3></div><p class="text-gray-400 text-sm">Interactive applications with intelligent automation, real-time data processing, and personalized user experiences.</p></div><div class="feature-item fade-in-up delay-300"><div class="flex items-center gap-3 mb-3"><div class="p-2 bg-gradient-to-br from-green-500 to-emerald-500 rounded-lg"><i data-lucide="file-text" class="w-5 h-5 text-white"></i></div><h3 class="text-xl font-semibold text-white">Static Websites</h3></div><p class="text-gray-400 text-sm">Fast, secure, and cost-effective sites for optimal performance and SEO.</p></div><div class="feature-item fade-in-up delay-400"><div class="flex items-center gap-3 mb-3"><div class="p-2 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg"><i data-lucide="shopping-cart" class="w-5 h-5 text-white"></i></div><h3 class="text-xl font-semibold text-white">E-commerce Solutions</h3></div><p class="text-gray-400 text-sm">Complete online stores with payment processing and inventory management.</p></div><div class="feature-item fade-in-up delay-500"><div class="flex items-center gap-3 mb-3"><div class="p-2 bg-gradient-to-br from-orange-500 to-red-500 rounded-lg"><i data-lucide="layers" class="w-5 h-5 text-white"></i></div><h3 class="text-xl font-semibold text-white">WordPress Development</h3></div><p class="text-gray-400 text-sm">Custom themes, plugins, and optimizations for any business need.</p></div></div></div><div class="relative order-first lg:order-last fade-in-up delay-100"><div class="relative w-full aspect-square"><div id="web-animation" class="w-full h-full"></div></div></div></div></div></section>
     <section id="mobileapp" class="service-section"><div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-8 lg:py-20"><div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"><div class="relative fade-in-up delay-100"><div class="relative w-full h-96 lg:h-[500px]"><div id="mobile-animation" class="w-full h-full"></div></div></div><div class="space-y-8"><div class="space-y-4 fade-in-up"><div class="text-green-400 text-sm font-medium mb-2"><i data-lucide="smartphone" class="w-4 h-4 inline mr-2"></i>Mobile Development</div><h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white"><span class="gradient-text">Mobile App</span> Development</h2><p class="text-lg text-gray-300 max-w-2xl">Transform your business with intelligent mobile applications featuring smart automation, personalized experiences, and data-driven insights that engage users and maximize conversion rates.</p></div><div class="grid md:grid-cols-2 gap-6"><div class="feature-item fade-in-up delay-200"><div class="flex items-center gap-3 mb-3"><div class="p-2 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg"><i data-lucide="smartphone" class="w-5 h-5 text-white"></i></div><h3 class="text-xl font-semibold text-white">Native iOS</h3></div><p class="text-gray-400 text-sm">High-performance iOS apps with Swift and the latest Apple technologies.</p></div><div class="feature-item fade-in-up delay-300"><div class="flex items-center gap-3 mb-3"><div class="p-2 bg-gradient-to-br from-green-500 to-emerald-500 rounded-lg"><i data-lucide="android" class="w-5 h-5 text-white"></i></div><h3 class="text-xl font-semibold text-white">Native Android</h3></div><p class="text-gray-400 text-sm">Robust Android applications built with Kotlin and Jetpack Compose.</p></div><div class="feature-item fade-in-up delay-400"><div class="flex items-center gap-3 mb-3"><div class="p-2 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg"><i data-lucide="layers" class="w-5 h-5 text-white"></i></div><h3 class="text-xl font-semibold text-white">Cross-Platform</h3></div><p class="text-gray-400 text-sm">Single codebase for both iOS and Android using React Native or Flutter.</p></div><div class="feature-item fade-in-up delay-500"><div class="flex items-center gap-3 mb-3"><div class="p-2 bg-gradient-to-br from-orange-500 to-red-500 rounded-lg"><i data-lucide="trending-up" class="w-5 h-5 text-white"></i></div><h3 class="text-xl font-semibold text-white">App Strategy</h3></div><p class="text-gray-400 text-sm">Expert UX/UI design, intelligent performance optimization, and data-driven market strategy.</p></div></div></div></div></div></section>
     <section id="digitalmarketing" class="service-section"><div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-8 lg:py-20"><div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"><div class="space-y-8"><div class="space-y-4 fade-in-up"><div class="text-purple-400 text-sm font-medium mb-2"><i data-lucide="trending-up" class="w-4 h-4 inline mr-2"></i>Digital Marketing</div><h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white"><span class="gradient-text">Digital Marketing</span> Excellence</h2><p class="text-lg text-gray-300 max-w-2xl">Elevate your brand's digital footprint with AI-powered marketing strategies that leverage machine learning insights, automated optimization, and predictive analytics to amplify visibility and drive measurable growth.</p></div><div class="grid md:grid-cols-2 gap-6"><div class="feature-item fade-in-up delay-200"><div class="flex items-center gap-3 mb-3"><div class="p-2 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg"><i data-lucide="search" class="w-5 h-5 text-white"></i></div><h3 class="text-xl font-semibold text-white">SEO & Content Strategy</h3></div><p class="text-gray-400 text-sm">Dominate search rankings with advanced SEO optimization and intelligent content strategies that drive organic traffic and maximize conversions.</p></div><div class="feature-item fade-in-up delay-300"><div class="flex items-center gap-3 mb-3"><div class="p-2 bg-gradient-to-br from-green-500 to-emerald-500 rounded-lg"><i data-lucide="share-2" class="w-5 h-5 text-white"></i></div><h3 class="text-xl font-semibold text-white">Social Media Management</h3></div><p class="text-gray-400 text-sm">Cultivate a powerful social media presence with engaging content, community management, and platform-specific strategies that build brand loyalty.</p></div><div class="feature-item fade-in-up delay-400"><div class="flex items-center gap-3 mb-3"><div class="p-2 bg-gradient-to-br from-orange-500 to-red-500 rounded-lg"><i data-lucide="target" class="w-5 h-5 text-white"></i></div><h3 class="text-xl font-semibold text-white">Paid Advertising</h3></div><p class="text-gray-400 text-sm">Maximize ROI with precision targeting and automated campaign optimization across Google Ads, Facebook, Instagram, LinkedIn, and emerging platforms.</p></div><div class="feature-item fade-in-up delay-500"><div class="flex items-center gap-3 mb-3"><div class="p-2 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg"><i data-lucide="map-pin" class="w-5 h-5 text-white"></i></div><h3 class="text-xl font-semibold text-white">Google My Business</h3></div><p class="text-gray-400 text-sm">Optimize local search visibility with comprehensive GMB management, review strategies, and location-based marketing tactics.</p></div><div class="feature-item fade-in-up delay-200"><div class="flex items-center gap-3 mb-3"><div class="p-2 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg"><i data-lucide="mail" class="w-5 h-5 text-white"></i></div><h3 class="text-xl font-semibold text-white">Email Marketing</h3></div><p class="text-gray-400 text-sm">Nurture leads and retain customers with personalized email campaigns, automation workflows, and conversion-focused messaging.</p></div><div class="feature-item fade-in-up delay-300"><div class="flex items-center gap-3 mb-3"><div class="p-2 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-lg"><i data-lucide="bar-chart-2" class="w-5 h-5 text-white"></i></div><h3 class="text-xl font-semibold text-white">Analytics & Reporting</h3></div><p class="text-gray-400 text-sm">Track performance with AI-powered analytics, intelligent reporting, and predictive insights that enable data-driven strategic decision-making.</p></div></div></div><div class="relative order-first lg:order-last fade-in-up delay-100"><div class="relative w-full h-96 lg:h-[500px]"><div id="marketing-animation" class="w-full h-full"></div></div></div></div></div></section>
-    <section id="graphicvideo" class="service-section"><div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-8 lg:py-20"><div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"><div class="space-y-8"><div class="space-y-4 fade-in-up"><div class="text-pink-400 text-sm font-medium mb-2"><i data-lucide="palette" class="w-4 h-4 inline mr-2"></i>Creative Design</div><h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white"><span class="gradient-text">Graphic Design</span> & Video Editing</h2><p class="text-lg text-gray-300 max-w-2xl">Transform your brand identity with advanced design tools and intelligent video editing that create visually stunning content, captivate audiences, and establish a memorable presence across all touchpoints.</p></div><div class="grid md:grid-cols-2 gap-6"><div class="feature-item fade-in-up delay-200"><div class="flex items-center gap-3 mb-3"><div class="p-2 bg-gradient-to-br from-pink-500 to-rose-500 rounded-lg"><i data-lucide="sparkles" class="w-5 h-5 text-white"></i></div><h3 class="text-xl font-semibold text-white">Brand Identity & Print Design</h3></div><p class="text-gray-400 text-sm">Comprehensive brand identity systems including logos, color palettes, typography, and professional print materials that reinforce your brand presence.</p></div><div class="feature-item fade-in-up delay-300"><div class="flex items-center gap-3 mb-3"><div class="p-2 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg"><i data-lucide="layout" class="w-5 h-5 text-white"></i></div><h3 class="text-xl font-semibold text-white">UI/UX & Packaging Design</h3></div><p class="text-gray-400 text-sm">Intuitive user interfaces and exceptional user experiences that enhance engagement, plus eye-catching packaging solutions that stand out on shelves.</p></div><div class="feature-item fade-in-up delay-400"><div class="flex items-center gap-3 mb-3"><div class="p-2 bg-gradient-to-br from-red-500 to-pink-500 rounded-lg"><i data-lucide="film" class="w-5 h-5 text-white"></i></div><h3 class="text-xl font-semibold text-white">Video Production & Editing</h3></div><p class="text-gray-400 text-sm">End-to-end video production with advanced editing, intelligent color grading, automated audio enhancement, and seamless transitions.</p></div><div class="feature-item fade-in-up delay-500"><div class="flex items-center gap-3 mb-3"><div class="p-2 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg"><i data-lucide="zap" class="w-5 h-5 text-white"></i></div><h3 class="text-xl font-semibold text-white">Motion Graphics & Visual Effects</h3></div><p class="text-gray-400 text-sm">Dynamic motion graphics, animated titles, and sophisticated visual effects that add polish and professionalism to your video content.</p></div></div></div><div class="relative order-first lg:order-last fade-in-up delay-100"><div class="relative w-full h-96 lg:h-[500px]"><div id="graphic-animation" class="w-full h-full"></div></div></div></div></div></section>
+    <section id="graphicvideo" class="service-section"><div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-8 lg:py-20"><div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"><div class="relative fade-in-up delay-100"><div class="relative w-full h-96 lg:h-[500px]"><div id="graphic-animation" class="w-full h-full"></div></div></div><div class="space-y-8"><div class="space-y-4 fade-in-up"><div class="text-pink-400 text-sm font-medium mb-2"><i data-lucide="palette" class="w-4 h-4 inline mr-2"></i>Creative Design</div><h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white"><span class="gradient-text">Graphic Design</span> & Video Editing</h2><p class="text-lg text-gray-300 max-w-2xl">Transform your brand identity with advanced design tools and intelligent video editing that create visually stunning content, captivate audiences, and establish a memorable presence across all touchpoints.</p></div><div class="grid md:grid-cols-2 gap-6"><div class="feature-item fade-in-up delay-200"><div class="flex items-center gap-3 mb-3"><div class="p-2 bg-gradient-to-br from-pink-500 to-rose-500 rounded-lg"><i data-lucide="sparkles" class="w-5 h-5 text-white"></i></div><h3 class="text-xl font-semibold text-white">Brand Identity & Print Design</h3></div><p class="text-gray-400 text-sm">Comprehensive brand identity systems including logos, color palettes, typography, and professional print materials that reinforce your brand presence.</p></div><div class="feature-item fade-in-up delay-300"><div class="flex items-center gap-3 mb-3"><div class="p-2 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg"><i data-lucide="layout" class="w-5 h-5 text-white"></i></div><h3 class="text-xl font-semibold text-white">UI/UX & Packaging Design</h3></div><p class="text-gray-400 text-sm">Intuitive user interfaces and exceptional user experiences that enhance engagement, plus eye-catching packaging solutions that stand out on shelves.</p></div><div class="feature-item fade-in-up delay-400"><div class="flex items-center gap-3 mb-3"><div class="p-2 bg-gradient-to-br from-red-500 to-pink-500 rounded-lg"><i data-lucide="film" class="w-5 h-5 text-white"></i></div><h3 class="text-xl font-semibold text-white">Video Production & Editing</h3></div><p class="text-gray-400 text-sm">End-to-end video production with advanced editing, intelligent color grading, automated audio enhancement, and seamless transitions.</p></div><div class="feature-item fade-in-up delay-500"><div class="flex items-center gap-3 mb-3"><div class="p-2 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg"><i data-lucide="zap" class="w-5 h-5 text-white"></i></div><h3 class="text-xl font-semibold text-white">Motion Graphics & Visual Effects</h3></div><p class="text-gray-400 text-sm">Dynamic motion graphics, animated titles, and sophisticated visual effects that add polish and professionalism to your video content.</p></div></div></div></div></div></section>
     <section id="politicalbranding" class="service-section"><div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-8 lg:py-20"><div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"><div class="space-y-8"><div class="space-y-4 fade-in-up"><div class="text-indigo-400 text-sm font-medium mb-2"><i data-lucide="flag" class="w-4 h-4 inline mr-2"></i>Political Branding</div><h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white"><span class="gradient-text">Political Branding</span> & Campaigns</h2><p class="text-lg text-gray-300 max-w-2xl">Build authentic political identities and execute winning campaigns with data-driven voter insights, predictive analytics, and intelligent engagement strategies that resonate with your constituency.</p></div><div class="grid md:grid-cols-2 gap-6"><div class="feature-item fade-in-up delay-200"><div class="flex items-center gap-3 mb-3"><div class="p-2 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-lg"><i data-lucide="award" class="w-5 h-5 text-white"></i></div><h3 class="text-xl font-semibold text-white">Campaign Branding</h3></div><p class="text-gray-400 text-sm">Comprehensive political brand development including logo design, campaign materials, and visual identity systems that establish trust and recognition.</p></div><div class="feature-item fade-in-up delay-300"><div class="flex items-center gap-3 mb-3"><div class="p-2 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg"><i data-lucide="megaphone" class="w-5 h-5 text-white"></i></div><h3 class="text-xl font-semibold text-white">Digital Campaign Strategy</h3></div><p class="text-gray-400 text-sm">Strategic digital marketing campaigns tailored for political contexts, including social media management, content creation, and voter outreach programs.</p></div><div class="feature-item fade-in-up delay-400"><div class="flex items-center gap-3 mb-3"><div class="p-2 bg-gradient-to-br from-red-500 to-pink-500 rounded-lg"><i data-lucide="users" class="w-5 h-5 text-white"></i></div><h3 class="text-xl font-semibold text-white">Voter Engagement</h3></div><p class="text-gray-400 text-sm">Multi-channel voter engagement strategies that connect with constituents, build support, and drive participation through targeted messaging and outreach.</p></div><div class="feature-item fade-in-up delay-500"><div class="flex items-center gap-3 mb-3"><div class="p-2 bg-gradient-to-br from-green-500 to-emerald-500 rounded-lg"><i data-lucide="trending-up" class="w-5 h-5 text-white"></i></div><h3 class="text-xl font-semibold text-white">Campaign Analytics</h3></div><p class="text-gray-400 text-sm">AI-powered campaign analytics with predictive insights and intelligent performance tracking that optimize outreach efforts and maximize impact.</p></div></div></div><div class="relative order-first lg:order-last fade-in-up delay-100"><div class="relative w-full h-96 lg:h-[500px]"><div id="branding-animation" class="w-full h-full"></div></div></div></div></div></section>
     <section id="qa" class="service-section"><div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-8 lg:py-20"><div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"><div class="relative fade-in-up delay-100"><div class="relative w-full h-96 lg:h-[500px]"><div id="qa-animation" class="w-full h-full"></div></div></div><div class="space-y-8"><div class="space-y-4 fade-in-up"><div class="text-orange-400 text-sm font-medium mb-2"><i data-lucide="shield-check" class="w-4 h-4 inline mr-2"></i>QA & Support</div><h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white"><span class="gradient-text">QA & Support</span> Services</h2><p class="text-lg text-gray-300 max-w-2xl">Comprehensive quality assurance powered by automated testing and intelligent monitoring that ensure your applications run flawlessly, securely, and efficiently with minimal downtime.</p></div><div class="grid md:grid-cols-2 gap-6"><div class="feature-item fade-in-up delay-200"><div class="flex items-center gap-3 mb-3"><div class="p-2 bg-gradient-to-br from-orange-500 to-red-500 rounded-lg"><i data-lucide="shield-check" class="w-5 h-5 text-white"></i></div><h3 class="text-xl font-semibold text-white">Quality Assurance</h3></div><p class="text-gray-400 text-sm">AI-powered automated testing and intelligent quality assurance for bug-free, high-performance applications.</p></div><div class="feature-item fade-in-up delay-300"><div class="flex items-center gap-3 mb-3"><div class="p-2 bg-gradient-to-br from-red-500 to-pink-500 rounded-lg"><i data-lucide="lock" class="w-5 h-5 text-white"></i></div><h3 class="text-xl font-semibold text-white">Security & Compliance</h3></div><p class="text-gray-400 text-sm">Protect applications with comprehensive security and compliance testing.</p></div><div class="feature-item fade-in-up delay-400"><div class="flex items-center gap-3 mb-3"><div class="p-2 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg"><i data-lucide="headphones" class="w-5 h-5 text-white"></i></div><h3 class="text-xl font-semibold text-white">24/7 Support</h3></div><p class="text-gray-400 text-sm">Round-the-clock technical support with AI-enhanced monitoring and automated issue detection for proactive problem resolution.</p></div><div class="feature-item fade-in-up delay-500"><div class="flex items-center gap-3 mb-3"><div class="p-2 bg-gradient-to-br from-green-500 to-emerald-500 rounded-lg"><i data-lucide="settings" class="w-5 h-5 text-white"></i></div><h3 class="text-xl font-semibold text-white">Maintenance</h3></div><p class="text-gray-400 text-sm">Keep applications current with regular updates and security patches.</p></div></div></div></div></div></section>
     </div></main>
@@ -97,23 +172,63 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
-    <script src="../../assets/js/component-loader.js"></script>
+    <script src="/config/parallax-config.js"></script>
+    <script src="/assets/js/component-loader.js"></script>
     <!-- API Service -->
-    <script src="../../assets/js/api-service.js"></script>
+    <script src="/assets/js/api-service.js"></script>
     
     <!-- Main JavaScript -->
-    <script src="../../assets/js/main.js"></script>
+    <script src="/assets/js/main.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            lucide.createIcons();
-            const lottieAnimations = initLottieAnimations();
+        // Wait for everything to be ready before initializing
+        function initializeServicesPage() {
+            // Initialize Lucide icons
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+            
+            // Wait for Lottie to load, then initialize animations
+            async function waitForLottieAndInit() {
+                if (typeof lottie !== 'undefined') {
+                    const lottieAnimations = await initLottieAnimations();
+                    initCustomSmoothScroll(lottieAnimations);
+                    
+                    // Retry loading any failed animations after 2 seconds
+                    setTimeout(async () => {
+                        const containers = document.querySelectorAll('[id$="-animation"]');
+                        const failedContainers = Array.from(containers).filter(container => {
+                            return !container.querySelector('svg');
+                        });
+                        
+                        if (failedContainers.length > 0) {
+                            const retryAnimations = await initLottieAnimations();
+                            if (retryAnimations.length > lottieAnimations.length) {
+                                initCustomSmoothScroll(retryAnimations);
+                            }
+                        }
+                    }, 2000);
+                } else {
+                    setTimeout(waitForLottieAndInit, 100);
+                }
+            }
+            waitForLottieAndInit();
+            
+            // Initialize other features
             initScrollAnimations();
             initActiveNavObserver();
             setStickyNavPosition();
-            initCustomSmoothScroll(lottieAnimations);
-
+            
             window.addEventListener('resize', setStickyNavPosition);
-        });
+        }
+        
+        // Run when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeServicesPage);
+        } else {
+            // DOM already ready, but wait a bit for scripts to load
+            setTimeout(initializeServicesPage, 100);
+        }
+        
 
         let isScrolling = false;
         let scrollAnimationId;
@@ -212,7 +327,105 @@
             });
         }
 
-        function initLottieAnimations() { const animations = []; const animationPaths = {'web-animation': '../../assets/animations/Web Design Illustration.json','mobile-animation': '../../assets/animations/Mobile App Showcase.json','marketing-animation': '../../assets/animations/Digital Marketing.json','graphic-animation': '../../assets/animations/Video Design.json','branding-animation': '../../assets/animations/Branding.json','qa-animation': '../../assets/animations/User Testing.json'}; for (const [id, path] of Object.entries(animationPaths)) { const container = document.getElementById(id); if (container) { const anim = lottie.loadAnimation({ container, renderer: 'svg', loop: true, autoplay: true, path }); animations.push(anim); } } return animations; }
+        async function initLottieAnimations() {
+            if (typeof lottie === 'undefined') {
+                console.error('Lottie library is not loaded');
+                return [];
+            }
+            
+            const animations = [];
+            const animationPaths = {
+                'web-animation': '/assets/animations/Web%20Design%20Illustration.json',
+                'mobile-animation': '/assets/animations/Mobile%20App%20Showcase.json',
+                'marketing-animation': '/assets/animations/Digital%20Marketing.json',
+                'graphic-animation': '/assets/animations/Video%20Design.json',
+                'branding-animation': '/assets/animations/Branding.json',
+                'qa-animation': '/assets/animations/User%20Testing.json'
+            };
+            
+            // Load all animations using fetch to avoid XMLHttpRequest errors
+            const loadPromises = Object.entries(animationPaths).map(async ([id, path]) => {
+                const container = document.getElementById(id);
+                if (!container) {
+                    return null;
+                }
+                
+                try {
+                    // Check if animation already exists
+                    if (container.querySelector('svg')) {
+                        return container._lottie || null;
+                    }
+                    
+                    // Ensure container and all parents are visible
+                    container.style.display = 'block';
+                    container.style.visibility = 'visible';
+                    container.style.opacity = '1';
+                    
+                    // Make sure parent containers are also visible
+                    let parent = container.parentElement;
+                    while (parent && parent !== document.body) {
+                        const parentStyle = window.getComputedStyle(parent);
+                        if (parentStyle.display === 'none') {
+                            parent.style.display = 'block';
+                        }
+                        if (parentStyle.visibility === 'hidden') {
+                            parent.style.visibility = 'visible';
+                        }
+                        if (parentStyle.opacity === '0') {
+                            parent.style.opacity = '1';
+                        }
+                        parent = parent.parentElement;
+                    }
+                    
+                    // Load JSON using fetch (avoids XMLHttpRequest responseType issue)
+                    const response = await fetch(path);
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}`);
+                    }
+                    const animationData = await response.json();
+                    
+                    // Load animation with data instead of path
+                    const anim = lottie.loadAnimation({
+                        container: container,
+                        renderer: 'svg',
+                        loop: true,
+                        autoplay: true,
+                        animationData: animationData,
+                        rendererSettings: {
+                            preserveAspectRatio: 'xMidYMid meet',
+                            clearCanvas: true,
+                            hideOnTransparent: false
+                        }
+                    });
+                    
+                    // Wait for animation to be ready
+                    anim.addEventListener('DOMLoaded', () => {
+                        const svg = container.querySelector('svg');
+                        if (svg) {
+                            svg.style.display = 'block';
+                            svg.style.visibility = 'visible';
+                            svg.style.opacity = '1';
+                            svg.style.width = '100%';
+                            svg.style.height = '100%';
+                        }
+                    });
+                    
+                    anim.addEventListener('data_failed', (error) => {
+                        console.error(`Animation ${id} failed to load:`, error);
+                    });
+                    
+                    container._lottie = anim;
+                    return anim;
+                } catch (error) {
+                    console.error(`Error loading animation ${id}:`, error);
+                    return null;
+                }
+            });
+            
+            const loadedAnimations = await Promise.all(loadPromises);
+            const validAnimations = loadedAnimations.filter(anim => anim !== null);
+            return validAnimations;
+        }
         function initScrollAnimations() { const observer = new IntersectionObserver((entries, obs) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); obs.unobserve(entry.target); } }); }, { threshold: 0.1 }); document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el)); }
         function initActiveNavObserver() { const sections = document.querySelectorAll('.service-section'); const navLinks = document.querySelectorAll('.services-bar .services-link'); const observer = new IntersectionObserver(entries => { if (isScrolling) return; entries.forEach(entry => { if (entry.isIntersecting) { const id = entry.target.getAttribute('id'); navLinks.forEach(link => { link.classList.toggle('active', link.getAttribute('href') === `#${id}`); }); } }); }, { rootMargin: `-40% 0px -60% 0px` }); sections.forEach(section => observer.observe(section)); }
         

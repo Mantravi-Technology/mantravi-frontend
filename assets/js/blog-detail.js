@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       author: {
         '@type': 'Person',
         name: post.author || 'Mantravi Team',
-        url: `${baseUrl}/pages/about/index.html`
+        url: `${baseUrl}/about`
       },
       publisher: {
         '@type': 'Organization',
@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     
     if (!blogId && !blogSlug) {
-      container.innerHTML = '<p class="text-gray-300">Post not found. Go back to the <a href="/pages/blog/index.html" class="text-[#4EE4FF] underline">blog</a>.</p>';
+      container.innerHTML = '<p class="text-gray-300">Post not found. Go back to the <a href="/blog" class="text-[#4EE4FF] underline">blog</a>.</p>';
       return;
     }
 
@@ -224,11 +224,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Update URL to use slug for SEO and sharing (if we fetched by ID)
     // If already using slug, keep it clean
     if (post.slug && !blogSlug) {
-      const newUrl = `/pages/blog/post.html?slug=${encodeURIComponent(post.slug)}`;
+      const newUrl = `/blog/post?slug=${encodeURIComponent(post.slug)}`;
       window.history.replaceState({}, '', newUrl);
     } else if (post.slug && blogSlug) {
       // Clean URL - remove ID if we have slug
-      const cleanUrl = `/pages/blog/post.html?slug=${encodeURIComponent(post.slug)}`;
+      const cleanUrl = `/blog/post?slug=${encodeURIComponent(post.slug)}`;
       window.history.replaceState({}, '', cleanUrl);
     }
 
@@ -308,8 +308,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                  style="display: block !important; width: 100% !important; height: auto !important; max-width: 100% !important; object-fit: contain !important; object-position: center !important; margin: 0 auto; position: relative !important; visibility: visible !important; opacity: 1 !important; max-height: 600px; z-index: 1;"
                  loading="eager"
                  decoding="async"
-                 onload="console.log('Image loaded:', this.src); this.style.display='block'; this.style.visibility='visible'; this.style.opacity='1'; this.classList.add('loaded');"
-                 onerror="console.error('Failed to load image:', '${imageUrl}'); this.src='/assets/icons/ui/mantravi.png'; this.onerror=null; this.style.display='block'; this.style.visibility='visible'; this.style.opacity='1';" />
+                 onload="this.style.display='block'; this.style.visibility='visible'; this.style.opacity='1'; this.classList.add('loaded');"
+                 onerror="this.src='/assets/icons/ui/mantravi.png'; this.onerror=null; this.style.display='block'; this.style.visibility='visible'; this.style.opacity='1';" />
           </div>
         `;
         // Insert hero image FIRST, before any other content
@@ -325,7 +325,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             img.style.opacity = '1';
             img.style.position = 'relative';
             img.style.zIndex = '1';
-            console.log('Hero image forced visible:', img.src);
           }
           if (figure) {
             figure.style.display = 'block';
@@ -533,7 +532,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             : '/assets/icons/ui/mantravi.png';
           
           return `
-          <a class="related-article-card block bg-black/50 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden hover:border-[#4EE4FF]/50 transition-all duration-300 hover:shadow-lg hover:shadow-[#4EE4FF]/10 group" href="/pages/blog/post.html${x.slug ? `?slug=${encodeURIComponent(x.slug)}` : `?id=${encodeURIComponent(x.id)}`}" data-related-slug="${x.slug || ''}" data-related-id="${x.id}">
+          <a class="related-article-card block bg-black/50 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden hover:border-[#4EE4FF]/50 transition-all duration-300 hover:shadow-lg hover:shadow-[#4EE4FF]/10 group" href="/blog/post${x.slug ? `?slug=${encodeURIComponent(x.slug)}` : `?id=${encodeURIComponent(x.id)}`}" data-related-slug="${x.slug || ''}" data-related-id="${x.id}">
             <div class="h-44 rounded-t-xl overflow-hidden bg-gradient-to-br from-[#4EE4FF]/20 to-[#4EE4FF]/5 flex items-center justify-center relative">
               <img src="${imageUrl}" 
                    alt="${x.title || 'Related article'}" 
@@ -556,11 +555,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         const relatedCards = document.querySelectorAll('.related-article-card[data-related-id]');
         
         if (relatedCards.length === 0) {
-          console.warn('No related article cards found');
           return;
         }
-        
-        console.log(`Attached click handlers to ${relatedCards.length} related cards`);
         
         relatedCards.forEach(card => {
           // Ensure pointer cursor
@@ -575,26 +571,22 @@ document.addEventListener('DOMContentLoaded', async () => {
             const id = this.getAttribute('data-related-id') || '';
             const href = this.getAttribute('href') || '';
             
-            console.log('Card clicked - Slug:', slug, 'ID:', id, 'Href:', href);
-            
             // Build target URL - prefer slug, then ID, then href
             let targetUrl = href; // Default to href
             
             if (slug && slug.trim() !== '') {
               // Prefer slug - no need for sessionStorage
-              targetUrl = `/pages/blog/post.html?slug=${encodeURIComponent(slug.trim())}`;
+              targetUrl = `/blog/post?slug=${encodeURIComponent(slug.trim())}`;
               // Clear old sessionStorage when using slug
               try {
                 sessionStorage.removeItem('selectedBlogId');
               } catch {}
             } else if (id && id.trim() !== '') {
               // Use ID - only save to sessionStorage as backup
-              targetUrl = `/pages/blog/post.html?id=${encodeURIComponent(id.trim())}`;
+              targetUrl = `/blog/post?id=${encodeURIComponent(id.trim())}`;
               // Don't save to sessionStorage here - let URL params handle it
               // Only use sessionStorage as absolute last resort
             }
-            
-            console.log('Navigating to:', targetUrl);
             
             // Force navigation
             if (targetUrl && targetUrl !== '#') {

@@ -4,8 +4,9 @@
   "description": "Mantravi - Engineering Global Disruption with AI-Native Excellence",
   "main": "index.html",
   "scripts": {
-    "start": "live-server --port=5502 --host=0.0.0.0 --no-browser",
-    "dev": "live-server --port=5502 --host=0.0.0.0 --no-browser",
+    "start": "node server.js",
+    "dev": "node server.js",
+    "live": "live-server --port=5503 --host=0.0.0.0 --no-browser",
     "build": "./build.sh",
     "deploy": "npm run build",
     "lint": "echo 'Add linting tools as needed'",
