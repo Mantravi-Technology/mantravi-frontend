@@ -7,7 +7,8 @@
     "start": "node server.js",
     "dev": "node server.js",
     "live": "live-server --port=5503 --host=0.0.0.0 --no-browser",
-    "build": "./build.sh",
+    "build": "echo 'Static site - no build needed for Cloudflare Pages'",
+    "pages:build": "echo 'Build complete - Cloudflare Pages will serve static files'",
     "deploy": "npm run build",
     "lint": "echo 'Add linting tools as needed'",
     "test": "echo 'Add testing framework as needed'"
