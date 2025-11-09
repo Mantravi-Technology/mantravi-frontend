@@ -1,0 +1,18 @@
+# Cloudflare Pages Redirects (replaces .htaccess)
+# Redirect index.html to root
+/index.html / 301
+
+# Clean URLs - rewrite to actual files
+/about /pages/about/index.html 200
+/services /pages/services/index.html 200
+/contact /pages/contact/index.html 200
+/blog /pages/blog/index.html 200
+/blog/post /pages/blog/post.html 200
+/work-with-us /pages/work-with-us/index.html 200
+
+# Root URL - serve homepage
+/ /pages/home/index.html 200
+
+# Catch all - serve homepage for 404s
+/* /pages/home/index.html 404
+
