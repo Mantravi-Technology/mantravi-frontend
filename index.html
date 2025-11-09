@@ -3,130 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mantravi - Redirecting...</title>
-    <!-- Immediate redirect - executes before page renders -->
+    <title>Mantravi - Engineering Global Disruption with AI-Native Excellence</title>
+    <!-- Production-ready: Immediate redirect with no visible content flash -->
     <script>
-        // Execute immediately, before any content loads
-        (function() {
-            try {
-                // Skip redirect only for file:// protocol
-                if (window.location.protocol !== 'file:') {
-                    // Immediate redirect to homepage
-                    window.location.replace('/');
-                }
-            } catch (e) {
-                // If redirect fails, continue to show page with manual links
-            }
-        })();
+        // Immediate redirect - executes before page renders
+        window.location.replace('/');
     </script>
-    <!-- Fallback meta refresh for non-JS browsers -->
     <meta http-equiv="refresh" content="0; url=/">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            background: #050a30;
-            color: white;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-            padding: 20px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        body.show {
-            opacity: 1;
-        }
-        .container {
-            max-width: 500px;
-        }
-        .spinner {
-            border: 3px solid rgba(78, 228, 255, 0.2);
-            border-top: 3px solid #4EE4FF;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 30px;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        h1 {
-            color: #4EE4FF;
-            margin-bottom: 20px;
-            font-size: 24px;
-        }
-        p {
-            color: #d1d5db;
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-        .links {
-            margin-top: 30px;
-        }
-        .links a {
-            display: inline-block;
-            color: #4EE4FF;
-            text-decoration: none;
-            padding: 12px 24px;
-            border: 2px solid #4EE4FF;
-            border-radius: 8px;
-            margin: 10px;
-            transition: all 0.3s;
-        }
-        .links a:hover {
-            background: #4EE4FF;
-            color: #050a30;
-        }
-        .error {
-            color: #ef4444;
-            margin-top: 20px;
-            padding: 15px;
-            background: rgba(239, 68, 68, 0.1);
-            border-radius: 8px;
-            display: none;
-        }
+        body { margin: 0; padding: 0; background: #050a30; overflow: hidden; }
+        html { height: 100%; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="spinner"></div>
-        <h1>Mantravi</h1>
-        <p>Redirecting to homepage...</p>
-        <div class="links">
-            <a href="/">Go to Homepage</a>
-            <a href="/services">Go to Services</a>
-        </div>
-        <div class="error" id="errorMsg"></div>
-    </div>
-
-    <script>
-        // Show page content only if redirect didn't happen (after a delay)
-        (function() {
-            // If we're still here after 500ms, show the page (redirect likely failed)
-            setTimeout(function() {
-                // Show page content (redirect didn't happen)
-                document.body.classList.add('show');
-                
-                // Show error if file:// protocol
-                if (window.location.protocol === 'file:') {
-                    const errorMsg = document.getElementById('errorMsg');
-                    if (errorMsg) {
-                        errorMsg.style.display = 'block';
-                        errorMsg.innerHTML = 
-                            '<strong>Error:</strong> Please use a local server instead of opening the file directly.';
-                    }
-                }
-            }, 500);
-        })();
-    </script>
+    <!-- Fallback for users with JavaScript disabled -->
+    <noscript>
+        <meta http-equiv="refresh" content="0; url=/">
+        <p style="color: white; text-align: center; margin-top: 50vh; transform: translateY(-50%);">
+            <a href="/" style="color: #4EE4FF;">Click here to continue</a>
+        </p>
+    </noscript>
 </body>
 </html>
