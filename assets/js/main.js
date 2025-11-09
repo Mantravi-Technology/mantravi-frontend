@@ -241,7 +241,7 @@ function initializeMobileMenu() {
 
 // Global Parallax Manager Class
 class GlobalParallaxManager {
-    constructor(config = PARALLAX_CONFIG) {
+    constructor(config = (typeof PARALLAX_CONFIG !== 'undefined' ? PARALLAX_CONFIG : {})) {
         this.config = config;
         this.elements = new Map();
         this.isScrolling = false;
@@ -825,8 +825,6 @@ async function handleConsultForm(event) {
         const apiService = new ApiService();
         const result = await apiService.submitConsultation(data);
         
-        console.log('API call successful:', result);
-        
         // Hide form and show success message
         const form = document.getElementById('consultForm');
         const successMessage = document.getElementById('successMessage');
@@ -885,6 +883,8 @@ async function handleConsultForm(event) {
 function initializeConsultForm() {
     const form = document.getElementById('consultForm');
     if (form) {
+        // Remove existing listener to prevent duplicates
+        form.removeEventListener('submit', handleConsultForm);
         form.addEventListener('submit', handleConsultForm);
     }
 }
@@ -957,6 +957,8 @@ async function handleJobApplicationForm(event) {
 function initializeJobApplicationForm() {
     const form = document.getElementById('applicationForm');
     if (form) {
+        // Remove existing listener to prevent duplicates
+        form.removeEventListener('submit', handleJobApplicationForm);
         form.addEventListener('submit', handleJobApplicationForm);
     }
 }
@@ -981,7 +983,6 @@ window.resetConsultForm = resetConsultForm;
 
 // Add event listener for when contact form is loaded
 document.addEventListener('contactFormLoaded', function() {
-    console.log('Contact form loaded event received');
     // Re-initialize Lucide icons for the modal
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();

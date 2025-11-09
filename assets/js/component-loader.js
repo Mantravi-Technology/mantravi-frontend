@@ -1,36 +1,38 @@
 // Component Loader for Header and Footer
-document.addEventListener('DOMContentLoaded', function() {
-    // Load head component
-    const headContainer = document.getElementById('head-container');
-    if (headContainer) {
-        fetch('../../components/head/head.html')
-            .then(response => response.text())
-            .then(html => {
-                headContainer.innerHTML = html;
-            })
-            .catch(error => {
-                console.error('Error loading head component:', error);
-            });
-    }
+(function() {
+    // Run immediately if DOM is ready, otherwise wait
+    function init() {
+        // Load head component
+        const headContainer = document.getElementById('head-container');
+        if (headContainer) {
+            fetch('/components/head/head.html')
+                .then(response => response.text())
+                .then(html => {
+                    headContainer.innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Error loading head component:', error);
+                });
+        }
 
-    // Load common styles component
-    const stylesContainer = document.getElementById('styles-container');
-    if (stylesContainer) {
-        fetch('../../components/styles/common-styles.html?v=' + Date.now() + '&cb=' + Math.random())
-            .then(response => response.text())
-            .then(css => {
-                // Wrap CSS in style tags
-                stylesContainer.innerHTML = '<style>' + css + '</style>';
-            })
-            .catch(error => {
-                console.error('Error loading styles component:', error);
-            });
-    }
+        // Load common styles component
+        const stylesContainer = document.getElementById('styles-container');
+        if (stylesContainer) {
+            fetch('/components/styles/common-styles.html?v=' + Date.now() + '&cb=' + Math.random())
+                .then(response => response.text())
+                .then(css => {
+                    // Wrap CSS in style tags
+                    stylesContainer.innerHTML = '<style>' + css + '</style>';
+                })
+                .catch(error => {
+                    console.error('Error loading styles component:', error);
+                });
+        }
 
-    // Load header component
-    const headerContainer = document.getElementById('header-container');
-    if (headerContainer) {
-        fetch('../../components/header/header.html?v=' + Date.now())
+        // Load header component
+        const headerContainer = document.getElementById('header-container');
+        if (headerContainer) {
+            fetch('/components/header/header.html?v=' + Date.now())
             .then(response => response.text())
             .then(html => {
                 headerContainer.innerHTML = html;
@@ -150,7 +152,6 @@ document.addEventListener('DOMContentLoaded', function() {
                                     label.style.maxWidth = '100%';
                                 });
                                 
-                                console.log('✅ Blog dropdown: Updated styles applied');
                             }
                         }
                     }
@@ -176,107 +177,110 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(error => {
                 console.error('Error loading header component:', error);
             });
+        }
+
+        // Load footer component
+        const footerContainer = document.getElementById('footer-container');
+        if (footerContainer) {
+            fetch('/components/footer/footer.html?v=' + Date.now())
+                .then(response => response.text())
+                .then(html => {
+                    footerContainer.innerHTML = html;
+                    // Initialize Lucide icons after loading
+                    if (typeof lucide !== 'undefined') {
+                        lucide.createIcons();
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading footer component:', error);
+                });
+        }
+
+        // Load contact form component
+        const contactFormContainer = document.getElementById('contact-form-container');
+        if (contactFormContainer) {
+            fetch('/components/contact-form.html')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                           contactFormContainer.innerHTML = html;
+                           // Initialize Lucide icons after loading
+                           if (typeof lucide !== 'undefined') {
+                               lucide.createIcons();
+                           }
+                           // Initialize consult form
+                           if (typeof initializeConsultForm === 'function') {
+                               initializeConsultForm();
+                           }
+                           
+                           // Dispatch custom event to notify that contact form is loaded
+                           document.dispatchEvent(new CustomEvent('contactFormLoaded'));
+                })
+                .catch(error => {
+                    console.error('Error loading contact form component:', error);
+                    // Show a fallback message or retry
+                    contactFormContainer.innerHTML = '<div class="text-red-500 text-center p-4">Failed to load contact form. Please refresh the page.</div>';
+                });
+        }
+
+        // Load stats section component
+        const statsContainer = document.getElementById('stats-container');
+        if (statsContainer) {
+            fetch('/components/stats-section/stats-section.html?v=' + Date.now())
+                .then(response => response.text())
+                .then(html => {
+                    statsContainer.innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Error loading stats section component:', error);
+                });
+        }
+
+        // Load CTA section component
+        const ctaContainer = document.getElementById('cta-container');
+        if (ctaContainer) {
+            fetch('/components/cta-section/cta-section.html')
+                .then(response => response.text())
+                .then(html => {
+                    // Determine CTA content based on current page
+                    let ctaTitle = 'Ready to Work With Us?';
+                    let ctaDescription = 'Join the growing number of businesses that trust Mantravi for their digital transformation needs.';
+                    let ctaButtonText = 'Get Started Today';
+                    
+                    if (window.location.pathname.includes('/contact/')) {
+                        ctaTitle = 'Ready to Start Your Project?';
+                        ctaDescription = 'Schedule a free consultation to discuss your needs and discover how we can help you achieve your goals.';
+                        ctaButtonText = 'Schedule Consultation';
+                    } else if (window.location.pathname.includes('/services/')) {
+                        ctaTitle = 'Ready to Transform Your Business? Let\'s Get Started';
+                        ctaDescription = 'Schedule a free consultation to discuss your project and discover how we can help you achieve your goals.';
+                        ctaButtonText = 'Schedule Consultation';
+                    }
+                    
+                    // Replace placeholders with actual content
+                    let processedHtml = html.replace('{{CTA_TITLE}}', ctaTitle);
+                    processedHtml = processedHtml.replace('{{CTA_DESCRIPTION}}', ctaDescription);
+                    processedHtml = processedHtml.replace('{{CTA_BUTTON_TEXT}}', ctaButtonText);
+                    ctaContainer.innerHTML = processedHtml;
+                })
+                .catch(error => {
+                    console.error('Error loading CTA section component:', error);
+                });
+        }
     }
-
-           // Load footer component
-           const footerContainer = document.getElementById('footer-container');
-           if (footerContainer) {
-               fetch('../../components/footer/footer.html?v=' + Date.now())
-                   .then(response => response.text())
-                   .then(html => {
-                       footerContainer.innerHTML = html;
-                       // Initialize Lucide icons after loading
-                       if (typeof lucide !== 'undefined') {
-                           lucide.createIcons();
-                       }
-                   })
-                   .catch(error => {
-                       console.error('Error loading footer component:', error);
-                   });
-           }
-
-           // Load contact form component
-           const contactFormContainer = document.getElementById('contact-form-container');
-           if (contactFormContainer) {
-               fetch('../../components/contact-form.html')
-                   .then(response => {
-                       if (!response.ok) {
-                           throw new Error(`HTTP error! status: ${response.status}`);
-                       }
-                       return response.text();
-                   })
-                   .then(html => {
-                       contactFormContainer.innerHTML = html;
-                       // Initialize Lucide icons after loading
-                       if (typeof lucide !== 'undefined') {
-                           lucide.createIcons();
-                       }
-                       // Initialize consult form
-                       if (typeof initializeConsultForm === 'function') {
-                           initializeConsultForm();
-                       }
-                       console.log('Contact form loaded successfully');
-                       
-                       // Dispatch custom event to notify that contact form is loaded
-                       document.dispatchEvent(new CustomEvent('contactFormLoaded'));
-                   })
-                   .catch(error => {
-                       console.error('Error loading contact form component:', error);
-                       // Show a fallback message or retry
-                       contactFormContainer.innerHTML = '<div class="text-red-500 text-center p-4">Failed to load contact form. Please refresh the page.</div>';
-                   });
-           }
-
-           // Load stats section component
-           const statsContainer = document.getElementById('stats-container');
-           if (statsContainer) {
-               console.log('Loading stats component...');
-               fetch('../../components/stats-section/stats-section.html?v=' + Date.now())
-                   .then(response => response.text())
-                   .then(html => {
-                       console.log('Stats component loaded successfully');
-                       statsContainer.innerHTML = html;
-                   })
-                   .catch(error => {
-                       console.error('Error loading stats section component:', error);
-                   });
-           } else {
-               console.log('Stats container not found');
-           }
-
-
-           // Load CTA section component
-           const ctaContainer = document.getElementById('cta-container');
-           if (ctaContainer) {
-               fetch('../../components/cta-section/cta-section.html')
-                   .then(response => response.text())
-                   .then(html => {
-                       // Determine CTA content based on current page
-                       let ctaTitle = 'Ready to Work With Us?';
-                       let ctaDescription = 'Join the growing number of businesses that trust Mantravi for their digital transformation needs.';
-                       let ctaButtonText = 'Get Started Today';
-                       
-                       if (window.location.pathname.includes('/contact/')) {
-                           ctaTitle = 'Ready to Start Your Project?';
-                           ctaDescription = 'Schedule a free consultation to discuss your needs and discover how we can help you achieve your goals.';
-                           ctaButtonText = 'Schedule Consultation';
-                       } else if (window.location.pathname.includes('/services/')) {
-                           ctaTitle = 'Ready to Transform Your Business? Let\'s Get Started';
-                           ctaDescription = 'Schedule a free consultation to discuss your project and discover how we can help you achieve your goals.';
-                           ctaButtonText = 'Schedule Consultation';
-                       }
-                       
-                       // Replace placeholders with actual content
-                       let processedHtml = html.replace('{{CTA_TITLE}}', ctaTitle);
-                       processedHtml = processedHtml.replace('{{CTA_DESCRIPTION}}', ctaDescription);
-                       processedHtml = processedHtml.replace('{{CTA_BUTTON_TEXT}}', ctaButtonText);
-                       ctaContainer.innerHTML = processedHtml;
-                   })
-                   .catch(error => {
-                       console.error('Error loading CTA section component:', error);
-                   });
-           }
-});
+    
+    // Run when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        // DOM already ready, run immediately
+        init();
+    }
+})();
 
 function initializeMobileMenu() {
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');

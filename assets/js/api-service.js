@@ -5,7 +5,7 @@
 
 class ApiService {
     constructor() {
-        this.baseURL = 'http://localhost:8082';
+        this.baseURL = 'https://api.mantravi.com';
         this.defaultHeaders = {
             'Content-Type': 'application/json'
         };

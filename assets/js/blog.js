@@ -1,7 +1,5 @@
 // blog.js
 document.addEventListener("DOMContentLoaded", async () => {
-  console.log('Blog.js: DOMContentLoaded fired');
-  
   // Wait a bit for component-loader to finish
   await new Promise(resolve => setTimeout(resolve, 100));
   
@@ -13,18 +11,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     
   const api = new ApiService();
-    console.log('ApiService initialized:', api);
 
   const featuredContainer = document.getElementById("featured-blogs");
     const featuredSection = document.getElementById("featured-section");
     const categorySectionsContainer = document.getElementById("category-sections");
   const paginationContainer = document.getElementById("pagination");
-
-    console.log('Containers found:', {
-      featured: !!featuredContainer,
-      category: !!categorySectionsContainer,
-      pagination: !!paginationContainer
-    });
 
     if (!featuredContainer) {
       console.error('Featured container not found!');
@@ -38,6 +29,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const pageLimit = 12; // Increased for better category display
     let currentCategory = 'all';
     let isLoading = false;
+    let isInitialized = false; // Prevent duplicate initialization
 
     function renderSkeletons(container, count = 6) {
       const skeletonCard = `
@@ -62,22 +54,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Load featured blogs (all featured, no category filter) - Top 3
     async function loadFeaturedBlogs() {
       try {
-        console.log('Fetching featured blogs from API...');
         // Fetch more blogs to ensure we get at least 3 featured
         const response = await api.getPublishedBlogs(0, 20, null, 'publishedAt');
-        console.log('Featured blogs API response:', response);
         
         if (!response) {
-          console.warn('No response from API');
           return [];
         }
         
         const blogs = response?.data || [];
-        console.log(`Found ${blogs.length} total blogs, filtering featured...`);
         
         // Filter featured and get top 3
         const featuredBlogs = blogs.filter(b => b.isFeatured === true).slice(0, 3);
-        console.log(`Found ${featuredBlogs.length} featured blogs out of ${blogs.length} total`);
         
         return featuredBlogs;
       } catch (error) {
@@ -89,20 +76,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Load blogs for a specific category
     async function loadCategoryBlogs(category, page = 0) {
       try {
-        console.log(`Fetching ${category} blogs from API, page ${page}...`);
         const response = await api.getPublishedBlogs(page, pageLimit, category, 'publishedAt');
-        console.log(`${category} blogs API response:`, response);
         
         if (!response) {
-          console.warn(`No response from API for ${category}`);
           return { blogs: [], totalPages: 0, currentPage: 0 };
         }
         
         const blogs = response?.data || [];
         const totalPages = response?.totalPages || 0;
         const currentPage = response?.currentPage ?? response?.pageNumber ?? page;
-        
-        console.log(`Loaded ${blogs.length} blogs for ${category}, page ${currentPage} of ${totalPages}`);
         
         return {
           blogs: blogs,
@@ -138,7 +120,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <span>${formatDate(blog.publishedAt)}</span>
               </div>
             </div>
-            <a href="/pages/blog/post.html" 
+            <a href="/blog/post" 
                data-read-more-id="${blog.id}" 
                class="blog-card-link">
               <span>Read More</span>
@@ -154,11 +136,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       const tabs = document.querySelectorAll('.category-tab');
       
       if (tabs.length === 0) {
-        console.warn('No category tabs found!');
         return;
       }
-      
-      console.log(`Found ${tabs.length} category tabs`);
       
       // Function to update active tab
       function updateActiveTab(category) {
@@ -166,9 +145,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         const activeTab = Array.from(tabs).find(t => t.getAttribute('data-category') === category);
         if (activeTab) {
           activeTab.classList.add('active');
-          console.log('Active tab updated to:', category);
-        } else {
-          console.warn('Active tab not found for category:', category);
         }
       }
       
@@ -188,7 +164,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             return;
           }
           
-          console.log('Category tab clicked:', category);
           currentCategory = category;
           
           // Update active state
@@ -225,6 +200,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       
       // Handle hash-based navigation
       function handleHashNavigation() {
+        // Don't handle hash navigation during initial load
+        if (!isInitialized) {
+          return;
+        }
+        
         const hash = window.location.hash;
         if (hash && hash.startsWith('#category-')) {
           const categoryFromHash = hash.replace('#category-', '').replace(/-/g, ' ');
@@ -263,7 +243,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
       
       // Listen for hash changes (initial hash is handled by init() function)
-      window.addEventListener('hashchange', handleHashNavigation);
+      // Only add listener after initialization to prevent duplicate calls
+      setTimeout(() => {
+        window.addEventListener('hashchange', handleHashNavigation);
+      }, 1000);
     }
 
     // Render pagination
@@ -310,7 +293,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               sessionStorage.setItem('selectedBlogId', id);
             } catch {}
             // Navigate with ID - detail page will fetch and add slug to URL
-            window.location.href = `/pages/blog/post.html?id=${encodeURIComponent(id)}`;
+            window.location.href = `/blog/post?id=${encodeURIComponent(id)}`;
           }
         });
       });
@@ -378,27 +361,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Main load function - loads all blogs or specific category
     async function loadBlogs(category = 'all', page = 0) {
       if (isLoading) {
-        console.log('Already loading, skipping...');
         return;
       }
       isLoading = true;
 
       try {
-        console.log('Loading blogs for category:', category, 'page:', page);
-        
         // Load featured blogs (ALWAYS show, regardless of category)
-        console.log('Loading featured blogs...');
         const featuredBlogs = await loadFeaturedBlogs();
-        console.log('Featured blogs loaded:', featuredBlogs.length);
         renderFeaturedBlogs(featuredBlogs);
 
         if (category === 'all') {
           // Load all blogs in unified grid with pagination
-          console.log('Loading all blogs in unified view...');
           await loadAllBlogs(page);
       } else {
           // Load specific category
-          console.log(`Loading ${category} category...`);
           await loadSingleCategory(category, page);
         }
       } catch (error) {
@@ -471,11 +447,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Render featured blogs with auto-updating styles based on count
     function renderFeaturedBlogs(featuredBlogs) {
       if (!featuredContainer) {
-        console.warn('Featured container not found!');
         return;
       }
-      
-      console.log(`Rendering ${featuredBlogs.length} featured blogs`);
       
       // Hide entire section if no featured articles
       if (featuredBlogs.length === 0) {
@@ -531,7 +504,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                   <span>${featuredBlog.readingTimeMinutes || Math.ceil((featuredBlog.summary || '').split(/\s+/).length / 200)} min read</span>
                 </div>
               </div>
-              <a href="/pages/blog/post.html" 
+              <a href="/blog/post" 
                  data-read-more-id="${featuredBlog.id}" 
                  class="blog-hero-cta">
                 <span>Read Article</span>
@@ -571,7 +544,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                       <span>${formatDate(featuredBlog.publishedAt)}</span>
                     </div>
                   </div>
-                  <a href="/pages/blog/post.html" 
+                  <a href="/blog/post" 
                      data-read-more-id="${featuredBlog.id}" 
                      class="featured-card-link">
                     <span>Read Article</span>
@@ -589,8 +562,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Initialize page
     async function init() {
       try {
-        console.log('Initializing blog page...');
-        
         // Ensure containers exist
         if (!featuredContainer) {
           console.error('Featured container not found!');
@@ -631,7 +602,6 @@ document.addEventListener("DOMContentLoaded", async () => {
           const matchedCategory = categoryMap[decodedCategory] || categoryMap[categoryFromHash] || decodedCategory;
           if (matchedCategory && ['AI', 'Dev', 'Digital Marketing', 'Case Study', 'all'].includes(matchedCategory)) {
             currentCategory = matchedCategory;
-            console.log('Category from hash:', currentCategory);
             // Update active tab
             const tabs = document.querySelectorAll('.category-tab');
             tabs.forEach(t => t.classList.remove('active'));
@@ -643,10 +613,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
         
         // Load initial blogs (this will load featured blogs)
-        console.log('Starting to load blogs...');
         await loadBlogs(currentCategory, 0);
         
-        console.log('Blog page initialized successfully');
+        // Mark as initialized to prevent duplicate hash navigation handling
+        isInitialized = true;
       } catch (error) {
         console.error('Error initializing blog page:', error);
         console.error('Error stack:', error.stack);

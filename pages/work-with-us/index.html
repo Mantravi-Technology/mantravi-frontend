@@ -8,9 +8,9 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <link rel="icon" type="image/x-icon" href="../../assets/icons/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
     
-    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
     
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     
@@ -37,7 +37,7 @@
 <body class="bg-[#050a30] text-white smooth-scroll premium-scroll">
 
     <header id="header-container"></header>
-    <script src="../../assets/js/component-loader.js"></script>
+    <script src="/assets/js/component-loader.js"></script>
     
 
 
@@ -189,11 +189,11 @@
                         </div>
                         <div>
                             <h4 class="font-semibold">Rahul Kumar</h4>
-                            <p class="text-sm text-gray-400">AI Engineer</p>
+                            <p class="text-sm text-gray-400">Digital Marketing Specialist</p>
                         </div>
                     </div>
                     <p class="text-gray-300 italic">
-                        "Mantravi's model lets me choose cutting-edge AI projects I'm passionate about. It's not a job; it's a series of exciting ventures with shared rewards."
+                        "Mantravi's model lets me work on diverse digital marketing campaigns I'm passionate about. It's not a job; it's a series of exciting ventures with shared rewards."
                     </p>
                 </div>
                 <div class="bg-black/50 backdrop-blur-sm rounded-xl p-6 border border-white/10 card-hover">
@@ -272,7 +272,7 @@
         <div class="container mx-auto px-6">
             <div class="max-w-2xl mx-auto">
                 <h2 class="heading-2 text-center mb-8">Join Our Network</h2>
-                <form id="applicationForm" class="space-y-6" onsubmit="handleFormSubmit(event)">
+                <form id="applicationForm" class="space-y-6">
                     <div id="formMessage" class="hidden p-4 rounded-lg mb-4">
                         <div id="formMessageContent"></div>
                     </div>
@@ -325,9 +325,9 @@
 
     <div id="contact-form-container"></div>
 
-    <script src="../../config/parallax-config.js"></script>
+    <script src="/config/parallax-config.js"></script>
     
-    <script src="../../assets/js/api-service.js"></script>
+    <script src="/assets/js/api-service.js"></script>
     
     <script>
         // Form message display function
@@ -357,38 +357,8 @@
                 }, 5000);
             }
         }
-        
-        // Form submission handler
-        async function handleFormSubmit(event) {
-            event.preventDefault();
-            
-            const formData = new FormData(event.target);
-            const data = Object.fromEntries(formData);
-            
-            // Basic validation
-            if (!data.name || !data.email || !data.role || !data.message) {
-                showFormMessage('Please fill in all required fields.', 'error');
-                return;
-            }
-            
-            try {
-                const apiService = new ApiService();
-                const result = await apiService.submitJobApplication(data);
-                
-                // Show success
-                document.getElementById('applicationForm').classList.add('hidden');
-                document.getElementById('applicationSuccessMessage').classList.remove('hidden');
-                
-            } catch (error) {
-                showFormMessage('Application submitted successfully! (API may be down)', 'success');
-                
-                // Show success anyway
-                document.getElementById('applicationForm').classList.add('hidden');
-                document.getElementById('applicationSuccessMessage').classList.remove('hidden');
-            }
-        }
     </script>
     
-    <script src="../../assets/js/main.js"></script>
+    <script src="/assets/js/main.js"></script>
 </body>
 </html>
