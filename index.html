@@ -4,6 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mantravi - Redirecting...</title>
+    <!-- Immediate redirect - executes before page renders -->
+    <script>
+        // Execute immediately, before any content loads
+        (function() {
+            try {
+                // Skip redirect only for file:// protocol
+                if (window.location.protocol !== 'file:') {
+                    // Immediate redirect to homepage
+                    window.location.replace('/');
+                }
+            } catch (e) {
+                // If redirect fails, continue to show page with manual links
+            }
+        })();
+    </script>
+    <!-- Fallback meta refresh for non-JS browsers -->
+    <meta http-equiv="refresh" content="0; url=/">
     <style>
         * {
             margin: 0;
@@ -20,6 +37,11 @@
             min-height: 100vh;
             text-align: center;
             padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        body.show {
+            opacity: 1;
         }
         .container {
             max-width: 500px;
@@ -87,29 +109,24 @@
     </div>
 
     <script>
+        // Show page content only if redirect didn't happen (after a delay)
         (function() {
-            try {
-                // Show error if accessing via file:// protocol
-                if (window.location.protocol === 'file:') {
-                    document.getElementById('errorMsg').style.display = 'block';
-                    document.getElementById('errorMsg').innerHTML = 
-                        '<strong>Error:</strong> Please use a local server instead of opening the file directly.';
-                    return;
-                }
+            // If we're still here after 500ms, show the page (redirect likely failed)
+            setTimeout(function() {
+                // Show page content (redirect didn't happen)
+                document.body.classList.add('show');
                 
-                // Immediate redirect to homepage (clean URL)
-                // .htaccess or server.js will handle routing / to pages/home/index.html
-                window.location.replace('/');
-            } catch (e) {
-                console.error('Redirect error:', e);
-                document.getElementById('errorMsg').style.display = 'block';
-                document.getElementById('errorMsg').innerHTML = 
-                    '<strong>Error:</strong> ' + e.message + '<br>Please use the links above to navigate.';
-            }
+                // Show error if file:// protocol
+                if (window.location.protocol === 'file:') {
+                    const errorMsg = document.getElementById('errorMsg');
+                    if (errorMsg) {
+                        errorMsg.style.display = 'block';
+                        errorMsg.innerHTML = 
+                            '<strong>Error:</strong> Please use a local server instead of opening the file directly.';
+                    }
+                }
+            }, 500);
         })();
     </script>
-    
-    <!-- Fallback meta refresh -->
-    <meta http-equiv="refresh" content="0; url=/">
 </body>
 </html>
