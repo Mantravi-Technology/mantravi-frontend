@@ -4,22 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mantravi - Engineering Global Disruption with AI-Native Excellence</title>
-    <!-- Production-ready: Immediate redirect with no visible content flash -->
-    <script>
-        // Immediate redirect - executes before page renders
-        window.location.replace('/');
-    </script>
     <meta http-equiv="refresh" content="0; url=/">
+    <script>
+        // IMMEDIATE redirect - use protocol-relative URL for HTTPS compatibility
+        (function() {
+            var target = window.location.protocol + '//' + window.location.host + '/';
+            window.location.replace(target);
+        })();
+    </script>
     <style>
-        body { margin: 0; padding: 0; background: #050a30; overflow: hidden; }
+        body { margin: 0; padding: 0; background: #050a30; overflow: hidden; visibility: hidden; }
         html { height: 100%; }
     </style>
 </head>
 <body>
-    <!-- Fallback for users with JavaScript disabled -->
     <noscript>
         <meta http-equiv="refresh" content="0; url=/">
-        <p style="color: white; text-align: center; margin-top: 50vh; transform: translateY(-50%);">
+        <p style="color: white; text-align: center; margin-top: 50vh; transform: translateY(-50%); visibility: visible;">
             <a href="/" style="color: #4EE4FF;">Click here to continue</a>
         </p>
     </noscript>
