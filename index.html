@@ -80,8 +80,8 @@
         <h1>Mantravi</h1>
         <p>Redirecting to homepage...</p>
         <div class="links">
-            <a href="pages/home/index.html">Go to Homepage</a>
-            <a href="pages/services/index.html">Go to Services</a>
+            <a href="/">Go to Homepage</a>
+            <a href="/services">Go to Services</a>
         </div>
         <div class="error" id="errorMsg"></div>
     </div>
@@ -89,30 +89,17 @@
     <script>
         (function() {
             try {
-                // Check if we're in local development
-                const isLocalDev = window.location.hostname === 'localhost' || 
-                                  window.location.hostname === '127.0.0.1' ||
-                                  window.location.protocol === 'file:';
-                
                 // Show error if accessing via file:// protocol
                 if (window.location.protocol === 'file:') {
                     document.getElementById('errorMsg').style.display = 'block';
                     document.getElementById('errorMsg').innerHTML = 
-                        '<strong>Error:</strong> Please use a local server (Live Server, http-server, etc.) instead of opening the file directly.';
+                        '<strong>Error:</strong> Please use a local server instead of opening the file directly.';
                     return;
                 }
                 
-                // Redirect to homepage
-                if (isLocalDev) {
-                    // Local development - redirect to actual file
-                    window.location.href = 'pages/home/index.html';
-                } else {
-                    // Production - let .htaccess handle it
-                    // But provide fallback redirect
-                    setTimeout(function() {
-                        window.location.replace('/');
-                    }, 100);
-                }
+                // Immediate redirect to homepage (clean URL)
+                // .htaccess or server.js will handle routing / to pages/home/index.html
+                window.location.replace('/');
             } catch (e) {
                 console.error('Redirect error:', e);
                 document.getElementById('errorMsg').style.display = 'block';
@@ -123,6 +110,6 @@
     </script>
     
     <!-- Fallback meta refresh -->
-    <meta http-equiv="refresh" content="2; url=pages/home/index.html">
+    <meta http-equiv="refresh" content="0; url=/">
 </body>
 </html>
