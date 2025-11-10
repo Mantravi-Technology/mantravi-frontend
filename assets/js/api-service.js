@@ -190,12 +190,17 @@ class ApiService {
      * @param {number} limit - Number of items per page
      * @param {string} category - Optional category filter (AI, Dev, Digital Marketing, Case Study)
      * @param {string} sortBy - Sort field (default: publishedAt)
+     * @param {string} sortDir - Sort direction (default: desc) - 'asc' or 'desc'
+     * @param {string} search - Optional search query
      * @returns {Promise<Object>} API response with data, pagination info
      */
-    async getPublishedBlogs(page = 0, limit = 6, category = null, sortBy = 'publishedAt') {
-        let endpoint = `/api/blog/published?pageNumber=${page}&pageSize=${limit}&sortBy=${sortBy}`;
+    async getPublishedBlogs(page = 0, limit = 6, category = null, sortBy = 'publishedAt', sortDir = 'desc', search = null) {
+        let endpoint = `/api/blog/published?pageNumber=${page}&pageSize=${limit}&sortBy=${sortBy}&sortDir=${sortDir}`;
         if (category && category !== 'all') {
             endpoint += `&category=${encodeURIComponent(category)}`;
+        }
+        if (search && search.trim() !== '') {
+            endpoint += `&search=${encodeURIComponent(search.trim())}`;
         }
         return await this.get(endpoint);
     }
