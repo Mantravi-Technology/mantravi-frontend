@@ -52,10 +52,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     // Load featured blogs (all featured, no category filter) - Top 3
+    // Optimized: Use smaller pageSize since we only need 3 featured blogs
     async function loadFeaturedBlogs() {
       try {
-        // Fetch more blogs to ensure we get at least 3 featured
-        const response = await api.getPublishedBlogs(0, 20, null, 'publishedAt');
+        // Fetch enough blogs to ensure we get at least 3 featured (using pageSize=10 is more efficient)
+        // Sort by publishedAt descending to get latest first
+        const response = await api.getPublishedBlogs(0, 10, null, 'publishedAt', 'desc');
         
         if (!response) {
           return [];
@@ -65,6 +67,15 @@ document.addEventListener("DOMContentLoaded", async () => {
         
         // Filter featured and get top 3
         const featuredBlogs = blogs.filter(b => b.isFeatured === true).slice(0, 3);
+        
+        // If we didn't get 3 featured from first 10, try fetching more
+        if (featuredBlogs.length < 3) {
+          const additionalResponse = await api.getPublishedBlogs(1, 10, null, 'publishedAt', 'desc');
+          if (additionalResponse?.data) {
+            const additionalFeatured = additionalResponse.data.filter(b => b.isFeatured === true);
+            featuredBlogs.push(...additionalFeatured.slice(0, 3 - featuredBlogs.length));
+          }
+        }
         
         return featuredBlogs;
       } catch (error) {
@@ -76,24 +87,28 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Load blogs for a specific category
     async function loadCategoryBlogs(category, page = 0) {
       try {
-        const response = await api.getPublishedBlogs(page, pageLimit, category, 'publishedAt');
+        // Sort by publishedAt descending to show latest first
+        const response = await api.getPublishedBlogs(page, pageLimit, category, 'publishedAt', 'desc');
         
         if (!response) {
-          return { blogs: [], totalPages: 0, currentPage: 0 };
+          return { blogs: [], totalPages: 0, currentPage: 0, totalElements: 0 };
         }
         
         const blogs = response?.data || [];
         const totalPages = response?.totalPages || 0;
         const currentPage = response?.currentPage ?? response?.pageNumber ?? page;
+        // Get total elements from API response (totalElements, totalItems, or calculate from totalPages)
+        const totalElements = response?.totalElements || response?.totalItems || (totalPages * pageLimit);
         
         return {
           blogs: blogs,
           totalPages: totalPages,
-          currentPage: currentPage
+          currentPage: currentPage,
+          totalElements: totalElements
         };
       } catch (error) {
         console.error(`Error loading ${category} blogs:`, error);
-        return { blogs: [], totalPages: 0, currentPage: 0 };
+        return { blogs: [], totalPages: 0, currentPage: 0, totalElements: 0 };
       }
     }
 
@@ -249,10 +264,15 @@ document.addEventListener("DOMContentLoaded", async () => {
       }, 1000);
     }
 
-    // Render pagination
-    function renderPagination() {
-      if (!paginationContainer || totalPages <= 1) {
-        if (paginationContainer) paginationContainer.innerHTML = '';
+    // Render pagination - show when total blogs > 5 or totalPages > 1
+    function renderPagination(totalBlogs = 0) {
+      if (!paginationContainer) return;
+      
+      // Show pagination if there are more than 5 blogs OR more than 1 page
+      const shouldShowPagination = totalPages > 1 || totalBlogs > 5;
+      
+      if (!shouldShowPagination) {
+        paginationContainer.innerHTML = '';
         return;
       }
       
@@ -311,6 +331,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         
         currentPage = result.currentPage;
         totalPages = result.totalPages;
+        const totalBlogs = result.totalElements || 0;
         
         if (blogs.length > 0) {
           categorySectionsContainer.innerHTML = `
@@ -337,8 +358,8 @@ document.addEventListener("DOMContentLoaded", async () => {
           `;
         }
         
-        // Render pagination
-        renderPagination();
+        // Render pagination - pass total blogs count from API
+        renderPagination(totalBlogs);
         
         if (typeof lucide !== 'undefined') {
           lucide.createIcons();
@@ -359,6 +380,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     // Main load function - loads all blogs or specific category
+    // Note: Two API calls are made:
+    // 1. loadFeaturedBlogs() - fetches featured blogs (pageSize=10) to display top 3 featured articles
+    // 2. loadCategoryBlogs() - fetches regular blog listings (pageSize=12) for paginated display
+    // This separation is necessary because:
+    // - Featured blogs need to be fetched separately to filter for isFeatured=true
+    // - Regular listings use different pagination (pageSize=12) for consistent page display
     async function loadBlogs(category = 'all', page = 0) {
       if (isLoading) {
         return;
@@ -367,14 +394,17 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       try {
         // Load featured blogs (ALWAYS show, regardless of category)
+        // This makes a separate API call with pageSize=10 to find 3 featured blogs
         const featuredBlogs = await loadFeaturedBlogs();
         renderFeaturedBlogs(featuredBlogs);
 
         if (category === 'all') {
           // Load all blogs in unified grid with pagination
+          // This makes another API call with pageSize=12 for regular blog listings
           await loadAllBlogs(page);
-      } else {
+        } else {
           // Load specific category
+          // This makes another API call with pageSize=12 for category-specific listings
           await loadSingleCategory(category, page);
         }
       } catch (error) {
@@ -406,6 +436,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       
       currentPage = result.currentPage;
       totalPages = result.totalPages;
+      const totalBlogs = result.totalElements || 0;
       
       const categoryConfig = {
         'AI': { icon: 'brain', title: 'AI & Machine Learning', subtitle: 'Exploring the future of artificial intelligence' },
@@ -434,8 +465,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       
       categorySectionsContainer.innerHTML = categoryHtml;
       
-      // Render pagination
-      renderPagination();
+      // Render pagination - pass total blogs count from API
+      renderPagination(totalBlogs);
       
       if (typeof lucide !== 'undefined') {
         lucide.createIcons();
