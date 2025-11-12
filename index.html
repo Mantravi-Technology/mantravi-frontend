@@ -2,31 +2,2418 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mantravi - Innovating trust, Connecting possibilities</title>
-    <!-- 
-        CRITICAL: This file should NOT interfere with _redirects
-        Only redirect /index.html to /, let _redirects handle everything else
-    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Innovating Trust, Connecting Possibilities</title>
+    <meta name="description" content="Your trusted partner for IT services, AI-driven digital transformation, and reliable support and maintenance.">
+    <meta name="keywords" content="Mantravi, AI solutions, web development, mobile app development, digital marketing, IT services, software development, technology consulting, India">
+    <meta name="author" content="Mantravi">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mantravi.com/">
+    <meta property="og:title" content="Mantravi - Innovating Trust, Connecting Possibilities">
+    <meta property="og:description" content="Your trusted partner for IT services, AI-driven digital transformation, and reliable support and maintenance.">
+    <meta property="og:image" content="https://mantravi.com/assets/icons/ui/mantravi.png">
+    <meta property="og:site_name" content="Mantravi">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://mantravi.com/">
+    <meta name="twitter:title" content="Mantravi - Innovating Trust, Connecting Possibilities">
+    <meta name="twitter:description" content="Your trusted partner for IT services, AI-driven digital transformation, and reliable support and maintenance.">
+    <meta name="twitter:image" content="https://mantravi.com/assets/icons/ui/mantravi.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://mantravi.com/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
+    <!-- Console Protection Configuration -->
+    <script src="/config/console-protection-config.js"></script>
+    
+    <!-- Console Protection - Load First to Block Console Access -->
+    <script src="/assets/js/console-protection.js"></script>
+    
+    <!-- Global Parallax Configuration - Load First -->
+    <script src="/config/parallax-config.js"></script>
+    
+    <!-- Google Analytics Configuration -->
+    <script src="/config/analytics-config.js"></script>
     <script>
-        // ONLY redirect /index.html to / - nothing else!
-        // _redirects file handles / -> /pages/home/index.html
-        (function() {
-            var pathname = window.location.pathname;
-            // Only redirect if explicitly accessing /index.html
-            if (pathname === '/index.html' || pathname === '/index.html/') {
-                window.location.replace(window.location.origin + '/');
-            }
-            // DO NOT redirect / - let _redirects handle it!
-        })();
+        // Make analytics config available globally
+        if (typeof ANALYTICS_CONFIG !== 'undefined') {
+            window.ANALYTICS_CONFIG = ANALYTICS_CONFIG;
+        }
     </script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5F8EJP5WXD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-5F8EJP5WXD', {
+            'anonymize_ip': true,
+            'allow_google_signals': false,
+            'allow_ad_personalization_signals': false
+        });
+    </script>
+    
+    <!-- Common Styles Component -->
+    <div id="styles-container"></div>
 </head>
-<body style="margin:0;padding:0;background:#050a30;">
-    <!-- This should never be seen if _redirects works properly -->
-    <noscript>
-        <p style="color:white;text-align:center;margin-top:50vh;transform:translateY(-50%);font-family:Arial,sans-serif;">
-            <a href="/" style="color:#4EE4FF;text-decoration:none;">Click here to continue</a>
-        </p>
-    </noscript>
+<body class="bg-[#050a30] text-white smooth-scroll premium-scroll">
+
+
+    <!-- Header -->
+    <header id="header-container"></header>
+    <script src="/assets/js/component-loader.js"></script>
+
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden hero-pattern hero-fallback">
+        <!-- Video Background -->
+        <div class="absolute inset-0 w-full h-full">
+            <video 
+                class="w-full h-full object-cover" 
+                autoplay 
+                muted 
+                loop 
+                playsinline
+                poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'%3E%3Crect width='1920' height='1080' fill='%23050a30'/%3E%3C/svg%3E"
+            >
+                <source src="/assets/videos/hero.mp4" type="video/mp4">
+                <!-- Fallback for browsers that don't support video -->
+                Your browser does not support the video tag.
+            </video>
+            
+            <!-- Blurred overlay for text readability -->
+            <div class="absolute inset-0 bg-[#050a30]/70 backdrop-blur-sm parallax-bg"></div>
+            
+            <!-- Gradient overlay for better contrast -->
+            <div class="absolute inset-0 bg-gradient-to-br from-[#050a30]/80 via-[#050a30]/60 to-[#050a30]/40 parallax-bg"></div>
+            
+            <!-- Accent gradient overlay -->
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[#4EE4FF]/5 to-[#4EE4FF]/10 parallax-hero"></div>
+        </div>
+        
+        <!-- Hero Content -->
+        <div class="hero-content container mx-auto px-4 sm:px-6 text-center">
+            <h1 class="hero-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-4 sm:mb-6 leading-tight">
+                <span class="block">Innovating Trust</span>
+                <span class="text-[#4EE4FF] text-glow">Connecting</span>
+                <span class="block">Possibilities</span>
+            </h1>
+            <p class="hero-subtitle text-lg sm:text-xl md:text-2xl text-gray-200 mb-6 sm:mb-8 max-w-4xl mx-auto leading-relaxed px-2">
+                Your trusted partner for IT services, AI-driven digital transformation, and reliable support and maintenance.
+            </p>
+            <button class="hero-button text-[#4EE4FF] px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold hover:text-white transition-all duration-300 w-full sm:w-auto" onclick="openConsultModal()">
+                Consult Our Experts
+            </button>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i data-lucide="chevron-down" class="w-6 h-6 text-[#4EE4FF]"></i>
+        </div>
+    </section>
+
+
+    <!-- Core Services Section -->
+    <section id="services" class="py-16 sm:py-20 relative overflow-hidden bg-[#050a30]">
+        <!-- Simple dark navy background -->
+        <div class="absolute inset-0 bg-[#050a30]"></div>
+        
+        <div class="relative z-10 container mx-auto px-4 sm:px-6">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8 sm:mb-12 md:mb-16 px-2">
+                Navigate the Digital Frontier with <span class="text-[#4EE4FF]">Mantravi's</span> Engineering Excellence
+            </h2>
+            
+            <!-- Desktop Professional Services Grid -->
+            <div class="hidden lg:block">
+                <div class="grid grid-cols-3 gap-8 max-w-7xl mx-auto items-stretch">
+                <!-- Card 1: Digital Products & Development -->
+                    <div class="group bg-black/40 backdrop-blur-sm rounded-xl p-8 card-hover border border-white/10 hover:border-[#4EE4FF]/40 transition-all duration-500 hover:shadow-2xl hover:shadow-[#4EE4FF]/25 hover:-translate-y-2 flex flex-col h-full">
+                        <div class="text-[#4EE4FF] mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                            <i data-lucide="code" class="w-12 h-12 animate-professional-float"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-white group-hover:text-[#4EE4FF] transition-colors duration-300">Digital Products & Development</h3>
+                        <p class="text-gray-300 text-base leading-relaxed mb-6 flex-grow">
+                            Transform your ideas into powerful digital solutions. We build modern, scalable web applications, mobile apps, and custom software that drive business growth and enhance user experiences.
+                        </p>
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-center text-sm text-gray-400">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
+                                <span>Custom Web Applications</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-400">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
+                                <span>Mobile App Development</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-400">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
+                                <span>E-commerce Solutions</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center text-[#4EE4FF] text-base font-semibold group-hover:translate-x-2 transition-transform duration-300 mt-auto">
+                            <span>Explore Development</span>
+                            <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 2: Brand, SEO & Marketing -->
+                    <div class="group bg-black/40 backdrop-blur-sm rounded-xl p-8 card-hover border border-white/10 hover:border-[#4EE4FF]/40 transition-all duration-500 hover:shadow-2xl hover:shadow-[#4EE4FF]/25 hover:-translate-y-2 flex flex-col h-full">
+                        <div class="text-[#4EE4FF] mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                            <i data-lucide="trending-up" class="w-12 h-12 animate-professional-float" style="animation-delay: 0.5s;"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-white group-hover:text-[#4EE4FF] transition-colors duration-300">Brand, SEO & Marketing</h3>
+                        <p class="text-gray-300 text-base leading-relaxed mb-6 flex-grow">
+                            Elevate your brand presence with strategic digital marketing, compelling brand identity, and data-driven SEO optimization that attracts customers and drives conversions.
+                        </p>
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-center text-sm text-gray-400">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
+                                <span>Brand Identity & Design</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-400">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
+                                <span>SEO & Content Strategy</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-400">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
+                                <span>Social Media Marketing</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center text-[#4EE4FF] text-base font-semibold group-hover:translate-x-2 transition-transform duration-300 mt-auto">
+                            <span>Boost Your Brand</span>
+                            <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 3: QA & IT Solutions -->
+                    <div class="group bg-black/40 backdrop-blur-sm rounded-xl p-8 card-hover border border-white/10 hover:border-[#4EE4FF]/40 transition-all duration-500 hover:shadow-2xl hover:shadow-[#4EE4FF]/25 hover:-translate-y-2 flex flex-col h-full">
+                        <div class="text-[#4EE4FF] mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                            <i data-lucide="shield-check" class="w-12 h-12 animate-professional-float" style="animation-delay: 1s;"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-white group-hover:text-[#4EE4FF] transition-colors duration-300">QA & IT Solutions</h3>
+                        <p class="text-gray-300 text-base leading-relaxed mb-6 flex-grow">
+                            Ensure flawless performance with comprehensive quality assurance, automated testing, and expert IT consulting that keeps your systems running smoothly and securely.
+                        </p>
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-center text-sm text-gray-400">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
+                                <span>Automated Testing</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-400">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
+                                <span>Performance Optimization</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-400">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
+                                <span>IT Infrastructure Consulting</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center text-[#4EE4FF] text-base font-semibold group-hover:translate-x-2 transition-transform duration-300 mt-auto">
+                            <span>Ensure Quality</span>
+                            <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Desktop View Services Button -->
+                <div class="text-center mt-16">
+                    <a href="/services" class="inline-flex items-center gap-3 bg-gradient-to-r from-[#4EE4FF] to-[#4EE4FF]/80 text-[#050a30] px-10 py-5 rounded-xl text-xl font-bold hover:from-[#4EE4FF]/90 hover:to-[#4EE4FF] transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-[#4EE4FF]/40 animate-professional-glow">
+                        <span>Explore All Services</span>
+                        <i data-lucide="arrow-right" class="w-6 h-6"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Mobile Services Carousel -->
+            <div class="block lg:hidden services-carousel-container relative">
+                <div class="services-carousel overflow-x-auto" id="servicesCarousel">
+                    <div class="flex gap-4 sm:gap-6 md:gap-8 pb-4" style="width: max-content;">
+                        <!-- Card 1: Digital Products & Development -->
+                        <div class="bg-black/50 backdrop-blur-sm rounded-xl p-6 sm:p-8 card-hover border border-white/10 parallax-cards flex-shrink-0 w-80 sm:w-auto">
+                            <div class="text-[#4EE4FF] mb-4 sm:mb-6">
+                                <i data-lucide="smartphone" class="w-10 h-10 sm:w-12 sm:h-12"></i>
+                            </div>
+                            <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Web & App Development</h3>
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed break-words">
+                        Build modern, scalable websites and applications tailored to your needs.
+                    </p>
+                </div>
+                
+                <!-- Card 2: Brand, SEO & Marketing -->
+                        <div class="bg-black/50 backdrop-blur-sm rounded-xl p-6 sm:p-8 card-hover border border-white/10 parallax-cards flex-shrink-0 w-80 sm:w-auto">
+                            <div class="text-[#4EE4FF] mb-4 sm:mb-6">
+                                <i data-lucide="trending-up" class="w-10 h-10 sm:w-12 sm:h-12"></i>
+                    </div>
+                            <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Digital Marketing & Branding</h3>
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed break-words">
+                        Grow your reach with targeted marketing, SEO, and compelling brand identity creation.
+                    </p>
+                </div>
+                
+                <!-- Card 3: QA & IT Solutions -->
+                        <div class="bg-black/50 backdrop-blur-sm rounded-xl p-6 sm:p-8 card-hover border border-white/10 parallax-cards flex-shrink-0 w-80 sm:w-auto">
+                            <div class="text-[#4EE4FF] mb-4 sm:mb-6">
+                                <i data-lucide="settings" class="w-10 h-10 sm:w-12 sm:h-12"></i>
+                            </div>
+                            <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4">QA & Maintenance Services</h3>
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed break-words">
+                                Ensure flawless performance with test automation, performance QA, and expert IT consulting.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navigation Arrows -->
+                <button class="carousel-nav carousel-prev absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-300 hidden sm:block" onclick="scrollCarousel('left')">
+                    <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                </button>
+                <button class="carousel-nav carousel-next absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-300 hidden sm:block" onclick="scrollCarousel('right')">
+                    <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                </button>
+                
+                <!-- Mobile View Services Button -->
+                <div class="text-center mt-8 sm:mt-12">
+                    <a href="/services" class="inline-flex items-center gap-2 bg-gradient-to-r from-[#4EE4FF] to-[#4EE4FF]/80 text-[#050a30] px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold hover:from-[#4EE4FF]/90 hover:to-[#4EE4FF] transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-[#4EE4FF]/40">
+                        <span>View All Services</span>
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Mantravi Advantage Section - Creative Dark Premium Design -->
+    <section class="py-12 sm:py-16 md:py-20 lg:py-24 xl:py-32 bg-[#050a30] relative overflow-hidden">
+        <!-- Simple dark navy background -->
+        <div class="absolute inset-0 bg-[#050a30]"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Premium Header with Sophisticated Animation -->
+            <div class="text-center mb-12 sm:mb-16 lg:mb-20 fade-in-up" id="advantage-header">
+                <div class="inline-block mb-6">
+                    <div class="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-[#4EE4FF]/10 to-[#4EE4FF]/5 border border-[#4EE4FF]/20 rounded-full">
+                        <div class="w-2 h-2 bg-[#4EE4FF] rounded-full animate-pulse"></div>
+                        <span class="text-[#4EE4FF] text-sm font-medium tracking-wider uppercase">The Mantravi Advantage</span>
+                    </div>
+                </div>
+                
+                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-6 leading-tight">
+                    <div class="premium-text-container">
+                        <span class="premium-text-line-1">We Don't Just Deliver a Project.</span>
+                        <br class="hidden sm:block">
+                        <span class="premium-text-line-2">
+                            <span class="premium-text-part">We Deliver Your</span> 
+                            <span class="premium-text-accent">Cognitive</span> 
+                            <span class="premium-text-part">Competitive Edge.</span>
+                        </span>
+                    </div>
+                </h2>
+                
+                <p class="text-base sm:text-lg lg:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8">
+                    We build intelligent systems that anticipate market shifts and create new opportunities.
+                </p>
+                
+                <!-- Elegant divider -->
+                <div class="flex items-center justify-center space-x-4">
+                    <div class="w-16 h-px bg-gradient-to-r from-transparent to-[#4EE4FF]/50"></div>
+                    <div class="w-2 h-2 bg-[#4EE4FF] rounded-full"></div>
+                    <div class="w-16 h-px bg-gradient-to-l from-transparent to-[#4EE4FF]/50"></div>
+                </div>
+            </div>
+            
+            <!-- Clean Card Design with Perfect Alignment -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 xl:gap-12" id="advantage-cards">
+                <!-- Card 1: True Partnership - Perfect Alignment -->
+                <div class="group relative advantage-card h-full">
+                    <!-- Creative animated background glow -->
+                    <div class="absolute -inset-1 bg-gradient-to-r from-[#4EE4FF]/15 via-[#4EE4FF]/8 to-[#4EE4FF]/15 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+                    
+                    <!-- Dark card container with equal height -->
+                    <div class="relative bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-2xl rounded-2xl p-6 sm:p-8 lg:p-10 border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-[#4EE4FF]/10 h-full flex flex-col">
+                        <!-- Creative animated progress bar -->
+                        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#4EE4FF] to-[#4EE4FF]/60 rounded-t-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-600 origin-left"></div>
+                        
+                        <!-- Icon with clean design -->
+                        <div class="mb-8">
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-[#4EE4FF] to-[#4EE4FF]/70 rounded-2xl flex items-center justify-center group-hover:rotate-6 group-hover:scale-110 transition-all duration-500">
+                                <svg class="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        <!-- Content with perfect alignment -->
+                        <div class="flex flex-col flex-grow">
+                            <div class="mb-6">
+                                <h3 class="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-3 group-hover:text-[#4EE4FF] transition-colors duration-500">
+                                    True Partnership, Not Just a Project
+                                </h3>
+                                <div class="w-20 h-0.5 bg-gradient-to-r from-[#4EE4FF] to-transparent mb-4 animate-line-glow"></div>
+                            </div>
+                            
+                            <p class="text-gray-300 leading-relaxed text-sm sm:text-base lg:text-lg flex-grow">
+                                Your goals become our KPIs. We integrate seamlessly with your team, ensuring radical transparency and alignment to deliver results that truly matter to your bottom line.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 2: Intelligence-Led Strategy - Perfect Alignment -->
+                <div class="group relative advantage-card h-full">
+                    <!-- Creative animated background glow -->
+                    <div class="absolute -inset-1 bg-gradient-to-r from-[#4EE4FF]/15 via-[#4EE4FF]/8 to-[#4EE4FF]/15 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+                    
+                    <!-- Dark card container with equal height -->
+                    <div class="relative bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-2xl rounded-2xl p-6 sm:p-8 lg:p-10 border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-[#4EE4FF]/10 h-full flex flex-col">
+                        <!-- Creative animated progress bar -->
+                        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#4EE4FF] to-[#4EE4FF]/60 rounded-t-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-600 origin-left"></div>
+                        
+                        <!-- Icon with clean design -->
+                        <div class="mb-8">
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-[#4EE4FF] to-[#4EE4FF]/70 rounded-2xl flex items-center justify-center group-hover:rotate-6 group-hover:scale-110 transition-all duration-500">
+                                <svg class="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        <!-- Content with perfect alignment -->
+                        <div class="flex flex-col flex-grow">
+                            <div class="mb-6">
+                                <h3 class="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-3 group-hover:text-[#4EE4FF] transition-colors duration-500">
+                                    Intelligence-Led Strategy
+                                </h3>
+                                <div class="w-20 h-0.5 bg-gradient-to-r from-[#4EE4FF] to-transparent mb-4 animate-line-glow"></div>
+                            </div>
+                            
+                            <p class="text-gray-300 leading-relaxed text-sm sm:text-base lg:text-lg flex-grow">
+                                We replace guesswork with <strong class="text-[#4EE4FF]">AI-driven insights</strong> and predictive data. Every decision, from code architecture to marketing spend, is backed by rigorous <strong class="text-[#4EE4FF]">AI analysis</strong> of your market and users, guaranteeing optimal performance.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 3: Unified Development & Marketing - Perfect Alignment -->
+                <div class="group relative advantage-card h-full">
+                    <!-- Creative animated background glow -->
+                    <div class="absolute -inset-1 bg-gradient-to-r from-[#4EE4FF]/15 via-[#4EE4FF]/8 to-[#4EE4FF]/15 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+                    
+                    <!-- Dark card container with equal height -->
+                    <div class="relative bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-2xl rounded-2xl p-6 sm:p-8 lg:p-10 border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-[#4EE4FF]/10 h-full flex flex-col">
+                        <!-- Creative animated progress bar -->
+                        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#4EE4FF] to-[#4EE4FF]/60 rounded-t-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-600 origin-left"></div>
+                        
+                        <!-- Icon with clean design -->
+                        <div class="mb-8">
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-[#4EE4FF] to-[#4EE4FF]/70 rounded-2xl flex items-center justify-center group-hover:rotate-6 group-hover:scale-110 transition-all duration-500">
+                                <svg class="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        <!-- Content with perfect alignment -->
+                        <div class="flex flex-col flex-grow">
+                            <div class="mb-6">
+                                <h3 class="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-3 group-hover:text-[#4EE4FF] transition-colors duration-500">
+                                    Unified Development & Marketing
+                                </h3>
+                                <div class="w-20 h-0.5 bg-gradient-to-r from-[#4EE4FF] to-transparent mb-4 animate-line-glow"></div>
+                            </div>
+                            
+                            <p class="text-gray-300 leading-relaxed text-sm sm:text-base lg:text-lg flex-grow">
+                                Our developers and marketers don't work in silos. We build technology with marketability baked-in and run campaigns with a deep understanding of the product, ensuring a cohesive and powerful go-to-market strategy.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 4: Scalable by Design - Perfect Alignment -->
+                <div class="group relative advantage-card h-full">
+                    <!-- Creative animated background glow -->
+                    <div class="absolute -inset-1 bg-gradient-to-r from-[#4EE4FF]/15 via-[#4EE4FF]/8 to-[#4EE4FF]/15 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+                    
+                    <!-- Dark card container with equal height -->
+                    <div class="relative bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-2xl rounded-2xl p-6 sm:p-8 lg:p-10 border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-[#4EE4FF]/10 h-full flex flex-col">
+                        <!-- Creative animated progress bar -->
+                        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#4EE4FF] to-[#4EE4FF]/60 rounded-t-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-600 origin-left"></div>
+                        
+                        <!-- Icon with clean design -->
+                        <div class="mb-8">
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-[#4EE4FF] to-[#4EE4FF]/70 rounded-2xl flex items-center justify-center group-hover:rotate-6 group-hover:scale-110 transition-all duration-500">
+                                <svg class="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        <!-- Content with perfect alignment -->
+                        <div class="flex flex-col flex-grow">
+                            <div class="mb-6">
+                                <h3 class="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-3 group-hover:text-[#4EE4FF] transition-colors duration-500">
+                                    Scalable by Design
+                                </h3>
+                                <div class="w-20 h-0.5 bg-gradient-to-r from-[#4EE4FF] to-transparent mb-4 animate-line-glow"></div>
+                            </div>
+                            
+                            <p class="text-gray-300 leading-relaxed text-sm sm:text-base lg:text-lg flex-grow">
+                                We build for tomorrow's challenges, not just today's needs. Our solutions are architected for <strong class="text-[#4EE4FF]">AI-driven growth</strong>, providing a flexible and future-proof foundation to scale without limits.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Steps Section -->
+    <section class="py-16 sm:py-20 relative overflow-hidden bg-[#050a30]">
+        <!-- Simple dark navy background -->
+        <div class="absolute inset-0 bg-[#050a30]"></div>
+        
+        <div class="relative z-10 container mx-auto px-4 sm:px-6">
+            <div class="flex items-center justify-between mb-12 sm:mb-16">
+                <div class="flex-1">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+                        Our <span class="text-[#4EE4FF]">Proven Process</span> for Success
+                    </h2>
+                    <p class="text-lg text-gray-300 max-w-2xl">
+                        We follow a structured approach that ensures clarity, alignment, and measurable results at every step.
+                    </p>
+                </div>
+                <div class="hidden lg:flex items-center justify-center">
+                    <div class="w-20 h-20 bg-gradient-to-br from-[#4EE4FF] to-[#4EE4FF]/70 rounded-2xl flex items-center justify-center animate-pulse">
+                        <svg class="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Zigzag Curve Roadmap -->
+            <div class="relative max-w-6xl mx-auto py-20">
+                <!-- Hand-drawn Zigzag Curve -->
+                <div class="absolute inset-0 pointer-events-none overflow-hidden">
+                    <!-- Desktop Zigzag -->
+                    <svg class="w-full h-full hidden md:block" viewBox="0 0 800 1200" preserveAspectRatio="xMidYMid meet">
+                        <defs>
+                            <linearGradient id="zigzagGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#4EE4FF;stop-opacity:0.8" />
+                                <stop offset="50%" style="stop-color:#4EE4FF;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#4EE4FF;stop-opacity:0.8" />
+                            </linearGradient>
+                            <filter id="glow">
+                                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                <feMerge> 
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <!-- Main Zigzag Path -->
+                        <path id="zigzagPath" 
+                              d="M 400 100 
+                                 Q 200 200 400 300 
+                                 Q 600 400 200 500 
+                                 Q 400 600 600 700 
+                                 Q 200 800 400 900 
+                                 Q 600 1000 400 1100" 
+                              stroke="url(#zigzagGradient)" 
+                              stroke-width="6" 
+                              fill="none" 
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              filter="url(#glow)"
+                              class="zigzag-line"/>
+                    </svg>
+                    
+                    <!-- Mobile Zigzag - Centered and simplified -->
+                    <svg class="w-full h-full block md:hidden" viewBox="0 0 400 1000" preserveAspectRatio="xMidYMid meet">
+                        <defs>
+                            <linearGradient id="zigzagGradientMobile" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#4EE4FF;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#4EE4FF;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#4EE4FF;stop-opacity:1" />
+                            </linearGradient>
+                            <filter id="glowMobile">
+                                <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                                <feMerge> 
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <!-- Mobile Zigzag Path - Centered and simplified -->
+                        <path id="zigzagPathMobile" 
+                              d="M 200 50 
+                                 Q 200 150 200 250 
+                                 Q 200 350 200 450 
+                                 Q 200 550 200 650 
+                                 Q 200 750 200 850 
+                                 Q 200 950 200 1000" 
+                              stroke="url(#zigzagGradientMobile)" 
+                              stroke-width="6" 
+                              fill="none" 
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              filter="url(#glowMobile)"
+                              class="zigzag-line"/>
+                    </svg>
+                </div>
+
+                <!-- Content Cards positioned along the zigzag -->
+                <div class="relative z-10 space-y-24 lg:space-y-32">
+                    <!-- Point 1 - Top Center -->
+                    <div class="zigzag-point flex justify-center" data-point="1">
+                        <div class="zigzag-card bg-gradient-to-br from-black/80 to-black/60 backdrop-blur-xl rounded-3xl p-10 ring-1 ring-[#4EE4FF]/30 shadow-2xl shadow-[#4EE4FF]/20 w-full max-w-lg">
+                            <div class="flex items-center gap-6 mb-6">
+                                <div class="w-16 h-16 bg-gradient-to-br from-[#4EE4FF] to-[#4EE4FF]/70 rounded-2xl flex items-center justify-center shadow-lg shadow-[#4EE4FF]/30">
+                                    <svg class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <span class="text-3xl font-black text-[#4EE4FF] bg-gradient-to-r from-[#4EE4FF] to-[#4EE4FF]/70 bg-clip-text text-transparent">01</span>
+                                    <div class="w-16 h-1 bg-gradient-to-r from-[#4EE4FF] to-transparent mt-2"></div>
+                                </div>
+                            </div>
+                            <h3 class="text-2xl lg:text-3xl font-bold text-white mb-4 leading-tight">
+                                <span class="text-[#4EE4FF]">Illuminate</span> Your Vision
+                            </h3>
+                            <p class="text-gray-300 text-base lg:text-lg leading-relaxed">We start by listening. Through collaborative workshops, we dive deep into your goals to forge a unified vision for success.</p>
+                        </div>
+                    </div>
+
+                    <!-- Point 2 - Left -->
+                    <div class="zigzag-point flex justify-start" data-point="2">
+                        <div class="zigzag-card bg-gradient-to-br from-black/80 to-black/60 backdrop-blur-xl rounded-3xl p-10 ring-1 ring-[#4EE4FF]/30 shadow-2xl shadow-[#4EE4FF]/20 w-full max-w-lg">
+                            <div class="flex items-center gap-6 mb-6">
+                                <div class="w-16 h-16 bg-gradient-to-br from-[#4EE4FF] to-[#4EE4FF]/70 rounded-2xl flex items-center justify-center shadow-lg shadow-[#4EE4FF]/30">
+                                    <svg class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 11H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-4m-3-4h6m-6 4v11m0-11V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <span class="text-3xl font-black text-[#4EE4FF] bg-gradient-to-r from-[#4EE4FF] to-[#4EE4FF]/70 bg-clip-text text-transparent">02</span>
+                                    <div class="w-16 h-1 bg-gradient-to-r from-[#4EE4FF] to-transparent mt-2"></div>
+                                </div>
+                            </div>
+                            <h3 class="text-2xl lg:text-3xl font-bold text-white mb-4 leading-tight">
+                                <span class="text-[#4EE4FF]">Architect</span> Your Success
+                            </h3>
+                            <p class="text-gray-300 text-base lg:text-lg leading-relaxed">We translate our shared vision into a concrete plan with detailed architecture, a prioritized feature backlog, and project timeline.</p>
+                        </div>
+                    </div>
+
+                    <!-- Point 3 - Right -->
+                    <div class="zigzag-point flex justify-end" data-point="3">
+                        <div class="zigzag-card bg-gradient-to-br from-black/80 to-black/60 backdrop-blur-xl rounded-3xl p-10 ring-1 ring-[#4EE4FF]/30 shadow-2xl shadow-[#4EE4FF]/20 w-full max-w-lg">
+                            <div class="flex items-center gap-6 mb-6">
+                                <div class="w-16 h-16 bg-gradient-to-br from-[#4EE4FF] to-[#4EE4FF]/70 rounded-2xl flex items-center justify-center shadow-lg shadow-[#4EE4FF]/30">
+                                    <svg class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <span class="text-3xl font-black text-[#4EE4FF] bg-gradient-to-r from-[#4EE4FF] to-[#4EE4FF]/70 bg-clip-text text-transparent">03</span>
+                                    <div class="w-16 h-1 bg-gradient-to-r from-[#4EE4FF] to-transparent mt-2"></div>
+                                </div>
+                            </div>
+                            <h3 class="text-2xl lg:text-3xl font-bold text-white mb-4 leading-tight">
+                                <span class="text-[#4EE4FF]">Accelerate</span> Together
+                            </h3>
+                            <p class="text-gray-300 text-base lg:text-lg leading-relaxed">You are an active participant. We work in agile sprints with regular demos, ensuring you see progress continuously.</p>
+                        </div>
+                    </div>
+
+                    <!-- Point 4 - Center -->
+                    <div class="zigzag-point flex justify-center" data-point="4">
+                        <div class="zigzag-card bg-gradient-to-br from-black/80 to-black/60 backdrop-blur-xl rounded-3xl p-10 ring-1 ring-[#4EE4FF]/30 shadow-2xl shadow-[#4EE4FF]/20 w-full max-w-lg">
+                            <div class="flex items-center gap-6 mb-6">
+                                <div class="w-16 h-16 bg-gradient-to-br from-[#4EE4FF] to-[#4EE4FF]/70 rounded-2xl flex items-center justify-center shadow-lg shadow-[#4EE4FF]/30">
+                                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-3.75-.625m3.75.625V3.375"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <span class="text-3xl font-black text-[#4EE4FF] bg-gradient-to-r from-[#4EE4FF] to-[#4EE4FF]/70 bg-clip-text text-transparent">04</span>
+                                    <div class="w-16 h-1 bg-gradient-to-r from-[#4EE4FF] to-transparent mt-2"></div>
+                                </div>
+                            </div>
+                            <h3 class="text-2xl lg:text-3xl font-bold text-white mb-4 leading-tight">
+                                <span class="text-[#4EE4FF]">Amplify</span> Your Impact
+                            </h3>
+                            <p class="text-gray-300 text-base lg:text-lg leading-relaxed">Our focus is on delivering measurable growth. We track key performance indicators and continuously optimize our strategies to maximize your return on investment.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Connection Points on the Zigzag -->
+                <div class="absolute inset-0 pointer-events-none">
+                    <!-- Desktop Connection Dots -->
+                    <div class="hidden md:block">
+                        <!-- Point 1 Connection -->
+                        <div class="connection-dot absolute top-20 left-1/2 transform -translate-x-1/2 w-6 h-6 bg-[#4EE4FF] rounded-full border-4 border-black shadow-lg shadow-[#4EE4FF]/50" data-connection="1">
+                            <div class="absolute inset-0 bg-[#4EE4FF]/20 rounded-full animate-ping"></div>
+                        </div>
+                        
+                        <!-- Point 2 Connection -->
+                        <div class="connection-dot absolute top-80 left-1/4 transform -translate-x-1/2 w-6 h-6 bg-[#4EE4FF] rounded-full border-4 border-black shadow-lg shadow-[#4EE4FF]/50" data-connection="2">
+                            <div class="absolute inset-0 bg-[#4EE4FF]/20 rounded-full animate-ping"></div>
+                        </div>
+                        
+                        <!-- Point 3 Connection -->
+                        <div class="connection-dot absolute top-80 right-1/4 transform translate-x-1/2 w-6 h-6 bg-[#4EE4FF] rounded-full border-4 border-black shadow-lg shadow-[#4EE4FF]/50" data-connection="3">
+                            <div class="absolute inset-0 bg-[#4EE4FF]/20 rounded-full animate-ping"></div>
+                        </div>
+                        
+                        <!-- Point 4 Connection -->
+                        <div class="connection-dot absolute bottom-20 left-1/2 transform -translate-x-1/2 w-6 h-6 bg-[#4EE4FF] rounded-full border-4 border-black shadow-lg shadow-[#4EE4FF]/50" data-connection="4">
+                            <div class="absolute inset-0 bg-[#4EE4FF]/20 rounded-full animate-ping"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile Connection Dots - Centered -->
+                    <div class="block md:hidden">
+                        <!-- Point 1 Connection -->
+                        <div class="connection-dot absolute top-16 left-1/2 transform -translate-x-1/2 w-5 h-5 bg-[#4EE4FF] rounded-full border-2 border-black shadow-lg shadow-[#4EE4FF]/50" data-connection="1">
+                            <div class="absolute inset-0 bg-[#4EE4FF]/20 rounded-full animate-ping"></div>
+                        </div>
+                        
+                        <!-- Point 2 Connection -->
+                        <div class="connection-dot absolute top-64 left-1/2 transform -translate-x-1/2 w-5 h-5 bg-[#4EE4FF] rounded-full border-2 border-black shadow-lg shadow-[#4EE4FF]/50" data-connection="2">
+                            <div class="absolute inset-0 bg-[#4EE4FF]/20 rounded-full animate-ping"></div>
+                        </div>
+                        
+                        <!-- Point 3 Connection -->
+                        <div class="connection-dot absolute top-96 left-1/2 transform -translate-x-1/2 w-5 h-5 bg-[#4EE4FF] rounded-full border-2 border-black shadow-lg shadow-[#4EE4FF]/50" data-connection="3">
+                            <div class="absolute inset-0 bg-[#4EE4FF]/20 rounded-full animate-ping"></div>
+                        </div>
+                        
+                        <!-- Point 4 Connection -->
+                        <div class="connection-dot absolute bottom-16 left-1/2 transform -translate-x-1/2 w-5 h-5 bg-[#4EE4FF] rounded-full border-2 border-black shadow-lg shadow-[#4EE4FF]/50" data-connection="4">
+                            <div class="absolute inset-0 bg-[#4EE4FF]/20 rounded-full animate-ping"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Card Section -->
+    <section class="py-16 sm:py-20 bg-gradient-to-b from-[#050a30] to-black relative overflow-hidden">
+        <!-- Animated background elements -->
+        <div class="absolute inset-0">
+            <div class="absolute top-10 left-4 sm:left-10 w-16 h-16 sm:w-20 sm:h-20 bg-[#4EE4FF]/10 rounded-full animate-pulse"></div>
+            <div class="absolute top-32 right-4 sm:right-20 w-12 h-12 sm:w-16 sm:h-16 bg-[#4EE4FF]/5 rounded-full animate-bounce"></div>
+            <div class="absolute bottom-20 left-1/4 w-8 h-8 sm:w-12 sm:h-12 bg-[#4EE4FF]/15 rounded-full animate-pulse"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 sm:px-6 relative z-10">
+            <div class="bg-gradient-to-r from-[#4EE4FF]/10 via-[#050a30] to-[#4EE4FF]/10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 shadow-2xl border-2 border-[#4EE4FF]/30 hover:border-[#4EE4FF]/50 hover:shadow-[#4EE4FF]/25 hover:shadow-2xl transition-all duration-700 transform hover:scale-[1.02] sm:hover:scale-[1.03] animate-on-scroll relative overflow-hidden">
+                <!-- Glowing background effect -->
+                <div class="absolute inset-0 bg-gradient-to-r from-[#4EE4FF]/5 to-transparent opacity-50"></div>
+                
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 relative z-10">
+                    <div class="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-6 text-center sm:text-left">
+                        <div class="p-3 sm:p-4 bg-gradient-to-br from-[#4EE4FF] to-[#4EE4FF]/70 rounded-2xl shadow-lg animate-float">
+                            <i data-lucide="trending-up" class="w-8 h-8 sm:w-10 sm:h-10 text-white animate-bounce"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white animate-fade-in-left mb-2">Ready to innovate and drive an impact?</h2>
+                            <p class="text-[#4EE4FF] text-base sm:text-lg animate-fade-in-left">Transform your business with cutting-edge technology</p>
+                        </div>
+                    </div>
+                    <button onclick="openConsultModal()" class="w-full sm:w-auto bg-gradient-to-r from-[#4EE4FF] to-[#4EE4FF]/80 text-[#050a30] px-8 sm:px-10 py-4 sm:py-5 rounded-xl sm:rounded-2xl text-lg sm:text-xl font-bold hover:from-[#4EE4FF]/90 hover:to-[#4EE4FF] transition-all duration-300 glow-effect transform hover:scale-105 sm:hover:scale-110 hover:shadow-2xl hover:shadow-[#4EE4FF]/40 animate-fade-in-right relative overflow-hidden">
+                        <span class="relative z-10">Partner With Us</span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 sm:py-20 lg:py-24 bg-[#050a30] relative overflow-hidden">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-12 sm:mb-16 lg:mb-20">
+                <div class="inline-block mb-6">
+                    <div class="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-[#4EE4FF]/10 to-[#4EE4FF]/5 border border-[#4EE4FF]/20 rounded-full">
+                        <div class="w-2 h-2 bg-[#4EE4FF] rounded-full animate-pulse"></div>
+                        <span class="text-[#4EE4FF] text-sm font-medium tracking-wider uppercase">Got Questions?</span>
+                    </div>
+                </div>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
+                    Frequently Asked <span class="text-[#4EE4FF]">Questions</span>
+                </h2>
+                <p class="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
+                    Find answers to common questions about our services, pricing, and how we can help transform your business.
+                </p>
+            </div>
+
+            <!-- FAQ Grid - 2 columns on desktop, 1 on mobile -->
+            <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 lg:gap-6 items-start">
+                    <!-- FAQ Item 1 - How to Reach Mantravi -->
+                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col">
+                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[72px]" onclick="toggleFaq(event, this)">
+                            <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">How do I reach Mantravi?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-[#4EE4FF] flex-shrink-0 transform transition-transform duration-300 faq-icon ml-2"></i>
+                        </button>
+                        <div class="faq-answer-wrapper overflow-hidden">
+                            <div class="faq-answer hidden p-4 sm:p-5 md:p-6 pt-0 pb-4 sm:pb-5">
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed break-words">
+                                Getting in touch with us is easy! You can reach out through our contact page, schedule a free consultation, or use the consultation form on any page. Share your vision, goals, and challenges, and our expert team will help you define the strategy, timeline, and scope based on your business needs. We'll provide a detailed proposal with transparent pricing and a clear roadmap to success.
+                            </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 - AI Implementation -->
+                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col">
+                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[72px]" onclick="toggleFaq(event, this)">
+                            <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">How is AI implemented in your solutions?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-[#4EE4FF] flex-shrink-0 transform transition-transform duration-300 faq-icon ml-2"></i>
+                        </button>
+                        <div class="faq-answer-wrapper overflow-hidden">
+                            <div class="faq-answer hidden p-4 sm:p-5 md:p-6 pt-0 pb-4 sm:pb-5">
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-3 break-words">
+                                We integrate AI across multiple dimensions:
+                            </p>
+                            <ul class="text-gray-300 text-sm sm:text-base space-y-2 ml-4">
+                                <li class="flex items-start">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
+                                    <span><strong>Smart Analytics:</strong> AI-driven insights for data-driven decision making</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
+                                    <span><strong>Automated Testing:</strong> Intelligent QA processes that reduce bugs and improve quality</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
+                                    <span><strong>Predictive Marketing:</strong> AI-powered campaigns that optimize performance and ROI</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
+                                    <span><strong>Personalization:</strong> Customized user experiences based on behavioral data</span>
+                                </li>
+                            </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 - Website Pricing -->
+                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col">
+                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[72px]" onclick="toggleFaq(event, this)">
+                            <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">How much does a business website cost?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-[#4EE4FF] flex-shrink-0 transform transition-transform duration-300 faq-icon ml-2"></i>
+                        </button>
+                        <div class="faq-answer-wrapper overflow-hidden">
+                            <div class="faq-answer hidden p-4 sm:p-5 md:p-6 pt-0 pb-4 sm:pb-5">
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-4 break-words">
+                                Our pricing is competitive and transparent. Here are some examples:
+                            </p>
+                            <div class="space-y-3 text-sm">
+                                <div class="bg-black/40 p-3 rounded-lg border border-gray-700/50">
+                                    <p class="text-[#4EE4FF] font-semibold mb-1">D2C Apparel Store (Small brand)</p>
+                                    <p class="text-gray-300 text-xs">10-15 product pages, e-commerce, payments, mobile responsive</p>
+                                    <p class="text-white font-medium mt-2">₹10,000 - ₹30,000</p>
+                                </div>
+                                <div class="bg-black/40 p-3 rounded-lg border border-gray-700/50">
+                                    <p class="text-[#4EE4FF] font-semibold mb-1">Fitness Studio Booking Platform</p>
+                                    <p class="text-gray-300 text-xs">Class schedules, online booking, payments, subscriptions</p>
+                                    <p class="text-white font-medium mt-2">₹25,000 - ₹50,000</p>
+                                </div>
+                                <div class="bg-black/40 p-3 rounded-lg border border-gray-700/50">
+                                    <p class="text-[#4EE4FF] font-semibold mb-1">Restaurant with Online Ordering</p>
+                                    <p class="text-gray-300 text-xs">Multi-branch, menu, ordering, POS integration, delivery</p>
+                                    <p class="text-white font-medium mt-2">₹50,000 - ₹1,50,000+</p>
+                                </div>
+                                <div class="bg-black/40 p-3 rounded-lg border border-gray-700/50">
+                                    <p class="text-[#4EE4FF] font-semibold mb-1">SaaS Product with Admin Dashboard</p>
+                                    <p class="text-gray-300 text-xs">Landing pages, authentication, multi-tenant dashboard, APIs</p>
+                                    <p class="text-white font-medium mt-2">₹75,000 - ₹2,50,000+</p>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 4 - Mobile App Pricing -->
+                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col">
+                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[72px]" onclick="toggleFaq(event, this)">
+                            <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">How much does a mobile app cost?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-[#4EE4FF] flex-shrink-0 transform transition-transform duration-300 faq-icon ml-2"></i>
+                        </button>
+                        <div class="faq-answer-wrapper overflow-hidden">
+                            <div class="faq-answer hidden p-4 sm:p-5 md:p-6 pt-0 pb-4 sm:pb-5">
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-4 break-words">
+                                We offer competitive mobile app development pricing that's significantly lower than industry standards. Here are our affordable packages:
+                            </p>
+                            <div class="space-y-3 text-sm">
+                                <div class="bg-black/40 p-3 rounded-lg border border-gray-700/50">
+                                    <p class="text-[#4EE4FF] font-semibold mb-1">Basic Mobile App (iOS or Android)</p>
+                                    <p class="text-gray-300 text-xs">Simple UI, 5-10 screens, basic features, user authentication</p>
+                                    <p class="text-white font-medium mt-2">₹25,000 - ₹50,000</p>
+                                </div>
+                                <div class="bg-black/40 p-3 rounded-lg border border-gray-700/50">
+                                    <p class="text-[#4EE4FF] font-semibold mb-1">E-commerce Mobile App</p>
+                                    <p class="text-gray-300 text-xs">Product catalog, cart, payments, order tracking, push notifications</p>
+                                    <p class="text-white font-medium mt-2">₹50,000 - ₹1,00,000</p>
+                                </div>
+                                <div class="bg-black/40 p-3 rounded-lg border border-gray-700/50">
+                                    <p class="text-[#4EE4FF] font-semibold mb-1">Cross-Platform App (iOS + Android)</p>
+                                    <p class="text-gray-300 text-xs">Single codebase for both platforms, advanced features, API integration</p>
+                                    <p class="text-white font-medium mt-2">₹75,000 - ₹1,50,000</p>
+                                </div>
+                                <div class="bg-black/40 p-3 rounded-lg border border-gray-700/50">
+                                    <p class="text-[#4EE4FF] font-semibold mb-1">Enterprise App with Admin Panel</p>
+                                    <p class="text-gray-300 text-xs">Complex features, real-time sync, analytics dashboard, multi-user roles</p>
+                                    <p class="text-white font-medium mt-2">₹1,50,000 - ₹3,00,000+</p>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 5 - Digital Marketing Pricing -->
+                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col">
+                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[72px]" onclick="toggleFaq(event, this)">
+                            <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">How are digital marketing plans priced?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-[#4EE4FF] flex-shrink-0 transform transition-transform duration-300 faq-icon ml-2"></i>
+                        </button>
+                        <div class="faq-answer-wrapper overflow-hidden">
+                            <div class="faq-answer hidden p-4 sm:p-5 md:p-6 pt-0 pb-4 sm:pb-5">
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-4 break-words">
+                                Marketing plans vary based on goals and campaign intensity:
+                            </p>
+                            <div class="space-y-3 text-sm">
+                                <div class="bg-black/40 p-3 rounded-lg border border-gray-700/50">
+                                    <p class="text-[#4EE4FF] font-semibold mb-1">Local Growth</p>
+                                    <p class="text-gray-300 text-xs mb-2">Shops, clinics, salons</p>
+                                    <p class="text-white font-medium">₹10,000 - ₹20,000/month</p>
+                                    <p class="text-gray-400 text-xs mt-1">Content frequency + platform count</p>
+                                </div>
+                                <div class="bg-black/40 p-3 rounded-lg border border-gray-700/50">
+                                    <p class="text-[#4EE4FF] font-semibold mb-1">Regional Branding</p>
+                                    <p class="text-gray-300 text-xs mb-2">Coaching institutes, retail brands</p>
+                                    <p class="text-white font-medium">₹20,000 - ₹60,000/month</p>
+                                    <p class="text-gray-400 text-xs mt-1">SEO depth + paid ads + content strategy</p>
+                                </div>
+                                <div class="bg-black/40 p-3 rounded-lg border border-gray-700/50">
+                                    <p class="text-[#4EE4FF] font-semibold mb-1">Performance Marketing</p>
+                                    <p class="text-gray-300 text-xs mb-2">E-commerce & high lead-gen companies</p>
+                                    <p class="text-white font-medium">₹60,000+/month</p>
+                                    <p class="text-gray-400 text-xs mt-1">Paid campaign scale + analytics + AI automation</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mt-4 break-words">
+                                Local markets cost less, while regional or national competition requires more investment for AI-powered campaign optimization and analytics.
+                            </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 6 - Why Our Cost is Less (AI Explanation) -->
+                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col">
+                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[72px]" onclick="toggleFaq(event, this)">
+                            <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">Why are your prices lower than competitors?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-[#4EE4FF] flex-shrink-0 transform transition-transform duration-300 faq-icon ml-2"></i>
+                        </button>
+                        <div class="faq-answer-wrapper overflow-hidden">
+                            <div class="faq-answer hidden p-4 sm:p-5 md:p-6 pt-0 pb-4 sm:pb-5">
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-3 break-words">
+                                Our competitive pricing comes from leveraging AI-powered tools and efficient processes:
+                            </p>
+                            <ul class="text-gray-300 text-sm sm:text-base space-y-2 ml-4 mb-3">
+                                <li class="flex items-start">
+                                    <i data-lucide="zap" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
+                                    <span><strong>AI-Powered Development:</strong> We use AI tools for code generation, testing automation, and bug detection, reducing development time by up to 40%</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="zap" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
+                                    <span><strong>Reusable Components:</strong> Our AI helps create and maintain a library of reusable components, cutting down repetitive work</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="zap" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
+                                    <span><strong>Automated Testing:</strong> AI-driven QA processes catch bugs early, reducing revision cycles and costs</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="zap" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
+                                    <span><strong>Smart Project Management:</strong> AI optimizes workflows and resource allocation, ensuring maximum efficiency</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="zap" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
+                                    <span><strong>Predictive Analytics:</strong> AI helps us estimate project timelines and costs more accurately, avoiding overpricing</span>
+                                </li>
+                            </ul>
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mt-3 break-words">
+                                By using AI to streamline development, we pass the cost savings directly to you while maintaining premium quality. You get enterprise-grade solutions at minimal prices!
+                            </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 7 - Payment Plans -->
+                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col">
+                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[72px]" onclick="toggleFaq(event, this)">
+                            <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">Do you offer flexible payment plans?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-[#4EE4FF] flex-shrink-0 transform transition-transform duration-300 faq-icon ml-2"></i>
+                        </button>
+                        <div class="faq-answer-wrapper overflow-hidden">
+                            <div class="faq-answer hidden p-4 sm:p-5 md:p-6 pt-0 pb-4 sm:pb-5">
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-3 break-words">
+                                Yes! We offer flexible milestone-based payment plans:
+                            </p>
+                            <ul class="text-gray-300 text-sm sm:text-base space-y-2 ml-4 mb-3">
+                                <li class="flex items-start">
+                                    <i data-lucide="circle" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
+                                    <span><strong>40%</strong> at project start</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="circle" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
+                                    <span><strong>40%</strong> after mid-phase / demo</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="circle" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
+                                    <span><strong>20%</strong> upon final delivery</span>
+                                </li>
+                            </ul>
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed break-words">
+                                For long-term support or marketing plans, we use simple monthly retainers that scale with your needs.
+                            </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 6 - Support & Maintenance -->
+                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col">
+                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[72px]" onclick="toggleFaq(event, this)">
+                            <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">Do you provide ongoing support & maintenance?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-[#4EE4FF] flex-shrink-0 transform transition-transform duration-300 faq-icon ml-2"></i>
+                        </button>
+                        <div class="faq-answer-wrapper overflow-hidden">
+                            <div class="faq-answer hidden p-4 sm:p-5 md:p-6 pt-0 pb-4 sm:pb-5">
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed break-words">
+                                Yes! We offer comprehensive ongoing support including 24/7 monitoring, performance optimization, security updates, automated backups, and technical assistance. Our AI-enhanced monitoring systems proactively detect and resolve issues before they impact your business, ensuring your systems stay secure, optimized, and running smoothly around the clock.
+                            </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 7 - Extra Costs -->
+                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col">
+                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[72px]" onclick="toggleFaq(event, this)">
+                            <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">Are there hidden costs after project delivery?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-[#4EE4FF] flex-shrink-0 transform transition-transform duration-300 faq-icon ml-2"></i>
+                        </button>
+                        <div class="faq-answer-wrapper overflow-hidden">
+                            <div class="faq-answer hidden p-4 sm:p-5 md:p-6 pt-0 pb-4 sm:pb-5">
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-3 break-words">
+                                No hidden charges! You only pay for new features or additional pages you request. However, we highly recommend our maintenance plan for:
+                            </p>
+                            <ul class="text-gray-300 text-sm sm:text-base space-y-2 ml-4">
+                                <li class="flex items-start">
+                                    <i data-lucide="shield-check" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
+                                    <span>Security updates and patches</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="shield-check" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
+                                    <span>Performance optimization</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="shield-check" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
+                                    <span>Regular backups and monitoring</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="shield-check" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
+                                    <span>Keeping your platform up-to-date</span>
+                                </li>
+                            </ul>
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mt-3 break-words">
+                                This ensures your digital platform remains secure, optimized, and future-proof.
+                            </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 8 - Development Process -->
+                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col">
+                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[72px]" onclick="toggleFaq(event, this)">
+                            <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">Can I be involved in the development process?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-[#4EE4FF] flex-shrink-0 transform transition-transform duration-300 faq-icon ml-2"></i>
+                        </button>
+                        <div class="faq-answer-wrapper overflow-hidden">
+                            <div class="faq-answer hidden p-4 sm:p-5 md:p-6 pt-0 pb-4 sm:pb-5">
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed break-words">
+                                Absolutely! We follow an agile, transparent workflow with regular updates, demos, and feedback checkpoints. You are an active participant throughout the entire journey, ensuring the final solution aligns perfectly with your goals and vision. We provide real-time progress tracking and collaborative tools to keep you in the loop at every stage.
+                            </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 9 - Package Structure -->
+                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col">
+                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[72px]" onclick="toggleFaq(event, this)">
+                            <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">Why are prices structured in packages?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-[#4EE4FF] flex-shrink-0 transform transition-transform duration-300 faq-icon ml-2"></i>
+                        </button>
+                        <div class="faq-answer-wrapper overflow-hidden">
+                            <div class="faq-answer hidden p-4 sm:p-5 md:p-6 pt-0 pb-4 sm:pb-5">
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-3 break-words">
+                                Most MSME clients prefer transparent, predictable pricing. Our tiered packages allow you to:
+                            </p>
+                            <ul class="text-gray-300 text-sm sm:text-base space-y-2 ml-4">
+                                <li class="flex items-start">
+                                    <i data-lucide="arrow-right" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
+                                    <span><strong>Start small</strong> with essential features</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="arrow-right" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
+                                    <span><strong>See real results</strong> before scaling up</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="arrow-right" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
+                                    <span><strong>Upgrade only when ready</strong> to expand</span>
+                                </li>
+                            </ul>
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mt-3 break-words">
+                                This reduces risk and makes scaling easier and more cost-effective for growing businesses.
+                            </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 10 -->
+                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col">
+                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[72px]" onclick="toggleFaq(event, this)">
+                            <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">Which industries do you have expertise in?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-[#4EE4FF] flex-shrink-0 transform transition-transform duration-300 faq-icon ml-2"></i>
+                        </button>
+                        <div class="faq-answer-wrapper overflow-hidden">
+                            <div class="faq-answer hidden p-4 sm:p-5 md:p-6 pt-0 pb-4 sm:pb-5">
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-3 break-words">
+                                We have strong experience across a wide range of sectors:
+                            </p>
+                            <div class="grid grid-cols-2 gap-2 text-sm">
+                                <div class="flex items-center text-gray-300">
+                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
+                                    <span>D2C & E-Commerce</span>
+                                </div>
+                                <div class="flex items-center text-gray-300">
+                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
+                                    <span>Education & EdTech</span>
+                                </div>
+                                <div class="flex items-center text-gray-300">
+                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
+                                    <span>Healthcare & Wellness</span>
+                                </div>
+                                <div class="flex items-center text-gray-300">
+                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
+                                    <span>Real Estate</span>
+                                </div>
+                                <div class="flex items-center text-gray-300">
+                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
+                                    <span>Hospitality & Tourism</span>
+                                </div>
+                                <div class="flex items-center text-gray-300">
+                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
+                                    <span>Manufacturing</span>
+                                </div>
+                                <div class="flex items-center text-gray-300">
+                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
+                                    <span>Politics</span>
+                                </div>
+                                <div class="flex items-center text-gray-300">
+                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
+                                    <span>Handicrafts & ODOP</span>
+                                </div>
+                                <div class="flex items-center text-gray-300">
+                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
+                                    <span>Corporate Services</span>
+                                </div>
+                                <div class="flex items-center text-gray-300">
+                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
+                                    <span>Restaurants & Food</span>
+                                </div>
+                                <div class="flex items-center text-gray-300">
+                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
+                                    <span>SaaS & Startups</span>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- CTA at bottom of FAQ -->
+            <div class="text-center mt-12 sm:mt-16">
+                <p class="text-gray-300 text-lg mb-6">Still have questions?</p>
+                <button onclick="openConsultModal()" class="bg-gradient-to-r from-[#4EE4FF] to-[#4EE4FF]/80 text-[#050a30] px-8 py-4 rounded-xl text-lg font-bold hover:from-[#4EE4FF]/90 hover:to-[#4EE4FF] transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-[#4EE4FF]/40">
+                    Get in Touch with Our Experts
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer-container"></footer>
+
+    <!-- Contact Form Container -->
+    <div id="contact-form-container"></div>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+        
+        // FAQ Accordion Functionality - Fixed to prevent automatic hiding
+        function toggleFaq(event, button) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+                event.stopImmediatePropagation();
+            }
+            
+            const faqItem = button.closest('.faq-item');
+            if (!faqItem) return;
+            
+            // Prevent multiple rapid clicks
+            if (faqItem.classList.contains('faq-transitioning')) {
+                return;
+            }
+            
+            const answerWrapper = faqItem.querySelector('.faq-answer-wrapper');
+            const answer = faqItem.querySelector('.faq-answer');
+            const icon = button.querySelector('.faq-icon');
+            
+            if (!answerWrapper || !answer || !icon) return;
+            
+            // Check if open using data attribute for reliable state tracking
+            const isCurrentlyOpen = faqItem.dataset.faqOpen === 'true';
+            
+            // Mark as transitioning
+            faqItem.classList.add('faq-transitioning');
+            
+            // Close all other FAQs
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== faqItem && item.dataset.faqOpen === 'true') {
+                    const otherAnswerWrapper = item.querySelector('.faq-answer-wrapper');
+                    const otherAnswer = item.querySelector('.faq-answer');
+                    const otherIcon = item.querySelector('.faq-icon');
+                    
+                    if (otherAnswer && otherAnswerWrapper) {
+                        const closeHeight = otherAnswerWrapper.scrollHeight || otherAnswer.scrollHeight;
+                        otherAnswerWrapper.style.maxHeight = closeHeight + 'px';
+                        otherAnswerWrapper.offsetHeight;
+                        otherAnswerWrapper.style.maxHeight = '0';
+                        otherAnswer.style.opacity = '0';
+                        
+                        setTimeout(() => {
+                            otherAnswer.classList.add('hidden');
+                            otherAnswer.style.display = 'none';
+                            item.dataset.faqOpen = 'false';
+                            if (otherIcon) {
+                                otherIcon.style.transform = 'rotate(0deg)';
+                            }
+                        }, 300);
+                    }
+                }
+            });
+            
+            // Toggle current FAQ
+            if (isCurrentlyOpen) {
+                // Closing
+                const currentHeight = answerWrapper.scrollHeight || answer.scrollHeight;
+                answerWrapper.style.maxHeight = currentHeight + 'px';
+                answerWrapper.offsetHeight;
+                
+                answerWrapper.style.maxHeight = '0';
+                answer.style.opacity = '0';
+                icon.style.transform = 'rotate(0deg)';
+                
+                setTimeout(() => {
+                    answer.classList.add('hidden');
+                    answer.style.display = 'none';
+                    faqItem.dataset.faqOpen = 'false';
+                    faqItem.classList.remove('faq-transitioning');
+                }, 400);
+            } else {
+                // Opening
+                faqItem.dataset.faqOpen = 'true';
+                answer.classList.remove('hidden');
+                answer.style.display = 'block';
+                answer.style.visibility = 'visible';
+                answer.style.opacity = '0';
+                answerWrapper.style.maxHeight = '0';
+                
+                // Calculate height and open
+                requestAnimationFrame(() => {
+                    const height = answer.scrollHeight;
+                    const finalHeight = Math.max(height, 200); // Ensure minimum visible height
+                    
+                    requestAnimationFrame(() => {
+                        answerWrapper.style.maxHeight = finalHeight + 'px';
+                        answer.style.opacity = '1';
+                        icon.style.transform = 'rotate(180deg)';
+                        
+                        // After animation, set to a very large value to prevent auto-collapse
+                        setTimeout(() => {
+                            // Keep it open with a large max-height to prevent collapse
+                            answerWrapper.style.maxHeight = '5000px';
+                            // Re-initialize icons
+                            if (typeof lucide !== 'undefined') {
+                                lucide.createIcons();
+                            }
+                            faqItem.classList.remove('faq-transitioning');
+                        }, 400);
+                    });
+                });
+            }
+        }
+        
+        // Initialize icons after DOM loads and after FAQ interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+        
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // ========== SERVICES CAROUSEL FUNCTIONALITY ==========
+        
+        // Services Carousel Variables
+        let carouselPosition = 0;
+        const carousel = document.getElementById('servicesCarousel');
+        const carouselContent = carousel?.querySelector('div');
+        let isDragging = false;
+        let startX = 0;
+        let scrollLeft = 0;
+
+        // Carousel Navigation Functions
+        function scrollCarousel(direction) {
+            if (!carousel) return;
+            
+            const cardWidth = 320; // Approximate card width + gap
+            const scrollAmount = cardWidth;
+            
+            if (direction === 'left') {
+                carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }
+
+        // Ultra-Smooth Touch/Drag Support for Mobile with Vertical Scroll Support
+        if (carousel) {
+            let startX = 0;
+            let startY = 0;
+            let scrollLeft = 0;
+            let isDragging = false;
+            let isHorizontalDrag = false;
+            let velocity = 0;
+            let lastX = 0;
+            let lastY = 0;
+            let lastTime = 0;
+            let animationId = null;
+            let touchStartTime = 0;
+            let velocityHistory = [];
+            let isAnimating = false;
+
+            // Optimize carousel for smooth scrolling
+            carousel.style.willChange = 'scroll-position';
+            carousel.style.transform = 'translateZ(0)'; // Hardware acceleration
+
+            // Touch events for mobile - ultra-smooth with vertical scroll support
+            carousel.addEventListener('touchstart', (e) => {
+                const touch = e.touches[0];
+                startX = touch.pageX - carousel.offsetLeft;
+                startY = touch.pageY;
+                scrollLeft = carousel.scrollLeft;
+                lastX = touch.pageX;
+                lastY = touch.pageY;
+                lastTime = performance.now(); // Use performance.now() for better precision
+                touchStartTime = performance.now();
+                velocity = 0;
+                velocityHistory = [];
+                isDragging = false;
+                isHorizontalDrag = false;
+                isAnimating = false;
+                
+                // Cancel any ongoing animation
+                if (animationId) {
+                    cancelAnimationFrame(animationId);
+                    animationId = null;
+                }
+                
+                carousel.style.scrollBehavior = 'auto';
+            }, { passive: true });
+
+            carousel.addEventListener('touchmove', (e) => {
+                const touch = e.touches[0];
+                const currentX = touch.pageX;
+                const currentY = touch.pageY;
+                const currentTime = performance.now();
+                
+                const deltaX = Math.abs(currentX - lastX);
+                const deltaY = Math.abs(currentY - lastY);
+                const deltaTime = currentTime - lastTime;
+                
+                // Determine if this is a horizontal or vertical gesture
+                if (!isDragging && deltaTime > 0) {
+                    const timeElapsed = currentTime - touchStartTime;
+                    
+                    // Faster gesture detection for responsiveness
+                    if (timeElapsed > 30) {
+                        if (deltaX > deltaY && deltaX > 8) {
+                            // Horizontal gesture - start carousel dragging
+                            isDragging = true;
+                            isHorizontalDrag = true;
+                            e.preventDefault();
+                        } else if (deltaY > deltaX && deltaY > 8) {
+                            // Vertical gesture - allow page scrolling
+                            isDragging = false;
+                            isHorizontalDrag = false;
+                            return; // Let the browser handle vertical scrolling
+                        }
+                    }
+                }
+                
+                if (isDragging && isHorizontalDrag) {
+                    // Only prevent default for horizontal dragging
+                    e.preventDefault();
+                    
+                    if (deltaTime > 0) {
+                        // Calculate velocity with smoothing
+                        const currentVelocity = (currentX - lastX) / deltaTime;
+                        velocityHistory.push(currentVelocity);
+                        
+                        // Keep only last 5 velocity readings for smoothing
+                        if (velocityHistory.length > 5) {
+                            velocityHistory.shift();
+                        }
+                        
+                        // Calculate smoothed velocity
+                        velocity = velocityHistory.reduce((a, b) => a + b, 0) / velocityHistory.length;
+                    }
+                    
+                    // Ultra-smooth scrolling with reduced sensitivity for better control
+                    const walk = (currentX - startX) * 1.2; // Reduced from 1.5 to 1.2
+                    const newScrollLeft = scrollLeft - walk;
+                    
+                    // Use requestAnimationFrame for smooth updates
+                    if (!isAnimating) {
+                        isAnimating = true;
+                        requestAnimationFrame(() => {
+                            carousel.scrollLeft = newScrollLeft;
+                            isAnimating = false;
+                        });
+                    } else {
+                        carousel.scrollLeft = newScrollLeft;
+                    }
+                }
+                
+                lastX = currentX;
+                lastY = currentY;
+                lastTime = currentTime;
+            }, { passive: false });
+
+            carousel.addEventListener('touchend', () => {
+                if (isDragging && isHorizontalDrag) {
+                    carousel.style.scrollBehavior = 'smooth';
+                    
+                    // Enhanced momentum scrolling with better physics
+                    if (Math.abs(velocity) > 0.3) {
+                        const momentum = velocity * 300; // Increased momentum multiplier
+                        const targetScroll = carousel.scrollLeft - momentum;
+                        
+                        // Clamp target scroll to valid range
+                        const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+                        const clampedTarget = Math.max(0, Math.min(targetScroll, maxScroll));
+                        
+                        // Ultra-smooth momentum scroll
+                        const startScroll = carousel.scrollLeft;
+                        const distance = clampedTarget - startScroll;
+                        const duration = Math.min(Math.abs(distance) * 2, 600); // Dynamic duration
+                        let startTime = null;
+                        
+                        function momentumScroll(currentTime) {
+                            if (startTime === null) startTime = currentTime;
+                            const timeElapsed = currentTime - startTime;
+                            const progress = Math.min(timeElapsed / duration, 1);
+                            
+                            // Enhanced easing function for ultra-smooth momentum
+                            const easeProgress = 1 - Math.pow(1 - progress, 4);
+                            const currentScroll = startScroll + (distance * easeProgress);
+                            
+                            carousel.scrollLeft = currentScroll;
+                            
+                            if (progress < 1) {
+                                animationId = requestAnimationFrame(momentumScroll);
+                            } else {
+                                animationId = null;
+                            }
+                        }
+                        
+                        animationId = requestAnimationFrame(momentumScroll);
+                    }
+                }
+                
+                isDragging = false;
+                isHorizontalDrag = false;
+                isAnimating = false;
+            }, { passive: true });
+
+            // Mouse events for desktop - also optimized
+            carousel.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                isHorizontalDrag = true;
+                startX = e.pageX - carousel.offsetLeft;
+                scrollLeft = carousel.scrollLeft;
+                carousel.style.cursor = 'grabbing';
+                carousel.style.scrollBehavior = 'auto';
+                carousel.style.overflowX = 'hidden';
+            });
+
+            carousel.addEventListener('mousemove', (e) => {
+                if (!isDragging || !isHorizontalDrag) return;
+                e.preventDefault();
+                const x = e.pageX - carousel.offsetLeft;
+                const walk = (x - startX) * 1.2; // Same sensitivity as touch
+                
+                // Use requestAnimationFrame for smooth mouse dragging too
+                if (!isAnimating) {
+                    isAnimating = true;
+                    requestAnimationFrame(() => {
+                        carousel.scrollLeft = scrollLeft - walk;
+                        isAnimating = false;
+                    });
+                } else {
+                    carousel.scrollLeft = scrollLeft - walk;
+                }
+            });
+
+            carousel.addEventListener('mouseup', () => {
+                isDragging = false;
+                isHorizontalDrag = false;
+                isAnimating = false;
+                carousel.style.cursor = 'grab';
+                carousel.style.scrollBehavior = 'smooth';
+                carousel.style.overflowX = 'auto';
+            });
+
+            carousel.addEventListener('mouseleave', () => {
+                isDragging = false;
+                isHorizontalDrag = false;
+                isAnimating = false;
+                carousel.style.cursor = 'grab';
+                carousel.style.scrollBehavior = 'smooth';
+                carousel.style.overflowX = 'auto';
+            });
+
+            // Set initial cursor and enable smooth scrolling
+            carousel.style.cursor = 'grab';
+            carousel.style.scrollBehavior = 'smooth';
+            
+            // Prevent text selection during horizontal drag only
+            carousel.addEventListener('selectstart', (e) => {
+                if (isDragging && isHorizontalDrag) {
+                    e.preventDefault();
+                }
+            });
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                e.preventDefault();
+                scrollCarousel(e.key === 'ArrowLeft' ? 'left' : 'right');
+            }
+        });
+
+        // Auto-scroll for mobile (optional)
+        function autoScrollCarousel() {
+            if (window.innerWidth <= 768 && carousel) {
+                const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+                if (carousel.scrollLeft >= maxScroll) {
+                    carousel.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    carousel.scrollBy({ left: 1, behavior: 'auto' });
+                }
+            }
+        }
+
+        // Start auto-scroll on mobile
+        if (window.innerWidth <= 768) {
+            setInterval(autoScrollCarousel, 3000);
+        }
+        
+    
+        
+        // Video Background Handling
+        const video = document.querySelector('video');
+        if (video) {
+            // Force video to be visible
+            video.style.opacity = '1';
+            video.style.display = 'block';
+            
+            // Ensure video plays on mobile devices
+            video.addEventListener('loadeddata', function() {
+                video.play().catch(() => {
+                    // Don't hide video, just show it
+                    video.style.opacity = '1';
+                });
+            });
+            
+            // Handle video loading errors
+            video.addEventListener('error', function() {
+                video.style.display = 'none';
+                // Add fallback background
+                const heroSection = document.querySelector('section');
+                if (heroSection) {
+                    heroSection.style.background = 'linear-gradient(135deg, #050a30 0%, #1a1a2e 100%)';
+                }
+            });
+            
+            // Optimize video performance
+            video.addEventListener('canplay', function() {
+                video.style.opacity = '1';
+                video.play().catch(() => {});
+            });
+            
+            // Force play after a short delay
+            setTimeout(() => {
+                video.play().catch(() => {});
+            }, 1000);
+        }
+    </script>
+
+    <!-- API Service -->
+    <script src="/assets/js/api-service.js"></script>
+    
+    <!-- Main JavaScript -->
+    <script src="/assets/js/main.js"></script>
+    
+    <!-- Scroll-Triggered Card Animations -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let currentAnimatedCard = null;
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Remove glow from previous card
+                        if (currentAnimatedCard && currentAnimatedCard !== entry.target) {
+                            currentAnimatedCard.classList.remove('card-animated');
+                            currentAnimatedCard.style.transform = '';
+                            currentAnimatedCard.style.boxShadow = '';
+                            currentAnimatedCard.style.border = '';
+                            
+                            const prevIcon = currentAnimatedCard.querySelector('div[class*="group-hover"]');
+                            if (prevIcon) {
+                                prevIcon.style.transform = '';
+                            }
+                        }
+                        
+                        // Set new current card
+                        currentAnimatedCard = entry.target;
+                        
+                        // Add animation effects
+                        entry.target.classList.add('card-animated');
+                        entry.target.style.transform = 'translateY(-8px) scale(1.02)';
+                        entry.target.style.transition = 'all 0.6s ease-out';
+                        entry.target.style.boxShadow = '0 20px 40px -8px rgba(78, 228, 255, 0.3)';
+                        entry.target.style.border = '2px solid rgba(78, 228, 255, 0.6)';
+                        entry.target.style.borderRadius = '1rem';
+                        
+                        // Icon animation
+                        const icon = entry.target.querySelector('div[class*="group-hover"]');
+                        if (icon) {
+                            icon.style.transform = 'rotate(3deg) scale(1.05)';
+                            icon.style.transition = 'transform 0.6s ease-out';
+                        }
+                    } else {
+                        // Reset when card goes out of view
+                        if (currentAnimatedCard === entry.target) {
+                            currentAnimatedCard = null;
+                        }
+                        entry.target.classList.remove('card-animated');
+                        entry.target.style.transform = '';
+                        entry.target.style.boxShadow = '';
+                        entry.target.style.border = '';
+                        
+                        const icon = entry.target.querySelector('div[class*="group-hover"]');
+                        if (icon) {
+                            icon.style.transform = '';
+                        }
+                    }
+                });
+            }, {
+                threshold: 0.2,
+                rootMargin: '0px 0px -100px 0px'
+            });
+            
+            // Observe all cards
+            const cards = document.querySelectorAll('#advantage-cards .group');
+            cards.forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+
+    <!-- Zigzag Curve Roadmap Animations -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Zigzag Curve Roadmap Animator
+            class ZigzagRoadmapAnimator {
+                constructor() {
+                    this.observerOptions = {
+                        threshold: 0.3,
+                        rootMargin: '0px 0px -200px 0px'
+                    };
+                    
+                    this.visiblePoints = new Set();
+                    this.init();
+                }
+                
+                init() {
+                    this.setupScrollBasedVisibility();
+                    this.setupZigzagAnimations();
+                    this.setupHoverEffects();
+                }
+                
+                setupScrollBasedVisibility() {
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            const pointNumber = entry.target.getAttribute('data-point');
+                            const connectionDot = document.querySelector(`[data-connection="${pointNumber}"]`);
+                            
+                            if (entry.isIntersecting) {
+                                // Point becomes visible
+                                entry.target.classList.add('is-visible');
+                                this.visiblePoints.add(pointNumber);
+                                
+                                // Animate connection dot
+                                if (connectionDot) {
+                                    setTimeout(() => {
+                                        connectionDot.classList.add('is-visible');
+                                        this.animateConnectionDot(connectionDot);
+                                    }, 300);
+                                }
+                                
+                                // Animate zigzag line to this point
+                                this.animateZigzagToPoint(pointNumber);
+                                
+                            } else {
+                                // Point becomes hidden
+                                entry.target.classList.remove('is-visible');
+                                this.visiblePoints.delete(pointNumber);
+                                
+                                // Hide connection dot
+                                if (connectionDot) {
+                                    connectionDot.classList.remove('is-visible');
+                                    this.deanimateConnectionDot(connectionDot);
+                                }
+                            }
+                        });
+                    }, this.observerOptions);
+                    
+                    // Observe all zigzag points
+                    const zigzagPoints = document.querySelectorAll('.zigzag-point');
+                    zigzagPoints.forEach(point => {
+                        observer.observe(point);
+                    });
+                }
+                
+                setupZigzagAnimations() {
+                    // Animate the desktop zigzag line drawing
+                    const zigzagPath = document.getElementById('zigzagPath');
+                    if (zigzagPath) {
+                        const pathLength = zigzagPath.getTotalLength();
+                        zigzagPath.style.strokeDasharray = pathLength;
+                        zigzagPath.style.strokeDashoffset = pathLength;
+                        zigzagPath.style.transition = 'stroke-dashoffset 2s ease-in-out';
+                    }
+                    
+                    // Animate the mobile zigzag line drawing
+                    const zigzagPathMobile = document.getElementById('zigzagPathMobile');
+                    if (zigzagPathMobile) {
+                        const pathLength = zigzagPathMobile.getTotalLength();
+                        zigzagPathMobile.style.strokeDasharray = pathLength;
+                        zigzagPathMobile.style.strokeDashoffset = pathLength;
+                        zigzagPathMobile.style.transition = 'stroke-dashoffset 2s ease-in-out';
+                        
+                        // Start animation after a short delay
+                        setTimeout(() => {
+                            zigzagPathMobile.style.strokeDashoffset = 0;
+                        }, 500);
+                    }
+                }
+                
+                setupHoverEffects() {
+                    const zigzagPoints = document.querySelectorAll('.zigzag-point');
+                    
+                    zigzagPoints.forEach(point => {
+                        point.addEventListener('mouseenter', () => {
+                            this.activatePointHover(point);
+                        });
+                        
+                        point.addEventListener('mouseleave', () => {
+                            this.deactivatePointHover(point);
+                        });
+                    });
+                }
+                
+                animateZigzagToPoint(pointNumber) {
+                    const zigzagPath = document.getElementById('zigzagPath');
+                    if (!zigzagPath) return;
+                    
+                    // Calculate progress based on point number
+                    const progress = (parseInt(pointNumber) / 4) * 100;
+                    const pathLength = zigzagPath.getTotalLength();
+                    const offset = pathLength - (pathLength * progress / 100);
+                    
+                    zigzagPath.style.strokeDashoffset = offset;
+                }
+                
+                animateConnectionDot(dot) {
+                    dot.style.transform = 'scale(1.2)';
+                    dot.style.boxShadow = '0 0 30px rgba(78, 228, 255, 0.8)';
+                    dot.style.backgroundColor = '#4EE4FF';
+                }
+                
+                deanimateConnectionDot(dot) {
+                    dot.style.transform = 'scale(1)';
+                    dot.style.boxShadow = '';
+                    dot.style.backgroundColor = '';
+                }
+                
+                activatePointHover(point) {
+                    const pointNumber = point.getAttribute('data-point');
+                    const connectionDot = document.querySelector(`[data-connection="${pointNumber}"]`);
+                    
+                    // Scale up the card
+                    const card = point.querySelector('.zigzag-card');
+                    if (card) {
+                        card.style.transform = 'scale(1.05)';
+                        card.style.boxShadow = '0 0 40px rgba(78, 228, 255, 0.4)';
+                    }
+                    
+                    // Enhance connection dot
+                    if (connectionDot) {
+                        connectionDot.style.transform = 'scale(1.5)';
+                        connectionDot.style.boxShadow = '0 0 40px rgba(78, 228, 255, 0.9)';
+                    }
+                }
+                
+                deactivatePointHover(point) {
+                    const pointNumber = point.getAttribute('data-point');
+                    const connectionDot = document.querySelector(`[data-connection="${pointNumber}"]`);
+                    
+                    // Reset card
+                    const card = point.querySelector('.zigzag-card');
+                    if (card) {
+                        card.style.transform = 'scale(1)';
+                        card.style.boxShadow = '';
+                    }
+                    
+                    // Reset connection dot
+                    if (connectionDot) {
+                        connectionDot.style.transform = 'scale(1.2)';
+                        connectionDot.style.boxShadow = '0 0 30px rgba(78, 228, 255, 0.8)';
+                    }
+                }
+            }
+            
+                    // Initialize the zigzag roadmap animator
+                    new ZigzagRoadmapAnimator();
+                });
+            </script>
+
+    <!-- FAQ Section Styles -->
+    <style>
+        /* FAQ Item Animations - Improved Alignment */
+        .faq-item {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            align-self: flex-start;
+            position: relative;
+            text-align: left !important;
+        }
+        
+        /* Global text alignment for all FAQ content */
+        .faq-item,
+        .faq-question,
+        .faq-question span,
+        .faq-answer,
+        .faq-answer p,
+        .faq-answer ul,
+        .faq-answer ol,
+        .faq-answer li,
+        .faq-answer div,
+        .faq-answer span,
+        .faq-answer strong,
+        .faq-answer .bg-black\/40,
+        .faq-answer .space-y-3,
+        .faq-answer .grid {
+            text-align: left !important;
+        }
+        
+        .faq-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(78, 228, 255, 0.1);
+        }
+        
+        /* Prevent clicks during transition */
+        .faq-item.faq-transitioning {
+            pointer-events: none;
+        }
+        
+        .faq-item.faq-transitioning .faq-question {
+            cursor: wait;
+        }
+        
+        /* Ensure all FAQ questions have same height */
+        .faq-question {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            background: none;
+            outline: none;
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            /* Remove tap highlight on mobile */
+            -webkit-tap-highlight-color: transparent !important;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        
+        .faq-question:hover span {
+            color: #4EE4FF;
+        }
+        
+        /* Remove blue box on tap/focus */
+        .faq-question:focus,
+        .faq-question:focus-visible,
+        .faq-question:active {
+            outline: none !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+        
+        /* Mobile-specific FAQ improvements */
+        @media (max-width: 640px) {
+            /* Ensure FAQ section has proper spacing on mobile */
+            .faq-item {
+                margin-bottom: 0.75rem;
+                width: 100%;
+                max-width: 100%;
+                overflow: visible;
+                align-self: stretch;
+            }
+            
+            .faq-question {
+                min-height: auto;
+                padding: 1rem !important;
+                align-items: flex-start;
+                gap: 0.5rem;
+                width: 100%;
+                text-align: left;
+            }
+            
+            .faq-question span {
+                flex: 1;
+                min-width: 0;
+                padding-right: 0.5rem;
+                line-height: 1.4;
+                font-size: 0.9rem;
+                word-break: break-word;
+                overflow-wrap: break-word;
+                display: block;
+                text-align: left;
+            }
+            
+            .faq-icon {
+                flex-shrink: 0;
+                margin-left: 0;
+                width: 18px;
+                height: 18px;
+                min-width: 18px;
+            }
+            
+            .faq-answer-wrapper {
+                width: 100%;
+                overflow: hidden;
+            }
+            
+            .faq-answer {
+                padding: 1rem !important;
+                padding-top: 0 !important;
+                padding-bottom: 1rem !important;
+                width: 100%;
+                box-sizing: border-box;
+                text-align: left;
+            }
+            
+            .faq-answer p {
+                font-size: 0.875rem;
+                line-height: 1.6;
+                word-break: break-word;
+                overflow-wrap: break-word;
+                hyphens: auto;
+                width: 100%;
+                max-width: 100%;
+                text-align: left;
+            }
+            
+            .faq-answer ul,
+            .faq-answer ol {
+                font-size: 0.875rem;
+                padding-left: 1.25rem;
+                margin-top: 0.5rem;
+                margin-bottom: 0.5rem;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+                text-align: left;
+            }
+            
+            .faq-answer li {
+                margin-bottom: 0.5rem;
+                line-height: 1.5;
+                word-break: break-word;
+                overflow-wrap: break-word;
+                width: 100%;
+                text-align: left;
+            }
+            
+            /* Ensure lists and nested content are visible */
+            .faq-answer div {
+                word-break: break-word;
+                overflow-wrap: break-word;
+                max-width: 100%;
+                box-sizing: border-box;
+                text-align: left;
+            }
+            
+            /* Price cards in FAQ answers */
+            .faq-answer .bg-black\/40 {
+                padding: 0.75rem;
+                margin-bottom: 0.75rem;
+                width: 100%;
+                box-sizing: border-box;
+                text-align: left;
+            }
+            
+            .faq-answer .text-xs {
+                font-size: 0.75rem;
+                line-height: 1.4;
+            }
+            
+            /* Grid items in FAQ answers */
+            .faq-answer .grid {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+        
+        /* Answer Wrapper for smooth animation */
+        .faq-answer-wrapper {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+        }
+        
+        /* When FAQ is fully open (after animation), use a large max-height to prevent auto-collapse */
+        .faq-item[data-faq-open="true"] .faq-answer-wrapper {
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .faq-answer {
+            opacity: 1;
+            transition: opacity 0.3s ease-in-out 0.1s;
+            visibility: visible;
+            width: 100%;
+            display: block;
+        }
+        
+        .faq-answer.hidden {
+            display: none !important;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        /* Ensure answer content is visible when FAQ is open */
+        .faq-item[data-faq-open="true"] .faq-answer:not(.hidden) {
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        
+        .faq-icon {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            flex-shrink: 0;
+        }
+        
+        /* Ensure proper text visibility and alignment */
+        .faq-answer p {
+            line-height: 1.7;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .faq-answer ul,
+        .faq-answer ol {
+            line-height: 1.7;
+        }
+        
+        .faq-answer li {
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Grid alignment fix - ensure items align to top and don't stretch */
+        .faq-item {
+            min-height: 0;
+            width: 100%;
+            align-self: start;
+            height: auto;
+        }
+        
+        /* Prevent grid from stretching items */
+        .grid > .faq-item {
+            align-self: start !important;
+        }
+        
+        /* Text wrapping for long questions */
+        .faq-question span {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            display: block;
+            line-height: 1.5;
+            width: 100%;
+            min-width: 0;
+        }
+        
+        /* Ensure answer text is fully visible */
+        .faq-answer {
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+        
+        .faq-answer p,
+        .faq-answer li,
+        .faq-answer div {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            max-width: 100%;
+            text-align: left !important;
+        }
+        
+        /* Ensure all FAQ content is left-aligned on all screen sizes */
+        @media (min-width: 641px) {
+            .faq-item,
+            .faq-question,
+            .faq-question span,
+            .faq-answer,
+            .faq-answer p,
+            .faq-answer ul,
+            .faq-answer ol,
+            .faq-answer li,
+            .faq-answer div,
+            .faq-answer .bg-black\/40,
+            .faq-answer .space-y-3,
+            .faq-answer .grid {
+                text-align: left !important;
+            }
+        }
+        
+        /* Better spacing and visibility */
+        @media (min-width: 1024px) {
+            .faq-item {
+                min-height: 0;
+                max-width: 100%;
+            }
+        }
+        
+        /* Tablet adjustments */
+        @media (min-width: 641px) and (max-width: 1023px) {
+            .faq-question {
+                padding: 1.25rem 1.5rem;
+            }
+            
+            .faq-question span {
+                font-size: 1rem;
+            }
+        }
+        
+        /* Ensure icons are properly sized and visible */
+        .faq-icon {
+            min-width: 20px;
+            min-height: 20px;
+        }
+        
+        /* Better contrast for text */
+        .faq-answer {
+            color: #d1d5db;
+        }
+        
+        .faq-answer p {
+            color: #d1d5db;
+        }
+        
+        .faq-answer li {
+            color: #d1d5db;
+        }
+    </style>
+
+    <!-- Zigzag Curve CSS Animations -->
+    <style>
+        /* Zigzag Point Animations */
+        .zigzag-point {
+            opacity: 0;
+            transform: translateY(2rem) scale(0.8);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .zigzag-point.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        
+        /* Connection Dot Animations */
+        .connection-dot {
+            opacity: 0;
+            transform: scale(0.3);
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        .connection-dot.is-visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* Zigzag Line Animation */
+        .zigzag-line {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: drawZigzag 3s ease-in-out forwards;
+        }
+        
+        @keyframes drawZigzag {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+        
+        /* Mobile Zigzag Line - Enhanced visibility */
+        @media (max-width: 768px) {
+            .zigzag-line {
+                stroke-dasharray: 1000;
+                stroke-dashoffset: 1000;
+                animation: drawZigzag 3s ease-in-out forwards;
+                opacity: 1;
+            }
+            
+            #zigzagPathMobile {
+                stroke: #4EE4FF;
+                stroke-width: 6;
+                filter: drop-shadow(0 0 8px rgba(78, 228, 255, 0.8));
+            }
+        }
+        
+        /* Zigzag Card Styling */
+        .zigzag-card {
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .zigzag-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(78, 228, 255, 0.4);
+        }
+        
+        /* Pulsing Ring Animation */
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.8);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(2.4);
+                opacity: 0;
+            }
+        }
+        
+        .animate-ping {
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Performance Optimizations */
+        .zigzag-point,
+        .connection-dot,
+        .zigzag-card {
+            will-change: transform, opacity, filter;
+        }
+        
+        /* Improved Alignment and Spacing */
+        .zigzag-point {
+            margin: 2rem 0;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .zigzag-card {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            min-height: 180px;
+        }
+        
+        .zigzag-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(78, 228, 255, 0.3);
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .zigzag-point {
+                justify-content: center !important;
+                margin: 1.5rem 0;
+                min-height: auto;
+                position: relative;
+            }
+            
+            .zigzag-card {
+                max-width: 100%;
+                margin: 0 1rem;
+                padding: 1.5rem;
+                min-height: auto;
+                position: relative;
+                z-index: 10;
+            }
+            
+            .zigzag-card h3 {
+                font-size: 1.5rem;
+                line-height: 1.3;
+            }
+            
+            .zigzag-card p {
+                font-size: 0.9rem;
+                line-height: 1.5;
+            }
+            
+            .space-y-24 > * + * {
+                margin-top: 2rem;
+            }
+            
+            /* Ensure mobile zigzag line stays behind content */
+            .zigzag-line {
+                z-index: 1;
+            }
+            
+            /* Mobile connection dots are smaller and properly positioned */
+            .connection-dot {
+                z-index: 5;
+            }
+        }
+        
+        /* Tablet Responsive */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .zigzag-point {
+                margin: 2rem 0;
+                min-height: 180px;
+            }
+            
+            .zigzag-card {
+                max-width: 90%;
+                padding: 2rem;
+                min-height: 160px;
+            }
+            
+            .zigzag-card h3 {
+                font-size: 1.75rem;
+            }
+        }
+        
+        /* Desktop Large */
+        @media (min-width: 1025px) {
+            .zigzag-point {
+                margin: 3rem 0;
+                min-height: 220px;
+            }
+            
+            .zigzag-card {
+                max-width: 32rem;
+                min-height: 200px;
+            }
+        }
+        
+        /* Ensure equal alignment for all cards */
+        .zigzag-point:nth-child(1) {
+            justify-content: center;
+        }
+        
+        .zigzag-point:nth-child(2) {
+            justify-content: flex-start;
+        }
+        
+        .zigzag-point:nth-child(3) {
+            justify-content: flex-end;
+        }
+        
+        .zigzag-point:nth-child(4) {
+            justify-content: center;
+        }
+        
+    </style>
 </body>
 </html>
