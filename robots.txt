@@ -1,0 +1,46 @@
+# robots.txt for Mantravi Website
+# Optimized for Search Engine Crawling
+
+User-agent: *
+Allow: /
+
+# Allow all pages
+Allow: /about
+Allow: /services
+Allow: /contact
+Allow: /blog
+Allow: /work-with-us
+
+# Allow static assets
+Allow: /assets/
+Allow: /components/
+Allow: /config/
+
+# Disallow admin/private areas (if any)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://mantravi.com/sitemap.xml
+
+# Crawl-delay (optional - helps prevent server overload)
+# Crawl-delay: 1
+
+# Specific bot rules
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Block bad bots (optional)
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
