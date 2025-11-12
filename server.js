@@ -39,7 +39,7 @@ const mimeTypes = {
 
 // Clean URL routing - maps URL paths to actual files
 const routes = {
-    '/': 'pages/home/index.html',
+    '/': 'index.html',  // Root index.html contains homepage
     '/about': 'pages/about/index.html',
     '/services': 'pages/services/index.html',
     '/contact': 'pages/contact/index.html',
@@ -91,22 +91,23 @@ const server = http.createServer((req, res) => {
     else if (cleanPath === '/blog/post' || cleanPath.startsWith('/blog/post?')) {
         filePath = 'pages/blog/post.html';
     }
-    // 5. Default to homepage for unknown routes
+    // 5. Default to homepage for unknown routes (root index.html)
     else {
-        filePath = 'pages/home/index.html';
+        filePath = 'index.html';
     }
 
     // Security: Normalize and prevent directory traversal
     filePath = path.normalize(filePath);
-    // Allow sitemap.xml, robots.txt, and static assets
+    // Allow root index.html, sitemap.xml, robots.txt, and static assets
     if (filePath.includes('..') || 
-        (!filePath.startsWith('pages/') && 
+        (filePath !== 'index.html' &&
+         !filePath.startsWith('pages/') && 
          !filePath.startsWith('assets/') && 
          !filePath.startsWith('components/') && 
          !filePath.startsWith('config/') &&
          filePath !== 'sitemap.xml' &&
          filePath !== 'robots.txt')) {
-        filePath = 'pages/home/index.html';
+        filePath = 'index.html';  // Serve root index.html as fallback
     }
 
     // Build full file system path
@@ -165,13 +166,25 @@ function serveFile(filePath, res, contentType, headOnly = false) {
     });
 }
 
-// Serve homepage as fallback
+// Serve homepage as fallback (root index.html)
 function serveHomepage(res) {
-    const homePath = path.join(BASE_DIR, 'pages/home/index.html');
+    const homePath = path.join(BASE_DIR, 'index.html');
     fs.readFile(homePath, (err, data) => {
         if (err) {
-            res.writeHead(500, { 'Content-Type': 'text/plain' });
-            res.end('Internal Server Error');
+            // If root index.html doesn't exist, try pages/home/index.html
+            const fallbackPath = path.join(BASE_DIR, 'pages/home/index.html');
+            fs.readFile(fallbackPath, (err2, data2) => {
+                if (err2) {
+                    res.writeHead(500, { 'Content-Type': 'text/plain' });
+                    res.end('Internal Server Error');
+                    return;
+                }
+                res.writeHead(200, { 
+                    'Content-Type': 'text/html; charset=utf-8',
+                    'Content-Length': data2.length
+                });
+                res.end(data2);
+            });
             return;
         }
         res.writeHead(200, { 
