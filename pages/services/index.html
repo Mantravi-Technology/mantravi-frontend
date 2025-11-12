@@ -9,6 +9,28 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display?swap" rel="stylesheet">
+    
+    <!-- Google Analytics Configuration -->
+    <script src="/config/analytics-config.js"></script>
+    <script>
+        if (typeof ANALYTICS_CONFIG !== 'undefined') {
+            window.ANALYTICS_CONFIG = ANALYTICS_CONFIG;
+        }
+    </script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5F8EJP5WXD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-5F8EJP5WXD', {
+            'anonymize_ip': true,
+            'allow_google_signals': false,
+            'allow_ad_personalization_signals': false
+        });
+    </script>
+    
     <style>
         html { scroll-behavior: auto; }
         body { font-family: 'Inter', sans-serif; background-color: #050a30; color: #ffffff; overflow-x: hidden; }
@@ -105,9 +127,9 @@
             overflow: visible !important;
         }
         
-        /* QA Animation - Add color filters to stand out from dark background */
+        /* QA Animation - Reduced saturation for more subtle appearance */
         #qa-animation {
-            filter: brightness(1.5) contrast(1.4) saturate(1.6);
+            filter: brightness(1.3) contrast(1.2) saturate(0.8);
             position: relative;
         }
         
@@ -120,14 +142,14 @@
             transform: translate(-50%, -50%);
             width: 90%;
             height: 90%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
             z-index: -1;
         }
         
         #qa-animation svg {
-            filter: brightness(1.5) contrast(1.4) saturate(1.6);
+            filter: brightness(1.3) contrast(1.2) saturate(0.8);
         }
         
         /* Make dark blue elements lighter/more visible */

@@ -83,10 +83,8 @@ const SITE_CONFIG = {
 
     // Social Media
     social: {
-        linkedin: "https://linkedin.com/company/mantravi",
-        twitter: "https://twitter.com/mantravi",
-        github: "https://github.com/mantravi",
-        instagram: "https://instagram.com/mantravi"
+        linkedin: "https://www.linkedin.com/company/mantravi",
+        instagram: "https://www.instagram.com/mantravi.tech/"
     },
 
     // Contact Information

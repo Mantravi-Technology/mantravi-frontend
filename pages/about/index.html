@@ -48,6 +48,27 @@
     
     <script src="/config/parallax-config.js"></script>
     
+    <!-- Google Analytics Configuration -->
+    <script src="/config/analytics-config.js"></script>
+    <script>
+        if (typeof ANALYTICS_CONFIG !== 'undefined') {
+            window.ANALYTICS_CONFIG = ANALYTICS_CONFIG;
+        }
+    </script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5F8EJP5WXD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-5F8EJP5WXD', {
+            'anonymize_ip': true,
+            'allow_google_signals': false,
+            'allow_ad_personalization_signals': false
+        });
+    </script>
+    
     <div id="styles-container"></div>
 </head>
 <body class="bg-dark-bg text-white smooth-scroll premium-scroll font-sans">

@@ -20,3 +20,41 @@
 
 <!-- Global Parallax Configuration -->
 <script src="../../config/parallax-config.js"></script>
+
+<!-- Google Analytics Configuration -->
+<script src="../../config/analytics-config.js"></script>
+<script>
+    // Make analytics config available globally
+    if (typeof ANALYTICS_CONFIG !== 'undefined') {
+        window.ANALYTICS_CONFIG = ANALYTICS_CONFIG;
+    }
+</script>
+
+<!-- Google Analytics Component -->
+<div id="analytics-container"></div>
+<script>
+    // Load Google Analytics component
+    (function() {
+        const analyticsContainer = document.getElementById('analytics-container');
+        if (analyticsContainer) {
+            fetch('../../components/analytics/google-analytics.html')
+                .then(response => response.text())
+                .then(html => {
+                    analyticsContainer.innerHTML = html;
+                    // Execute any scripts in the loaded HTML
+                    const scripts = analyticsContainer.querySelectorAll('script');
+                    scripts.forEach(oldScript => {
+                        const newScript = document.createElement('script');
+                        Array.from(oldScript.attributes).forEach(attr => {
+                            newScript.setAttribute(attr.name, attr.value);
+                        });
+                        newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+                        oldScript.parentNode.replaceChild(newScript, oldScript);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading Google Analytics:', error);
+                });
+        }
+    })();
+</script>

@@ -1460,11 +1460,18 @@ body {
     }
 }
 
-/* Mobile Focus Improvements */
+/* Mobile Focus Improvements - Remove all focus outlines */
 @media (max-width: 768px) {
-    *:focus {
-        outline: 3px solid #4EE4FF;
-        outline-offset: 2px;
+    *:focus,
+    *:focus-visible,
+    *:focus-within,
+    button:focus,
+    button:focus-visible,
+    a:focus,
+    a:focus-visible {
+        outline: none !important;
+        border: none !important;
+        box-shadow: none !important;
     }
 }
 
@@ -1528,10 +1535,33 @@ body {
     pointer-events: none;
 }
 
-/* Focus States for Accessibility */
-*:focus {
-    outline: 2px solid #4EE4FF;
-    outline-offset: 2px;
+/* Remove focus outlines from all elements */
+*:focus,
+*:focus-visible,
+*:focus-within,
+button:focus,
+button:focus-visible,
+a:focus,
+a:focus-visible,
+input:focus,
+input:focus-visible,
+select:focus,
+select:focus-visible,
+textarea:focus,
+textarea:focus-visible {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Remove tap highlight on mobile */
+button,
+a,
+input,
+select,
+textarea {
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none;
 }
 
 /* Print Styles */

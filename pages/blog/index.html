@@ -27,6 +27,27 @@
     <div id="styles-container"></div>
     <script src="/config/parallax-config.js"></script>
     
+    <!-- Google Analytics Configuration -->
+    <script src="/config/analytics-config.js"></script>
+    <script>
+        if (typeof ANALYTICS_CONFIG !== 'undefined') {
+            window.ANALYTICS_CONFIG = ANALYTICS_CONFIG;
+        }
+    </script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5F8EJP5WXD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-5F8EJP5WXD', {
+            'anonymize_ip': true,
+            'allow_google_signals': false,
+            'allow_ad_personalization_signals': false
+        });
+    </script>
+    
     <style>
         /* Hide scrollbars and prevent horizontal scrolling */
         ::-webkit-scrollbar { display: none; }
@@ -711,6 +732,27 @@
             opacity: 1;
         }
         
+        /* Remove focus borders from category tabs */
+        .category-tab:focus,
+        .category-tab:focus-visible,
+        .category-tab:active {
+            outline: none !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            box-shadow: none !important;
+        }
+        
+        .category-tab.active:focus,
+        .category-tab.active:focus-visible,
+        .category-tab.active:active {
+            outline: none !important;
+            border-color: rgba(78, 228, 255, 0.4) !important;
+            box-shadow: 0 4px 20px rgba(78, 228, 255, 0.2) !important;
+        }
+        
+        .category-tab {
+            -webkit-tap-highlight-color: transparent !important;
+        }
+        
         /* All Blogs Grid Container */
         .all-blogs-grid-container {
             animation: fadeInUp 0.6s ease-out;
@@ -719,15 +761,32 @@
         /* Ensure category tabs container doesn't overflow */
         @media (max-width: 768px) {
             .sticky-category-bar {
-                top: 56px; /* Adjust for mobile header height */
+                top: 56px !important; /* Adjust for mobile header height */
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+            
+            .sticky-category-bar .max-w-7xl {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                width: 100% !important;
             }
             
             .category-tabs-container {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                padding-bottom: 4px;
+                display: flex !important;
+                flex-direction: row !important;
+                flex-wrap: nowrap !important;
+                align-items: center !important;
+                justify-content: flex-start !important;
+                overflow-x: auto !important;
+                overflow-y: hidden !important;
+                -webkit-overflow-scrolling: touch !important;
+                padding: 0.5rem 0 !important;
+                padding-bottom: 0.75rem !important;
+                gap: 0.75rem !important;
                 scrollbar-width: thin;
                 scrollbar-color: rgba(78, 228, 255, 0.3) transparent;
+                width: 100% !important;
             }
             
             .category-tabs-container::-webkit-scrollbar {
@@ -741,6 +800,27 @@
             .category-tabs-container::-webkit-scrollbar-thumb {
                 background: rgba(78, 228, 255, 0.3);
                 border-radius: 2px;
+            }
+            
+            .category-tab {
+                flex-shrink: 0 !important;
+                padding: 0.625rem 1rem !important;
+                font-size: 0.8125rem !important;
+                white-space: nowrap !important;
+                margin: 0 !important;
+                min-width: auto !important;
+                width: auto !important;
+            }
+            
+            .category-tab i {
+                width: 14px !important;
+                height: 14px !important;
+                flex-shrink: 0 !important;
+            }
+            
+            .category-tab span {
+                white-space: nowrap !important;
+                display: inline-block !important;
             }
         }
         
@@ -980,7 +1060,7 @@
 
     <!-- Sticky Category Navigation Bar -->
     <div class="sticky-category-bar sticky top-16 z-10 py-4 bg-[#050a30]/98 backdrop-blur-xl border-b border-white/5 shadow-lg" style="display: block !important; position: sticky !important; width: 100% !important; z-index: 10 !important;">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8" style="width: 100% !important; max-width: 100% !important;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="width: 100% !important; max-width: 100% !important;">
             <div class="category-tabs-container flex flex-row flex-wrap gap-3 justify-center lg:justify-start w-full" style="display: flex !important; flex-direction: row !important; flex-wrap: wrap !important; align-items: center !important; justify-content: center !important; width: 100% !important;">
                 <button class="category-tab active" data-category="all">
                     <i data-lucide="grid" class="w-4 h-4"></i>
