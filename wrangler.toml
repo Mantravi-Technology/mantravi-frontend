@@ -1,0 +1,12 @@
+# Cloudflare Pages Configuration (Optional)
+# This file is optional for Cloudflare Pages
+# Cloudflare Pages uses _redirects file for routing
+
+name = "mantravi-frontend"
+compatibility_date = "2024-01-01"
+
+[env.production]
+routes = [
+  { pattern = "mantravi.com/*", zone_name = "mantravi.com" }
+]
+

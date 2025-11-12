@@ -3,37 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mantravi - Engineering Global Disruption with AI-Native Excellence</title>
+    <meta http-equiv="refresh" content="0; url=/pages/home/index.html">
+    <title>Mantravi - Redirecting...</title>
     <script>
-        // CRITICAL: Only redirect if pathname is /index.html, NOT if it's /
-        // This prevents redirect loops when Cloudflare serves index.html for root
-        (function() {
-            var pathname = window.location.pathname;
-            // Only redirect if explicitly accessing /index.html
-            if (pathname === '/index.html' || pathname === '/index.html/') {
-                window.location.replace(window.location.origin + '/');
-            }
-            // If pathname is /, do NOT redirect - let _redirects serve the homepage
-            // If this file is being served for /, it means _redirects isn't working
-            // In that case, redirect to the actual homepage file
-            else if (pathname === '/' || pathname === '') {
-                // Don't redirect - this should be handled by _redirects
-                // But if we're here, _redirects failed, so redirect to actual file
-                setTimeout(function() {
-                    window.location.replace('/pages/home/index.html');
-                }, 100);
-            }
-        })();
+        // Immediate redirect to homepage
+        window.location.replace('/pages/home/index.html');
     </script>
-    <style>
-        body { margin: 0; padding: 0; background: #050a30; overflow: hidden; }
-        html { height: 100%; }
-    </style>
 </head>
 <body>
     <noscript>
-        <p style="color: white; text-align: center; margin-top: 50vh; transform: translateY(-50%);">
-            <a href="/pages/home/index.html" style="color: #4EE4FF;">Click here to continue</a>
+        <p style="color: white; text-align: center; margin-top: 50vh; transform: translateY(-50%); font-family: Arial, sans-serif;">
+            <a href="/pages/home/index.html" style="color: #4EE4FF; text-decoration: none;">Click here to continue to Mantravi</a>
         </p>
     </noscript>
 </body>
