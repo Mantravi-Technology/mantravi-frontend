@@ -5,6 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Innovating Trust, Connecting Possibilities</title>
     <meta name="description" content="Your trusted partner for IT services, AI-driven digital transformation, and reliable support and maintenance.">
+    <meta name="keywords" content="Mantravi, AI solutions, web development, mobile app development, digital marketing, IT services, software development, technology consulting, India">
+    <meta name="author" content="Mantravi">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mantravi.com/">
+    <meta property="og:title" content="Mantravi - Innovating Trust, Connecting Possibilities">
+    <meta property="og:description" content="Your trusted partner for IT services, AI-driven digital transformation, and reliable support and maintenance.">
+    <meta property="og:image" content="https://mantravi.com/assets/icons/ui/mantravi.png">
+    <meta property="og:site_name" content="Mantravi">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://mantravi.com/">
+    <meta name="twitter:title" content="Mantravi - Innovating Trust, Connecting Possibilities">
+    <meta name="twitter:description" content="Your trusted partner for IT services, AI-driven digital transformation, and reliable support and maintenance.">
+    <meta name="twitter:image" content="https://mantravi.com/assets/icons/ui/mantravi.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://mantravi.com/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -20,8 +47,36 @@
     <!-- Main CSS -->
     <link rel="stylesheet" href="/assets/css/main.css">
     
+    <!-- Console Protection Configuration -->
+    <script src="/config/console-protection-config.js"></script>
+    
+    <!-- Console Protection - Load First to Block Console Access -->
+    <script src="/assets/js/console-protection.js"></script>
+    
     <!-- Global Parallax Configuration - Load First -->
     <script src="/config/parallax-config.js"></script>
+    
+    <!-- Google Analytics Configuration -->
+    <script src="/config/analytics-config.js"></script>
+    <script>
+        // Make analytics config available globally
+        if (typeof ANALYTICS_CONFIG !== 'undefined') {
+            window.ANALYTICS_CONFIG = ANALYTICS_CONFIG;
+        }
+    </script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5F8EJP5WXD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-5F8EJP5WXD', {
+            'anonymize_ip': true,
+            'allow_google_signals': false,
+            'allow_ad_personalization_signals': false
+        });
+    </script>
     
     <!-- Common Styles Component -->
     <div id="styles-container"></div>
@@ -1057,44 +1112,6 @@
                     <!-- FAQ Item 10 -->
                     <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col">
                         <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[72px]" onclick="toggleFaq(event, this)">
-                            <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">How are digital marketing plans priced?</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-[#4EE4FF] flex-shrink-0 transform transition-transform duration-300 faq-icon ml-2"></i>
-                        </button>
-                        <div class="faq-answer-wrapper overflow-hidden">
-                            <div class="faq-answer hidden p-4 sm:p-5 md:p-6 pt-0 pb-4 sm:pb-5">
-                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-4 break-words">
-                                Marketing plans vary based on goals and campaign intensity:
-                            </p>
-                            <div class="space-y-3 text-sm">
-                                <div class="bg-black/40 p-3 rounded-lg border border-gray-700/50">
-                                    <p class="text-[#4EE4FF] font-semibold mb-1">Local Growth</p>
-                                    <p class="text-gray-300 text-xs mb-2">Shops, clinics, salons</p>
-                                    <p class="text-white font-medium">₹10,000 - ₹20,000/month</p>
-                                    <p class="text-gray-400 text-xs mt-1">Content frequency + platform count</p>
-                                </div>
-                                <div class="bg-black/40 p-3 rounded-lg border border-gray-700/50">
-                                    <p class="text-[#4EE4FF] font-semibold mb-1">Regional Branding</p>
-                                    <p class="text-gray-300 text-xs mb-2">Coaching institutes, retail brands</p>
-                                    <p class="text-white font-medium">₹20,000 - ₹60,000/month</p>
-                                    <p class="text-gray-400 text-xs mt-1">SEO depth + paid ads + content strategy</p>
-                                </div>
-                                <div class="bg-black/40 p-3 rounded-lg border border-gray-700/50">
-                                    <p class="text-[#4EE4FF] font-semibold mb-1">Performance Marketing</p>
-                                    <p class="text-gray-300 text-xs mb-2">E-commerce & high lead-gen companies</p>
-                                    <p class="text-white font-medium">₹60,000+/month</p>
-                                    <p class="text-gray-400 text-xs mt-1">Paid campaign scale + analytics + AI automation</p>
-                                </div>
-                            </div>
-                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mt-4 break-words">
-                                Local markets cost less, while regional or national competition requires more investment for AI-powered campaign optimization and analytics.
-                            </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- FAQ Item 11 -->
-                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col">
-                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[72px]" onclick="toggleFaq(event, this)">
                             <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">Which industries do you have expertise in?</span>
                             <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-[#4EE4FF] flex-shrink-0 transform transition-transform duration-300 faq-icon ml-2"></i>
                         </button>
@@ -1153,41 +1170,6 @@
                         </div>
                     </div>
 
-                    <!-- FAQ Item 12 -->
-                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col">
-                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[72px]" onclick="toggleFaq(event, this)">
-                            <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">What makes your AI solutions different?</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-[#4EE4FF] flex-shrink-0 transform transition-transform duration-300 faq-icon ml-2"></i>
-                        </button>
-                        <div class="faq-answer-wrapper overflow-hidden">
-                            <div class="faq-answer hidden p-4 sm:p-5 md:p-6 pt-0 pb-4 sm:pb-5">
-                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-3 break-words">
-                                Our AI implementation goes beyond basic automation:
-                            </p>
-                            <ul class="text-gray-300 text-sm sm:text-base space-y-2 ml-4">
-                                <li class="flex items-start">
-                                    <i data-lucide="sparkles" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
-                                    <span><strong>Predictive Analytics:</strong> Anticipate market trends and user behavior</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="sparkles" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
-                                    <span><strong>Intelligent Automation:</strong> Streamline workflows and reduce manual work</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="sparkles" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
-                                    <span><strong>Smart Optimization:</strong> Continuously improve performance based on data</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="sparkles" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
-                                    <span><strong>Custom AI Models:</strong> Tailored solutions for your specific industry needs</span>
-                                </li>
-                            </ul>
-                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mt-3 break-words">
-                                We build AI solutions that learn and adapt, ensuring your business stays ahead of the curve.
-                            </p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
@@ -1893,6 +1875,25 @@
             flex-direction: column;
             align-self: flex-start;
             position: relative;
+            text-align: left !important;
+        }
+        
+        /* Global text alignment for all FAQ content */
+        .faq-item,
+        .faq-question,
+        .faq-question span,
+        .faq-answer,
+        .faq-answer p,
+        .faq-answer ul,
+        .faq-answer ol,
+        .faq-answer li,
+        .faq-answer div,
+        .faq-answer span,
+        .faq-answer strong,
+        .faq-answer .bg-black\/40,
+        .faq-answer .space-y-3,
+        .faq-answer .grid {
+            text-align: left !important;
         }
         
         .faq-item:hover {
@@ -2149,6 +2150,25 @@
             overflow-wrap: break-word;
             hyphens: auto;
             max-width: 100%;
+            text-align: left !important;
+        }
+        
+        /* Ensure all FAQ content is left-aligned on all screen sizes */
+        @media (min-width: 641px) {
+            .faq-item,
+            .faq-question,
+            .faq-question span,
+            .faq-answer,
+            .faq-answer p,
+            .faq-answer ul,
+            .faq-answer ol,
+            .faq-answer li,
+            .faq-answer div,
+            .faq-answer .bg-black\/40,
+            .faq-answer .space-y-3,
+            .faq-answer .grid {
+                text-align: left !important;
+            }
         }
         
         /* Better spacing and visibility */

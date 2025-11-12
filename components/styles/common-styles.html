@@ -1,5 +1,33 @@
 /* Common Styles for Mantravi Website */
 
+/* Remove focus outlines from all buttons and links globally */
+button:focus,
+button:focus-visible,
+button:active,
+a:focus,
+a:focus-visible,
+a:active,
+input:focus,
+input:focus-visible,
+select:focus,
+select:focus-visible,
+textarea:focus,
+textarea:focus-visible {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Remove tap highlight on all interactive elements */
+button,
+a,
+input,
+select,
+textarea {
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none;
+}
+
 /* Social Media Icons */
 .social-icon {
     color: #4EE4FF;

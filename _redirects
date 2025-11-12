@@ -1,11 +1,11 @@
-# Cloudflare Pages Redirects (replaces .htaccess)
-# Root URL - serve homepage directly (this takes priority)
+# Cloudflare Pages Redirects - Clean URLs
+# Format: /path /actual-file.html status-code
+# IMPORTANT: Order matters! More specific rules must come before catch-all rules
+
+# Root URL - serve homepage
 / /pages/home/index.html 200
 
-# Redirect index.html to root (then root serves homepage)
-/index.html / 301
-
-# Clean URLs - rewrite to actual files
+# Clean URLs - rewrite to actual files (200 = rewrite, keeps URL clean)
 /about /pages/about/index.html 200
 /services /pages/services/index.html 200
 /contact /pages/contact/index.html 200
@@ -13,6 +13,20 @@
 /blog/post /pages/blog/post.html 200
 /work-with-us /pages/work-with-us/index.html 200
 
+# Redirect /index.html to root (301 = permanent redirect)
+/index.html / 301
+
+# SEO Files - MUST come before catch-all rule to ensure they're served correctly
+# These files need to be accessible for search engines
+/robots.txt /robots.txt 200
+/sitemap.xml /sitemap.xml 200
+
+# Static assets - let them pass through (no redirect needed)
+/assets/* /assets/* 200
+/components/* /components/* 200
+/config/* /config/* 200
+
 # Catch all - serve homepage for 404s
-/* /pages/home/index.html 404
+# This MUST be last - it will catch everything not matched above
+/* /pages/home/index.html 200
 
