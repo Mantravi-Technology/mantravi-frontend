@@ -1,78 +1,38 @@
-# Mantravi Website - Clean URL Configuration
-# Enable URL Rewriting
+# Apache .htaccess for Clean URLs
+# Generated from routes-config.js
+# Use this if migrating to Apache server
+
 RewriteEngine On
 
-# Force HTTPS - redirect HTTP to HTTPS
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# Root URL -> Homepage
+RewriteRule ^$ /pages/home/index.html [L]
 
-# CRITICAL: Redirect index.html requests to root FIRST (before DirectoryIndex serves it)
-RewriteCond %{THE_REQUEST} \s/index\.html[\s?] [NC]
+# Clean URLs -> Actual Files
+RewriteRule ^about$ /pages/about/index.html [L]
+RewriteRule ^services$ /pages/services/index.html [L]
+RewriteRule ^contact$ /pages/contact/index.html [L]
+RewriteRule ^blog$ /pages/blog/index.html [L]
+RewriteRule ^blog/post$ /pages/blog/post.html [L]
+RewriteRule ^work-with-us$ /pages/work-with-us/index.html [L]
+
+# Redirect /index.html to root
 RewriteRule ^index\.html$ / [R=301,L]
 
-# Remove trailing slashes (except for root)
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)/$ /$1 [R=301,L]
-
-# Homepage - Root URL (internal rewrite to actual homepage, no redirect)
-RewriteCond %{REQUEST_URI} ^/$
-RewriteRule ^$ pages/home/index.html [L]
-
-# About Page
-RewriteRule ^about/?$ pages/about/index.html [L]
-
-# Services Page
-RewriteRule ^services/?$ pages/services/index.html [L]
-
-# Contact Page
-RewriteRule ^contact/?$ pages/contact/index.html [L]
-
-# Blog Pages
-RewriteRule ^blog/?$ pages/blog/index.html [L]
-RewriteRule ^blog/post/?$ pages/blog/post.html [L]
-RewriteRule ^blog/post\?.*$ pages/blog/post.html [L,QSA]
-
-# Work With Us Page
-RewriteRule ^work-with-us/?$ pages/work-with-us/index.html [L]
-
-# Handle direct file access (prevent direct access to pages/ directory)
-RewriteCond %{THE_REQUEST} /pages/ [NC]
-RewriteRule ^pages/(.*)$ /$1 [R=301,L]
-
-# Custom 404 Error Page
-ErrorDocument 404 /pages/home/index.html
-
-# Prevent directory listing
-Options -Indexes
-
-# Security Headers (production-ready)
+# Security Headers
 <IfModule mod_headers.c>
-    # Prevent clickjacking
-    Header always set X-Frame-Options "SAMEORIGIN"
-    # XSS Protection
-    Header always set X-XSS-Protection "1; mode=block"
-    # Prevent MIME type sniffing
-    Header always set X-Content-Type-Options "nosniff"
-    # Referrer Policy
-    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "DENY"
+    Header set X-XSS-Protection "1; mode=block"
 </IfModule>
 
-# Enable compression
-<IfModule mod_deflate.c>
-    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
-</IfModule>
-
-# Browser Caching
+# Cache static assets
 <IfModule mod_expires.c>
     ExpiresActive On
     ExpiresByType image/jpg "access plus 1 year"
     ExpiresByType image/jpeg "access plus 1 year"
-    ExpiresByType image/gif "access plus 1 year"
     ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
     ExpiresByType image/svg+xml "access plus 1 year"
     ExpiresByType text/css "access plus 1 month"
     ExpiresByType application/javascript "access plus 1 month"
-    ExpiresByType application/json "access plus 0 seconds"
-    ExpiresByType text/html "access plus 0 seconds"
 </IfModule>
-

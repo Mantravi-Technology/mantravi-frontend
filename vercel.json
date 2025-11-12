@@ -1,0 +1,59 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/pages/home/index.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/pages/about/index.html"
+    },
+    {
+      "source": "/services",
+      "destination": "/pages/services/index.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/pages/contact/index.html"
+    },
+    {
+      "source": "/blog",
+      "destination": "/pages/blog/index.html"
+    },
+    {
+      "source": "/blog/post",
+      "destination": "/pages/blog/post.html"
+    },
+    {
+      "source": "/work-with-us",
+      "destination": "/pages/work-with-us/index.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    }
+  ]
+}
+

@@ -3,30 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mantravi - Engineering Global Disruption with AI-Native Excellence</title>
+    <title>Mantravi - Innovating trust, Connecting possibilities</title>
     <!-- 
-        Cloudflare _redirects file handles / -> /pages/home/index.html with clean URL
-        This file exists as fallback to prevent 404 errors
+        This file serves as fallback for root route
+        Cloudflare Functions middleware or _redirects should handle routing
+        This prevents 404 errors if routing fails
     -->
     <script>
-        // Redirect to homepage - _redirects should handle this, but this is fallback
+        // Simple redirect fallback - only if routing didn't work
         (function() {
             var pathname = window.location.pathname;
-            // Redirect /index.html to / (which _redirects will then handle)
+            // Only redirect /index.html to /
             if (pathname === '/index.html' || pathname === '/index.html/') {
                 window.location.replace(window.location.origin + '/');
                 return;
             }
-            // If at root, redirect to actual homepage file
+            // If still at root after a moment, redirect to homepage
+            // This gives middleware/_redirects time to work
             if (pathname === '/' || pathname === '') {
-                window.location.replace('/pages/home/index.html');
+                setTimeout(function() {
+                    if (window.location.pathname === '/' || window.location.pathname === '') {
+                        window.location.replace('/pages/home/index.html');
+                    }
+                }, 100);
             }
         })();
     </script>
-    <meta http-equiv="refresh" content="0; url=/pages/home/index.html">
 </head>
 <body style="margin:0;padding:0;background:#050a30;display:flex;align-items:center;justify-content:center;height:100vh;font-family:Arial,sans-serif;">
-    <div style="color:#4EE4FF;font-size:18px;">Redirecting to Mantravi...</div>
+    <div style="color:#4EE4FF;font-size:18px;">Loading Mantravi...</div>
     <noscript>
         <p style="color:white;text-align:center;">
             <a href="/pages/home/index.html" style="color:#4EE4FF;text-decoration:none;">Click here to continue</a>
