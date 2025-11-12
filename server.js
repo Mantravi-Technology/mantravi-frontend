@@ -19,6 +19,8 @@ const mimeTypes = {
     '.js': 'text/javascript; charset=utf-8',
     '.css': 'text/css; charset=utf-8',
     '.json': 'application/json; charset=utf-8',
+    '.xml': 'application/xml; charset=utf-8',
+    '.txt': 'text/plain; charset=utf-8',
     '.png': 'image/png',
     '.jpg': 'image/jpeg',
     '.jpeg': 'image/jpeg',
@@ -66,33 +68,44 @@ const server = http.createServer((req, res) => {
     // Determine the file path to serve
     let filePath = null;
 
-    // 1. Check if it's a static asset (assets, components, config)
-    if (cleanPath.startsWith('/assets/') || 
+    // 1. Check for SEO files (sitemap.xml, robots.txt) - MUST come first
+    if (cleanPath === '/sitemap.xml') {
+        filePath = 'sitemap.xml';
+    }
+    else if (cleanPath === '/robots.txt') {
+        filePath = 'robots.txt';
+    }
+    // 2. Check if it's a static asset (assets, components, config)
+    else if (cleanPath.startsWith('/assets/') || 
         cleanPath.startsWith('/components/') || 
         cleanPath.startsWith('/config/')) {
         // Serve static files directly from root
         filePath = cleanPath.substring(1); // Remove leading slash
     }
-    // 2. Check if it's a defined route
+    // 3. Check if it's a defined route
     else if (routes[cleanPath]) {
         // Map clean URL to actual file
         filePath = routes[cleanPath];
     }
-    // 3. Handle blog post routes (with query parameters)
+    // 4. Handle blog post routes (with query parameters)
     else if (cleanPath === '/blog/post' || cleanPath.startsWith('/blog/post?')) {
         filePath = 'pages/blog/post.html';
     }
-    // 4. Default to homepage for unknown routes
+    // 5. Default to homepage for unknown routes
     else {
         filePath = 'pages/home/index.html';
     }
 
     // Security: Normalize and prevent directory traversal
     filePath = path.normalize(filePath);
-    if (filePath.includes('..') || !filePath.startsWith('pages/') && 
-        !filePath.startsWith('assets/') && 
-        !filePath.startsWith('components/') && 
-        !filePath.startsWith('config/')) {
+    // Allow sitemap.xml, robots.txt, and static assets
+    if (filePath.includes('..') || 
+        (!filePath.startsWith('pages/') && 
+         !filePath.startsWith('assets/') && 
+         !filePath.startsWith('components/') && 
+         !filePath.startsWith('config/') &&
+         filePath !== 'sitemap.xml' &&
+         filePath !== 'robots.txt')) {
         filePath = 'pages/home/index.html';
     }
 
@@ -187,6 +200,9 @@ server.listen(PORT, '0.0.0.0', () => {
             console.log(`   ${route.padEnd(15)} → ${routes[route]}`);
         }
     });
+    console.log('\n🔍 SEO Files:');
+    console.log('   /sitemap.xml   → Sitemap for search engines');
+    console.log('   /robots.txt    → Robots.txt for crawlers');
     console.log('\n📦 Static Assets:');
     console.log('   /assets/*      → Static files');
     console.log('   /components/*  → Component files');
