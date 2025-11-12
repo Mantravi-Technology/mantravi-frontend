@@ -5,36 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mantravi - Innovating trust, Connecting possibilities</title>
     <!-- 
-        This file serves as fallback for root route
-        Cloudflare Functions middleware or _redirects should handle routing
-        This prevents 404 errors if routing fails
+        CRITICAL: This file should NOT interfere with _redirects
+        Only redirect /index.html to /, let _redirects handle everything else
     -->
     <script>
-        // Simple redirect fallback - only if routing didn't work
+        // ONLY redirect /index.html to / - nothing else!
+        // _redirects file handles / -> /pages/home/index.html
         (function() {
             var pathname = window.location.pathname;
-            // Only redirect /index.html to /
+            // Only redirect if explicitly accessing /index.html
             if (pathname === '/index.html' || pathname === '/index.html/') {
                 window.location.replace(window.location.origin + '/');
-                return;
             }
-            // If still at root after a moment, redirect to homepage
-            // This gives middleware/_redirects time to work
-            if (pathname === '/' || pathname === '') {
-                setTimeout(function() {
-                    if (window.location.pathname === '/' || window.location.pathname === '') {
-                        window.location.replace('/pages/home/index.html');
-                    }
-                }, 100);
-            }
+            // DO NOT redirect / - let _redirects handle it!
         })();
     </script>
 </head>
-<body style="margin:0;padding:0;background:#050a30;display:flex;align-items:center;justify-content:center;height:100vh;font-family:Arial,sans-serif;">
-    <div style="color:#4EE4FF;font-size:18px;">Loading Mantravi...</div>
+<body style="margin:0;padding:0;background:#050a30;">
+    <!-- This should never be seen if _redirects works properly -->
     <noscript>
-        <p style="color:white;text-align:center;">
-            <a href="/pages/home/index.html" style="color:#4EE4FF;text-decoration:none;">Click here to continue</a>
+        <p style="color:white;text-align:center;margin-top:50vh;transform:translateY(-50%);font-family:Arial,sans-serif;">
+            <a href="/" style="color:#4EE4FF;text-decoration:none;">Click here to continue</a>
         </p>
     </noscript>
 </body>
