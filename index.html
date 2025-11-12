@@ -4,55 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mantravi - Engineering Global Disruption with AI-Native Excellence</title>
+    <meta http-equiv="refresh" content="0; url=/pages/home/index.html">
     <script>
-        // For Cloudflare Pages: _redirects file handles routing
-        // This file only redirects /index.html to / (which _redirects then handles)
-        // If someone directly accesses /index.html, redirect to clean URL
-        (function() {
-            var pathname = window.location.pathname;
-            // Only redirect if explicitly accessing /index.html
-            if (pathname === '/index.html' || pathname === '/index.html/') {
-                window.location.replace(window.location.origin + '/');
-                return;
-            }
-            // If we're here and pathname is /, _redirects should have handled it
-            // But as a fallback, redirect to homepage (only if _redirects failed)
-            if (pathname === '/' || pathname === '') {
-                // Small delay to let _redirects work first
-                setTimeout(function() {
-                    // If still on /, _redirects didn't work, so use fallback
-                    if (window.location.pathname === '/' || window.location.pathname === '') {
-                        window.location.replace('/pages/home/index.html');
-                    }
-                }, 50);
-            }
-        })();
+        // Redirect to homepage - Cloudflare _redirects should handle clean URLs
+        // This is a fallback if _redirects doesn't work
+        window.location.replace('/pages/home/index.html');
     </script>
-    <style>
-        body { 
-            margin: 0; 
-            padding: 0; 
-            background: #050a30; 
-            overflow: hidden; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-        html { 
-            height: 100%; 
-        }
-        .loading {
-            color: #4EE4FF;
-            font-family: Arial, sans-serif;
-        }
-    </style>
 </head>
 <body>
-    <div class="loading">Loading...</div>
     <noscript>
-        <p style="color: white; text-align: center; font-family: Arial, sans-serif;">
-            <a href="/" style="color: #4EE4FF;">Click here to continue</a>
+        <p style="color: white; text-align: center; margin-top: 50vh; transform: translateY(-50%); font-family: Arial, sans-serif;">
+            <a href="/pages/home/index.html" style="color: #4EE4FF;">Click here to continue</a>
         </p>
     </noscript>
 </body>
