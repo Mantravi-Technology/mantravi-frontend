@@ -5,51 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mantravi - Engineering Global Disruption with AI-Native Excellence</title>
     <script>
-        // Cloudflare Pages Functions middleware handles clean URLs
-        // This file only redirects /index.html to / (clean URL)
-        // The middleware will serve /pages/home/index.html for / without changing URL
+        // Simple redirect: if accessing /index.html, redirect to /
+        // Cloudflare _redirects file will handle / -> /pages/home/index.html
         (function() {
             var pathname = window.location.pathname;
-            // Only redirect if someone directly accesses /index.html
             if (pathname === '/index.html' || pathname === '/index.html/') {
                 window.location.replace(window.location.origin + '/');
             }
-            // If we're at root (/), the middleware should handle it
-            // But if middleware didn't work, redirect as fallback
-            else if (pathname === '/' || pathname === '') {
-                // Give middleware a moment to work, then fallback if needed
-                setTimeout(function() {
-                    if (window.location.pathname === '/' || window.location.pathname === '') {
-                        // Fallback: redirect to actual file (only if middleware failed)
-                        window.location.replace('/pages/home/index.html');
-                    }
-                }, 100);
-            }
         })();
     </script>
-    <style>
-        body { 
-            margin: 0; 
-            padding: 0; 
-            background: #050a30; 
-            overflow: hidden; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-        html { 
-            height: 100%; 
-        }
-        .loading {
-            color: #4EE4FF;
-            font-family: Arial, sans-serif;
-            font-size: 18px;
-        }
-    </style>
+    <meta http-equiv="refresh" content="0; url=/">
 </head>
 <body>
-    <div class="loading">Loading Mantravi...</div>
     <noscript>
         <p style="color: white; text-align: center; margin-top: 50vh; transform: translateY(-50%); font-family: Arial, sans-serif;">
             <a href="/" style="color: #4EE4FF;">Click here to continue to Mantravi</a>
