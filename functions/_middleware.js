@@ -21,12 +21,12 @@ export async function onRequest(context) {
 
   // Check if it's a clean URL route that needs rewriting
   if (routes[pathname]) {
-    // Create new request to the actual file
+    // Rewrite the request to the actual file path
+    // This keeps the URL clean in the browser
     const newUrl = new URL(routes[pathname], url.origin);
-    const newRequest = new Request(newUrl, context.request);
     
-    // Fetch and return the file (URL stays clean in browser)
-    return context.env.ASSETS.fetch(newRequest);
+    // Use the rewrite method to serve the file without changing URL
+    return context.rewrite(newUrl);
   }
 
   // For /index.html, redirect to root (301 permanent redirect)
