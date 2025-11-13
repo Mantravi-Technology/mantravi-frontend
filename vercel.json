@@ -1,8 +1,9 @@
 {
+  "outputDirectory": ".",
   "rewrites": [
     {
       "source": "/",
-      "destination": "/pages/home/index.html"
+      "destination": "/index.html"
     },
     {
       "source": "/about",
@@ -32,6 +33,21 @@
   "redirects": [
     {
       "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/pages/home",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/pages/home/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/pages/home/index.html",
       "destination": "/",
       "permanent": true
     }

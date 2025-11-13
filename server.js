@@ -102,8 +102,8 @@ const server = http.createServer((req, res) => {
     if (filePath.includes('..') || 
         (filePath !== 'index.html' &&
          !filePath.startsWith('pages/') && 
-         !filePath.startsWith('assets/') && 
-         !filePath.startsWith('components/') && 
+        !filePath.startsWith('assets/') && 
+        !filePath.startsWith('components/') && 
          !filePath.startsWith('config/') &&
          filePath !== 'sitemap.xml' &&
          filePath !== 'robots.txt')) {
@@ -175,8 +175,8 @@ function serveHomepage(res) {
             const fallbackPath = path.join(BASE_DIR, 'pages/home/index.html');
             fs.readFile(fallbackPath, (err2, data2) => {
                 if (err2) {
-                    res.writeHead(500, { 'Content-Type': 'text/plain' });
-                    res.end('Internal Server Error');
+            res.writeHead(500, { 'Content-Type': 'text/plain' });
+            res.end('Internal Server Error');
                     return;
                 }
                 res.writeHead(200, { 
