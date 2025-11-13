@@ -1,46 +1,95 @@
 # robots.txt for Mantravi Website
-# Optimized for Search Engine Crawling
+# Optimized for Search Engine Crawling and SEO
 
+# Default rules for all bots
 User-agent: *
 Allow: /
 
-# Allow all pages
+# Explicitly allow important pages for better indexing
 Allow: /about
 Allow: /services
 Allow: /contact
 Allow: /blog
 Allow: /work-with-us
+Allow: /blog/post
 
-# Allow static assets
+# Allow static assets for proper rendering
 Allow: /assets/
 Allow: /components/
 Allow: /config/
+Allow: /assets/icons/
+Allow: /assets/css/
+Allow: /assets/js/
+Allow: /assets/videos/
+Allow: /assets/animations/
 
-# Disallow admin/private areas (if any)
+# Disallow admin/private areas and unnecessary paths
 Disallow: /admin/
 Disallow: /private/
 Disallow: /api/
+Disallow: /functions_backup/
+Disallow: /functions_disabled/
+Disallow: /*.md$
+Disallow: /*.yaml$
+Disallow: /*.yml$
+Disallow: /pages/home/
+Disallow: /pages/home/index.html
 
-# Sitemap location
+# Sitemap location - Critical for SEO
 Sitemap: https://mantravi.com/sitemap.xml
 
-# Crawl-delay (optional - helps prevent server overload)
-# Crawl-delay: 1
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
 
-# Specific bot rules
+# Google-specific rules
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 0
 
+User-agent: Googlebot-Image
+Allow: /assets/
+Allow: /assets/icons/
+
+User-agent: Googlebot-Mobile
+Allow: /
+
+# Bing-specific rules
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
 
+# Yahoo/Slurp rules
 User-agent: Slurp
 Allow: /
+Crawl-delay: 1
 
-# Block bad bots (optional)
+# Yandex rules
+User-agent: Yandex
+Allow: /
+Crawl-delay: 1
+
+# Baidu rules
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+# SEO tool bots - Allow but with delay to prevent overload
 User-agent: AhrefsBot
+Allow: /
 Crawl-delay: 10
 
 User-agent: SemrushBot
+Allow: /
 Crawl-delay: 10
+
+User-agent: MJ12bot
+Allow: /
+Crawl-delay: 10
+
+# Block aggressive/scraping bots
+User-agent: DotBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
 
