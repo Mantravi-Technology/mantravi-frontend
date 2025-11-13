@@ -1,0 +1,73 @@
+name: Update Sitemap Daily
+
+on:
+  schedule:
+    # Runs daily at 2:00 AM UTC (7:30 AM IST)
+    - cron: '0 2 * * *'
+  workflow_dispatch: # Allows manual trigger from GitHub UI
+  push:
+    branches:
+      - main
+      - aakashdevelop
+    paths:
+      - 'scripts/update-sitemap.js'
+      - 'package.json'
+
+jobs:
+  update-sitemap:
+    name: Update Sitemap with Latest Blog Posts
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Update sitemap
+        id: update-sitemap
+        run: |
+          npm run update-sitemap
+          echo "sitemap_updated=true" >> $GITHUB_OUTPUT
+
+      - name: Check for changes
+        id: check-changes
+        run: |
+          if git diff --quiet sitemap.xml; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "No changes to sitemap.xml"
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "Sitemap.xml has been updated"
+          fi
+
+      - name: Commit and push changes
+        if: steps.check-changes.outputs.has_changes == 'true'
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add sitemap.xml
+          git commit -m "🤖 Auto-update sitemap with latest blog posts [skip ci]" || exit 0
+          git push origin HEAD:${{ github.ref_name }} || exit 0
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## Sitemap Update Summary" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.check-changes.outputs.has_changes }}" == "true" ]; then
+            echo "✅ Sitemap updated and committed successfully!" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "ℹ️ No changes detected in sitemap.xml" >> $GITHUB_STEP_SUMMARY
+          fi
+
