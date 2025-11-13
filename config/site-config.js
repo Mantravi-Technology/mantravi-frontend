@@ -7,7 +7,7 @@ const SITE_CONFIG = {
         description: "Your partner in harnessing the power of next-gen Prompt Engineering, Digital Transformation, and Intelligent Cloud Solutions.",
         url: "https://mantravi.com",
         logo: "assets/images/logo.png",
-        favicon: "assets/icons/favicon.ico"
+        favicon: "assets/icons/ui/mantravilogo.png"
     },
 
     // Design System
