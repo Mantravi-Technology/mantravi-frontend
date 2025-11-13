@@ -24,7 +24,7 @@
     <link rel="canonical" href="https://mantravi.com/services">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
+    <link rel="icon" type="image/png" href="/assets/icons/ui/mantravilogo.png">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
@@ -105,6 +105,30 @@
         /* Ensure header is below service bar */
         header {
             z-index: 9998 !important;
+        }
+        
+        /* Prevent header from disappearing during load */
+        #header-container {
+            min-height: 60px !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            display: block !important;
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            background: rgba(5, 10, 48, 0.95) !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            z-index: 9998 !important;
+            transition: opacity 0.2s ease-in-out !important;
+        }
+        
+        /* Ensure header content is visible immediately */
+        #header-container > * {
+            visibility: visible !important;
+            opacity: 1 !important;
         }
         
         /* Ensure services bar doesn't overlap header */
@@ -191,7 +215,7 @@
 <body class="bg-gray-900 text-white">
 
 
-    <header id="header-container" class="sticky top-0 z-50" style="z-index: 9998 !important;"></header>
+    <header id="header-container" style="z-index: 9998 !important;"></header>
     
     <section class="bg-gradient-to-br from-[#0a0f1c] via-[#050a30] to-[#0a0f1c] pt-16 lg:pt-24 pb-16 lg:pb-24"><div class="max-w-7xl mx-auto px-6 lg:px-8 text-center"><div class="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full text-cyan-400 text-sm font-medium mb-6"><i data-lucide="layers" class="w-4 h-4"></i> Our Services</div><h1 class="text-4xl lg:text-6xl font-bold mb-6"><span class="gradient-text">Digital Solutions</span> That Drive Success</h1><p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">Leveraging AI-powered automation and cutting-edge technology, we deliver intelligent solutions that transform your business operations, enhance customer experiences, and accelerate sustainable growth across all digital touchpoints.</p></div></section>
     
@@ -271,11 +295,48 @@
             window.addEventListener('resize', setStickyNavPosition);
         }
         
+        // Watch for header to load and prevent flickering
+        function watchHeaderLoad() {
+            const headerContainer = document.querySelector('#header-container');
+            if (!headerContainer) return;
+            
+            // Set initial styles to prevent disappearing
+            headerContainer.style.minHeight = '60px';
+            headerContainer.style.visibility = 'visible';
+            headerContainer.style.opacity = '1';
+            
+            // Watch for content changes
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.addedNodes.length > 0) {
+                        // Header content was added, ensure it's visible
+                        const headerContent = headerContainer.querySelector('header, nav');
+                        if (headerContent) {
+                            headerContent.style.visibility = 'visible';
+                            headerContent.style.opacity = '1';
+                            headerContainer.style.minHeight = '';
+                            // Stop observing once header is loaded
+                            observer.disconnect();
+                        }
+                    }
+                });
+            });
+            
+            observer.observe(headerContainer, {
+                childList: true,
+                subtree: true
+            });
+        }
+        
         // Run when DOM is ready
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initializeServicesPage);
+            document.addEventListener('DOMContentLoaded', () => {
+                watchHeaderLoad();
+                initializeServicesPage();
+            });
         } else {
             // DOM already ready, but wait a bit for scripts to load
+            watchHeaderLoad();
             setTimeout(initializeServicesPage, 100);
         }
         
@@ -287,20 +348,29 @@
             const servicesBar = document.querySelector('.services-bar');
             const header = document.querySelector('#header-container');
             if (servicesBar && header) {
-                // Wait for header to be fully rendered
-                setTimeout(() => {
+                // Check if header has content loaded
+                const checkHeaderLoaded = () => {
+                    const headerContent = header.querySelector('header, nav');
                     const headerHeight = header.offsetHeight || header.getBoundingClientRect().height;
-                    if (headerHeight > 0) {
-                        // Service bar overlaps header, so top is 0
+                    
+                    if (headerContent && headerHeight > 0) {
+                        // Header is loaded, set services bar position
                         servicesBar.style.top = '0';
                         servicesBar.style.position = 'sticky';
                         servicesBar.style.zIndex = '10000';
-                        // Remove all margins and padding
                         servicesBar.style.marginTop = '0';
                         servicesBar.style.marginBottom = '0';
                         servicesBar.style.paddingTop = '0';
+                    } else {
+                        // Header not loaded yet, try again
+                        setTimeout(checkHeaderLoaded, 50);
                     }
-                }, 100);
+                };
+                
+                // Start checking immediately and with delays
+                checkHeaderLoaded();
+                setTimeout(checkHeaderLoaded, 100);
+                setTimeout(checkHeaderLoaded, 300);
             }
         }
         

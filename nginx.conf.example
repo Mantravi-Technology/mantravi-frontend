@@ -1,0 +1,82 @@
+# Nginx Configuration for Clean URLs
+# Generated from routes-config.js
+# Use this if migrating to Nginx server
+# Copy to your nginx sites-available directory
+
+server {
+    listen 80;
+    server_name mantravi.com www.mantravi.com;
+    root /var/www/mantravi-frontend-1;
+    index index.html;
+
+    # Root URL -> Homepage
+    location = / {
+        try_files /pages/home/index.html =404;
+    }
+
+    # Clean URLs -> Actual Files
+    location = /about {
+        try_files /pages/about/index.html =404;
+    }
+
+    location = /services {
+        try_files /pages/services/index.html =404;
+    }
+
+    location = /contact {
+        try_files /pages/contact/index.html =404;
+    }
+
+    location = /blog {
+        try_files /pages/blog/index.html =404;
+    }
+
+    location = /blog/post {
+        try_files /pages/blog/post.html =404;
+    }
+
+    location = /work-with-us {
+        try_files /pages/work-with-us/index.html =404;
+    }
+
+    # Redirect /index.html to root
+    location = /index.html {
+        return 301 /;
+    }
+
+    # Static assets - serve directly
+    location /assets/ {
+        try_files $uri =404;
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+
+    location /components/ {
+        try_files $uri =404;
+    }
+
+    location /config/ {
+        try_files $uri =404;
+    }
+
+    # SEO files
+    location = /robots.txt {
+        try_files /robots.txt =404;
+    }
+
+    location = /sitemap.xml {
+        try_files /sitemap.xml =404;
+    }
+
+    # Security Headers
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-Frame-Options "DENY" always;
+    add_header X-XSS-Protection "1; mode=block" always;
+
+    # Gzip compression
+    gzip on;
+    gzip_vary on;
+    gzip_min_length 1024;
+    gzip_types text/plain text/css text/xml text/javascript application/javascript application/xml+rss application/json;
+}
+
