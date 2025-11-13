@@ -2,7 +2,11 @@
 # Format: /path /actual-file.html status-code
 # IMPORTANT: Order matters! More specific rules must come before catch-all rules
 
-# NOTE: Root URL (/) is handled by root index.html - no redirect needed!
+# Redirect old /pages/home/ paths to root (301 = permanent redirect)
+# These MUST come first to prevent serving the actual /pages/home/ directory
+/pages/home / 301
+/pages/home/ / 301
+/pages/home/index.html / 301
 
 # Clean URLs - rewrite to actual files (200 = rewrite, keeps URL clean)
 /about /pages/about/index.html 200
