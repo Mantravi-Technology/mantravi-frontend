@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Favicon - MUST be first to prevent browser using header logo as favicon -->
     <link rel="icon" type="image/x-icon" href="/assets/icons/ui/favicon/favicon.ico">
@@ -57,6 +57,9 @@
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://mantravi.com/">
+    
+    <!-- Sitemap -->
+    <link rel="sitemap" type="application/xml" href="https://mantravi.com/sitemap.xml">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -258,7 +261,7 @@
 
 
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center overflow-hidden hero-pattern hero-fallback">
+    <section class="relative min-h-[50vh] sm:min-h-[65vh] md:min-h-[75vh] lg:min-h-screen flex items-center justify-center overflow-hidden hero-pattern hero-fallback py-8 sm:py-12 md:py-16 lg:py-0">
         <!-- Video Background -->
         <div class="absolute inset-0 w-full h-full">
             <video 
@@ -285,34 +288,34 @@
         </div>
         
         <!-- Hero Content -->
-        <div class="hero-content container mx-auto px-4 sm:px-6 text-center">
-            <h1 class="hero-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-4 sm:mb-6 leading-tight">
+        <div class="hero-content container mx-auto px-4 sm:px-6 text-center relative z-10">
+            <h1 class="hero-title text-2xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-black mb-2 sm:mb-3 md:mb-4 lg:mb-6 leading-tight">
                 <span class="block">Innovating Trust</span>
                 <span class="text-[#4EE4FF] text-glow">Connecting</span>
                 <span class="block">Possibilities</span>
             </h1>
-            <p class="hero-subtitle text-lg sm:text-xl md:text-2xl text-gray-200 mb-6 sm:mb-8 max-w-4xl mx-auto leading-relaxed px-2">
+            <p class="hero-subtitle text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-200 mb-3 sm:mb-4 md:mb-6 lg:mb-8 max-w-4xl mx-auto leading-relaxed px-2">
                 Your trusted partner for IT services, AI-driven digital transformation, and reliable support and maintenance.
             </p>
-            <button class="hero-button text-[#4EE4FF] px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold hover:text-white transition-all duration-300 w-full sm:w-auto" onclick="openConsultModal()">
+            <button class="hero-button text-[#4EE4FF] px-4 sm:px-5 md:px-6 lg:px-8 py-2 sm:py-2.5 md:py-3 lg:py-4 rounded-lg text-xs sm:text-sm md:text-base lg:text-lg font-semibold hover:text-white transition-all duration-300 inline-block mx-auto max-w-[200px] sm:max-w-none" onclick="openConsultModal()">
                 Consult Our Experts
             </button>
         </div>
         
         <!-- Scroll Indicator -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <i data-lucide="chevron-down" class="w-6 h-6 text-[#4EE4FF]"></i>
+        <div class="absolute bottom-2 sm:bottom-4 md:bottom-6 lg:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hidden sm:block">
+            <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 md:w-6 text-[#4EE4FF]"></i>
         </div>
     </section>
 
 
     <!-- Core Services Section -->
-    <section id="services" class="py-16 sm:py-20 relative overflow-hidden bg-[#050a30]">
+    <section id="services" class="py-8 sm:py-12 md:py-16 lg:py-20 relative overflow-hidden bg-[#050a30]">
         <!-- Simple dark navy background -->
         <div class="absolute inset-0 bg-[#050a30]"></div>
         
         <div class="relative z-10 container mx-auto px-4 sm:px-6">
-            <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8 sm:mb-12 md:mb-16 px-2">
+            <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-center mb-6 sm:mb-8 md:mb-12 lg:mb-16 px-2">
                 Transform Your Digital Future with <span class="text-[#4EE4FF]">Mantravi's</span> Engineering Solutions
             </h2>
             
@@ -489,12 +492,12 @@
                     </div>
                 </div>
                 
-                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-6 leading-tight">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-white mb-6 leading-tight">
                     <div class="premium-text-container">
-                        <span class="premium-text-line-1">We Don't Just Deliver a Project.</span>
+                        <span class="premium-text-line-1">Beyond Projects.</span>
                         <br class="hidden sm:block">
                         <span class="premium-text-line-2">
-                            <span class="premium-text-part">We Deliver Your</span> 
+                            <span class="premium-text-part">Your</span> 
                             <span class="premium-text-accent">Cognitive</span> 
                             <span class="premium-text-part">Competitive Edge.</span>
                         </span>

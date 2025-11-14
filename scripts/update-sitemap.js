@@ -41,7 +41,8 @@ const STATIC_PAGES = [
         priority: '1.0',
         image: {
             loc: `${CONFIG.SITE_URL}/assets/icons/ui/mantravi.png`,
-            title: 'Mantravi - Engineering Global Disruption with AI-Native Excellence'
+            title: 'Mantravi - AI-Native Digital Solutions | Web Development, Mobile Apps & IT Services',
+            caption: 'Mantravi delivers cutting-edge AI-powered digital solutions including web development, mobile apps, digital marketing, QA services, and IT consulting.'
         }
     },
     {
@@ -279,7 +280,12 @@ function generateSitemap(blogs) {
             xml += `
         <image:image>
             <image:loc>${page.image.loc}</image:loc>
-            <image:title>${escapeXml(page.image.title)}</image:title>
+            <image:title>${escapeXml(page.image.title)}</image:title>`;
+            if (page.image.caption) {
+                xml += `
+            <image:caption>${escapeXml(page.image.caption)}</image:caption>`;
+            }
+            xml += `
         </image:image>`;
         }
         

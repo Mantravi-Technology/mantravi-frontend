@@ -47,9 +47,31 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://mantravi.com/contact">
     
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Sitemap -->
+    <link rel="sitemap" type="application/xml" href="https://mantravi.com/sitemap.xml">
     
-    <script>
+    <!-- Preconnect to external domains for faster resource loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    
+    <!-- Optimize font loading with display=swap to prevent FOIT -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Preload critical CSS -->
+    <link rel="preload" href="/assets/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/assets/css/main.css"></noscript>
+    
+    <!-- Font Awesome - defer loading -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    
+    <!-- Defer non-critical scripts -->
+    <script defer src="https://cdn.tailwindcss.com"></script>
+    <script defer>
         tailwind.config = {
             theme: {
                 extend: {
@@ -64,36 +86,28 @@
             }
         }
     </script>
+    <script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     
-    <link rel="stylesheet" href="/assets/css/main.css">
+    <!-- Parallax Config - Defer -->
+    <script defer src="/config/parallax-config.js"></script>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Console Protection Configuration - Defer -->
+    <script defer src="/config/console-protection-config.js"></script>
     
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <!-- Console Protection - Defer -->
+    <script defer src="/assets/js/console-protection.js"></script>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <script src="/config/parallax-config.js"></script>
-    
-    <!-- Console Protection Configuration -->
-    <script src="/config/console-protection-config.js"></script>
-    
-    <!-- Console Protection - Load First to Block Console Access -->
-    <script src="/assets/js/console-protection.js"></script>
-    
-    <!-- Google Analytics Configuration -->
-    <script src="/config/analytics-config.js"></script>
-    <script>
+    <!-- Google Analytics Configuration - Defer -->
+    <script defer src="/config/analytics-config.js"></script>
+    <script defer>
         if (typeof ANALYTICS_CONFIG !== 'undefined') {
             window.ANALYTICS_CONFIG = ANALYTICS_CONFIG;
         }
     </script>
     
-    <!-- Google Analytics -->
+    <!-- Google Analytics - Async for non-blocking -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5F8EJP5WXD"></script>
-    <script>
+    <script defer>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
@@ -102,6 +116,45 @@
             'allow_google_signals': false,
             'allow_ad_personalization_signals': false
         });
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://mantravi.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Contact",
+                "item": "https://mantravi.com/contact"
+            }
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "Contact Us - Mantravi",
+        "description": "Contact Mantravi for your digital transformation needs. Get free consultation for web development, mobile apps, digital marketing, and IT consulting.",
+        "url": "https://mantravi.com/contact",
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "Mantravi",
+            "url": "https://mantravi.com",
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "Customer Service",
+                "url": "https://mantravi.com/contact"
+            }
+        }
+    }
     </script>
     
     <div id="styles-container"></div>
@@ -126,7 +179,7 @@
 <body class="bg-dark-bg text-white smooth-scroll premium-scroll font-sans">
 
     <header id="header-container"></header>
-    <script src="/assets/js/component-loader.js"></script>
+    <script defer src="/assets/js/component-loader.js"></script>
     
 
     <!-- Contact Page Header -->
@@ -338,8 +391,17 @@
 
     <div id="contact-form-container"></div>
 
-    <script src="/assets/js/api-service.js"></script>
+    <!-- Load JavaScript at end of body for better performance -->
+    <script defer src="/assets/js/api-service.js"></script>
+    <script defer src="/assets/js/main.js"></script>
     
-    <script src="/assets/js/main.js"></script>
+    <!-- Initialize Lucide icons after DOM is ready -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+    </script>
 </body>
 </html>

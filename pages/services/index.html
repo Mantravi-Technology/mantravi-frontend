@@ -47,29 +47,44 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://mantravi.com/services">
     
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <!-- Sitemap -->
+    <link rel="sitemap" type="application/xml" href="https://mantravi.com/sitemap.xml">
+    
+    <!-- Preconnect to external domains for faster resource loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display?swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     
-    <!-- Console Protection Configuration -->
-    <script src="/config/console-protection-config.js"></script>
+    <!-- Optimize font loading with display=swap to prevent FOIT -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Console Protection - Load First to Block Console Access -->
-    <script src="/assets/js/console-protection.js"></script>
+    <!-- Preload critical CSS -->
+    <link rel="preload" href="/assets/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/assets/css/main.css"></noscript>
     
-    <!-- Google Analytics Configuration -->
-    <script src="/config/analytics-config.js"></script>
-    <script>
+    <!-- Defer non-critical scripts -->
+    <script defer src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Console Protection Configuration - Defer -->
+    <script defer src="/config/console-protection-config.js"></script>
+    
+    <!-- Console Protection - Defer -->
+    <script defer src="/assets/js/console-protection.js"></script>
+    
+    <!-- Google Analytics Configuration - Defer -->
+    <script defer src="/config/analytics-config.js"></script>
+    <script defer>
         if (typeof ANALYTICS_CONFIG !== 'undefined') {
             window.ANALYTICS_CONFIG = ANALYTICS_CONFIG;
         }
     </script>
     
-    <!-- Google Analytics -->
+    <!-- Google Analytics - Async for non-blocking -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5F8EJP5WXD"></script>
-    <script>
+    <script defer>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
@@ -179,6 +194,26 @@
             "@type": "ImageObject",
             "url": "https://mantravi.com/assets/icons/ui/mantravi.png"
         }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://mantravi.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Services",
+                "item": "https://mantravi.com/services"
+            }
+        ]
     }
     </script>
     
@@ -368,14 +403,15 @@
     <div id="styles-container"></div>
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
-    <script src="/config/parallax-config.js"></script>
-    <script src="/assets/js/component-loader.js"></script>
+    <!-- Load JavaScript at end of body for better performance -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script defer src="/config/parallax-config.js"></script>
+    <script defer src="/assets/js/component-loader.js"></script>
     <!-- API Service -->
-    <script src="/assets/js/api-service.js"></script>
+    <script defer src="/assets/js/api-service.js"></script>
     
     <!-- Main JavaScript -->
-    <script src="/assets/js/main.js"></script>
+    <script defer src="/assets/js/main.js"></script>
     <script>
         // Wait for everything to be ready before initializing
         function initializeServicesPage() {

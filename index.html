@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Favicon - MUST be first to prevent browser using header logo as favicon -->
     <link rel="icon" type="image/x-icon" href="/assets/icons/ui/favicon/favicon.ico">
@@ -58,6 +58,9 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://mantravi.com/">
     
+    <!-- Sitemap -->
+    <link rel="sitemap" type="application/xml" href="https://mantravi.com/sitemap.xml">
+    
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -102,6 +105,19 @@
             'allow_ad_personalization_signals': false
         });
     </script>
+    
+    <!-- Google Search Console Verification (Add your verification code here) -->
+    <!-- <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE_HERE" /> -->
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="rating" content="general">
+    <meta name="distribution" content="global">
+    <meta name="coverage" content="worldwide">
+    <meta name="target" content="all">
+    <meta name="audience" content="all">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
     
     <!-- Structured Data (JSON-LD) for SEO -->
     <script type="application/ld+json">
@@ -188,6 +204,41 @@
                 "urlTemplate": "https://mantravi.com/blog?q={search_term_string}"
             },
             "query-input": "required name=search_term_string"
+        },
+        "mainEntity": {
+            "@type": "ItemList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "url": "https://mantravi.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Services",
+                    "url": "https://mantravi.com/services"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "About",
+                    "url": "https://mantravi.com/about"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 4,
+                    "name": "Blog",
+                    "url": "https://mantravi.com/blog"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 5,
+                    "name": "Contact",
+                    "url": "https://mantravi.com/contact"
+                }
+            ]
         }
     }
     </script>
@@ -245,6 +296,124 @@
         }
     }
     </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://mantravi.com/"
+            }
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Which industries do you have expertise in?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We have strong experience across a wide range of sectors: D2C & E-Commerce, Education & EdTech, Healthcare & Wellness, Real Estate, Hospitality & Tourism, Manufacturing, Politics, Handicrafts & ODOP, Corporate Services, Restaurants & Food, SaaS & Startups."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How is AI implemented in your solutions?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We integrate AI across multiple dimensions: Smart Analytics for data-driven decision making, Automated Testing with intelligent QA processes, Predictive Marketing with AI-powered campaigns, and Personalization for customized user experiences based on behavioral data."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How much does a business website cost?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Our pricing is competitive and transparent. D2C Apparel Store (Small brand): ₹10,000 - ₹30,000. Fitness Studio Booking Platform: ₹25,000 - ₹50,000. Restaurant with Online Ordering: ₹50,000 - ₹1,50,000+. SaaS Product with Admin Dashboard: ₹75,000 - ₹2,50,000+."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How much does a mobile app cost?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We offer competitive mobile app development pricing. Basic Mobile App (iOS or Android): ₹25,000 - ₹50,000. E-commerce Mobile App: ₹50,000 - ₹1,00,000. Cross-Platform App (iOS + Android): ₹75,000 - ₹1,50,000. Enterprise App with Admin Panel: ₹1,50,000 - ₹3,00,000+."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How are digital marketing plans priced?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Marketing plans vary based on goals and campaign intensity. Local Growth: ₹10,000 - ₹20,000/month. Regional Branding: ₹20,000 - ₹60,000/month. Performance Marketing: ₹60,000+/month."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why are your prices lower than competitors?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Our competitive pricing comes from leveraging AI-powered tools and efficient processes: AI-Powered Development reducing time by up to 40%, Reusable Components library, Automated Testing with AI-driven QA, Smart Project Management, and Predictive Analytics for accurate estimates."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do you offer flexible payment plans?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! We offer flexible milestone-based payment plans: 40% at project start, 40% after mid-phase/demo, and 20% upon final delivery. For long-term support or marketing plans, we use simple monthly retainers."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do you provide ongoing support & maintenance?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! We offer comprehensive ongoing support including 24/7 monitoring, performance optimization, security updates, automated backups, and technical assistance. Our AI-enhanced monitoring systems proactively detect and resolve issues."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Are there hidden costs after project delivery?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No hidden charges! You only pay for new features or additional pages you request. However, we highly recommend our maintenance plan for security updates, performance optimization, regular backups, and keeping your platform up-to-date."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I be involved in the development process?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Absolutely! We follow an agile, transparent workflow with regular updates, demos, and feedback checkpoints. You are an active participant throughout the entire journey, ensuring the final solution aligns perfectly with your goals and vision."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why are prices structured in packages?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Most MSME clients prefer transparent, predictable pricing. Our tiered packages allow you to start small with essential features, see real results before scaling up, and upgrade only when ready to expand. This reduces risk and makes scaling easier."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I reach Mantravi?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Getting in touch with us is easy! You can reach out through our contact page, schedule a free consultation, or use the consultation form on any page. Share your vision, goals, and challenges, and our expert team will help you define the strategy, timeline, and scope."
+                }
+            }
+        ]
+    }
+    </script>
     
     <!-- Common Styles Component -->
     <div id="styles-container"></div>
@@ -258,7 +427,7 @@
 
 
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center overflow-hidden hero-pattern hero-fallback">
+    <section class="relative min-h-[50vh] sm:min-h-[65vh] md:min-h-[75vh] lg:min-h-screen flex items-center justify-center overflow-hidden hero-pattern hero-fallback py-8 sm:py-12 md:py-16 lg:py-0">
         <!-- Video Background -->
         <div class="absolute inset-0 w-full h-full">
             <video 
@@ -285,34 +454,34 @@
         </div>
         
         <!-- Hero Content -->
-        <div class="hero-content container mx-auto px-4 sm:px-6 text-center">
-            <h1 class="hero-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-4 sm:mb-6 leading-tight">
+        <div class="hero-content container mx-auto px-4 sm:px-6 text-center relative z-10">
+            <h1 class="hero-title text-2xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-black mb-2 sm:mb-3 md:mb-4 lg:mb-6 leading-tight">
                 <span class="block">Innovating Trust</span>
                 <span class="text-[#4EE4FF] text-glow">Connecting</span>
                 <span class="block">Possibilities</span>
             </h1>
-            <p class="hero-subtitle text-lg sm:text-xl md:text-2xl text-gray-200 mb-6 sm:mb-8 max-w-4xl mx-auto leading-relaxed px-2">
+            <p class="hero-subtitle text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-200 mb-3 sm:mb-4 md:mb-6 lg:mb-8 max-w-4xl mx-auto leading-relaxed px-2">
                 Your trusted partner for IT services, AI-driven digital transformation, and reliable support and maintenance.
             </p>
-            <button class="hero-button text-[#4EE4FF] px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold hover:text-white transition-all duration-300 w-full sm:w-auto" onclick="openConsultModal()">
+            <button class="hero-button text-[#4EE4FF] px-4 sm:px-5 md:px-6 lg:px-8 py-2 sm:py-2.5 md:py-3 lg:py-4 rounded-lg text-xs sm:text-sm md:text-base lg:text-lg font-semibold hover:text-white transition-all duration-300 inline-block mx-auto max-w-[200px] sm:max-w-none" onclick="openConsultModal()">
                 Consult Our Experts
             </button>
         </div>
         
         <!-- Scroll Indicator -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <i data-lucide="chevron-down" class="w-6 h-6 text-[#4EE4FF]"></i>
+        <div class="absolute bottom-2 sm:bottom-4 md:bottom-6 lg:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hidden sm:block">
+            <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 md:w-6 text-[#4EE4FF]"></i>
         </div>
     </section>
 
 
     <!-- Core Services Section -->
-    <section id="services" class="py-16 sm:py-20 relative overflow-hidden bg-[#050a30]">
+    <section id="services" class="py-8 sm:py-12 md:py-16 lg:py-20 relative overflow-hidden bg-[#050a30]">
         <!-- Simple dark navy background -->
         <div class="absolute inset-0 bg-[#050a30]"></div>
         
         <div class="relative z-10 container mx-auto px-4 sm:px-6">
-            <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8 sm:mb-12 md:mb-16 px-2">
+            <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-center mb-6 sm:mb-8 md:mb-12 lg:mb-16 px-2">
                 Transform Your Digital Future with <span class="text-[#4EE4FF]">Mantravi's</span> Engineering Solutions
             </h2>
             
@@ -489,12 +658,12 @@
                     </div>
                 </div>
                 
-                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-6 leading-tight">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-white mb-6 leading-tight">
                     <div class="premium-text-container">
-                        <span class="premium-text-line-1">We Don't Just Deliver a Project.</span>
+                        <span class="premium-text-line-1">Beyond Projects.</span>
                         <br class="hidden sm:block">
                         <span class="premium-text-line-2">
-                            <span class="premium-text-part">We Deliver Your</span> 
+                            <span class="premium-text-part">Your</span> 
                             <span class="premium-text-accent">Cognitive</span> 
                             <span class="premium-text-part">Competitive Edge.</span>
                         </span>
@@ -947,17 +1116,63 @@
             <!-- FAQ Grid - 2 columns on desktop, 1 on mobile -->
             <div class="max-w-6xl mx-auto px-4 sm:px-6">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 lg:gap-6 items-start">
-                    <!-- FAQ Item 1 - How to Reach Mantravi -->
+                    <!-- FAQ Item 1 - Which industries do you have expertise in? -->
                     <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col">
                         <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[72px]" onclick="toggleFaq(event, this)">
-                            <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">How do I reach Mantravi?</span>
+                            <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">Which industries do you have expertise in?</span>
                             <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-[#4EE4FF] flex-shrink-0 transform transition-transform duration-300 faq-icon ml-2"></i>
                         </button>
                         <div class="faq-answer-wrapper overflow-hidden">
                             <div class="faq-answer hidden p-4 sm:p-5 md:p-6 pt-0 pb-4 sm:pb-5">
-                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed break-words">
-                                Getting in touch with us is easy! You can reach out through our contact page, schedule a free consultation, or use the consultation form on any page. Share your vision, goals, and challenges, and our expert team will help you define the strategy, timeline, and scope based on your business needs. We'll provide a detailed proposal with transparent pricing and a clear roadmap to success.
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-3 break-words">
+                                We have strong experience across a wide range of sectors:
                             </p>
+                            <div class="grid grid-cols-2 gap-2 text-sm">
+                                <div class="flex items-center text-gray-300">
+                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
+                                    <span>D2C & E-Commerce</span>
+                                </div>
+                                <div class="flex items-center text-gray-300">
+                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
+                                    <span>Education & EdTech</span>
+                                </div>
+                                <div class="flex items-center text-gray-300">
+                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
+                                    <span>Healthcare & Wellness</span>
+                                </div>
+                                <div class="flex items-center text-gray-300">
+                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
+                                    <span>Real Estate</span>
+                                </div>
+                                <div class="flex items-center text-gray-300">
+                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
+                                    <span>Hospitality & Tourism</span>
+                                </div>
+                                <div class="flex items-center text-gray-300">
+                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
+                                    <span>Manufacturing</span>
+                                </div>
+                                <div class="flex items-center text-gray-300">
+                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
+                                    <span>Politics</span>
+                                </div>
+                                <div class="flex items-center text-gray-300">
+                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
+                                    <span>Handicrafts & ODOP</span>
+                                </div>
+                                <div class="flex items-center text-gray-300">
+                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
+                                    <span>Corporate Services</span>
+                                </div>
+                                <div class="flex items-center text-gray-300">
+                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
+                                    <span>Restaurants & Food</span>
+                                </div>
+                                <div class="flex items-center text-gray-300">
+                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
+                                    <span>SaaS & Startups</span>
+                                </div>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -1277,63 +1492,17 @@
                         </div>
                     </div>
 
-                    <!-- FAQ Item 10 -->
+                    <!-- FAQ Item 10 - How to Reach Mantravi -->
                     <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col">
                         <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[72px]" onclick="toggleFaq(event, this)">
-                            <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">Which industries do you have expertise in?</span>
+                            <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">How do I reach Mantravi?</span>
                             <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-[#4EE4FF] flex-shrink-0 transform transition-transform duration-300 faq-icon ml-2"></i>
                         </button>
                         <div class="faq-answer-wrapper overflow-hidden">
                             <div class="faq-answer hidden p-4 sm:p-5 md:p-6 pt-0 pb-4 sm:pb-5">
-                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-3 break-words">
-                                We have strong experience across a wide range of sectors:
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed break-words">
+                                Getting in touch with us is easy! You can reach out through our contact page, schedule a free consultation, or use the consultation form on any page. Share your vision, goals, and challenges, and our expert team will help you define the strategy, timeline, and scope based on your business needs. We'll provide a detailed proposal with transparent pricing and a clear roadmap to success.
                             </p>
-                            <div class="grid grid-cols-2 gap-2 text-sm">
-                                <div class="flex items-center text-gray-300">
-                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
-                                    <span>D2C & E-Commerce</span>
-                                </div>
-                                <div class="flex items-center text-gray-300">
-                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
-                                    <span>Education & EdTech</span>
-                                </div>
-                                <div class="flex items-center text-gray-300">
-                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
-                                    <span>Healthcare & Wellness</span>
-                                </div>
-                                <div class="flex items-center text-gray-300">
-                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
-                                    <span>Real Estate</span>
-                                </div>
-                                <div class="flex items-center text-gray-300">
-                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
-                                    <span>Hospitality & Tourism</span>
-                                </div>
-                                <div class="flex items-center text-gray-300">
-                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
-                                    <span>Manufacturing</span>
-                                </div>
-                                <div class="flex items-center text-gray-300">
-                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
-                                    <span>Politics</span>
-                                </div>
-                                <div class="flex items-center text-gray-300">
-                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
-                                    <span>Handicrafts & ODOP</span>
-                                </div>
-                                <div class="flex items-center text-gray-300">
-                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
-                                    <span>Corporate Services</span>
-                                </div>
-                                <div class="flex items-center text-gray-300">
-                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
-                                    <span>Restaurants & Food</span>
-                                </div>
-                                <div class="flex items-center text-gray-300">
-                                    <i data-lucide="check" class="w-4 h-4 text-[#4EE4FF] mr-2"></i>
-                                    <span>SaaS & Startups</span>
-                                </div>
-                            </div>
                             </div>
                         </div>
                     </div>

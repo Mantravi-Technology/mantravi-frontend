@@ -305,11 +305,13 @@ document.addEventListener('DOMContentLoaded', async () => {
           <div class="w-full rounded-2xl bg-[#4EE4FF]/10 shadow-xl p-2" style="overflow: visible !important; position: relative; width: 100%;">
             <img src="${imageUrl}" alt="${post.title || 'Blog image'}" 
                  id="main-blog-image"
-                 style="display: block !important; width: 100% !important; height: auto !important; max-width: 100% !important; object-fit: contain !important; object-position: center !important; margin: 0 auto; position: relative !important; visibility: visible !important; opacity: 1 !important; max-height: 600px; z-index: 1;"
+                 width="1200"
+                 height="630"
+                 style="display: block !important; width: 100% !important; height: auto !important; max-width: 100% !important; aspect-ratio: 1200/630; object-fit: contain !important; object-position: center !important; margin: 0 auto; position: relative !important; visibility: visible !important; opacity: 1 !important; max-height: 600px; z-index: 1;"
                  loading="eager"
                  decoding="async"
-                 onload="this.style.display='block'; this.style.visibility='visible'; this.style.opacity='1'; this.classList.add('loaded');"
-                 onerror="this.src='/assets/icons/ui/mantravi.png'; this.onerror=null; this.style.display='block'; this.style.visibility='visible'; this.style.opacity='1';" />
+                 onload="this.style.display='block'; this.style.visibility='visible'; this.style.opacity='1'; this.classList.add('loaded'); const img=this; if(img.naturalWidth && img.naturalHeight){img.setAttribute('width',img.naturalWidth);img.setAttribute('height',img.naturalHeight);}"
+                 onerror="this.src='/assets/icons/ui/mantravi.png'; this.onerror=null; this.setAttribute('width','512'); this.setAttribute('height','512'); this.style.display='block'; this.style.visibility='visible'; this.style.opacity='1';" />
           </div>
         `;
         // Insert hero image FIRST, before any other content
@@ -380,14 +382,34 @@ document.addEventListener('DOMContentLoaded', async () => {
       // Initialize reading progress tracker
       initReadingProgress();
       
-      // Optimize images with lazy loading
+      // Optimize images with lazy loading and dimensions
       setTimeout(() => {
         const images = contentWrapper.querySelectorAll('img:not([loading])');
         images.forEach((img, index) => {
           if (index > 0) {
             img.setAttribute('loading', 'lazy');
             img.setAttribute('decoding', 'async');
-            img.addEventListener('load', () => img.classList.add('loaded'));
+            // Add width/height if not present to prevent CLS
+            if (!img.hasAttribute('width') || !img.hasAttribute('height')) {
+              img.addEventListener('load', function() {
+                if (this.naturalWidth && this.naturalHeight) {
+                  this.setAttribute('width', this.naturalWidth);
+                  this.setAttribute('height', this.naturalHeight);
+                  this.style.aspectRatio = `${this.naturalWidth}/${this.naturalHeight}`;
+                }
+                this.classList.add('loaded');
+              });
+            } else {
+              img.addEventListener('load', () => img.classList.add('loaded'));
+            }
+            // Set aspect ratio if dimensions exist
+            if (img.hasAttribute('width') && img.hasAttribute('height')) {
+              const w = parseInt(img.getAttribute('width'));
+              const h = parseInt(img.getAttribute('height'));
+              if (w && h) {
+                img.style.aspectRatio = `${w}/${h}`;
+              }
+            }
           }
         });
         
@@ -423,7 +445,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       // Fallback for plain text/markdown content
       container.innerHTML = `
         <div class="rounded-xl overflow-hidden bg-[#4EE4FF]/10 mb-8">
-          <img src="${post.mainImagePath || '/assets/icons/ui/mantravi.png'}" alt="${post.title}" class="w-full h-80 object-cover" />
+          <img src="${post.mainImagePath || '/assets/icons/ui/mantravi.png'}" alt="${post.title}" width="1200" height="320" class="w-full h-80 object-cover" loading="eager" decoding="async" style="aspect-ratio: 1200/320;" />
         </div>
         <div class="prose prose-invert max-w-none">
           <p class="text-gray-200 text-[18px] leading-8 font-semibold">${(post.summary || '')}</p>
@@ -536,9 +558,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             <div class="h-44 rounded-t-xl overflow-hidden bg-gradient-to-br from-[#4EE4FF]/20 to-[#4EE4FF]/5 flex items-center justify-center relative">
               <img src="${imageUrl}" 
                    alt="${x.title || 'Related article'}" 
+                   width="400"
+                   height="176"
                    class="related-article-image object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
                    loading="lazy"
-                   onerror="this.onerror=null; this.src='/assets/icons/ui/mantravi.png'; this.classList.add('opacity-50');"/>
+                   decoding="async"
+                   style="aspect-ratio: 400/176;"
+                   onload="if(this.naturalWidth && this.naturalHeight){this.setAttribute('width',this.naturalWidth);this.setAttribute('height',this.naturalHeight);this.style.aspectRatio=this.naturalWidth+'/'+this.naturalHeight;}"
+                   onerror="this.onerror=null; this.src='/assets/icons/ui/mantravi.png'; this.setAttribute('width','400'); this.setAttribute('height','176'); this.classList.add('opacity-50');"/>
               <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
             </div>
             <div class="p-5">

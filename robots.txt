@@ -1,11 +1,18 @@
 # robots.txt for Mantravi Website
 # Optimized for Search Engine Crawling and SEO
+# Last updated: 2025-11-15
 
 # Default rules for all bots
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+Disallow: /functions_backup/
+Disallow: /functions_disabled/
 
 # Explicitly allow important pages for better indexing
+Allow: /$
 Allow: /about
 Allow: /services
 Allow: /contact
@@ -23,20 +30,19 @@ Allow: /assets/js/
 Allow: /assets/videos/
 Allow: /assets/animations/
 
-# Disallow admin/private areas and unnecessary paths
-Disallow: /admin/
-Disallow: /private/
-Disallow: /api/
-Disallow: /functions_backup/
-Disallow: /functions_disabled/
+# Disallow unnecessary paths and duplicate content
 Disallow: /*.md$
 Disallow: /*.yaml$
 Disallow: /*.yml$
 Disallow: /pages/home/
 Disallow: /pages/home/index.html
+Disallow: /*?*&
+Allow: /blog/post?slug=
 
 # Sitemap location - Critical for SEO
+# Multiple sitemap declarations for better discovery
 Sitemap: https://mantravi.com/sitemap.xml
+Sitemap: https://www.mantravi.com/sitemap.xml
 
 # Crawl-delay for respectful crawling
 Crawl-delay: 1

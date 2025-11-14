@@ -30,30 +30,48 @@
     <!-- Canonical URL (will be updated dynamically) -->
     <link rel="canonical" href="">
     
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="/assets/css/main.css">
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <!-- Sitemap -->
+    <link rel="sitemap" type="application/xml" href="https://mantravi.com/sitemap.xml">
+    
+    <!-- Preconnect to external domains for faster resource loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    
+    <!-- Optimize font loading with display=swap to prevent FOIT -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Console Protection Configuration -->
-    <script src="/config/console-protection-config.js"></script>
-    
-    <!-- Console Protection - Load First to Block Console Access -->
-    <script src="/assets/js/console-protection.js"></script>
-    
-    <!-- Google Analytics Configuration -->
-    <script src="/config/analytics-config.js"></script>
+    <!-- Preload critical CSS with fallback -->
+    <link rel="preload" href="/assets/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/assets/css/main.css"></noscript>
+    <!-- Fallback for browsers that don't support onload on link -->
     <script>
+      !function(e){"use strict";var t=function(t,n,o){var i,r=e.document,a=r.createElement("link");if(n)i=n;else{var l=(r.body||r.getElementsByTagName("head")[0]).childNodes;i=l[l.length-1]}var d=r.styleSheets;a.rel="stylesheet",a.href=t,a.media="only x",function e(t){if(r.body)return t();setTimeout(function(){e(t)})}(function(){i.parentNode.insertBefore(a,n?i:i.nextSibling)});var f=function(e){for(var t=a.href,n=d.length;n--;)if(d[n].href===t)return e();setTimeout(function(){f(e)})};return a.addEventListener&&a.addEventListener("load",function(){this.media=o||"all"}),a.onloadcssdefined=f,f(function(){a.media!==o&&(a.media=o||"all")}),a};"undefined"!=typeof exports?exports.loadCSS=t:e.loadCSS=t}("undefined"!=typeof global?global:this);
+    </script>
+    
+    <!-- Defer non-critical scripts -->
+    <script defer src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Console Protection Configuration - Defer non-critical -->
+    <script defer src="/config/console-protection-config.js"></script>
+    
+    <!-- Console Protection - Defer -->
+    <script defer src="/assets/js/console-protection.js"></script>
+    
+    <!-- Google Analytics Configuration - Defer -->
+    <script defer src="/config/analytics-config.js"></script>
+    <script defer>
         if (typeof ANALYTICS_CONFIG !== 'undefined') {
             window.ANALYTICS_CONFIG = ANALYTICS_CONFIG;
         }
     </script>
     
-    <!-- Google Analytics -->
+    <!-- Google Analytics - Async for non-blocking -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5F8EJP5WXD"></script>
-    <script>
+    <script defer>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
@@ -529,9 +547,19 @@
 
     <footer id="footer-container"></footer>
 
-    <script src="/assets/js/main.js"></script>
-    <script src="/assets/js/api-service.js"></script>
-    <script src="/assets/js/blog-detail.js"></script>
+    <!-- Load JavaScript at end of body for better performance -->
+    <script defer src="/assets/js/main.js"></script>
+    <script defer src="/assets/js/api-service.js"></script>
+    <script defer src="/assets/js/blog-detail.js"></script>
+    
+    <!-- Initialize Lucide icons after DOM is ready -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+    </script>
 </body>
 </html>
 
