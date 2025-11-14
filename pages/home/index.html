@@ -421,10 +421,10 @@
             
             <!-- Mobile Services Carousel -->
             <div class="block lg:hidden services-carousel-container relative">
-                <div class="services-carousel overflow-x-auto" id="servicesCarousel">
+                <div class="services-carousel overflow-x-auto" id="servicesCarousel" style="-webkit-overflow-scrolling: touch; scroll-behavior: smooth;">
                     <div class="flex gap-3 sm:gap-4 md:gap-6 pb-2" style="width: max-content;">
                         <!-- Card 1: Digital Products & Development -->
-                        <div class="bg-black/50 backdrop-blur-sm rounded-xl p-4 sm:p-6 md:p-8 card-hover border border-white/10 parallax-cards flex-shrink-0 w-72 sm:w-auto">
+                        <div class="bg-black/70 backdrop-blur-sm rounded-xl p-4 sm:p-6 md:p-8 card-hover border border-gray-800/50 parallax-cards flex-shrink-0 w-72 sm:w-auto" style="background-color: rgba(0, 0, 0, 0.7); border-color: rgba(31, 41, 55, 0.5);">
                             <div class="text-[#4EE4FF] mb-3 sm:mb-4 md:mb-6">
                                 <i data-lucide="smartphone" class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"></i>
                             </div>
@@ -435,7 +435,7 @@
                 </div>
                 
                 <!-- Card 2: Brand, SEO & Marketing -->
-                        <div class="bg-black/50 backdrop-blur-sm rounded-xl p-4 sm:p-6 md:p-8 card-hover border border-white/10 parallax-cards flex-shrink-0 w-72 sm:w-auto">
+                        <div class="bg-black/70 backdrop-blur-sm rounded-xl p-4 sm:p-6 md:p-8 card-hover border border-gray-800/50 parallax-cards flex-shrink-0 w-72 sm:w-auto" style="background-color: rgba(0, 0, 0, 0.7); border-color: rgba(31, 41, 55, 0.5);">
                             <div class="text-[#4EE4FF] mb-3 sm:mb-4 md:mb-6">
                                 <i data-lucide="trending-up" class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"></i>
                     </div>
@@ -446,7 +446,7 @@
                 </div>
                 
                 <!-- Card 3: QA & IT Solutions -->
-                        <div class="bg-black/50 backdrop-blur-sm rounded-xl p-4 sm:p-6 md:p-8 card-hover border border-white/10 parallax-cards flex-shrink-0 w-72 sm:w-auto">
+                        <div class="bg-black/70 backdrop-blur-sm rounded-xl p-4 sm:p-6 md:p-8 card-hover border border-gray-800/50 parallax-cards flex-shrink-0 w-72 sm:w-auto" style="background-color: rgba(0, 0, 0, 0.7); border-color: rgba(31, 41, 55, 0.5);">
                             <div class="text-[#4EE4FF] mb-3 sm:mb-4 md:mb-6">
                                 <i data-lucide="settings" class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"></i>
                             </div>
@@ -2103,6 +2103,98 @@
                     new ZigzagRoadmapAnimator();
                 });
             </script>
+
+    <!-- Services Carousel Styles -->
+    <style>
+        /* Services Carousel - Smooth Scrolling & Tap Highlight Fix */
+        .services-carousel {
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+            scroll-padding: 0;
+            /* Remove tap highlight */
+            -webkit-tap-highlight-color: transparent;
+            /* Ensure smooth momentum scrolling on iOS */
+            -webkit-overflow-scrolling: touch;
+            /* Prevent white background flash on tap */
+            background-color: transparent;
+            /* Smooth scrolling */
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+        }
+        
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .services-carousel::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Services carousel container */
+        .services-carousel-container {
+            /* Prevent tap highlight */
+            -webkit-tap-highlight-color: transparent;
+            background-color: transparent;
+        }
+        
+        /* Service cards in carousel */
+        .services-carousel .flex-shrink-0 {
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            /* Remove tap highlight */
+            -webkit-tap-highlight-color: transparent;
+            /* Prevent white background on tap */
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+            /* Ensure smooth transitions */
+            transition: transform 0.2s ease-out;
+        }
+        
+        /* Remove tap highlight from all interactive elements in carousel */
+        .services-carousel * {
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        /* View All Services button - remove tap highlight */
+        .services-carousel-container a {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+        }
+        
+        /* Ensure smooth scrolling behavior */
+        @media (max-width: 1024px) {
+            .services-carousel {
+                scroll-behavior: smooth;
+                -webkit-overflow-scrolling: touch;
+                overscroll-behavior-x: contain;
+            }
+        }
+        
+        /* Prevent white flash on active state */
+        .services-carousel:active,
+        .services-carousel-container:active {
+            background-color: transparent !important;
+        }
+        
+        /* Card hover/tap states */
+        .services-carousel .flex-shrink-0:active {
+            transform: scale(0.98);
+            background-color: rgba(0, 0, 0, 0.7) !important;
+        }
+        
+        /* Ensure no white shows through on cards */
+        .services-carousel .flex-shrink-0 {
+            background-color: rgba(0, 0, 0, 0.7) !important;
+            border-color: rgba(31, 41, 55, 0.5) !important;
+            /* Prevent any white from showing */
+            box-shadow: inset 0 0 0 1px rgba(31, 41, 55, 0.5);
+        }
+        
+        /* Override any white borders */
+        .services-carousel .flex-shrink-0,
+        .services-carousel .flex-shrink-0 * {
+            border-color: rgba(31, 41, 55, 0.5) !important;
+        }
+    </style>
 
     <!-- FAQ Section Styles -->
     <style>
