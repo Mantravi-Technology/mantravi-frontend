@@ -17,11 +17,8 @@ html, body {
     box-sizing: border-box;
 }
 
-/* Import Tailwind CSS */
-@import url('https://cdn.tailwindcss.com');
-
-/* Import Inter Font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+/* Note: Tailwind CSS and Inter Font are loaded directly in HTML <head> */
+/* This prevents FOUC caused by @import delays */
 
 /* Home Page Specific Styles */
 

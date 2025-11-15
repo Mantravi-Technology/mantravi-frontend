@@ -1906,8 +1906,51 @@
 
         // Auto-scroll for mobile services carousel
         let autoScrollInterval = null;
+        let isUserInteracting = false;
+        let userInteractionTimeout = null;
+        let lastScrollPosition = 0;
+        let scrollCheckInterval = null;
+        let isAutoScrolling = false; // Flag to prevent auto-scroll from pausing itself
+        
+        function pauseAutoScroll() {
+            if (autoScrollInterval) {
+                clearInterval(autoScrollInterval);
+                autoScrollInterval = null;
+            }
+            isUserInteracting = true;
+            
+            // Clear any existing timeout
+            if (userInteractionTimeout) {
+                clearTimeout(userInteractionTimeout);
+            }
+            
+            // Resume auto-scroll after 2 seconds of inactivity
+            userInteractionTimeout = setTimeout(() => {
+                isUserInteracting = false;
+                resumeAutoScroll();
+            }, 2000);
+        }
+        
+        function resumeAutoScroll() {
+            if (isUserInteracting) return; // Don't resume if user is still interacting
+            
+            const carousel = document.getElementById('servicesCarousel');
+            if (!carousel) return;
+            
+            // Only run on mobile/tablet (up to 1024px)
+            if (window.innerWidth > 1024) return;
+            
+            // Don't start if already running
+            if (autoScrollInterval) return;
+            
+            // Start auto-scroll
+            autoScrollInterval = setInterval(autoScrollCarousel, 3500);
+        }
         
         function autoScrollCarousel() {
+            // Don't auto-scroll if user is interacting
+            if (isUserInteracting) return;
+            
             const carousel = document.getElementById('servicesCarousel');
             if (!carousel) return;
             
@@ -1936,6 +1979,8 @@
             const currentScroll = carousel.scrollLeft;
             const isAtEnd = currentScroll >= maxScroll - 10;
             
+            isAutoScrolling = true; // Set flag before scrolling
+            
             if (isAtEnd) {
                 // Reset to beginning smoothly
                 carousel.scrollTo({ 
@@ -1949,6 +1994,11 @@
                     behavior: 'smooth' 
                 });
             }
+            
+            // Reset auto-scrolling flag after scroll completes (smooth scroll takes ~500ms)
+            setTimeout(() => {
+                isAutoScrolling = false;
+            }, 600);
         }
 
         // Initialize auto-scroll on mobile
@@ -1962,13 +2012,55 @@
                 autoScrollInterval = null;
             }
             
+            // Clear scroll check interval
+            if (scrollCheckInterval) {
+                clearInterval(scrollCheckInterval);
+                scrollCheckInterval = null;
+            }
+            
+            // Reset interaction state
+            isUserInteracting = false;
+            lastScrollPosition = carousel.scrollLeft;
+            
+            // Detect manual scrolling by checking scroll position changes
+            scrollCheckInterval = setInterval(() => {
+                if (!carousel) return;
+                const currentScroll = carousel.scrollLeft;
+                // If scroll position changed and we're not in the middle of auto-scroll, user is scrolling
+                if (Math.abs(currentScroll - lastScrollPosition) > 5 && !isAutoScrolling && !isUserInteracting) {
+                    pauseAutoScroll();
+                }
+                lastScrollPosition = currentScroll;
+            }, 100);
+            
+            // Pause auto-scroll on user interaction events
+            carousel.addEventListener('touchstart', pauseAutoScroll, { passive: true });
+            carousel.addEventListener('mousedown', pauseAutoScroll, { passive: true });
+            carousel.addEventListener('wheel', pauseAutoScroll, { passive: true });
+            carousel.addEventListener('scroll', () => {
+                // Don't pause if auto-scroll is currently scrolling
+                if (isAutoScrolling) {
+                    lastScrollPosition = carousel.scrollLeft;
+                    return;
+                }
+                
+                // Only pause if scroll is significant (more than 5px) and user is interacting
+                const currentScroll = carousel.scrollLeft;
+                if (Math.abs(currentScroll - lastScrollPosition) > 5) {
+                    pauseAutoScroll();
+                }
+                lastScrollPosition = currentScroll;
+            }, { passive: true });
+            
             // Only start on mobile/tablet
             if (window.innerWidth <= 1024) {
                 // Wait for carousel to be fully rendered
                 setTimeout(() => {
                     // Start auto-scroll after initial delay
                     setTimeout(() => {
-                        autoScrollInterval = setInterval(autoScrollCarousel, 3500); // Scroll every 3.5 seconds
+                        if (!isUserInteracting) {
+                            resumeAutoScroll();
+                        }
                     }, 2000); // Wait 2 seconds before starting
                 }, 500);
             }

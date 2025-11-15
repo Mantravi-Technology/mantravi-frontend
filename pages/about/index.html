@@ -57,15 +57,16 @@
     <link rel="preconnect" href="https://unpkg.com">
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     
-    <!-- Optimize font loading with display=swap to prevent FOIT -->
+    <!-- Tailwind CSS - Load before main.css -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Inter Font - Load before main.css -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Preload critical CSS -->
-    <link rel="preload" href="/assets/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/assets/css/main.css"></noscript>
+    <!-- Main CSS - Load synchronously in <head> to prevent FOUC -->
+    <link rel="stylesheet" href="/assets/css/main.css">
     
     <!-- Defer non-critical scripts -->
-    <script defer src="https://cdn.tailwindcss.com"></script>
     <script defer>
         tailwind.config = {
             theme: {
