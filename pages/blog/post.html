@@ -315,6 +315,7 @@
             width: 100% !important;
             height: auto !important;
             max-width: 100% !important;
+            max-height: none !important;
             object-fit: contain !important;
             object-position: center !important;
             display: block !important;
@@ -323,6 +324,21 @@
             z-index: 10 !important;
             visibility: visible !important;
             opacity: 1 !important;
+        }
+        
+        /* Mobile-specific: Ensure full image height on mobile */
+        @media (max-width: 640px) {
+            #blog-hero-image,
+            #blog-hero-image > div {
+                overflow: visible !important;
+                max-height: none !important;
+            }
+            
+            #main-blog-image {
+                max-height: none !important;
+                height: auto !important;
+                object-fit: contain !important;
+            }
         }
         
         /* Ensure proper left alignment */
