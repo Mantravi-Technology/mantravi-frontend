@@ -112,27 +112,36 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     }
 
-    // Helper: Render a single blog card
+    // Helper: Render a single blog card with improved image handling
     function renderBlogCard(blog) {
+      const imageUrl = blog.mainImagePath || blog.heroImage || blog.image || '/assets/icons/ui/mantravi.png';
+      const imageAlt = blog.title || 'Blog post image';
+      const summary = blog.summary || blog.excerpt || '';
+      const author = blog.author || 'Mantravi Team';
+      const publishedDate = formatDate(blog.publishedAt);
+      
       return `
         <article class="blog-card-premium cursor-pointer">
           <div class="blog-card-image-premium">
-            <img src="${blog.mainImagePath || '/assets/icons/ui/mantravi.png'}" 
-                 alt="${blog.title}" 
+            <img src="${imageUrl}" 
+                 alt="${imageAlt}" 
+                 loading="lazy"
+                 decoding="async"
+                 onerror="this.onerror=null; this.src='/assets/icons/ui/mantravi.png';"
                  class="w-full h-full object-cover"/>
             <div class="blog-card-overlay"></div>
           </div>
           <div class="blog-card-content">
-            <h3 class="blog-card-title">${blog.title}</h3>
-            <p class="blog-card-excerpt">${blog.summary || ''}</p>
+            <h3 class="blog-card-title">${blog.title || 'Untitled'}</h3>
+            ${summary ? `<p class="blog-card-excerpt">${summary}</p>` : ''}
             <div class="blog-card-footer">
               <div class="flex items-center gap-2">
-                <i data-lucide="user" class="w-3.5 h-3.5"></i>
-                <span>${blog.author || 'Unknown'}</span>
+                <i data-lucide="user" class="w-3.5 h-3.5 flex-shrink-0"></i>
+                <span class="truncate">${author}</span>
               </div>
               <div class="flex items-center gap-2">
-                <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
-                <span>${formatDate(blog.publishedAt)}</span>
+                <i data-lucide="calendar" class="w-3.5 h-3.5 flex-shrink-0"></i>
+                <span>${publishedDate}</span>
               </div>
             </div>
             <a href="/blog/post" 
