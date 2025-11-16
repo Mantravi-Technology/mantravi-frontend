@@ -273,9 +273,23 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Render blog content - check if content is HTML or plain text
     const content = post.content || '';
     
+    // Improved HTML detection: check if content contains HTML tags anywhere, not just at start
+    const isHTML = content.trim().startsWith('<') || (content.includes('<') && content.includes('</'));
+    
     // Add summary display section (before content) - only if content doesn't already include it
     const summaryContainer = document.getElementById('blog-summary');
-    const contentIncludesSummary = content.toLowerCase().includes((post.summary || '').toLowerCase().substring(0, 50));
+    const summaryText = (post.summary || '').trim();
+    let contentIncludesSummary = false;
+    
+    if (summaryText) {
+      // Check if summary appears in content (more thorough check)
+      const contentLower = content.toLowerCase();
+      const summaryLower = summaryText.toLowerCase();
+      
+      // Check if summary is at the start of content or appears anywhere
+      const contentStart = contentLower.substring(0, summaryLower.length + 200);
+      contentIncludesSummary = contentStart.includes(summaryLower) || contentLower.includes(summaryLower);
+    }
     
     if (summaryContainer && post.summary && !contentIncludesSummary) {
       summaryContainer.innerHTML = `
@@ -286,7 +300,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       // Hide summary container if summary is already in content
       summaryContainer.classList.add('hidden');
     }
-    const isHTML = content.trim().startsWith('<') && content.includes('</');
     
     // Create wrapper that allows HTML content to render properly
     container.innerHTML = '';
@@ -388,14 +401,31 @@ document.addEventListener('DOMContentLoaded', async () => {
       if (post.summary) {
         const summaryText = post.summary.trim();
         if (summaryText && cleanedContent.toLowerCase().includes(summaryText.toLowerCase())) {
-          // Try multiple patterns to remove summary
+          // First, try to remove summary from the beginning of content (most common case)
+          const contentStart = cleanedContent.trim().substring(0, summaryText.length + 300);
+          if (contentStart.toLowerCase().includes(summaryText.toLowerCase())) {
+            // Remove summary from start - handle both plain text and HTML wrapped
+            const summaryEscaped = summaryText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            
+            // Pattern 1: Summary at very start (plain text or in tags)
+            const startPattern = new RegExp(`^\\s*(<[^>]*>\\s*)?${summaryEscaped}(\\s*</[^>]*>)?[.\\s]*`, 'i');
+            cleanedContent = cleanedContent.replace(startPattern, '');
+            
+            // Pattern 2: Summary in paragraph at start
+            const pStartPattern = new RegExp(`<p[^>]*>\\s*${summaryEscaped}[.\\s]*</p>\\s*`, 'gi');
+            cleanedContent = cleanedContent.replace(pStartPattern, '');
+            
+            // Pattern 3: Summary in div at start
+            const divStartPattern = new RegExp(`<div[^>]*>\\s*${summaryEscaped}[.\\s]*</div>\\s*`, 'gi');
+            cleanedContent = cleanedContent.replace(divStartPattern, '');
+          }
+          
+          // Also try removing from anywhere else in content
           const patterns = [
             // In paragraph tags
             new RegExp(`<p[^>]*>\\s*${summaryText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*</p>`, 'gi'),
             // In div tags
-            new RegExp(`<div[^>]*>\\s*${summaryText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*</div>`, 'gi'),
-            // Plain text (first 100 chars for matching)
-            new RegExp(summaryText.substring(0, Math.min(100, summaryText.length)).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi')
+            new RegExp(`<div[^>]*>\\s*${summaryText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*</div>`, 'gi')
           ];
           
           patterns.forEach(regex => {
