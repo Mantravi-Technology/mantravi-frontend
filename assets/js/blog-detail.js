@@ -452,12 +452,35 @@ document.addEventListener('DOMContentLoaded', async () => {
         const heroImg = document.getElementById('main-blog-image');
         const heroFigure = document.getElementById('blog-hero-image');
         if (heroImg && heroFigure) {
+          // Move hero image to be first child if it's not already
+          if (heroFigure.parentNode && heroFigure.parentNode.firstChild !== heroFigure) {
+            heroFigure.parentNode.insertBefore(heroFigure, heroFigure.parentNode.firstChild);
+          }
+          
           heroFigure.style.cssText = 'width: 100vw !important; max-width: 100vw !important; margin: 2rem calc(-50vw + 50%) 3rem calc(-50vw + 50%) !important; display: block !important; position: relative; overflow: hidden !important; visibility: visible !important; opacity: 1 !important; padding: 0 !important;';
           const heroDiv = heroFigure.querySelector('div');
           if (heroDiv) {
             heroDiv.style.cssText = 'position: relative; width: 100% !important; min-height: 60vh !important; height: 60vh !important; border: none !important; background: rgba(78, 228, 255, 0.05); border-radius: 0 !important; margin: 0 !important; padding: 0 !important; overflow: hidden !important;';
           }
           heroImg.style.cssText = 'display: block !important; width: 100% !important; height: 100% !important; min-height: 60vh !important; max-width: 100% !important; object-fit: cover !important; object-position: center !important; margin: 0 !important; padding: 0 !important; position: absolute !important; top: 0 !important; left: 0 !important; visibility: visible !important; opacity: 1 !important; z-index: 1 !important;';
+        }
+        
+        // Remove any duplicate images from content that match mainImagePath
+        if (post.mainImagePath && contentWrapper) {
+          const allImages = contentWrapper.querySelectorAll('img');
+          const imageFileName = post.mainImagePath.split('/').pop().split('?')[0];
+          allImages.forEach(img => {
+            const imgSrc = img.getAttribute('src') || '';
+            if (imgSrc.includes(imageFileName) || imgSrc.includes(post.mainImagePath.split('/').pop())) {
+              // Remove the image and its parent container if it's a duplicate
+              const parent = img.closest('figure') || img.closest('div') || img.parentElement;
+              if (parent && parent !== heroFigure && !parent.contains(heroFigure)) {
+                parent.remove();
+              } else if (img !== heroImg && img.id !== 'main-blog-image') {
+                img.remove();
+              }
+            }
+          });
         }
         
         const images = contentWrapper.querySelectorAll('img:not([loading]):not(#main-blog-image)');
