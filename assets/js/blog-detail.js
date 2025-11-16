@@ -305,9 +305,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Create hero image container BEFORE the HTML content wrapper
         const heroImage = document.createElement('figure');
         heroImage.id = 'blog-hero-image';
-        heroImage.style.cssText = 'width: 100%; margin: 2rem 0 3rem 0; display: block !important; position: relative; overflow: visible !important; visibility: visible !important; opacity: 1 !important;';
+        heroImage.style.cssText = 'width: 100vw !important; max-width: 100vw !important; margin: 2rem calc(-50vw + 50%) 3rem calc(-50vw + 50%) !important; display: block !important; position: relative; overflow: hidden !important; visibility: visible !important; opacity: 1 !important; padding: 0 !important;';
         heroImage.innerHTML = `
-          <div class="w-full rounded-2xl shadow-xl overflow-hidden" style="position: relative; width: 100% !important; min-height: 60vh !important; height: 60vh !important; border: 2px solid rgba(78, 228, 255, 0.2); background: rgba(78, 228, 255, 0.05);">
+          <div class="w-full overflow-hidden" style="position: relative; width: 100% !important; min-height: 60vh !important; height: 60vh !important; border: none !important; background: rgba(78, 228, 255, 0.05); border-radius: 0 !important; margin: 0 !important; padding: 0 !important;">
             <img src="${imageUrl}" alt="${post.title || 'Blog image'}" 
                  id="main-blog-image"
                  width="1200"
