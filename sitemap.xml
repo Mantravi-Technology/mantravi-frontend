@@ -8,42 +8,52 @@
     <!-- Static Pages -->
     <url>
         <loc>https://mantravi.com/</loc>
-        <lastmod>2025-11-15</lastmod>
-        <changefreq>weekly</changefreq>
+        <lastmod>2025-11-16</lastmod>
+        <changefreq>daily</changefreq>
         <priority>1.0</priority>
         <image:image>
             <image:loc>https://mantravi.com/assets/icons/ui/mantravi.png</image:loc>
             <image:title>Mantravi - AI-Native Digital Solutions | Web Development, Mobile Apps &amp; IT Services</image:title>
             <image:caption>Mantravi delivers cutting-edge AI-powered digital solutions including web development, mobile apps, digital marketing, QA services, and IT consulting.</image:caption>
         </image:image>
+        <image:image>
+            <image:loc>https://mantravi.com/assets/icons/ui/favicon/favicon-96x96.png</image:loc>
+            <image:title>Mantravi Favicon</image:title>
+            <image:caption>Mantravi company favicon and brand icon</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://mantravi.com/assets/icons/ui/favicon/favicon.svg</image:loc>
+            <image:title>Mantravi Logo SVG</image:title>
+            <image:caption>Mantravi scalable vector logo</image:caption>
+        </image:image>
     </url>
     <url>
         <loc>https://mantravi.com/services</loc>
-        <lastmod>2025-11-15</lastmod>
+        <lastmod>2025-11-16</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://mantravi.com/about</loc>
-        <lastmod>2025-11-15</lastmod>
+        <lastmod>2025-11-16</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://mantravi.com/contact</loc>
-        <lastmod>2025-11-15</lastmod>
+        <lastmod>2025-11-16</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://mantravi.com/blog</loc>
-        <lastmod>2025-11-15</lastmod>
+        <lastmod>2025-11-16</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://mantravi.com/work-with-us</loc>
-        <lastmod>2025-11-15</lastmod>
+        <lastmod>2025-11-16</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>

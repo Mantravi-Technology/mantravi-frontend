@@ -949,10 +949,50 @@
 
             <!-- FAQ Grid - 2 columns on desktop, 1 on mobile -->
             <div class="max-w-6xl mx-auto px-4 sm:px-6">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 lg:gap-6 items-start">
-                    <!-- FAQ Item 1 - How to Reach Mantravi -->
-                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col">
-                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[72px]" onclick="toggleFaq(event, this)">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 lg:gap-6 items-stretch">
+                    <!-- FAQ Item 1 - What Makes Mantravi Different (HIGHEST PRIORITY) -->
+                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col h-full">
+                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[80px]" onclick="toggleFaq(event, this)">
+                            <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">What makes Mantravi different from other agencies?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-[#4EE4FF] flex-shrink-0 transform transition-transform duration-300 faq-icon ml-2"></i>
+                        </button>
+                        <div class="faq-answer-wrapper overflow-hidden">
+                            <div class="faq-answer hidden p-4 sm:p-5 md:p-6 pt-0 pb-4 sm:pb-5">
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-3 break-words">
+                                Mantravi stands out through our unique combination of cutting-edge technology, personalized service, and deep industry expertise:
+                            </p>
+                            <ul class="text-gray-300 text-sm sm:text-base space-y-2 ml-4">
+                                <li class="flex items-start">
+                                    <i data-lucide="sparkles" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
+                                    <span><strong>AI-First Approach:</strong> We leverage AI-powered tools and automation to deliver faster, smarter solutions without compromising quality</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="sparkles" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
+                                    <span><strong>End-to-End Solutions:</strong> From strategy to development, design, marketing, and ongoing support - we're your complete digital partner</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="sparkles" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
+                                    <span><strong>Transparent Communication:</strong> Regular updates, collaborative workflows, and clear timelines keep you informed at every step</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="sparkles" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
+                                    <span><strong>Industry Expertise:</strong> Deep understanding across diverse sectors from e-commerce to healthcare, education, and political branding</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="sparkles" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
+                                    <span><strong>Scalable Solutions:</strong> We build platforms that grow with your business, from startup to enterprise level</span>
+                                </li>
+                            </ul>
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mt-3 break-words">
+                                We don't just deliver projects - we build long-term partnerships focused on your success and growth.
+                            </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 - How to Reach Mantravi (HIGH PRIORITY - CTA) -->
+                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col h-full">
+                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[80px]" onclick="toggleFaq(event, this)">
                             <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">How do I reach Mantravi?</span>
                             <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-[#4EE4FF] flex-shrink-0 transform transition-transform duration-300 faq-icon ml-2"></i>
                         </button>
@@ -965,194 +1005,39 @@
                         </div>
                     </div>
 
-                    <!-- FAQ Item 2 - AI Implementation -->
-                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col">
-                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[72px]" onclick="toggleFaq(event, this)">
-                            <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">How is AI implemented in your solutions?</span>
+                    <!-- FAQ Item 3 - Development Process Involvement (HIGH PRIORITY - Trust) -->
+                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col h-full">
+                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[80px]" onclick="toggleFaq(event, this)">
+                            <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">Can I be involved in the development process?</span>
                             <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-[#4EE4FF] flex-shrink-0 transform transition-transform duration-300 faq-icon ml-2"></i>
                         </button>
                         <div class="faq-answer-wrapper overflow-hidden">
                             <div class="faq-answer hidden p-4 sm:p-5 md:p-6 pt-0 pb-4 sm:pb-5">
-                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-3 break-words">
-                                We integrate AI across multiple dimensions:
-                            </p>
-                            <ul class="text-gray-300 text-sm sm:text-base space-y-2 ml-4">
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
-                                    <span><strong>Smart Analytics:</strong> AI-driven insights for data-driven decision making</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
-                                    <span><strong>Automated Testing:</strong> Intelligent QA processes that reduce bugs and improve quality</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
-                                    <span><strong>Predictive Marketing:</strong> AI-powered campaigns that optimize performance and ROI</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
-                                    <span><strong>Personalization:</strong> Customized user experiences based on behavioral data</span>
-                                </li>
-                            </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- FAQ Item 3 - Website Pricing -->
-                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col">
-                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[72px]" onclick="toggleFaq(event, this)">
-                            <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">How much does a business website cost?</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-[#4EE4FF] flex-shrink-0 transform transition-transform duration-300 faq-icon ml-2"></i>
-                        </button>
-                        <div class="faq-answer-wrapper overflow-hidden">
-                            <div class="faq-answer hidden p-4 sm:p-5 md:p-6 pt-0 pb-4 sm:pb-5">
-                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-4 break-words">
-                                Our pricing is competitive and transparent. Here are some examples:
-                            </p>
-                            <div class="space-y-3 text-sm">
-                                <div class="bg-black/40 p-3 rounded-lg border border-gray-700/50">
-                                    <p class="text-[#4EE4FF] font-semibold mb-1">D2C Apparel Store (Small brand)</p>
-                                    <p class="text-gray-300 text-xs">10-15 product pages, e-commerce, payments, mobile responsive</p>
-                                    <p class="text-white font-medium mt-2">₹10,000 - ₹30,000</p>
-                                </div>
-                                <div class="bg-black/40 p-3 rounded-lg border border-gray-700/50">
-                                    <p class="text-[#4EE4FF] font-semibold mb-1">Fitness Studio Booking Platform</p>
-                                    <p class="text-gray-300 text-xs">Class schedules, online booking, payments, subscriptions</p>
-                                    <p class="text-white font-medium mt-2">₹25,000 - ₹50,000</p>
-                                </div>
-                                <div class="bg-black/40 p-3 rounded-lg border border-gray-700/50">
-                                    <p class="text-[#4EE4FF] font-semibold mb-1">Restaurant with Online Ordering</p>
-                                    <p class="text-gray-300 text-xs">Multi-branch, menu, ordering, POS integration, delivery</p>
-                                    <p class="text-white font-medium mt-2">₹50,000 - ₹1,50,000+</p>
-                                </div>
-                                <div class="bg-black/40 p-3 rounded-lg border border-gray-700/50">
-                                    <p class="text-[#4EE4FF] font-semibold mb-1">SaaS Product with Admin Dashboard</p>
-                                    <p class="text-gray-300 text-xs">Landing pages, authentication, multi-tenant dashboard, APIs</p>
-                                    <p class="text-white font-medium mt-2">₹75,000 - ₹2,50,000+</p>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- FAQ Item 4 - Mobile App Pricing -->
-                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col">
-                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[72px]" onclick="toggleFaq(event, this)">
-                            <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">How much does a mobile app cost?</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-[#4EE4FF] flex-shrink-0 transform transition-transform duration-300 faq-icon ml-2"></i>
-                        </button>
-                        <div class="faq-answer-wrapper overflow-hidden">
-                            <div class="faq-answer hidden p-4 sm:p-5 md:p-6 pt-0 pb-4 sm:pb-5">
-                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-4 break-words">
-                                We offer competitive mobile app development pricing that's significantly lower than industry standards. Here are our affordable packages:
-                            </p>
-                            <div class="space-y-3 text-sm">
-                                <div class="bg-black/40 p-3 rounded-lg border border-gray-700/50">
-                                    <p class="text-[#4EE4FF] font-semibold mb-1">Basic Mobile App (iOS or Android)</p>
-                                    <p class="text-gray-300 text-xs">Simple UI, 5-10 screens, basic features, user authentication</p>
-                                    <p class="text-white font-medium mt-2">₹25,000 - ₹50,000</p>
-                                </div>
-                                <div class="bg-black/40 p-3 rounded-lg border border-gray-700/50">
-                                    <p class="text-[#4EE4FF] font-semibold mb-1">E-commerce Mobile App</p>
-                                    <p class="text-gray-300 text-xs">Product catalog, cart, payments, order tracking, push notifications</p>
-                                    <p class="text-white font-medium mt-2">₹50,000 - ₹1,00,000</p>
-                                </div>
-                                <div class="bg-black/40 p-3 rounded-lg border border-gray-700/50">
-                                    <p class="text-[#4EE4FF] font-semibold mb-1">Cross-Platform App (iOS + Android)</p>
-                                    <p class="text-gray-300 text-xs">Single codebase for both platforms, advanced features, API integration</p>
-                                    <p class="text-white font-medium mt-2">₹75,000 - ₹1,50,000</p>
-                                </div>
-                                <div class="bg-black/40 p-3 rounded-lg border border-gray-700/50">
-                                    <p class="text-[#4EE4FF] font-semibold mb-1">Enterprise App with Admin Panel</p>
-                                    <p class="text-gray-300 text-xs">Complex features, real-time sync, analytics dashboard, multi-user roles</p>
-                                    <p class="text-white font-medium mt-2">₹1,50,000 - ₹3,00,000+</p>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- FAQ Item 5 - Digital Marketing Pricing -->
-                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col">
-                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[72px]" onclick="toggleFaq(event, this)">
-                            <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">How are digital marketing plans priced?</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-[#4EE4FF] flex-shrink-0 transform transition-transform duration-300 faq-icon ml-2"></i>
-                        </button>
-                        <div class="faq-answer-wrapper overflow-hidden">
-                            <div class="faq-answer hidden p-4 sm:p-5 md:p-6 pt-0 pb-4 sm:pb-5">
-                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-4 break-words">
-                                Marketing plans vary based on goals and campaign intensity:
-                            </p>
-                            <div class="space-y-3 text-sm">
-                                <div class="bg-black/40 p-3 rounded-lg border border-gray-700/50">
-                                    <p class="text-[#4EE4FF] font-semibold mb-1">Local Growth</p>
-                                    <p class="text-gray-300 text-xs mb-2">Shops, clinics, salons</p>
-                                    <p class="text-white font-medium">₹10,000 - ₹20,000/month</p>
-                                    <p class="text-gray-400 text-xs mt-1">Content frequency + platform count</p>
-                                </div>
-                                <div class="bg-black/40 p-3 rounded-lg border border-gray-700/50">
-                                    <p class="text-[#4EE4FF] font-semibold mb-1">Regional Branding</p>
-                                    <p class="text-gray-300 text-xs mb-2">Coaching institutes, retail brands</p>
-                                    <p class="text-white font-medium">₹20,000 - ₹60,000/month</p>
-                                    <p class="text-gray-400 text-xs mt-1">SEO depth + paid ads + content strategy</p>
-                                </div>
-                                <div class="bg-black/40 p-3 rounded-lg border border-gray-700/50">
-                                    <p class="text-[#4EE4FF] font-semibold mb-1">Performance Marketing</p>
-                                    <p class="text-gray-300 text-xs mb-2">E-commerce & high lead-gen companies</p>
-                                    <p class="text-white font-medium">₹60,000+/month</p>
-                                    <p class="text-gray-400 text-xs mt-1">Paid campaign scale + analytics + AI automation</p>
-                                </div>
-                            </div>
-                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mt-4 break-words">
-                                Local markets cost less, while regional or national competition requires more investment for AI-powered campaign optimization and analytics.
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed break-words">
+                                Absolutely! We follow an agile, transparent workflow with regular updates, demos, and feedback checkpoints. You are an active participant throughout the entire journey, ensuring the final solution aligns perfectly with your goals and vision. We provide real-time progress tracking and collaborative tools to keep you in the loop at every stage.
                             </p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- FAQ Item 6 - Why Our Cost is Less (AI Explanation) -->
-                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col">
-                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[72px]" onclick="toggleFaq(event, this)">
-                            <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">Why are your prices lower than competitors?</span>
+                    <!-- FAQ Item 4 - Support & Maintenance (HIGH PRIORITY - Post-launch) -->
+                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col h-full">
+                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[80px]" onclick="toggleFaq(event, this)">
+                            <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">Do you provide ongoing support & maintenance?</span>
                             <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-[#4EE4FF] flex-shrink-0 transform transition-transform duration-300 faq-icon ml-2"></i>
                         </button>
                         <div class="faq-answer-wrapper overflow-hidden">
                             <div class="faq-answer hidden p-4 sm:p-5 md:p-6 pt-0 pb-4 sm:pb-5">
-                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-3 break-words">
-                                Our competitive pricing comes from leveraging AI-powered tools and efficient processes:
-                            </p>
-                            <ul class="text-gray-300 text-sm sm:text-base space-y-2 ml-4 mb-3">
-                                <li class="flex items-start">
-                                    <i data-lucide="zap" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
-                                    <span><strong>AI-Powered Development:</strong> We use AI tools for code generation, testing automation, and bug detection, reducing development time by up to 40%</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="zap" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
-                                    <span><strong>Reusable Components:</strong> Our AI helps create and maintain a library of reusable components, cutting down repetitive work</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="zap" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
-                                    <span><strong>Automated Testing:</strong> AI-driven QA processes catch bugs early, reducing revision cycles and costs</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="zap" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
-                                    <span><strong>Smart Project Management:</strong> AI optimizes workflows and resource allocation, ensuring maximum efficiency</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="zap" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
-                                    <span><strong>Predictive Analytics:</strong> AI helps us estimate project timelines and costs more accurately, avoiding overpricing</span>
-                                </li>
-                            </ul>
-                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mt-3 break-words">
-                                By using AI to streamline development, we pass the cost savings directly to you while maintaining premium quality. You get enterprise-grade solutions at minimal prices!
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed break-words">
+                                Yes! We offer comprehensive ongoing support including 24/7 monitoring, performance optimization, security updates, automated backups, and technical assistance. Our AI-enhanced monitoring systems proactively detect and resolve issues before they impact your business, ensuring your systems stay secure, optimized, and running smoothly around the clock.
                             </p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- FAQ Item 7 - Payment Plans -->
-                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col">
-                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[72px]" onclick="toggleFaq(event, this)">
+                    <!-- FAQ Item 5 - Payment Plans (MEDIUM-HIGH PRIORITY) -->
+                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col h-full">
+                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[80px]" onclick="toggleFaq(event, this)">
                             <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">Do you offer flexible payment plans?</span>
                             <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-[#4EE4FF] flex-shrink-0 transform transition-transform duration-300 faq-icon ml-2"></i>
                         </button>
@@ -1182,24 +1067,9 @@
                         </div>
                     </div>
 
-                    <!-- FAQ Item 6 - Support & Maintenance -->
-                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col">
-                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[72px]" onclick="toggleFaq(event, this)">
-                            <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">Do you provide ongoing support & maintenance?</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-[#4EE4FF] flex-shrink-0 transform transition-transform duration-300 faq-icon ml-2"></i>
-                        </button>
-                        <div class="faq-answer-wrapper overflow-hidden">
-                            <div class="faq-answer hidden p-4 sm:p-5 md:p-6 pt-0 pb-4 sm:pb-5">
-                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed break-words">
-                                Yes! We offer comprehensive ongoing support including 24/7 monitoring, performance optimization, security updates, automated backups, and technical assistance. Our AI-enhanced monitoring systems proactively detect and resolve issues before they impact your business, ensuring your systems stay secure, optimized, and running smoothly around the clock.
-                            </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- FAQ Item 7 - Extra Costs -->
-                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col">
-                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[72px]" onclick="toggleFaq(event, this)">
+                    <!-- FAQ Item 6 - Hidden Costs (MEDIUM PRIORITY - Transparency) -->
+                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col h-full">
+                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[80px]" onclick="toggleFaq(event, this)">
                             <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">Are there hidden costs after project delivery?</span>
                             <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-[#4EE4FF] flex-shrink-0 transform transition-transform duration-300 faq-icon ml-2"></i>
                         </button>
@@ -1233,56 +1103,42 @@
                         </div>
                     </div>
 
-                    <!-- FAQ Item 8 - Development Process -->
-                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col">
-                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[72px]" onclick="toggleFaq(event, this)">
-                            <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">Can I be involved in the development process?</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-[#4EE4FF] flex-shrink-0 transform transition-transform duration-300 faq-icon ml-2"></i>
-                        </button>
-                        <div class="faq-answer-wrapper overflow-hidden">
-                            <div class="faq-answer hidden p-4 sm:p-5 md:p-6 pt-0 pb-4 sm:pb-5">
-                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed break-words">
-                                Absolutely! We follow an agile, transparent workflow with regular updates, demos, and feedback checkpoints. You are an active participant throughout the entire journey, ensuring the final solution aligns perfectly with your goals and vision. We provide real-time progress tracking and collaborative tools to keep you in the loop at every stage.
-                            </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- FAQ Item 9 - Package Structure -->
-                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col">
-                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[72px]" onclick="toggleFaq(event, this)">
-                            <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">Why are prices structured in packages?</span>
+                    <!-- FAQ Item 7 - AI Implementation (MEDIUM PRIORITY - Value Prop) -->
+                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col h-full">
+                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[80px]" onclick="toggleFaq(event, this)">
+                            <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">How is AI implemented in your solutions?</span>
                             <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-[#4EE4FF] flex-shrink-0 transform transition-transform duration-300 faq-icon ml-2"></i>
                         </button>
                         <div class="faq-answer-wrapper overflow-hidden">
                             <div class="faq-answer hidden p-4 sm:p-5 md:p-6 pt-0 pb-4 sm:pb-5">
                             <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-3 break-words">
-                                Most MSME clients prefer transparent, predictable pricing. Our tiered packages allow you to:
+                                We integrate AI across multiple dimensions:
                             </p>
                             <ul class="text-gray-300 text-sm sm:text-base space-y-2 ml-4">
                                 <li class="flex items-start">
-                                    <i data-lucide="arrow-right" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
-                                    <span><strong>Start small</strong> with essential features</span>
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
+                                    <span><strong>Smart Analytics:</strong> AI-driven insights for data-driven decision making</span>
                                 </li>
                                 <li class="flex items-start">
-                                    <i data-lucide="arrow-right" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
-                                    <span><strong>See real results</strong> before scaling up</span>
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
+                                    <span><strong>Automated Testing:</strong> Intelligent QA processes that reduce bugs and improve quality</span>
                                 </li>
                                 <li class="flex items-start">
-                                    <i data-lucide="arrow-right" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
-                                    <span><strong>Upgrade only when ready</strong> to expand</span>
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
+                                    <span><strong>Predictive Marketing:</strong> AI-powered campaigns that optimize performance and ROI</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
+                                    <span><strong>Personalization:</strong> Customized user experiences based on behavioral data</span>
                                 </li>
                             </ul>
-                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mt-3 break-words">
-                                This reduces risk and makes scaling easier and more cost-effective for growing businesses.
-                            </p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- FAQ Item 10 -->
-                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col">
-                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[72px]" onclick="toggleFaq(event, this)">
+                    <!-- FAQ Item 8 - Industry Expertise (MEDIUM PRIORITY - Qualification) -->
+                    <div class="faq-item bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl rounded-xl border border-gray-800/50 hover:border-[#4EE4FF]/30 transition-all duration-300 overflow-hidden flex flex-col h-full">
+                        <button type="button" class="faq-question w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between group flex-shrink-0 min-h-[80px]" onclick="toggleFaq(event, this)">
                             <span class="text-white font-semibold text-sm sm:text-base md:text-lg pr-3 sm:pr-4 leading-tight flex-1 min-w-0">Which industries do you have expertise in?</span>
                             <i data-lucide="chevron-down" class="w-4 h-4 sm:w-5 sm:h-5 text-[#4EE4FF] flex-shrink-0 transform transition-transform duration-300 faq-icon ml-2"></i>
                         </button>

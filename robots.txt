@@ -44,6 +44,9 @@ Allow: /blog/post?slug=
 Sitemap: https://mantravi.com/sitemap.xml
 Sitemap: https://www.mantravi.com/sitemap.xml
 
+# Last updated: 2025-11-16
+# Sitemap updated with favicon images for Google indexing
+
 # Crawl-delay for respectful crawling
 Crawl-delay: 1
 
