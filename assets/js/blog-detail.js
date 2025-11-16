@@ -346,8 +346,38 @@ document.addEventListener('DOMContentLoaded', async () => {
       contentWrapper.className = 'blog-content-wrapper';
       contentWrapper.setAttribute('contenteditable', 'false');
       contentWrapper.setAttribute('spellcheck', 'false');
-      // Render the cleaned HTML content - it includes its own styles and structure
-      contentWrapper.innerHTML = content;
+      
+      // Clean the HTML content: remove any duplicate hero images and summaries
+      let cleanedContent = content;
+      
+      // Remove any images that match the mainImagePath (to avoid duplicate hero images)
+      if (post.mainImagePath) {
+        const imageUrlPatterns = [
+          post.mainImagePath,
+          post.mainImagePath.replace(/^\/+/, '/'),
+          post.mainImagePath.replace(/^\/+/, ''),
+          encodeURI(post.mainImagePath),
+          decodeURIComponent(post.mainImagePath)
+        ];
+        
+        // Remove figure/img tags that contain the hero image
+        imageUrlPatterns.forEach(pattern => {
+          const regex = new RegExp(`<figure[^>]*>.*?<img[^>]*src=["']([^"']*${pattern.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[^"']*)["'][^>]*>.*?</figure>`, 'gis');
+          cleanedContent = cleanedContent.replace(regex, '');
+          
+          const imgRegex = new RegExp(`<img[^>]*src=["']([^"']*${pattern.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[^"']*)["'][^>]*>`, 'gi');
+          cleanedContent = cleanedContent.replace(imgRegex, '');
+        });
+      }
+      
+      // Remove summary text if it appears at the beginning of content
+      if (post.summary && cleanedContent.toLowerCase().includes(post.summary.toLowerCase())) {
+        const summaryRegex = new RegExp(`<p[^>]*>\\s*${post.summary.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*</p>`, 'gi');
+        cleanedContent = cleanedContent.replace(summaryRegex, '');
+      }
+      
+      // Render the cleaned HTML content
+      contentWrapper.innerHTML = cleanedContent;
       container.appendChild(contentWrapper);
       
       // Prevent any editing attempts - make absolutely read-only
@@ -388,8 +418,21 @@ document.addEventListener('DOMContentLoaded', async () => {
       initReadingProgress();
       
       // Optimize images with lazy loading and dimensions
+      // Also ensure hero image stays full-width and content images don't override it
       setTimeout(() => {
-        const images = contentWrapper.querySelectorAll('img:not([loading])');
+        // Force hero image to stay full-width (in case content styles override it)
+        const heroImg = document.getElementById('main-blog-image');
+        const heroFigure = document.getElementById('blog-hero-image');
+        if (heroImg && heroFigure) {
+          heroFigure.style.cssText = 'width: 100vw !important; max-width: 100vw !important; margin: 2rem calc(-50vw + 50%) 3rem calc(-50vw + 50%) !important; display: block !important; position: relative; overflow: hidden !important; visibility: visible !important; opacity: 1 !important; padding: 0 !important;';
+          const heroDiv = heroFigure.querySelector('div');
+          if (heroDiv) {
+            heroDiv.style.cssText = 'position: relative; width: 100% !important; min-height: 60vh !important; height: 60vh !important; border: none !important; background: rgba(78, 228, 255, 0.05); border-radius: 0 !important; margin: 0 !important; padding: 0 !important; overflow: hidden !important;';
+          }
+          heroImg.style.cssText = 'display: block !important; width: 100% !important; height: 100% !important; min-height: 60vh !important; max-width: 100% !important; object-fit: cover !important; object-position: center !important; margin: 0 !important; padding: 0 !important; position: absolute !important; top: 0 !important; left: 0 !important; visibility: visible !important; opacity: 1 !important; z-index: 1 !important;';
+        }
+        
+        const images = contentWrapper.querySelectorAll('img:not([loading]):not(#main-blog-image)');
         images.forEach((img, index) => {
           if (index > 0) {
             img.setAttribute('loading', 'lazy');
