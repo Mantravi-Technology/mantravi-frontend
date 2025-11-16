@@ -1,26 +1,33 @@
 {
   "name": "mantravi-website",
   "version": "1.0.0",
-  "description": "Mantravi - Engineering Global Disruption with AI-Native Excellence",
+  "description": "Mantravi - Your Cognitive Competitive Edge | AI-Native Digital Solutions for Web Development, Mobile Apps & IT Services",
   "main": "index.html",
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
     "live": "live-server --port=5503 --host=0.0.0.0 --no-browser",
     "update-sitemap": "node scripts/update-sitemap.js",
-    "build": "npm run update-sitemap && echo 'Static site - sitemap updated, ready for deployment'",
+    "build": "npm run update-sitemap && echo '✅ Build complete - Static site ready for Vercel deployment'",
+    "vercel-build": "npm run build",
     "pages:build": "npm run update-sitemap && echo 'Build complete - Cloudflare Pages will serve static files'",
     "deploy": "npm run build",
     "lint": "echo 'Add linting tools as needed'",
     "test": "echo 'Add testing framework as needed'"
   },
   "keywords": [
-    "website",
     "mantravi",
-    "ai",
-    "digital-transformation",
+    "ai-native",
+    "digital-solutions",
     "web-development",
-    "technology"
+    "mobile-apps",
+    "digital-marketing",
+    "it-services",
+    "ai-powered",
+    "digital-transformation",
+    "technology",
+    "software-development",
+    "qa-services"
   ],
   "author": "Mantravi Team",
   "license": "MIT",
@@ -42,6 +49,7 @@
     "not dead"
   ],
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
   }
 }
