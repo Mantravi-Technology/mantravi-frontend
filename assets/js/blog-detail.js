@@ -307,12 +307,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         heroImage.id = 'blog-hero-image';
         heroImage.style.cssText = 'width: 100%; margin: 2rem 0 3rem 0; display: block !important; position: relative; overflow: visible !important; visibility: visible !important; opacity: 1 !important;';
         heroImage.innerHTML = `
-          <div class="w-full rounded-2xl shadow-xl overflow-hidden" style="position: relative; width: 100%; min-height: 60vh; border: 2px solid rgba(78, 228, 255, 0.2); background: rgba(78, 228, 255, 0.05);">
+          <div class="w-full rounded-2xl shadow-xl overflow-hidden" style="position: relative; width: 100% !important; min-height: 60vh !important; height: 60vh !important; border: 2px solid rgba(78, 228, 255, 0.2); background: rgba(78, 228, 255, 0.05);">
             <img src="${imageUrl}" alt="${post.title || 'Blog image'}" 
                  id="main-blog-image"
                  width="1200"
                  height="630"
-                 style="display: block !important; width: 100% !important; height: 100% !important; min-height: 60vh !important; max-width: 100% !important; object-fit: cover !important; object-position: center !important; margin: 0; position: relative !important; visibility: visible !important; opacity: 1 !important; z-index: 1;"
+                 style="display: block !important; width: 100% !important; height: 100% !important; min-height: 60vh !important; max-width: 100% !important; object-fit: cover !important; object-position: center !important; margin: 0 !important; padding: 0 !important; position: absolute !important; top: 0 !important; left: 0 !important; visibility: visible !important; opacity: 1 !important; z-index: 1 !important;"
                  loading="eager"
                  decoding="async"
                  onload="this.style.display='block'; this.style.visibility='visible'; this.style.opacity='1'; this.classList.add('loaded'); const img=this; if(img.naturalWidth && img.naturalHeight){img.setAttribute('width',img.naturalWidth);img.setAttribute('height',img.naturalHeight);}"

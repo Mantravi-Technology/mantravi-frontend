@@ -94,8 +94,18 @@
         }
         
         /* Make sure embedded images are responsive and show fully */
-        .blog-content-wrapper img,
-        #blog-detail img {
+        .blog-content-wrapper img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Exclude hero image from general blog-detail img rules */
+        #blog-detail img:not(#main-blog-image) {
             max-width: 100%;
             width: 100%;
             height: auto;
@@ -301,8 +311,7 @@
             z-index: 10 !important;
         }
         
-        #blog-detail figure > div,
-        #blog-hero-image > div {
+        #blog-detail figure > div {
             width: 100% !important;
             overflow: visible !important;
             position: relative !important;
@@ -311,11 +320,29 @@
         }
         
         #blog-hero-image > div {
+            width: 100% !important;
             min-height: 60vh !important;
             height: 60vh !important;
+            overflow: hidden !important;
+            position: relative !important;
+            display: block !important;
+            visibility: visible !important;
         }
         
-        #blog-detail figure img,
+        #blog-detail figure img:not(#main-blog-image) {
+            width: 100% !important;
+            height: auto !important;
+            max-width: 100% !important;
+            object-fit: contain !important;
+            object-position: center !important;
+            display: block !important;
+            margin: 0 auto !important;
+            position: relative !important;
+            z-index: 10 !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
         #main-blog-image {
             width: 100% !important;
             height: 100% !important;
@@ -325,8 +352,11 @@
             object-position: center !important;
             display: block !important;
             margin: 0 !important;
-            position: relative !important;
-            z-index: 10 !important;
+            padding: 0 !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            z-index: 1 !important;
             visibility: visible !important;
             opacity: 1 !important;
         }
