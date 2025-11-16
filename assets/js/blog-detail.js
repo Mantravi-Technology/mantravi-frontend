@@ -352,28 +352,56 @@ document.addEventListener('DOMContentLoaded', async () => {
       
       // Remove any images that match the mainImagePath (to avoid duplicate hero images)
       if (post.mainImagePath) {
+        // Extract just the filename from the path for more flexible matching
+        const imageFileName = post.mainImagePath.split('/').pop().split('?')[0];
+        const imageBaseName = imageFileName.split('.')[0];
+        
         const imageUrlPatterns = [
           post.mainImagePath,
           post.mainImagePath.replace(/^\/+/, '/'),
           post.mainImagePath.replace(/^\/+/, ''),
+          imageFileName,
+          imageBaseName,
           encodeURI(post.mainImagePath),
           decodeURIComponent(post.mainImagePath)
         ];
         
-        // Remove figure/img tags that contain the hero image
+        // Remove figure/img tags that contain the hero image (more aggressive matching)
         imageUrlPatterns.forEach(pattern => {
-          const regex = new RegExp(`<figure[^>]*>.*?<img[^>]*src=["']([^"']*${pattern.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[^"']*)["'][^>]*>.*?</figure>`, 'gis');
-          cleanedContent = cleanedContent.replace(regex, '');
+          if (!pattern) return;
           
-          const imgRegex = new RegExp(`<img[^>]*src=["']([^"']*${pattern.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[^"']*)["'][^>]*>`, 'gi');
+          // Match any figure tag containing the image
+          const figureRegex = new RegExp(`<figure[^>]*>.*?<img[^>]*src=["'][^"']*${pattern.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[^"']*["'][^>]*>.*?</figure>`, 'gis');
+          cleanedContent = cleanedContent.replace(figureRegex, '');
+          
+          // Match any div containing the image
+          const divRegex = new RegExp(`<div[^>]*>.*?<img[^>]*src=["'][^"']*${pattern.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[^"']*["'][^>]*>.*?</div>`, 'gis');
+          cleanedContent = cleanedContent.replace(divRegex, '');
+          
+          // Match standalone img tags
+          const imgRegex = new RegExp(`<img[^>]*src=["'][^"']*${pattern.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[^"']*["'][^>]*>`, 'gi');
           cleanedContent = cleanedContent.replace(imgRegex, '');
         });
       }
       
-      // Remove summary text if it appears at the beginning of content
-      if (post.summary && cleanedContent.toLowerCase().includes(post.summary.toLowerCase())) {
-        const summaryRegex = new RegExp(`<p[^>]*>\\s*${post.summary.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*</p>`, 'gi');
-        cleanedContent = cleanedContent.replace(summaryRegex, '');
+      // Remove summary text if it appears anywhere in content (more aggressive)
+      if (post.summary) {
+        const summaryText = post.summary.trim();
+        if (summaryText && cleanedContent.toLowerCase().includes(summaryText.toLowerCase())) {
+          // Try multiple patterns to remove summary
+          const patterns = [
+            // In paragraph tags
+            new RegExp(`<p[^>]*>\\s*${summaryText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*</p>`, 'gi'),
+            // In div tags
+            new RegExp(`<div[^>]*>\\s*${summaryText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*</div>`, 'gi'),
+            // Plain text (first 100 chars for matching)
+            new RegExp(summaryText.substring(0, Math.min(100, summaryText.length)).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi')
+          ];
+          
+          patterns.forEach(regex => {
+            cleanedContent = cleanedContent.replace(regex, '');
+          });
+        }
       }
       
       // Render the cleaned HTML content
