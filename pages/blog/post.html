@@ -303,19 +303,56 @@
             line-height: 1.75;
         }
         
-        .prose blockquote {
-            border-left: 4px solid #4EE4FF;
-            padding-left: 1.5em;
-            margin: 2em 0;
-            font-style: italic;
-            color: #94a3b8;
+        .prose blockquote,
+        .blog-content-wrapper blockquote,
+        #blog-detail blockquote,
+        blockquote {
+            border-left: 4px solid #4EE4FF !important;
+            padding-left: 1.5em !important;
+            margin: 2em 0 !important;
+            font-style: italic !important;
+            color: #cbd5e1 !important;
+            background: rgba(78, 228, 255, 0.05) !important;
+            padding: 1.5em 1.5em 1.5em 2em !important;
+            border-radius: 0 8px 8px 0 !important;
+            font-size: 1.125rem !important;
+            line-height: 1.75 !important;
+            display: block !important;
         }
         
-        .prose code {
-            background: rgba(78, 228, 255, 0.1);
-            padding: 0.2em 0.4em;
-            border-radius: 4px;
-            font-size: 0.9em;
+        .prose code,
+        .blog-content-wrapper code,
+        #blog-detail code {
+            background: rgba(78, 228, 255, 0.15) !important;
+            padding: 0.2em 0.4em !important;
+            border-radius: 4px !important;
+            font-size: 0.9em !important;
+            color: #4EE4FF !important;
+            font-family: 'Courier New', Courier, monospace !important;
+        }
+        
+        .prose pre,
+        .blog-content-wrapper pre,
+        #blog-detail pre {
+            background: rgba(5, 10, 48, 0.8) !important;
+            border: 1px solid rgba(78, 228, 255, 0.2) !important;
+            border-radius: 8px !important;
+            padding: 1.5em !important;
+            margin: 2em 0 !important;
+            overflow-x: auto !important;
+            color: #e2e8f0 !important;
+            font-family: 'Courier New', Courier, monospace !important;
+            font-size: 0.9em !important;
+            line-height: 1.6 !important;
+        }
+        
+        .prose pre code,
+        .blog-content-wrapper pre code,
+        #blog-detail pre code {
+            background: transparent !important;
+            padding: 0 !important;
+            color: inherit !important;
+            font-size: inherit !important;
         }
         
         .prose img {
