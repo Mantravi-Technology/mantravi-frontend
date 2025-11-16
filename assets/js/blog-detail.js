@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const baseUrl = window.location.origin;
     const currentUrl = window.location.href;
     const canonicalUrl = post.canonicalUrl || currentUrl;
-    const metaTitle = post.metaTitle || post.title || 'Blog Post - Mantravi';
+    const metaTitle = post.metaTitle || post.title || 'Mantravi';
     const metaDescription = post.metaDescription || post.summary || '';
     const imageUrl = post.mainImagePath ? 
       (post.mainImagePath.startsWith('http') ? post.mainImagePath : `${baseUrl}${post.mainImagePath}`) : 
