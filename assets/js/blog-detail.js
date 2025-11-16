@@ -447,16 +447,45 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
       }, 100);
     } else {
-      // Fallback for plain text/markdown content
-      container.innerHTML = `
-        <div class="rounded-xl overflow-hidden bg-[#4EE4FF]/10 mb-8">
-          <img src="${post.mainImagePath || '/assets/icons/ui/mantravi.png'}" alt="${post.title}" width="1200" height="320" class="w-full h-80 object-cover" loading="eager" decoding="async" style="aspect-ratio: 1200/320;" />
-        </div>
-        <div class="prose prose-invert max-w-none">
-          <p class="text-gray-200 text-[18px] leading-8 font-semibold">${(post.summary || '')}</p>
-          <div class="mt-6 text-gray-100 text-[17px] leading-8 whitespace-pre-line">${content}</div>
-        </div>
+      // Fallback for plain text/markdown content - use same full-width hero image styling
+      container.innerHTML = '';
+      
+      // Show main image if available - use same full-width styling as HTML content
+      if (post.mainImagePath) {
+        const imageUrl = post.mainImagePath.startsWith('http') 
+          ? post.mainImagePath 
+          : (post.mainImagePath.startsWith('/') 
+            ? post.mainImagePath 
+            : `/${post.mainImagePath}`);
+        
+        // Create hero image container with same full-width styling
+        const heroImage = document.createElement('figure');
+        heroImage.id = 'blog-hero-image';
+        heroImage.style.cssText = 'width: 100vw !important; max-width: 100vw !important; margin: 2rem calc(-50vw + 50%) 3rem calc(-50vw + 50%) !important; display: block !important; position: relative; overflow: hidden !important; visibility: visible !important; opacity: 1 !important; padding: 0 !important;';
+        heroImage.innerHTML = `
+          <div class="w-full overflow-hidden" style="position: relative; width: 100% !important; min-height: 60vh !important; height: 60vh !important; border: none !important; background: rgba(78, 228, 255, 0.05); border-radius: 0 !important; margin: 0 !important; padding: 0 !important;">
+            <img src="${imageUrl}" alt="${post.title || 'Blog image'}" 
+                 id="main-blog-image"
+                 width="1200"
+                 height="630"
+                 style="display: block !important; width: 100% !important; height: 100% !important; min-height: 60vh !important; max-width: 100% !important; object-fit: cover !important; object-position: center !important; margin: 0 !important; padding: 0 !important; position: absolute !important; top: 0 !important; left: 0 !important; visibility: visible !important; opacity: 1 !important; z-index: 1 !important;"
+                 loading="eager"
+                 decoding="async"
+                 onload="this.style.display='block'; this.style.visibility='visible'; this.style.opacity='1'; this.classList.add('loaded'); const img=this; if(img.naturalWidth && img.naturalHeight){img.setAttribute('width',img.naturalWidth);img.setAttribute('height',img.naturalHeight);}"
+                 onerror="this.src='/assets/icons/ui/mantravi.png'; this.onerror=null; this.setAttribute('width','512'); this.setAttribute('height','512'); this.style.display='block'; this.style.visibility='visible'; this.style.opacity='1';" />
+          </div>
+        `;
+        container.appendChild(heroImage);
+      }
+      
+      // Add content wrapper for plain text
+      const contentWrapper = document.createElement('div');
+      contentWrapper.className = 'prose prose-invert max-w-none';
+      contentWrapper.innerHTML = `
+        ${post.summary ? `<p class="text-gray-200 text-[18px] leading-8 font-semibold">${post.summary}</p>` : ''}
+        <div class="mt-6 text-gray-100 text-[17px] leading-8 whitespace-pre-line">${content}</div>
       `;
+      container.appendChild(contentWrapper);
       
       // Add tags for plain text content
       if ((post.tags || []).length > 0) {
