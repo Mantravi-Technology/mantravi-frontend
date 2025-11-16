@@ -89,17 +89,6 @@ const STATIC_PAGES = [
     }
 ];
 
-// Known blog posts (fallback if API doesn't return them)
-// These will always be included in the sitemap
-const KNOWN_BLOG_POSTS = [
-    {
-        slug: '5382b205-6c0f-4c3f-a095-29d3e0d8be98',
-        lastmod: '2025-11-08',
-        changefreq: 'weekly',
-        priority: '0.9'
-    }
-];
-
 /**
  * Escape XML special characters
  */
@@ -161,7 +150,6 @@ async function makeRequest(url, retries = CONFIG.MAX_RETRIES) {
             } catch (error) {
                 if (attempt < retries) {
                     const delay = 1000 * (attempt + 1);
-                    console.warn(`Request failed, retrying in ${delay}ms... (${attempt + 1}/${retries})`);
                     await new Promise(resolve => setTimeout(resolve, delay));
                 } else {
                     throw error;
@@ -208,7 +196,6 @@ async function makeRequest(url, retries = CONFIG.MAX_RETRIES) {
 
         req.on('error', (error) => {
             if (retries > 0) {
-                console.warn(`Request failed, retrying... (${CONFIG.MAX_RETRIES - retries + 1}/${CONFIG.MAX_RETRIES})`);
                 setTimeout(() => {
                     makeRequest(url, retries - 1).then(resolve).catch(reject);
                 }, 1000 * (CONFIG.MAX_RETRIES - retries + 1));
@@ -220,7 +207,6 @@ async function makeRequest(url, retries = CONFIG.MAX_RETRIES) {
         req.on('timeout', () => {
             req.destroy();
             if (retries > 0) {
-                console.warn(`Request timeout, retrying... (${CONFIG.MAX_RETRIES - retries + 1}/${CONFIG.MAX_RETRIES})`);
                 setTimeout(() => {
                     makeRequest(url, retries - 1).then(resolve).catch(reject);
                 }, 1000 * (CONFIG.MAX_RETRIES - retries + 1));
@@ -241,9 +227,6 @@ async function fetchAllBlogs() {
     const blogs = [];
     let page = 0;
     let hasMore = true;
-    let totalFetched = 0;
-
-    console.log('🔄 Fetching blog posts from API...');
 
     while (hasMore) {
         try {
@@ -254,9 +237,6 @@ async function fetchAllBlogs() {
             if (response && response.data && Array.isArray(response.data)) {
                 const pageBlogs = response.data;
                 blogs.push(...pageBlogs);
-                totalFetched += pageBlogs.length;
-                
-                console.log(`   ✓ Fetched page ${page + 1}: ${pageBlogs.length} blogs (Total: ${totalFetched})`);
                 
                 // Check if there are more pages
                 const totalPages = response.totalPages || Math.ceil((response.total || 0) / CONFIG.PAGE_SIZE);
@@ -266,7 +246,6 @@ async function fetchAllBlogs() {
                 hasMore = false;
             }
         } catch (error) {
-            console.error(`❌ Error fetching page ${page + 1}:`, error.message);
             // Continue with what we have instead of failing completely
             hasMore = false;
         }
@@ -320,57 +299,29 @@ function generateSitemap(blogs) {
 `;
     });
 
-    // Merge API blogs with known blog posts (avoid duplicates)
-    const blogMap = new Map();
-    
-    // Add API blogs first
-    blogs.forEach(blog => {
-        const slug = blog.slug || blog.id;
-        if (slug) {
-            blogMap.set(slug, {
-                slug: slug,
-                lastmod: formatDate(blog.updatedAt || blog.publishedAt || blog.createdAt),
-                changefreq: 'weekly',
-                priority: '0.9',
-                title: blog.title || '',
-                image: blog.heroImage || blog.image || blog.thumbnail
-            });
-        }
-    });
-    
-    // Add known blog posts (only if not already in map)
-    KNOWN_BLOG_POSTS.forEach(knownBlog => {
-        if (!blogMap.has(knownBlog.slug)) {
-            blogMap.set(knownBlog.slug, {
-                slug: knownBlog.slug,
-                lastmod: knownBlog.lastmod || formatDate(new Date()),
-                changefreq: knownBlog.changefreq || 'weekly',
-                priority: knownBlog.priority || '0.9',
-                title: '',
-                image: null
-            });
-        }
-    });
-    
-    // Add blog posts to sitemap
-    if (blogMap.size > 0) {
+    // Add blog posts from API
+    if (blogs.length > 0) {
         xml += `    
-    <!-- Blog Posts - Dynamically Generated (${blogMap.size} posts) -->
+    <!-- Blog Posts - Dynamically Generated (${blogs.length} posts) -->
 `;
         
-        blogMap.forEach(blog => {
-            const url = `${CONFIG.SITE_URL}/blog/post?slug=${encodeURIComponent(blog.slug)}`;
+        blogs.forEach(blog => {
+            const slug = blog.slug || blog.id;
+            if (!slug) return; // Skip if no slug or ID
+            
+            const lastmod = formatDate(blog.updatedAt || blog.publishedAt || blog.createdAt);
+            const url = `${CONFIG.SITE_URL}/blog/post?slug=${encodeURIComponent(slug)}`;
             const title = escapeXml(blog.title || '');
             
             xml += `    <url>
         <loc>${url}</loc>
-        <lastmod>${blog.lastmod}</lastmod>
-        <changefreq>${blog.changefreq}</changefreq>
-        <priority>${blog.priority}</priority>`;
+        <lastmod>${lastmod}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>`;
             
             // Add image if available
-            if (blog.image) {
-                let imageUrl = blog.image;
+            if (blog.heroImage || blog.image || blog.thumbnail) {
+                let imageUrl = blog.heroImage || blog.image || blog.thumbnail;
                 // Ensure absolute URL
                 if (imageUrl && !imageUrl.startsWith('http')) {
                     imageUrl = imageUrl.startsWith('/') ? CONFIG.SITE_URL + imageUrl : CONFIG.SITE_URL + '/' + imageUrl;
@@ -401,59 +352,24 @@ function generateSitemap(blogs) {
  * Main function
  */
 async function updateSitemap() {
-    const startTime = Date.now();
-    
     try {
         // Fetch blogs
         const blogs = await fetchAllBlogs();
-        console.log(`✅ Successfully fetched ${blogs.length} blog posts`);
         
         // Generate sitemap
-        console.log('📝 Generating sitemap XML...');
         const sitemapXml = generateSitemap(blogs);
         
         // Write to file
-        console.log('💾 Writing sitemap.xml...');
         fs.writeFileSync(CONFIG.SITEMAP_PATH, sitemapXml, 'utf8');
-        
-        // Verify file was written
-        const stats = fs.statSync(CONFIG.SITEMAP_PATH);
-        const fileSizeKB = (stats.size / 1024).toFixed(2);
-        
-        const duration = ((Date.now() - startTime) / 1000).toFixed(2);
-        
-        // Count total blog posts (including known ones)
-        const blogMap = new Map();
-        blogs.forEach(blog => {
-            const slug = blog.slug || blog.id;
-            if (slug) blogMap.set(slug, blog);
-        });
-        KNOWN_BLOG_POSTS.forEach(knownBlog => {
-            if (!blogMap.has(knownBlog.slug)) {
-                blogMap.set(knownBlog.slug, knownBlog);
-            }
-        });
-        const totalBlogPosts = blogMap.size;
-        
-        console.log(`\n✅ Sitemap updated successfully!`);
-        console.log(`   📄 Location: ${CONFIG.SITEMAP_PATH}`);
-        console.log(`   📊 Total URLs: ${STATIC_PAGES.length + totalBlogPosts}`);
-        console.log(`   📝 Blog Posts: ${totalBlogPosts} (${blogs.length} from API, ${KNOWN_BLOG_POSTS.length} known)`);
-        console.log(`   📦 File size: ${fileSizeKB} KB`);
-        console.log(`   ⏱️  Duration: ${duration}s`);
         
         return {
             success: true,
-            totalUrls: STATIC_PAGES.length + totalBlogPosts,
-            blogPosts: totalBlogPosts,
-            blogPostsFromApi: blogs.length,
-            blogPostsKnown: KNOWN_BLOG_POSTS.length,
-            fileSize: stats.size,
-            duration: duration
+            totalUrls: STATIC_PAGES.length + blogs.length,
+            blogPosts: blogs.length,
+            fileSize: fs.statSync(CONFIG.SITEMAP_PATH).size
         };
     } catch (error) {
-        console.error('\n❌ Error updating sitemap:', error.message);
-        console.error('   Stack:', error.stack);
+        process.stderr.write(`Error updating sitemap: ${error.message}\n`);
         process.exit(1);
     }
 }
@@ -465,7 +381,7 @@ if (require.main === module) {
             process.exit(0);
         })
         .catch((error) => {
-            console.error('Fatal error:', error);
+            process.stderr.write(`Fatal error: ${error.message}\n`);
             process.exit(1);
         });
 }
