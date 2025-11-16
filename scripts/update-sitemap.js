@@ -37,13 +37,25 @@ const STATIC_PAGES = [
     {
         url: '/',
         lastmod: new Date().toISOString().split('T')[0],
-        changefreq: 'weekly',
+        changefreq: 'daily',
         priority: '1.0',
-        image: {
-            loc: `${CONFIG.SITE_URL}/assets/icons/ui/mantravi.png`,
-            title: 'Mantravi - AI-Native Digital Solutions | Web Development, Mobile Apps & IT Services',
-            caption: 'Mantravi delivers cutting-edge AI-powered digital solutions including web development, mobile apps, digital marketing, QA services, and IT consulting.'
-        }
+        images: [
+            {
+                loc: `${CONFIG.SITE_URL}/assets/icons/ui/mantravi.png`,
+                title: 'Mantravi - AI-Native Digital Solutions | Web Development, Mobile Apps & IT Services',
+                caption: 'Mantravi delivers cutting-edge AI-powered digital solutions including web development, mobile apps, digital marketing, QA services, and IT consulting.'
+            },
+            {
+                loc: `${CONFIG.SITE_URL}/assets/icons/ui/favicon/favicon-96x96.png`,
+                title: 'Mantravi Favicon',
+                caption: 'Mantravi company favicon and brand icon'
+            },
+            {
+                loc: `${CONFIG.SITE_URL}/assets/icons/ui/favicon/favicon.svg`,
+                title: 'Mantravi Logo SVG',
+                caption: 'Mantravi scalable vector logo'
+            }
+        ]
     },
     {
         url: '/services',
@@ -276,18 +288,21 @@ function generateSitemap(blogs) {
         <changefreq>${page.changefreq}</changefreq>
         <priority>${page.priority}</priority>`;
         
-        if (page.image) {
+        // Support both single image (backward compatibility) and multiple images
+        const images = page.images || (page.image ? [page.image] : []);
+        
+        images.forEach(image => {
             xml += `
         <image:image>
-            <image:loc>${page.image.loc}</image:loc>
-            <image:title>${escapeXml(page.image.title)}</image:title>`;
-            if (page.image.caption) {
+            <image:loc>${image.loc}</image:loc>
+            <image:title>${escapeXml(image.title)}</image:title>`;
+            if (image.caption) {
                 xml += `
-            <image:caption>${escapeXml(page.image.caption)}</image:caption>`;
+            <image:caption>${escapeXml(image.caption)}</image:caption>`;
             }
             xml += `
         </image:image>`;
-        }
+        });
         
         xml += `
     </url>
