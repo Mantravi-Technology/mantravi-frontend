@@ -270,17 +270,22 @@ document.addEventListener('DOMContentLoaded', async () => {
       lucide.createIcons();
     }
 
-    // Add summary display section (before content)
+    // Render blog content - check if content is HTML or plain text
+    const content = post.content || '';
+    
+    // Add summary display section (before content) - only if content doesn't already include it
     const summaryContainer = document.getElementById('blog-summary');
-    if (summaryContainer && post.summary) {
+    const contentIncludesSummary = content.toLowerCase().includes((post.summary || '').toLowerCase().substring(0, 50));
+    
+    if (summaryContainer && post.summary && !contentIncludesSummary) {
       summaryContainer.innerHTML = `
         <p class="text-gray-300 text-lg sm:text-xl leading-relaxed font-semibold mb-6">${post.summary}</p>
       `;
       summaryContainer.classList.remove('hidden');
+    } else if (summaryContainer) {
+      // Hide summary container if summary is already in content
+      summaryContainer.classList.add('hidden');
     }
-
-    // Render blog content - check if content is HTML or plain text
-    const content = post.content || '';
     const isHTML = content.trim().startsWith('<') && content.includes('</');
     
     // Create wrapper that allows HTML content to render properly
@@ -302,12 +307,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         heroImage.id = 'blog-hero-image';
         heroImage.style.cssText = 'width: 100%; margin: 2rem 0 3rem 0; display: block !important; position: relative; overflow: visible !important; visibility: visible !important; opacity: 1 !important;';
         heroImage.innerHTML = `
-          <div class="w-full rounded-2xl shadow-xl" style="overflow: visible !important; position: relative; width: 100%; border: 2px solid rgba(78, 228, 255, 0.2); background: rgba(78, 228, 255, 0.05);">
+          <div class="w-full rounded-2xl shadow-xl overflow-hidden" style="position: relative; width: 100%; min-height: 60vh; border: 2px solid rgba(78, 228, 255, 0.2); background: rgba(78, 228, 255, 0.05);">
             <img src="${imageUrl}" alt="${post.title || 'Blog image'}" 
                  id="main-blog-image"
                  width="1200"
                  height="630"
-                 style="display: block !important; width: 100% !important; height: auto !important; max-width: 100% !important; object-fit: contain !important; object-position: center !important; margin: 0; position: relative !important; visibility: visible !important; opacity: 1 !important; z-index: 1;"
+                 style="display: block !important; width: 100% !important; height: 100% !important; min-height: 60vh !important; max-width: 100% !important; object-fit: cover !important; object-position: center !important; margin: 0; position: relative !important; visibility: visible !important; opacity: 1 !important; z-index: 1;"
                  loading="eager"
                  decoding="async"
                  onload="this.style.display='block'; this.style.visibility='visible'; this.style.opacity='1'; this.classList.add('loaded'); const img=this; if(img.naturalWidth && img.naturalHeight){img.setAttribute('width',img.naturalWidth);img.setAttribute('height',img.naturalHeight);}"
