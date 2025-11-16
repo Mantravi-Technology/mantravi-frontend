@@ -89,6 +89,17 @@ const STATIC_PAGES = [
     }
 ];
 
+// Known blog posts (fallback if API doesn't return them)
+// These will always be included in the sitemap
+const KNOWN_BLOG_POSTS = [
+    {
+        slug: '5382b205-6c0f-4c3f-a095-29d3e0d8be98',
+        lastmod: '2025-11-08',
+        changefreq: 'weekly',
+        priority: '0.9'
+    }
+];
+
 /**
  * Escape XML special characters
  */
@@ -309,29 +320,57 @@ function generateSitemap(blogs) {
 `;
     });
 
-    // Add blog posts
-    if (blogs.length > 0) {
+    // Merge API blogs with known blog posts (avoid duplicates)
+    const blogMap = new Map();
+    
+    // Add API blogs first
+    blogs.forEach(blog => {
+        const slug = blog.slug || blog.id;
+        if (slug) {
+            blogMap.set(slug, {
+                slug: slug,
+                lastmod: formatDate(blog.updatedAt || blog.publishedAt || blog.createdAt),
+                changefreq: 'weekly',
+                priority: '0.9',
+                title: blog.title || '',
+                image: blog.heroImage || blog.image || blog.thumbnail
+            });
+        }
+    });
+    
+    // Add known blog posts (only if not already in map)
+    KNOWN_BLOG_POSTS.forEach(knownBlog => {
+        if (!blogMap.has(knownBlog.slug)) {
+            blogMap.set(knownBlog.slug, {
+                slug: knownBlog.slug,
+                lastmod: knownBlog.lastmod || formatDate(new Date()),
+                changefreq: knownBlog.changefreq || 'weekly',
+                priority: knownBlog.priority || '0.9',
+                title: '',
+                image: null
+            });
+        }
+    });
+    
+    // Add blog posts to sitemap
+    if (blogMap.size > 0) {
         xml += `    
-    <!-- Blog Posts - Dynamically Generated (${blogs.length} posts) -->
+    <!-- Blog Posts - Dynamically Generated (${blogMap.size} posts) -->
 `;
         
-        blogs.forEach(blog => {
-            const slug = blog.slug || blog.id;
-            if (!slug) return; // Skip if no slug or ID
-            
-            const lastmod = formatDate(blog.updatedAt || blog.publishedAt || blog.createdAt);
-            const url = `${CONFIG.SITE_URL}/blog/post?slug=${encodeURIComponent(slug)}`;
+        blogMap.forEach(blog => {
+            const url = `${CONFIG.SITE_URL}/blog/post?slug=${encodeURIComponent(blog.slug)}`;
             const title = escapeXml(blog.title || '');
             
             xml += `    <url>
         <loc>${url}</loc>
-        <lastmod>${lastmod}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>`;
+        <lastmod>${blog.lastmod}</lastmod>
+        <changefreq>${blog.changefreq}</changefreq>
+        <priority>${blog.priority}</priority>`;
             
             // Add image if available
-            if (blog.heroImage || blog.image || blog.thumbnail) {
-                let imageUrl = blog.heroImage || blog.image || blog.thumbnail;
+            if (blog.image) {
+                let imageUrl = blog.image;
                 // Ensure absolute URL
                 if (imageUrl && !imageUrl.startsWith('http')) {
                     imageUrl = imageUrl.startsWith('/') ? CONFIG.SITE_URL + imageUrl : CONFIG.SITE_URL + '/' + imageUrl;
@@ -383,16 +422,32 @@ async function updateSitemap() {
         
         const duration = ((Date.now() - startTime) / 1000).toFixed(2);
         
+        // Count total blog posts (including known ones)
+        const blogMap = new Map();
+        blogs.forEach(blog => {
+            const slug = blog.slug || blog.id;
+            if (slug) blogMap.set(slug, blog);
+        });
+        KNOWN_BLOG_POSTS.forEach(knownBlog => {
+            if (!blogMap.has(knownBlog.slug)) {
+                blogMap.set(knownBlog.slug, knownBlog);
+            }
+        });
+        const totalBlogPosts = blogMap.size;
+        
         console.log(`\n✅ Sitemap updated successfully!`);
         console.log(`   📄 Location: ${CONFIG.SITEMAP_PATH}`);
-        console.log(`   📊 Total URLs: ${STATIC_PAGES.length + blogs.length}`);
+        console.log(`   📊 Total URLs: ${STATIC_PAGES.length + totalBlogPosts}`);
+        console.log(`   📝 Blog Posts: ${totalBlogPosts} (${blogs.length} from API, ${KNOWN_BLOG_POSTS.length} known)`);
         console.log(`   📦 File size: ${fileSizeKB} KB`);
         console.log(`   ⏱️  Duration: ${duration}s`);
         
         return {
             success: true,
-            totalUrls: STATIC_PAGES.length + blogs.length,
-            blogPosts: blogs.length,
+            totalUrls: STATIC_PAGES.length + totalBlogPosts,
+            blogPosts: totalBlogPosts,
+            blogPostsFromApi: blogs.length,
+            blogPostsKnown: KNOWN_BLOG_POSTS.length,
             fileSize: stats.size,
             duration: duration
         };
