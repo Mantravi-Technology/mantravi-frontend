@@ -438,6 +438,16 @@ document.addEventListener('DOMContentLoaded', async () => {
       contentWrapper.innerHTML = cleanedContent;
       container.appendChild(contentWrapper);
       
+      // Add tags for HTML content (after content wrapper)
+      if ((post.tags || []).length > 0) {
+        const tagsDiv = document.createElement('div');
+        tagsDiv.className = 'mt-8 flex flex-wrap gap-2';
+        tagsDiv.innerHTML = (post.tags || []).map(t => 
+          `<span class="inline-flex items-center px-4 py-2 bg-[#4EE4FF]/10 border border-[#4EE4FF]/30 rounded-full text-sm font-medium text-[#4EE4FF] hover:bg-[#4EE4FF]/20 transition-colors">#${t}</span>`
+        ).join('');
+        container.appendChild(tagsDiv);
+      }
+      
       // Prevent any editing attempts - make absolutely read-only
       const preventEditing = (e) => {
         if (e.target.closest('.blog-content-wrapper')) {
@@ -614,9 +624,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       // Add tags for plain text content
       if ((post.tags || []).length > 0) {
         const tagsDiv = document.createElement('div');
-        tagsDiv.className = 'mt-8';
+        tagsDiv.className = 'mt-8 flex flex-wrap gap-2';
         tagsDiv.innerHTML = (post.tags || []).map(t => 
-          `<span class="inline-block px-3 py-1 mr-2 mb-2 bg-white/10 border border-white/10 rounded-full text-xs">#${t}</span>`
+          `<span class="inline-flex items-center px-4 py-2 bg-[#4EE4FF]/10 border border-[#4EE4FF]/30 rounded-full text-sm font-medium text-[#4EE4FF] hover:bg-[#4EE4FF]/20 transition-colors">#${t}</span>`
         ).join('');
         container.appendChild(tagsDiv);
       }
