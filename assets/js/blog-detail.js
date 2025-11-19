@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     tagsDiv.innerHTML = `
       <span class="text-gray-400 text-sm font-medium mr-2" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important;">Tags:</span>
       ${tags.map(tag =>
-        `<span class="inline-flex items-center px-4 py-2 bg-[#4EE4FF]/10 border border-[#4EE4FF]/30 rounded-full text-sm font-medium text-[#4EE4FF] hover:bg-[#4EE4FF]/20 transition-colors cursor-default" style="display: inline-flex !important; visibility: visible !important; opacity: 1 !important; background-color: rgba(78, 228, 255, 0.1) !important; border: 1px solid rgba(78, 228, 255, 0.3) !important; color: #4EE4FF !important; padding: 0.5rem 1rem !important; border-radius: 9999px !important; margin: 0.25rem !important;">#${tag}</span>`
+        `<span class="inline-flex items-center px-4 py-2 bg-[#4EE4FF]/10 border border-[#4EE4FF]/30 rounded-full text-sm font-medium text-[#4EE4FF] hover:bg-[#4EE4FF]/20 transition-colors cursor-default" style="display: inline-flex !important; visibility: visible !important; opacity: 1 !important; background-color: rgba(78, 228, 255, 0.1) !important; border: 1px solid rgba(78, 228, 255, 0.3) !important; color: #4EE4FF !important; padding: 0.5rem 1rem !important; border-radius: 9999px !important; margin: 0.25rem !important;">${tag}</span>`
       ).join('')}
     `;
     return tagsDiv;
