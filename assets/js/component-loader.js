@@ -1,5 +1,21 @@
 // Component Loader for Header and Footer
 (function() {
+    // Helper function to initialize Lucide icons (handles deferred loading)
+    function initLucideIcons() {
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        } else {
+            // Wait for deferred Lucide to load
+            const checkLucide = setInterval(() => {
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                    clearInterval(checkLucide);
+                }
+            }, 50);
+            setTimeout(() => clearInterval(checkLucide), 3000);
+        }
+    }
+    
     // Run immediately if DOM is ready, otherwise wait
     function init() {
         // Load head component
@@ -168,9 +184,7 @@
                 }, 100);
                 
                 // Initialize Lucide icons after loading
-                if (typeof lucide !== 'undefined') {
-                    lucide.createIcons();
-                }
+                initLucideIcons();
                 // Initialize mobile menu
                 initializeMobileMenu();
             })
@@ -187,9 +201,7 @@
                 .then(html => {
                     footerContainer.innerHTML = html;
                     // Initialize Lucide icons after loading
-                    if (typeof lucide !== 'undefined') {
-                        lucide.createIcons();
-                    }
+                    initLucideIcons();
                 })
                 .catch(error => {
                     console.error('Error loading footer component:', error);
@@ -209,9 +221,7 @@
                 .then(html => {
                            contactFormContainer.innerHTML = html;
                            // Initialize Lucide icons after loading
-                           if (typeof lucide !== 'undefined') {
-                               lucide.createIcons();
-                           }
+                           initLucideIcons();
                            // Initialize consult form
                            if (typeof initializeConsultForm === 'function') {
                                initializeConsultForm();

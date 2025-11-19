@@ -22,6 +22,17 @@ function initializeApp() {
 function initializeLucideIcons() {
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
+    } else {
+        // If Lucide is deferred, wait for it to load
+        const checkLucide = setInterval(() => {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+                clearInterval(checkLucide);
+            }
+        }, 50);
+        
+        // Stop checking after 5 seconds
+        setTimeout(() => clearInterval(checkLucide), 5000);
     }
 }
 

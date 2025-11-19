@@ -81,49 +81,75 @@
     <link rel="alternate" hreflang="en-IN" href="https://mantravi.com/">
     <link rel="alternate" hreflang="x-default" href="https://mantravi.com/">
     
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Lucide Icons CDN -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    
-    <!-- Inter Font -->
+    <!-- Preconnect to critical third-party domains for faster loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    
+    <!-- Inter Font - Load early for text rendering -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Main CSS -->
+    <!-- Main CSS - Critical, load synchronously -->
     <link rel="stylesheet" href="/assets/css/main.css">
     
+    <!-- Tailwind CSS CDN - Load after main CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Defer non-critical scripts to reduce render blocking -->
     <!-- Console Protection Configuration -->
-    <script src="/config/console-protection-config.js"></script>
+    <script defer src="/config/console-protection-config.js"></script>
     
-    <!-- Console Protection - Load First to Block Console Access -->
-    <script src="/assets/js/console-protection.js"></script>
+    <!-- Console Protection - Defer to reduce blocking -->
+    <script defer src="/assets/js/console-protection.js"></script>
     
-    <!-- Global Parallax Configuration - Load First -->
-    <script src="/config/parallax-config.js"></script>
+    <!-- Global Parallax Configuration - Defer -->
+    <script defer src="/config/parallax-config.js"></script>
     
-    <!-- Google Analytics Configuration -->
-    <script src="/config/analytics-config.js"></script>
-    <script>
-        // Make analytics config available globally
-        if (typeof ANALYTICS_CONFIG !== 'undefined') {
-            window.ANALYTICS_CONFIG = ANALYTICS_CONFIG;
-        }
-    </script>
+    <!-- Google Analytics Configuration - Defer -->
+    <script defer src="/config/analytics-config.js"></script>
     
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5F8EJP5WXD"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-5F8EJP5WXD', {
-            'anonymize_ip': true,
-            'allow_google_signals': false,
-            'allow_ad_personalization_signals': false
-        });
+    <!-- Lucide Icons CDN - Defer to reduce blocking -->
+    <script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Google Analytics - Defer to reduce blocking -->
+    <script defer>
+        // Initialize analytics after config loads
+        (function() {
+            function initAnalytics() {
+                if (typeof ANALYTICS_CONFIG !== 'undefined') {
+                    window.ANALYTICS_CONFIG = ANALYTICS_CONFIG;
+                }
+                
+                // Load gtag.js asynchronously
+                const script = document.createElement('script');
+                script.async = true;
+                script.src = 'https://www.googletagmanager.com/gtag/js?id=G-5F8EJP5WXD';
+                document.head.appendChild(script);
+                
+                script.onload = function() {
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', 'G-5F8EJP5WXD', {
+                        'anonymize_ip': true,
+                        'allow_google_signals': false,
+                        'allow_ad_personalization_signals': false
+                    });
+                };
+            }
+            
+            // Wait for DOM and config to be ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', function() {
+                    setTimeout(initAnalytics, 50);
+                });
+            } else {
+                setTimeout(initAnalytics, 50);
+            }
+        })();
     </script>
     
     <!-- Google Search Console Verification (Add your verification code here) -->
