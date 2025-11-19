@@ -2,6 +2,10 @@
   "outputDirectory": ".",
   "rewrites": [
     {
+      "source": "/favicon.ico",
+      "destination": "/assets/icons/ui/favicon/favicon.ico"
+    },
+    {
       "source": "/sitemap.xml",
       "destination": "/sitemap.xml"
     },

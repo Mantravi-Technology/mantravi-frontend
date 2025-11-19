@@ -60,30 +60,49 @@ document.addEventListener('DOMContentLoaded', async () => {
       const raw = entry.trim();
       if (!raw) return;
 
-      // First, extract all hashtags from the string
-      const hashtagMatches = raw.match(/#([A-Za-z0-9._-]+)/g);
-      if (hashtagMatches && hashtagMatches.length) {
-        hashtagMatches.forEach(match => {
-          const cleaned = match.replace(/^#+/, '').trim();
-          if (cleaned && cleaned.length > 0) {
-            tags.push(cleaned);
-          }
-        });
+      // Check if this is a clean tag (no hashtags, brackets, etc.) - keep it as-is
+      const hasHashtags = raw.includes('#');
+      const hasBrackets = /[\[\](){}<>]/.test(raw);
+      
+      if (!hasHashtags && !hasBrackets) {
+        // Clean tag - use as-is (handles "Digital transformation services", "AI", etc.)
+        const cleaned = raw.trim();
+        if (cleaned && cleaned.length > 0 && cleaned.length < 100) {
+          tags.push(cleaned);
+        }
+        return;
       }
 
-      // Also extract plain words/phrases (remove brackets, parentheses, etc.)
-      const cleaned = raw
-        .replace(/^[\[\](){}<>#\s]+|[\[\](){}<>#\s]+$/g, '') // Remove brackets/parentheses from edges
-        .replace(/#/g, ' ') // Replace remaining # with space
-        .split(/\s+/) // Split by whitespace
-        .map(word => word.trim())
-        .filter(word => word.length > 0 && word.length < 50); // Filter out empty and too long
-
-      cleaned.forEach(word => {
-        if (word && word.length > 0) {
-          tags.push(word);
+      // Handle messy tags with hashtags
+      if (hasHashtags) {
+        const hashtagMatches = raw.match(/#([A-Za-z0-9._-]+)/g);
+        if (hashtagMatches && hashtagMatches.length) {
+          hashtagMatches.forEach(match => {
+            const cleaned = match.replace(/^#+/, '').trim();
+            if (cleaned && cleaned.length > 0) {
+              tags.push(cleaned);
+            }
+          });
         }
-      });
+      }
+
+      // Handle tags with brackets - extract content
+      if (hasBrackets) {
+        const cleaned = raw
+          .replace(/^[\[\](){}<>#\s]+|[\[\](){}<>#\s]+$/g, '') // Remove brackets/parentheses from edges
+          .replace(/#/g, ' ') // Replace remaining # with space
+          .trim();
+        
+        if (cleaned && cleaned.length > 0 && cleaned.length < 100) {
+          // If it's still a phrase (has spaces), keep as one tag
+          if (cleaned.includes(' ')) {
+            tags.push(cleaned);
+          } else {
+            // Single word, add it
+            tags.push(cleaned);
+          }
+        }
+      }
     });
 
     // Remove duplicates (case-insensitive)
