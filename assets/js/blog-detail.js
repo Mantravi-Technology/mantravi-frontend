@@ -44,7 +44,15 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   function normalizeTags(tagList) {
-    if (!Array.isArray(tagList)) return [];
+    if (!tagList) return [];
+    if (!Array.isArray(tagList)) {
+      // Handle case where tags might be a single string
+      if (typeof tagList === 'string') {
+        tagList = [tagList];
+      } else {
+        return [];
+      }
+    }
     const tags = [];
 
     tagList.forEach(entry => {
@@ -52,26 +60,40 @@ document.addEventListener('DOMContentLoaded', async () => {
       const raw = entry.trim();
       if (!raw) return;
 
+      // First, extract all hashtags from the string
       const hashtagMatches = raw.match(/#([A-Za-z0-9._-]+)/g);
       if (hashtagMatches && hashtagMatches.length) {
         hashtagMatches.forEach(match => {
-          const cleaned = match.replace('#', '').trim();
-          if (cleaned) tags.push(cleaned);
+          const cleaned = match.replace(/^#+/, '').trim();
+          if (cleaned && cleaned.length > 0) {
+            tags.push(cleaned);
+          }
         });
-        return;
       }
 
-      const cleaned = raw.replace(/^[\[\](){}<>#]+|[\[\](){}<>#]+$/g, '').trim();
-      if (cleaned) tags.push(cleaned);
+      // Also extract plain words/phrases (remove brackets, parentheses, etc.)
+      const cleaned = raw
+        .replace(/^[\[\](){}<>#\s]+|[\[\](){}<>#\s]+$/g, '') // Remove brackets/parentheses from edges
+        .replace(/#/g, ' ') // Replace remaining # with space
+        .split(/\s+/) // Split by whitespace
+        .map(word => word.trim())
+        .filter(word => word.length > 0 && word.length < 50); // Filter out empty and too long
+
+      cleaned.forEach(word => {
+        if (word && word.length > 0) {
+          tags.push(word);
+        }
+      });
     });
 
+    // Remove duplicates (case-insensitive)
     const seen = new Set();
     return tags.filter(tag => {
-      const key = tag.toLowerCase();
-      if (seen.has(key)) return false;
+      const key = tag.toLowerCase().trim();
+      if (!key || key.length === 0 || seen.has(key)) return false;
       seen.add(key);
       return true;
-    });
+    }).slice(0, 20); // Limit to 20 tags max
   }
 
   function createHeroFigure(imageUrl, altText = 'Blog image') {
@@ -87,12 +109,17 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   function renderTags(tags) {
-    if (!tags.length) return null;
+    if (!tags || !tags.length) return null;
     const tagsDiv = document.createElement('div');
-    tagsDiv.className = 'mt-8 flex flex-wrap gap-2';
-    tagsDiv.innerHTML = tags.map(tag =>
-      `<span class="inline-flex items-center px-4 py-2 bg-[#4EE4FF]/10 border border-[#4EE4FF]/30 rounded-full text-sm font-medium text-[#4EE4FF] hover:bg-[#4EE4FF]/20 transition-colors">#${tag}</span>`
-    ).join('');
+    tagsDiv.className = 'mt-8 mb-6 flex flex-wrap items-center gap-3';
+    tagsDiv.style.cssText = 'display: flex !important; visibility: visible !important; opacity: 1 !important; margin-top: 2rem !important; margin-bottom: 1.5rem !important; width: 100% !important;';
+    tagsDiv.setAttribute('id', 'blog-tags-container');
+    tagsDiv.innerHTML = `
+      <span class="text-gray-400 text-sm font-medium mr-2" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important;">Tags:</span>
+      ${tags.map(tag =>
+        `<span class="inline-flex items-center px-4 py-2 bg-[#4EE4FF]/10 border border-[#4EE4FF]/30 rounded-full text-sm font-medium text-[#4EE4FF] hover:bg-[#4EE4FF]/20 transition-colors cursor-default" style="display: inline-flex !important; visibility: visible !important; opacity: 1 !important; background-color: rgba(78, 228, 255, 0.1) !important; border: 1px solid rgba(78, 228, 255, 0.3) !important; color: #4EE4FF !important; padding: 0.5rem 1rem !important; border-radius: 9999px !important; margin: 0.25rem !important;">#${tag}</span>`
+      ).join('')}
+    `;
     return tagsDiv;
   }
 
@@ -480,7 +507,18 @@ document.addEventListener('DOMContentLoaded', async () => {
       
       // Add tags for HTML content (after content wrapper)
       const tagsComponent = renderTags(tags);
-      if (tagsComponent) container.appendChild(tagsComponent);
+      if (tagsComponent) {
+        container.appendChild(tagsComponent);
+        // Force visibility after append
+        setTimeout(() => {
+          const tagsContainer = document.getElementById('blog-tags-container');
+          if (tagsContainer) {
+            tagsContainer.style.display = 'flex';
+            tagsContainer.style.visibility = 'visible';
+            tagsContainer.style.opacity = '1';
+          }
+        }, 100);
+      }
       
       // Prevent any editing attempts - make absolutely read-only
       const preventEditing = (e) => {
@@ -642,7 +680,18 @@ document.addEventListener('DOMContentLoaded', async () => {
       
       // Add tags for plain text content
       const tagsComponent = renderTags(tags);
-      if (tagsComponent) container.appendChild(tagsComponent);
+      if (tagsComponent) {
+        container.appendChild(tagsComponent);
+        // Force visibility after append
+        setTimeout(() => {
+          const tagsContainer = document.getElementById('blog-tags-container');
+          if (tagsContainer) {
+            tagsContainer.style.display = 'flex';
+            tagsContainer.style.visibility = 'visible';
+            tagsContainer.style.opacity = '1';
+          }
+        }, 100);
+      }
     }
     
     // Add related posts section (always show, regardless of content type)
