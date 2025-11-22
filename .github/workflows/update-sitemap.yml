@@ -24,8 +24,8 @@ jobs:
         run: |
           # Ensure we have the repository checked out with full history
           if [ ! -d .git ]; then
-            # Repository not checked out, clone it
-            git clone --depth 0 https://github.com/${{ github.repository }}.git .
+            # Repository not checked out, clone it with full history
+            git clone https://github.com/${{ github.repository }}.git .
           else
             # Repository already checked out, ensure we have full history
             git fetch --unshallow || true
