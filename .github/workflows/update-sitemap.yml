@@ -18,11 +18,14 @@ jobs:
     name: Update Sitemap with Latest Blog Posts
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    permissions:
+      contents: write
+      pull-requests: read
     
     steps:
       - name: Checkout repository
         env:
-          TOKEN: ${{ secrets.AUTH_TOKEN }}
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Check if repository is already checked out (GitHub Actions does this automatically)
           if [ ! -d .git ]; then
@@ -71,7 +74,7 @@ jobs:
       - name: Commit and push changes
         if: steps.check-changes.outputs.has_changes == 'true'
         env:
-          TOKEN: ${{ secrets.AUTH_TOKEN }}
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
