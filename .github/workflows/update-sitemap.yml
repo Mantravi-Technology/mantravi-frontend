@@ -78,8 +78,9 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          # Store credentials using credential store helper
-          echo "https://${TOKEN}@github.com" > ~/.git-credentials
+          # Store credentials using credential store helper (GitHub token format)
+          echo "https://x-access-token:${TOKEN}@github.com" > ~/.git-credentials
+          chmod 600 ~/.git-credentials
           git config --global credential.helper store
           git remote set-url origin https://github.com/${{ github.repository }}.git
           git add sitemap.xml
