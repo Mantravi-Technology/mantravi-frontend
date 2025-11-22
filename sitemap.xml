@@ -8,7 +8,7 @@
     <!-- Static Pages -->
     <url>
         <loc>https://mantravi.com/</loc>
-        <lastmod>2025-11-16</lastmod>
+        <lastmod>2025-11-22</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
         <image:image>
@@ -29,32 +29,64 @@
     </url>
     <url>
         <loc>https://mantravi.com/services</loc>
-        <lastmod>2025-11-16</lastmod>
+        <lastmod>2025-11-22</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://mantravi.com/about</loc>
-        <lastmod>2025-11-16</lastmod>
+        <lastmod>2025-11-22</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://mantravi.com/contact</loc>
-        <lastmod>2025-11-16</lastmod>
+        <lastmod>2025-11-22</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://mantravi.com/blog</loc>
-        <lastmod>2025-11-16</lastmod>
+        <lastmod>2025-11-22</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://mantravi.com/work-with-us</loc>
-        <lastmod>2025-11-16</lastmod>
+        <lastmod>2025-11-22</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
+    </url>
+    
+    <!-- Blog Posts - Dynamically Generated (3 posts) -->
+    <url>
+        <loc>https://mantravi.com/blog/post?slug=advances-in-conversational-ai-in-2025</loc>
+        <lastmod>2025-11-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://mantravi-bucket.s3.ap-south-1.amazonaws.com/blog/main/mantravi-Advances-in-Conversational-AI-in-2025-20251116-185053.png</image:loc>
+            <image:title>Advances in Conversational AI in 2025</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://mantravi.com/blog/post?slug=why-small-business-needs-digital-marketing</loc>
+        <lastmod>2025-11-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://mantravi-bucket.s3.ap-south-1.amazonaws.com/blog/main/Advances-in-Conversational-AI-in-2025-20251117-152012.png</image:loc>
+            <image:title>Why Small Business Needs Digital Marketing</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://mantravi.com/blog/post?slug=how-mantravi-drives-digital-business-growth</loc>
+        <lastmod>2025-11-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://mantravi-bucket.s3.ap-south-1.amazonaws.com/blog/main/Untitled-design-6--20251116-142221.png</image:loc>
+            <image:title>How Mantravi Drives Digital Business Growth</image:title>
+        </image:image>
     </url>
 </urlset>

@@ -306,8 +306,17 @@ function generateSitemap(blogs) {
 `;
         
         blogs.forEach(blog => {
-            const slug = blog.slug || blog.id;
-            if (!slug) return; // Skip if no slug or ID
+            // Only use slug if it exists and is a non-empty string
+            // Skip blogs without a valid slug (don't fall back to ID)
+            const slug = blog.slug && typeof blog.slug === 'string' && blog.slug.trim() !== '' 
+                ? blog.slug.trim() 
+                : null;
+            
+            if (!slug) {
+                // Log warning for blogs without slugs (for debugging)
+                console.warn(`Skipping blog "${blog.title || blog.id}" - no valid slug found`);
+                return; // Skip if no valid slug
+            }
             
             const lastmod = formatDate(blog.updatedAt || blog.publishedAt || blog.createdAt);
             const url = `${CONFIG.SITE_URL}/blog/post?slug=${encodeURIComponent(slug)}`;
@@ -320,8 +329,8 @@ function generateSitemap(blogs) {
         <priority>0.9</priority>`;
             
             // Add image if available
-            if (blog.heroImage || blog.image || blog.thumbnail) {
-                let imageUrl = blog.heroImage || blog.image || blog.thumbnail;
+            if (blog.mainImagePath || blog.heroImage || blog.image || blog.thumbnail) {
+                let imageUrl = blog.mainImagePath || blog.heroImage || blog.image || blog.thumbnail;
                 // Ensure absolute URL
                 if (imageUrl && !imageUrl.startsWith('http')) {
                     imageUrl = imageUrl.startsWith('/') ? CONFIG.SITE_URL + imageUrl : CONFIG.SITE_URL + '/' + imageUrl;
