@@ -58,7 +58,17 @@
         <priority>0.7</priority>
     </url>
     
-    <!-- Blog Posts - Dynamically Generated (3 posts) -->
+    <!-- Blog Posts - Dynamically Generated (4 posts) -->
+    <url>
+        <loc>https://mantravi.com/blog/post?slug=essential-tools-and-frameworks-for-modern-full-stack-development</loc>
+        <lastmod>2025-11-22</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://mantravi-bucket.s3.ap-south-1.amazonaws.com/blog/main/Mantravi-Essential-Tools-and-Frameworks-for-Modern-Full-Stack-Development-1--20251122-074318.png</image:loc>
+            <image:title>Essential Tools and Frameworks for Modern Full-Stack Development</image:title>
+        </image:image>
+    </url>
     <url>
         <loc>https://mantravi.com/blog/post?slug=advances-in-conversational-ai-in-2025</loc>
         <lastmod>2025-11-16</lastmod>
