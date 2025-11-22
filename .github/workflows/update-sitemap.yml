@@ -21,15 +21,17 @@ jobs:
     
     steps:
       - name: Checkout repository
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Ensure we have the repository checked out with full history
+          # Check if repository is already checked out (GitHub Actions does this automatically)
           if [ ! -d .git ]; then
-            # Repository not checked out, clone it with full history
-            git clone https://github.com/${{ github.repository }}.git .
+            # Repository not checked out, clone it with authentication
+            git clone https://${GITHUB_TOKEN}@github.com/${{ github.repository }}.git .
           else
-            # Repository already checked out, ensure we have full history
+            # Repository already checked out, ensure we have full history and set remote with token
             git fetch --unshallow || true
-            git fetch origin
+            git remote set-url origin https://${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
           fi
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
@@ -68,10 +70,12 @@ jobs:
 
       - name: Commit and push changes
         if: steps.check-changes.outputs.has_changes == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git remote set-url origin https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          git remote set-url origin https://${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
           git add sitemap.xml
           git commit -m "🤖 Auto-update sitemap with latest blog posts [skip ci]" || exit 0
           git push origin HEAD:${{ github.ref_name }} || exit 0
