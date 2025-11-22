@@ -21,16 +21,30 @@ jobs:
     
     steps:
       - name: Checkout repository
-        uses: Mantravi-Technology/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 0
+        run: |
+          # Ensure we have the repository checked out with full history
+          if [ ! -d .git ]; then
+            # Repository not checked out, clone it
+            git clone --depth 0 https://github.com/${{ github.repository }}.git .
+          else
+            # Repository already checked out, ensure we have full history
+            git fetch --unshallow || true
+            git fetch origin
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
 
       - name: Setup Node.js
-        uses: Mantravi-Technology/setup-node@v4
-        with:
-          node-version: '18'
-          cache: 'npm'
+        run: |
+          # Ubuntu runners typically have Node.js pre-installed
+          # Install Node.js 18 if not available or wrong version
+          NODE_MAJOR=$(node -v 2>/dev/null | cut -d'v' -f2 | cut -d'.' -f1 || echo "0")
+          if [ "$NODE_MAJOR" != "18" ]; then
+            curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+            sudo apt-get install -y nodejs
+          fi
+          echo "Node version: $(node --version)"
+          echo "NPM version: $(npm --version)"
 
       - name: Install dependencies
         run: npm ci
@@ -57,6 +71,7 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git remote set-url origin https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
           git add sitemap.xml
           git commit -m "🤖 Auto-update sitemap with latest blog posts [skip ci]" || exit 0
           git push origin HEAD:${{ github.ref_name }} || exit 0
