@@ -128,7 +128,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   function renderTags(tags) {
-    if (!tags || !tags.length) return null;
+    console.log('renderTags called with:', tags);
+    if (!tags || !tags.length) {
+      console.log('No tags to render');
+      return null;
+    }
     const tagsDiv = document.createElement('div');
     tagsDiv.className = 'mt-8 mb-6 flex flex-wrap items-center gap-3';
     tagsDiv.style.cssText = 'display: flex !important; visibility: visible !important; opacity: 1 !important; margin-top: 2rem !important; margin-bottom: 1.5rem !important; width: 100% !important;';
@@ -139,6 +143,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         `<span class="inline-flex items-center px-4 py-2 bg-[#4EE4FF]/10 border border-[#4EE4FF]/30 rounded-full text-sm font-medium text-[#4EE4FF] hover:bg-[#4EE4FF]/20 transition-colors cursor-default" style="display: inline-flex !important; visibility: visible !important; opacity: 1 !important; background-color: rgba(78, 228, 255, 0.1) !important; border: 1px solid rgba(78, 228, 255, 0.3) !important; color: #4EE4FF !important; padding: 0.5rem 1rem !important; border-radius: 9999px !important; margin: 0.25rem !important;">${tag}</span>`
       ).join('')}
     `;
+    console.log('Tags component created:', tagsDiv);
     return tagsDiv;
   }
 
@@ -333,10 +338,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Get tags from API, fallback to category if tags not available
     let tags = normalizeTags(post.tags);
+    console.log('Raw tags from API:', post.tags);
+    console.log('Normalized tags:', tags);
     // If no tags, use category as a tag
     if (!tags || tags.length === 0) {
       if (post.category) {
         tags = [post.category];
+        console.log('Using category as tag:', tags);
       }
     }
     // If we have both tags and category, include category if not already in tags
@@ -347,6 +355,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         tags.unshift(post.category); // Add category at the beginning
       }
     }
+    console.log('Final tags to render:', tags);
 
     // Apply SEO metadata from API response
     updateSEOMetadata(post, tags);
