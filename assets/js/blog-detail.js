@@ -331,7 +331,22 @@ document.addEventListener('DOMContentLoaded', async () => {
       window.history.replaceState({}, '', cleanUrl);
     }
 
-    const tags = normalizeTags(post.tags);
+    // Get tags from API, fallback to category if tags not available
+    let tags = normalizeTags(post.tags);
+    // If no tags, use category as a tag
+    if (!tags || tags.length === 0) {
+      if (post.category) {
+        tags = [post.category];
+      }
+    }
+    // If we have both tags and category, include category if not already in tags
+    if (post.category && tags && tags.length > 0) {
+      const categoryLower = post.category.toLowerCase();
+      const hasCategory = tags.some(tag => tag.toLowerCase() === categoryLower);
+      if (!hasCategory) {
+        tags.unshift(post.category); // Add category at the beginning
+      }
+    }
 
     // Apply SEO metadata from API response
     updateSEOMetadata(post, tags);
