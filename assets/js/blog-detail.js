@@ -351,6 +351,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Apply SEO metadata from API response
     updateSEOMetadata(post, tags);
 
+    // Add related services links based on category
+    addRelatedServices(post.category);
+
     headerTitle.textContent = post.title || 'Blog';
     
     // Enhanced meta bar with better formatting
@@ -788,6 +791,74 @@ document.addEventListener('DOMContentLoaded', async () => {
           try { await navigator.clipboard.writeText(url); } catch {}
         }
       });
+    }
+  }
+
+  // Map blog categories to related services
+  function getRelatedServices(category) {
+    const categoryMap = {
+      'AI': [
+        { name: 'Web Development', url: '/services#webapp', icon: 'code', description: 'AI-powered web solutions' },
+        { name: 'Mobile App Development', url: '/services#mobileapp', icon: 'smartphone', description: 'Intelligent mobile applications' },
+        { name: 'QA & IT Solutions', url: '/services#qa', icon: 'shield-check', description: 'AI-enhanced testing and support' }
+      ],
+      'Digital Marketing': [
+        { name: 'Digital Marketing', url: '/services#digitalmarketing', icon: 'trending-up', description: 'SEO, social media, and branding' },
+        { name: 'Graphic & Video Design', url: '/services#graphicvideo', icon: 'palette', description: 'Creative design services' },
+        { name: 'Web Development', url: '/services#webapp', icon: 'code', description: 'Marketing-focused websites' }
+      ],
+      'Case Study': [
+        { name: 'Web Development', url: '/services#webapp', icon: 'code', description: 'Custom web solutions' },
+        { name: 'Mobile App Development', url: '/services#mobileapp', icon: 'smartphone', description: 'Native and cross-platform apps' },
+        { name: 'Digital Marketing', url: '/services#digitalmarketing', icon: 'trending-up', description: 'Growth strategies' }
+      ],
+      'Dev': [
+        { name: 'Web Development', url: '/services#webapp', icon: 'code', description: 'Custom web applications' },
+        { name: 'Mobile App Development', url: '/services#mobileapp', icon: 'smartphone', description: 'iOS and Android apps' },
+        { name: 'QA & IT Solutions', url: '/services#qa', icon: 'shield-check', description: 'Quality assurance and support' }
+      ]
+    };
+
+    // Default services if category not found
+    const defaultServices = [
+      { name: 'Web Development', url: '/services#webapp', icon: 'code', description: 'Custom web solutions' },
+      { name: 'Digital Marketing', url: '/services#digitalmarketing', icon: 'trending-up', description: 'Growth and branding' },
+      { name: 'Contact Us', url: '/contact', icon: 'mail', description: 'Get in touch' }
+    ];
+
+    return categoryMap[category] || defaultServices;
+  }
+
+  // Add related services section to blog post
+  function addRelatedServices(category) {
+    const relatedSection = document.getElementById('related-services');
+    const relatedGrid = document.getElementById('related-services-grid');
+    
+    if (!relatedSection || !relatedGrid) return;
+
+    const services = getRelatedServices(category);
+    
+    if (services.length === 0) {
+      relatedSection.classList.add('hidden');
+      return;
+    }
+
+    relatedGrid.innerHTML = services.map(service => `
+      <a href="${service.url}" class="group bg-black/40 backdrop-blur-sm rounded-xl p-5 border border-white/10 hover:border-[#4EE4FF]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#4EE4FF]/10">
+        <div class="flex items-center gap-3 mb-2">
+          <i data-lucide="${service.icon}" class="w-5 h-5 text-[#4EE4FF] group-hover:scale-110 transition-transform"></i>
+          <h4 class="text-lg font-semibold text-white group-hover:text-[#4EE4FF] transition-colors">${service.name}</h4>
+        </div>
+        <p class="text-gray-400 text-sm">${service.description}</p>
+      </a>
+    `).join('');
+
+    // Show the section
+    relatedSection.classList.remove('hidden');
+
+    // Reinitialize Lucide icons for the new icons
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
     }
   }
 
