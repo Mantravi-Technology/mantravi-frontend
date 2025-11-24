@@ -7,7 +7,7 @@ const SITE_CONFIG = {
         description: "Your partner in harnessing the power of next-gen Prompt Engineering, Digital Transformation, and Intelligent Cloud Solutions.",
         url: "https://mantravi.com",
         logo: "assets/images/logo.png",
-        favicon: "assets/icons/ui/mantravilogo.png"
+        favicon: "assets/icons/ui/favicon/favicon.ico"
     },
 
     // Design System
@@ -90,7 +90,7 @@ const SITE_CONFIG = {
     // Contact Information
     contact: {
         email: "info@mantravi.com",
-        phone: "+1 (555) 123-4567",
+        phone: "",
         address: {
             street: "",
             city: "Noida",
