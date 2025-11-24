@@ -2022,24 +2022,45 @@
             isAutoScrolling = true;
             lastAutoScrollTime = Date.now();
             
+            // Use manual animation for more reliable scrolling on mobile
+            const startScroll = carousel.scrollLeft;
+            let targetScroll;
+            
             if (isAtEnd) {
-                // Reset to beginning smoothly
-                carousel.scrollTo({ 
-                    left: 0, 
-                    behavior: 'smooth' 
-                });
+                targetScroll = 0;
             } else {
-                // Scroll forward by one card width
-                carousel.scrollBy({ 
-                    left: scrollAmount, 
-                    behavior: 'smooth' 
-                });
+                targetScroll = Math.min(startScroll + scrollAmount, maxScroll);
             }
             
-            // Reset auto-scrolling flag after scroll completes
-            setTimeout(() => {
+            const distance = targetScroll - startScroll;
+            if (Math.abs(distance) < 1) {
                 isAutoScrolling = false;
-            }, 1000);
+                return; // Already at target
+            }
+            
+            // Animate scroll manually for better mobile compatibility
+            const duration = 600; // 600ms animation
+            let startTime = null;
+            
+            function animateScroll(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // Easing function for smooth animation
+                const easeProgress = 1 - Math.pow(1 - progress, 3);
+                const currentScrollPos = startScroll + (distance * easeProgress);
+                
+                carousel.scrollLeft = currentScrollPos;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(animateScroll);
+                } else {
+                    isAutoScrolling = false;
+                }
+            }
+            
+            requestAnimationFrame(animateScroll);
         }
 
         // Initialize auto-scroll on mobile
