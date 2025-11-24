@@ -89,14 +89,14 @@ const SITE_CONFIG = {
 
     // Contact Information
     contact: {
-        email: "hello@mantravi.com",
+        email: "info@mantravi.com",
         phone: "+1 (555) 123-4567",
         address: {
-            street: "123 Innovation Drive",
-            city: "San Francisco",
-            state: "CA",
-            zip: "94105",
-            country: "USA"
+            street: "",
+            city: "Noida",
+            state: "Uttar Pradesh",
+            zip: "",
+            country: "India"
         }
     },
 
@@ -142,7 +142,7 @@ const SITE_CONFIG = {
 
     // Company Information
     company: {
-        founded: "2020",
+        founded: "2025",
         employees: "50+",
         clients: "100+",
         projects: "200+",
