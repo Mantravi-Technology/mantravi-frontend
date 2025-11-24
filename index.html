@@ -48,8 +48,8 @@
     <meta property="og:locale" content="en_US">
     <meta property="og:locale:alternate" content="en_IN">
     <meta property="business:contact_data:street_address" content="">
-    <meta property="business:contact_data:locality" content="India">
-    <meta property="business:contact_data:region" content="India">
+    <meta property="business:contact_data:locality" content="Noida">
+    <meta property="business:contact_data:region" content="Uttar Pradesh">
     <meta property="business:contact_data:postal_code" content="">
     <meta property="business:contact_data:country_name" content="India">
     
@@ -178,17 +178,31 @@
         "foundingDate": "2020",
         "address": {
             "@type": "PostalAddress",
+            "addressLocality": "Noida",
+            "addressRegion": "Uttar Pradesh",
             "addressCountry": "IN",
-            "addressLocality": "India"
+            "addressCountryName": "India"
         },
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "contactType": "Customer Service",
-            "url": "https://mantravi.com/contact"
-        },
+        "contactPoint": [
+            {
+                "@type": "ContactPoint",
+                "contactType": "Customer Service",
+                "email": "info@mantravi.com",
+                "url": "https://mantravi.com/contact",
+                "availableLanguage": ["English", "Hindi"]
+            },
+            {
+                "@type": "ContactPoint",
+                "contactType": "Sales",
+                "email": "info@mantravi.com",
+                "url": "https://mantravi.com/contact"
+            }
+        ],
+        "email": "info@mantravi.com",
         "sameAs": [
             "https://www.linkedin.com/company/mantravi",
-            "https://twitter.com/mantravi"
+            "https://twitter.com/mantravi",
+            "https://www.instagram.com/mantravi_/"
         ],
         "areaServed": {
             "@type": "Country",
@@ -226,6 +240,87 @@
                 "description": "Quality assurance, testing, and IT consulting services"
             }
         ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "@id": "https://mantravi.com/#localbusiness",
+        "name": "Mantravi",
+        "image": "https://mantravi.com/assets/icons/ui/mantravi.png",
+        "description": "Mantravi delivers cutting-edge AI-powered digital solutions including web development, mobile apps, digital marketing, QA services, and IT consulting.",
+        "url": "https://mantravi.com",
+        "telephone": "",
+        "email": "info@mantravi.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Noida",
+            "addressRegion": "Uttar Pradesh",
+            "addressCountry": "IN",
+            "addressCountryName": "India"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "addressLocality": "Noida",
+            "addressRegion": "Uttar Pradesh",
+            "addressCountry": "IN"
+        },
+        "priceRange": "$$",
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "18:00"
+        },
+        "areaServed": {
+            "@type": "Country",
+            "name": "India"
+        },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Mantravi Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Web Development",
+                        "description": "Custom web applications and websites"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Mobile App Development",
+                        "description": "Native and cross-platform mobile applications"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Digital Marketing",
+                        "description": "SEO, social media marketing, and branding"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "QA & IT Consulting",
+                        "description": "Quality assurance, testing, and IT consulting"
+                    }
+                }
+            ]
+        }
     }
     </script>
     <script type="application/ld+json">
