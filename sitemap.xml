@@ -58,7 +58,27 @@
         <priority>0.7</priority>
     </url>
     
-    <!-- Blog Posts - Dynamically Generated (4 posts) -->
+    <!-- Blog Posts - Dynamically Generated (6 posts) -->
+    <url>
+        <loc>https://mantravi.com/blog/post?slug=beyond-the-chatbot-what-s-actually-happening-in-ai-right-now-late-2025-edition</loc>
+        <lastmod>2025-11-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://mantravi-bucket.s3.ap-south-1.amazonaws.com/blog/main/Mantravi-Beyond-the-Chatbot-What-s-Actually-Happening-in-AI-Right-Now-Late-2025-Edition--20251128-190159.png</image:loc>
+            <image:title>Beyond the Chatbot: What’s Actually Happening in AI Right Now (Late 2025 Edition)</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://mantravi.com/blog/post?slug=why-every-modern-realtor-needs-a-strong-digital-presence</loc>
+        <lastmod>2025-11-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://mantravi-bucket.s3.ap-south-1.amazonaws.com/blog/main/Mantravi-Why-Every-Modern-Realtor-Needs-a-Strong-Digital-Presence-20251128-183712.png</image:loc>
+            <image:title>Why Every Modern Realtor Needs a Strong Digital Presence</image:title>
+        </image:image>
+    </url>
     <url>
         <loc>https://mantravi.com/blog/post?slug=essential-tools-and-frameworks-for-modern-full-stack-development</loc>
         <lastmod>2025-11-22</lastmod>
