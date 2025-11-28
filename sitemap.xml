@@ -57,6 +57,12 @@
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
+    <url>
+        <loc>https://mantravi.com/privacy-policy</loc>
+        <lastmod>2025-11-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
     
     <!-- Blog Posts - Dynamically Generated (6 posts) -->
     <url>
