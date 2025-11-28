@@ -6,7 +6,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const url = require('url');
+const { URL } = require('url');
 
 // Use PORT from environment variable, or default to 5503
 // You can set PORT=5504 (or any port) before running: PORT=5504 npm start
@@ -44,13 +44,26 @@ const routes = {
     '/services': 'pages/services/index.html',
     '/contact': 'pages/contact/index.html',
     '/blog': 'pages/blog/index.html',
-    '/work-with-us': 'pages/work-with-us/index.html'
+    '/work-with-us': 'pages/work-with-us/index.html',
+    '/privacy-policy': 'pages/privacy-policy/index.html'
 };
 
 // Create HTTP server
 const server = http.createServer((req, res) => {
-    // Parse the request URL
-    const parsedUrl = url.parse(req.url, true);
+    // Parse the request URL using WHATWG URL API
+    // Construct base URL from request headers for relative URLs
+    const host = req.headers.host || 'localhost';
+    const protocol = req.headers['x-forwarded-proto'] || 'http';
+    const baseUrl = `${protocol}://${host}`;
+    
+    let parsedUrl;
+    try {
+        parsedUrl = new URL(req.url, baseUrl);
+    } catch (error) {
+        // Fallback for malformed URLs
+        parsedUrl = new URL('/', baseUrl);
+    }
+    
     // Decode URL-encoded pathname (handles spaces and special characters)
     const pathname = decodeURIComponent(parsedUrl.pathname);
     const method = req.method;

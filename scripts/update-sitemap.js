@@ -86,6 +86,12 @@ const STATIC_PAGES = [
         lastmod: new Date().toISOString().split('T')[0],
         changefreq: 'monthly',
         priority: '0.7'
+    },
+    {
+        url: '/privacy-policy',
+        lastmod: new Date().toISOString().split('T')[0],
+        changefreq: 'monthly',
+        priority: '0.5'
     }
 ];
 

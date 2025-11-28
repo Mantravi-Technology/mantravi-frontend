@@ -202,6 +202,8 @@
                     footerContainer.innerHTML = html;
                     // Initialize Lucide icons after loading
                     initLucideIcons();
+                    // Initialize footer functionality after loading
+                    initializeFooterFunctionality();
                 })
                 .catch(error => {
                     console.error('Error loading footer component:', error);
@@ -335,4 +337,72 @@ function initializeMobileMenu() {
             }
         });
     }
+}
+
+// Initialize footer functionality (legal info toggle)
+function initializeFooterFunctionality() {
+    // Make toggle function globally accessible
+    window.toggleLegalInfo = function(event) {
+        if (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        
+        const content = document.getElementById('legal-info-content');
+        const icons = document.querySelectorAll('.legal-info-icon');
+        
+        if (!content) return;
+        
+        if (content.classList.contains('hidden')) {
+            content.classList.remove('hidden');
+            content.style.display = 'block';
+            content.style.opacity = '1';
+            icons.forEach(icon => {
+                if (icon) {
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        } else {
+            content.classList.add('hidden');
+            content.style.display = 'none';
+            content.style.opacity = '0';
+            icons.forEach(icon => {
+                if (icon) {
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            });
+        }
+    };
+    
+    // Initialize icon transitions
+    const icons = document.querySelectorAll('.legal-info-icon');
+    icons.forEach(icon => {
+        if (icon) {
+            icon.style.transition = 'transform 0.3s ease';
+        }
+    });
+    
+    // Ensure Lucide icons are created for chevron
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    } else {
+        setTimeout(() => {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        }, 100);
+    }
+    
+    // Re-initialize after a short delay to ensure everything is ready
+    setTimeout(() => {
+        const icons = document.querySelectorAll('.legal-info-icon');
+        icons.forEach(icon => {
+            if (icon) {
+                icon.style.transition = 'transform 0.3s ease';
+            }
+        });
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+    }, 200);
 }

@@ -147,9 +147,53 @@
                 </div>
             </div>
             
-            <p class="text-center text-gray-400 text-sm">
-                Copyright © 2025 Mantravi. All Rights Reserved
-            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-4">
+                <p class="text-center text-gray-400 text-sm">
+                    Copyright © 2025 Mantravi. All Rights Reserved
+                </p>
+                <span class="hidden sm:inline text-gray-600">|</span>
+                <a href="/privacy-policy" class="text-gray-400 hover:text-[#4EE4FF] transition-colors text-sm">
+                    Privacy Policy
+                </a>
+                <span class="hidden sm:inline text-gray-600">|</span>
+                <button type="button" onclick="window.toggleLegalInfo(event)" class="text-gray-400 hover:text-[#4EE4FF] transition-colors text-sm cursor-pointer border-none bg-transparent p-0">
+                    Statutory Legal Information
+                    <i data-lucide="chevron-down" class="w-3 h-3 inline ml-1 legal-info-icon"></i>
+                </button>
+            </div>
+            
+            <!-- Collapsible Legal Information -->
+            <div id="legal-info-content" class="hidden max-w-4xl mx-auto mt-4 px-4" style="display: none; transition: all 0.3s ease;">
+                <div class="bg-black/40 backdrop-blur-sm rounded-lg p-4 sm:p-6 border border-white/10">
+                    <h3 class="text-lg font-semibold text-white mb-3">Statutory Legal Information</h3>
+                    <div class="text-gray-300 text-sm leading-relaxed space-y-3">
+                        <p>
+                            Mantravi is a technology company providing digital solutions and IT services, situated in Noida, Uttar Pradesh, India.
+                        </p>
+                        <p>
+                            All personal information that you submit on this website - including your Name, Email, Phone Number, and Project Details - will not be sold, shared, or rented to third parties. Our sales team and technology experts use this information solely to send you updates about our company and projects, or to contact you if requested or when we find it necessary.
+                        </p>
+                        <p>
+                            You may opt out of receiving our communications at any time by sending us an email at <a href="mailto:info@mantravi.com" class="text-[#4EE4FF] hover:underline">info@mantravi.com</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <style>
+                #legal-info-content {
+                    transition: opacity 0.3s ease, max-height 0.3s ease;
+                    overflow: hidden;
+                }
+                #legal-info-content:not(.hidden) {
+                    display: block !important;
+                    opacity: 1;
+                }
+                #legal-info-content.hidden {
+                    display: none !important;
+                    opacity: 0;
+                }
+            </style>
         </div>
     </div>
 </footer>
