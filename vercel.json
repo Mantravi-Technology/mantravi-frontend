@@ -40,6 +40,10 @@
     {
       "source": "/work-with-us",
       "destination": "/pages/work-with-us/index.html"
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/pages/privacy-policy/index.html"
     }
   ],
   "redirects": [

@@ -15,6 +15,7 @@
 /blog /pages/blog/index.html 200
 /blog/post /pages/blog/post.html 200
 /work-with-us /pages/work-with-us/index.html 200
+/privacy-policy /pages/privacy-policy/index.html 200
 
 # Redirect /index.html to root (301 = permanent redirect)
 /index.html / 301
