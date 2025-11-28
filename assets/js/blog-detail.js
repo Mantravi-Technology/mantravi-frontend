@@ -804,7 +804,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       ],
       'Digital Marketing': [
         { name: 'Digital Marketing', url: '/services#digitalmarketing', icon: 'trending-up', description: 'SEO, social media, and branding' },
-        { name: 'Graphic & Video Design', url: '/services#graphicvideo', icon: 'palette', description: 'Creative design services' },
         { name: 'Web Development', url: '/services#webapp', icon: 'code', description: 'Marketing-focused websites' }
       ],
       'Case Study': [

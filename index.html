@@ -699,37 +699,37 @@
                 <div class="services-carousel overflow-x-auto" id="servicesCarousel" style="-webkit-overflow-scrolling: touch; scroll-behavior: smooth;">
                     <div class="flex gap-3 sm:gap-4 md:gap-6 pb-2" style="width: max-content;">
                         <!-- Card 1: Digital Products & Development -->
-                        <div class="bg-black/70 backdrop-blur-sm rounded-xl p-4 sm:p-6 md:p-8 card-hover border border-gray-800/50 parallax-cards flex-shrink-0 w-72 sm:w-auto" style="background-color: rgba(0, 0, 0, 0.7); border-color: rgba(31, 41, 55, 0.5);">
+                        <a href="/services#webapp" class="bg-black/70 backdrop-blur-sm rounded-xl p-4 sm:p-6 md:p-8 card-hover border border-gray-800/50 parallax-cards flex-shrink-0 w-72 sm:w-auto block" style="background-color: rgba(0, 0, 0, 0.7); border-color: rgba(31, 41, 55, 0.5); text-decoration: none;">
                             <div class="text-[#4EE4FF] mb-3 sm:mb-4 md:mb-6">
                                 <i data-lucide="smartphone" class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"></i>
                             </div>
-                            <h3 class="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 md:mb-4 leading-tight">Web & App Development</h3>
+                            <h3 class="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 md:mb-4 leading-tight text-white">Web & App Development</h3>
                             <p class="text-gray-300 text-xs sm:text-sm md:text-base leading-relaxed break-words">
                         Build modern, scalable websites and applications tailored to your needs.
                     </p>
-                </div>
+                </a>
                 
                 <!-- Card 2: Brand, SEO & Marketing -->
-                        <div class="bg-black/70 backdrop-blur-sm rounded-xl p-4 sm:p-6 md:p-8 card-hover border border-gray-800/50 parallax-cards flex-shrink-0 w-72 sm:w-auto" style="background-color: rgba(0, 0, 0, 0.7); border-color: rgba(31, 41, 55, 0.5);">
+                        <a href="/services#digitalmarketing" class="bg-black/70 backdrop-blur-sm rounded-xl p-4 sm:p-6 md:p-8 card-hover border border-gray-800/50 parallax-cards flex-shrink-0 w-72 sm:w-auto block" style="background-color: rgba(0, 0, 0, 0.7); border-color: rgba(31, 41, 55, 0.5); text-decoration: none;">
                             <div class="text-[#4EE4FF] mb-3 sm:mb-4 md:mb-6">
                                 <i data-lucide="trending-up" class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"></i>
                     </div>
-                            <h3 class="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 md:mb-4 leading-tight">Digital Marketing & Branding</h3>
+                            <h3 class="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 md:mb-4 leading-tight text-white">Digital Marketing & Branding</h3>
                             <p class="text-gray-300 text-xs sm:text-sm md:text-base leading-relaxed break-words">
                         Grow your reach with targeted marketing, SEO, and compelling brand identity creation.
                     </p>
-                </div>
+                </a>
                 
                 <!-- Card 3: QA & IT Solutions -->
-                        <div class="bg-black/70 backdrop-blur-sm rounded-xl p-4 sm:p-6 md:p-8 card-hover border border-gray-800/50 parallax-cards flex-shrink-0 w-72 sm:w-auto" style="background-color: rgba(0, 0, 0, 0.7); border-color: rgba(31, 41, 55, 0.5);">
+                        <a href="/services#qa" class="bg-black/70 backdrop-blur-sm rounded-xl p-4 sm:p-6 md:p-8 card-hover border border-gray-800/50 parallax-cards flex-shrink-0 w-72 sm:w-auto block" style="background-color: rgba(0, 0, 0, 0.7); border-color: rgba(31, 41, 55, 0.5); text-decoration: none;">
                             <div class="text-[#4EE4FF] mb-3 sm:mb-4 md:mb-6">
                                 <i data-lucide="settings" class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"></i>
                             </div>
-                            <h3 class="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 md:mb-4 leading-tight">QA & Maintenance Services</h3>
+                            <h3 class="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 md:mb-4 leading-tight text-white">QA & Maintenance Services</h3>
                             <p class="text-gray-300 text-xs sm:text-sm md:text-base leading-relaxed break-words">
                                 Ensure flawless performance with test automation, performance QA, and expert IT consulting.
                             </p>
-                        </div>
+                        </a>
                     </div>
                 </div>
                 
@@ -1251,7 +1251,7 @@
                                 </li>
                                 <li class="flex items-start">
                                     <i data-lucide="sparkles" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
-                                    <span><strong>Industry Expertise:</strong> Deep understanding across diverse sectors from e-commerce to healthcare, education, and political branding</span>
+                                    <span><strong>Industry Expertise:</strong> Deep understanding across diverse sectors from e-commerce to healthcare and education</span>
                                 </li>
                                 <li class="flex items-start">
                                     <i data-lucide="sparkles" class="w-4 h-4 text-[#4EE4FF] mr-2 mt-1 flex-shrink-0"></i>
@@ -1715,6 +1715,10 @@
             // Touch events for mobile - ultra-smooth with vertical scroll support
             carousel.addEventListener('touchstart', (e) => {
                 const touch = e.touches[0];
+                const target = e.target;
+                // Check if touch is on a link
+                const isLink = target.closest('a');
+                
                 startX = touch.pageX - carousel.offsetLeft;
                 startY = touch.pageY;
                 scrollLeft = carousel.scrollLeft;
@@ -1727,6 +1731,10 @@
                 isDragging = false;
                 isHorizontalDrag = false;
                 isAnimating = false;
+                
+                // Store if touch started on a link
+                carousel._touchOnLink = !!isLink;
+                carousel._touchStartElement = target;
                 
                 // Cancel any ongoing animation
                 if (animationId) {
@@ -1746,6 +1754,12 @@
                 const deltaX = Math.abs(currentX - lastX);
                 const deltaY = Math.abs(currentY - lastY);
                 const deltaTime = currentTime - lastTime;
+                
+                // If touch started on a link and movement is minimal, allow link click
+                if (carousel._touchOnLink && deltaX < 10 && deltaY < 10) {
+                    // Small movement - likely a tap, allow link to work
+                    return;
+                }
                 
                 // Determine if this is a horizontal or vertical gesture
                 if (!isDragging && deltaTime > 0) {
@@ -1806,7 +1820,11 @@
                 lastTime = currentTime;
             }, { passive: false });
 
-            carousel.addEventListener('touchend', () => {
+            carousel.addEventListener('touchend', (e) => {
+                // Clear touch on link flag
+                carousel._touchOnLink = false;
+                carousel._touchStartElement = null;
+                
                 if (isDragging && isHorizontalDrag) {
                     carousel.style.scrollBehavior = 'smooth';
                     
@@ -2498,6 +2516,20 @@
         .services-carousel-container a {
             -webkit-tap-highlight-color: transparent;
             -webkit-touch-callout: none;
+        }
+        
+        /* Ensure service card links are clickable */
+        .services-carousel a {
+            cursor: pointer;
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            pointer-events: auto;
+        }
+        
+        .services-carousel a:hover,
+        .services-carousel a:active {
+            text-decoration: none;
         }
         
         /* Ensure smooth scrolling behavior */
