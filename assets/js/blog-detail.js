@@ -688,6 +688,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
           }
         });
+        
+        // Generate TOC after content is rendered
+        setTimeout(() => {
+          generateTOC();
+        }, 200);
       }, 100);
     } else {
       // Fallback for plain text/markdown content - use same full-width hero image styling
@@ -729,6 +734,11 @@ document.addEventListener('DOMContentLoaded', async () => {
           }
         }, 100);
       }
+      
+      // Generate TOC for plain text content
+      setTimeout(() => {
+        generateTOC();
+      }, 200);
     }
     
     // Add related posts section (always show, regardless of content type)
@@ -743,6 +753,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     setupShare(post);
     await loadRelated(post);
+    
+    // Generate Table of Contents from headings
+    generateTOC();
     
     // Initialize Lucide icons for new elements (back button, lock icon, etc.)
     if (typeof lucide !== 'undefined') {
@@ -858,6 +871,129 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Reinitialize Lucide icons for the new icons
     if (typeof lucide !== 'undefined') {
       lucide.createIcons();
+    }
+  }
+
+  // Generate Table of Contents from headings
+  function generateTOC() {
+    const tocNav = document.getElementById('toc-nav');
+    const tocSidebar = document.getElementById('toc-sidebar');
+    const blogDetail = document.getElementById('blog-detail');
+    
+    if (!tocNav || !blogDetail) return;
+    
+    // Find all headings (h2, h3, h4) in the blog content
+    const headings = blogDetail.querySelectorAll('h2, h3, h4');
+    
+    if (headings.length === 0) {
+      // Hide TOC if no headings found
+      if (tocSidebar) {
+        tocSidebar.style.display = 'none';
+      }
+      return;
+    }
+    
+    // Show TOC sidebar
+    if (tocSidebar) {
+      tocSidebar.style.display = 'block';
+    }
+    
+    // Clear existing TOC
+    tocNav.innerHTML = '';
+    
+    // Generate TOC items
+    headings.forEach((heading, index) => {
+      // Create ID for heading if it doesn't have one
+      let headingId = heading.id;
+      if (!headingId) {
+        headingId = `heading-${index}-${heading.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+        heading.id = headingId;
+      }
+      
+      // Create TOC link
+      const tocItem = document.createElement('a');
+      tocItem.href = `#${headingId}`;
+      tocItem.textContent = heading.textContent.trim();
+      tocItem.className = `toc-${heading.tagName.toLowerCase()}`;
+      
+      // Add click handler for smooth scroll
+      tocItem.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.getElementById(headingId);
+        if (target) {
+          const offsetTop = target.offsetTop - 100; // Account for fixed header
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+          // Update active state
+          updateActiveTOCItem(headingId);
+        }
+      });
+      
+      tocNav.appendChild(tocItem);
+    });
+    
+    // Set up scroll listener to highlight active TOC item
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateActiveTOCItemOnScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+    
+    // Initial update
+    updateActiveTOCItemOnScroll();
+  }
+  
+  // Update active TOC item based on scroll position
+  function updateActiveTOCItemOnScroll() {
+    const blogDetail = document.getElementById('blog-detail');
+    if (!blogDetail) return;
+    
+    const headings = blogDetail.querySelectorAll('h2, h3, h4');
+    const tocNav = document.getElementById('toc-nav');
+    if (!tocNav || headings.length === 0) return;
+    
+    const scrollPosition = window.scrollY + 150; // Offset for header
+    
+    // Find the current active heading
+    let activeHeadingId = null;
+    
+    for (let i = headings.length - 1; i >= 0; i--) {
+      const heading = headings[i];
+      const headingTop = heading.offsetTop;
+      
+      if (scrollPosition >= headingTop) {
+        activeHeadingId = heading.id;
+        break;
+      }
+    }
+    
+    // Update active state
+    if (activeHeadingId) {
+      updateActiveTOCItem(activeHeadingId);
+    }
+  }
+  
+  // Update active TOC item
+  function updateActiveTOCItem(headingId) {
+    const tocNav = document.getElementById('toc-nav');
+    if (!tocNav) return;
+    
+    // Remove active class from all items
+    tocNav.querySelectorAll('a').forEach(link => {
+      link.classList.remove('active');
+    });
+    
+    // Add active class to current item
+    const activeLink = tocNav.querySelector(`a[href="#${headingId}"]`);
+    if (activeLink) {
+      activeLink.classList.add('active');
     }
   }
 
