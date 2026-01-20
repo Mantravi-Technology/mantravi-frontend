@@ -137,7 +137,7 @@
             </div>
         </div>
         
-        <div class="footer-bottom mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-white/10">
+        <div class="footer-bottom relative mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-white/10">
             <!-- Punchline Section -->
             <div class="text-center mb-4 sm:mb-6">
                 <div class="inline-flex flex-col items-center space-y-1 px-4 py-2 bg-gradient-to-r from-[#4EE4FF]/10 via-[#4EE4FF]/5 to-[#4EE4FF]/10 rounded-full border border-[#4EE4FF]/20">
@@ -147,15 +147,17 @@
                 </div>
             </div>
 
-            <!-- Recognition / Partner Badges -->
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-4 sm:mb-6">
-                <p class="text-xs sm:text-sm text-gray-400">
-                    Recognized on
-                </p>
-                <img src="/assets/icons/ui/goodfirms-partner-badge.svg"
-                     alt="GoodFirms Partner Badge"
-                     class="h-10 sm:h-12 w-auto drop-shadow-lg" loading="lazy">
+            <!-- DMCA Protection Badge -->
+            <div class="flex items-center justify-center mb-4 sm:mb-6">
+                <a href="//www.dmca.com/Protection/Status.aspx?ID=35d1ef9c-bf86-4205-95af-4cad9e623dfb"
+                   title="DMCA.com Protection Status"
+                   class="dmca-badge inline-flex items-center justify-center">
+                    <img src="https://images.dmca.com/Badges/dmca_protected_sml_120n.png?ID=35d1ef9c-bf86-4205-95af-4cad9e623dfb"
+                         alt="DMCA.com Protection Status"
+                         class="h-8 w-auto">
+                </a>
             </div>
+            <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
             
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-4">
                 <p class="text-center text-gray-400 text-sm">
@@ -204,6 +206,16 @@
                     opacity: 0;
                 }
             </style>
+
+            <!-- GoodFirms badge pinned to bottom-right (visible on all devices) -->
+            <div class="block absolute right-4 bottom-4">
+                <a href="https://www.goodfirms.co/company/mantravi" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center justify-center">
+                    <img src="/assets/icons/ui/goodfirms-partner-badge.svg"
+                         alt="GoodFirms Partner Badge"
+                         class="h-10 sm:h-32 w-auto drop-shadow-lg" loading="lazy">
+                </a>
+            </div>
         </div>
     </div>
 </footer>
